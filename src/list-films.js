@@ -3,7 +3,11 @@ import PropTypes from 'prop-types'
 
 import Title from './title'
 
-const ListFilms = ({films=[]}) => <ul>{
+const style = {
+	listStyleType: 'none'
+}
+
+const ListFilms = ({films=[]}) => <ul style={style}>{
 	films.map(film => (<li key={film.imdbID}><Title film={film} /></li>))
 }</ul>
 
