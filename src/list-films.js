@@ -1,13 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function Title({film}) {
-	return "A title"
-}
-
-Title.propTypes = {
-	film: PropTypes.object.isRequired
-}
+import Title from './title'
 
 const ListFilms = ({films=[]}) => <ul>{
 	films.map(film => (<li key={film.imdbID}><Title film={film} /></li>))
