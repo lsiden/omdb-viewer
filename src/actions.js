@@ -14,32 +14,25 @@ export const Actions = {
 }
 
 // TODO get rid of returns
-export const viewList = () => {
-	return {
-		type: Actions.VIEW_LIST,
-		data: {
-			view: Actions.VIEW_LIST
-		},
-	}
-}
+export const viewList = () => ({
+	type: Actions.VIEW_LIST,
+	data: {
+		view: Actions.VIEW_LIST
+	},
+})
 
-export const viewDetail = (film) => {
-	return {
-		type: Actions.VIEW_DETAIL,
-		data: {
-			view: Actions.VIEW_DETAIL,
-			film,
-		}
+export const viewDetail = (film) => ({
+	type: Actions.VIEW_DETAIL,
+	data: {
+		view: Actions.VIEW_DETAIL,
+		film,
 	}
-}
+})
 
-export const updateFilms = (films) => {
-	debug('updateFilms(%s)', films)
-	return {
-		type: Actions.UPDATE_FILMS,
-		data: {films}
-	}
-}
+export const updateFilms = (films) => ({
+	type: Actions.UPDATE_FILMS,
+	data: { films }
+})
 
 export const queryFetch = (query) => {
 	debug('queryFetch(%s)', query)
