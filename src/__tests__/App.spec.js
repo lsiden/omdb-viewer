@@ -28,10 +28,10 @@ test('Actions.VIEW_DETAIL', () => {
 	}))
 })
 
-test('Actions.UPDATE_LIST', () => {
-	const action = {type: Actions.UPDATE_LIST, data: { films }}
+test('Actions.UPDATE_FILMS', () => {
+	const action = {type: Actions.UPDATE_FILMS, data: { films }}
 	expect(reduce({}, action)).toEqual(expect.objectContaining({
-		view: Actions.UPDATE_LIST,
+		view: Actions.UPDATE_FILMS,
 		films
 	}))
 })

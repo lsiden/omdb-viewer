@@ -19,10 +19,12 @@ it('renders a Form element', () => {
 test('change to input invokes onChange(query)', () => {
 	const wrapper = createWrapper()
 	const query = 'search term'
-	wrapper.find('input').simulate('change', {
+	wrapper.find('input').simulate('input', {
 		target: {
 			value: query
 		}
 	})
-	expect(onChange).toHaveBeenCalledWith(query)
+	setTimeout(() => {
+		expect(onChange).toHaveBeenCalledWith(query)
+	})
 })

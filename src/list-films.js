@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 import Title from './title'
 
@@ -15,4 +16,8 @@ ListFilms.propTypes = {
 	films: PropTypes.arrayOf(PropTypes.object)
 }
 
-export default ListFilms
+export default connect(
+	state => ({
+		films: state.films,
+	})
+)(ListFilms)

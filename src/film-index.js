@@ -1,25 +1,30 @@
+// TODO rename to omdb-viewer
+
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import ListFilms from './list-films'
 import { Actions } from './actions'
 import Show from './show'
+import QueryForm from './query-form'
+import ListFilms from './list-films'
+import {OMD_URL} from './constants'
 
-import logo from './logo.svg'
-import './film-index.css'
-
-// FIXME - for demo only
-const films = require('./__tests__/films.json').Search
+import './film-index.css' // TODO replace with inline
+const linkStyle = {
+	color: 'white',
+}
 
 export const FilmIndex = ({view}) => (
 	<div className="App">
 		<header className="App-header">
-			<img src={logo} className="App-logo" alt="logo" />
-			<h1 className="App-title">Welcome to React</h1>
+			<h1 className="App-title">
+				<a href={OMD_URL} style={linkStyle}>Search Open Movie Database</a>
+			</h1>
+			<QueryForm />
 		</header>
 		<Show when={view === Actions.VIEW_LIST}>
-			<ListFilms films={films} />
+			<ListFilms />
 		</Show>
 	</div>
 )

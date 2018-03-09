@@ -19,7 +19,7 @@ module.exports = {
 		"jest"
 	],
 	"rules": {
-		"no-unused-vars": ["error", {
+		"no-unused-vars": ["warn", {
 			"varsIgnorePattern": "^debug$|^_"
 		}],
 		"indent": ["warn", "tab" ],
