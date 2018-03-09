@@ -4,16 +4,29 @@ import { connect } from 'react-redux'
 
 import Title from './title'
 
-const style = {
-	listStyleType: 'none'
+const ulStyle = {
+	listStyleType: 'none',
+	lineHeight: 1.5,
 }
 
-const ListFilms = ({films=[]}) => <ul style={style}>{
-	films.map(film => (<li key={film.imdbID}><Title film={film} /></li>))
-}</ul>
+const ListFilms = ({films}) => {
+	const msgStyle = {
+		fontSize: '14pt',
+		color: 'gray',
+		margin: '1em'
+	}
+	return films.length > 0
+		? <ul style={ulStyle}>{
+			films.map(film => (<li key={film.imdbID}><Title film={film} /></li>))
+		}</ul>
+		: <div style={msgStyle}>There are no films that match your query yet.</div>
+}
 
 ListFilms.propTypes = {
-	films: PropTypes.arrayOf(PropTypes.object)
+	films: PropTypes.arrayOf(PropTypes.object),
+}
+ListFilms.defaultProps = {
+	films: [],
 }
 
 export default connect(
