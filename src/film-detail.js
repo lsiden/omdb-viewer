@@ -2,6 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+const wrapperStyle = {
+	marginLeft: '10pt',
+}
 const titleStyle = {
 	marginBottom: '5pt',
 }
@@ -12,8 +15,9 @@ const detailsStyle = {
 
 const googleSearch = (query) => `https://www.google.com/search?q=${query}`
 
+// TODO - Navigate back to list
 export const FilmDetail = ({filmSummary, filmDetails}) => {
-	return <div>
+	return <div style={wrapperStyle}>
 		<h1 style={titleStyle}>
 			<a href={filmDetails.Website || googleSearch(filmSummary.Title)}>{filmSummary.Title}</a>
 		</h1>
@@ -26,6 +30,7 @@ export const FilmDetail = ({filmSummary, filmDetails}) => {
 			{
 				filmDetails.Awards && <li>Awards: {filmDetails.Awards}</li>
 			}
+			<li>Run Time: {filmDetails.Runtime}</li>
 			<li>IMDB Rating: {filmDetails.imdbRating}/10</li>
 			<li>Box Office: {filmDetails.BoxOffice}</li>
 		</ul>
