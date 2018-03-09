@@ -2,7 +2,12 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import 'test-helpers/setup'
-import {FilmList} from 'film-list'
+import {
+	FilmList,
+	__RewireAPI__ as FilmListRewireApi,
+} from 'film-list'
+
+FilmListRewireApi.__Rewire__('FilmTitle', () => <li />)
 
 const films = require('./films.json').Search
 const defaultProps = () => ({
@@ -15,6 +20,6 @@ const createWrapper = (props={}) => shallow(
 
 it('renders list of titles', () => {
 	const wrapper = createWrapper()
-	const titles = wrapper.find('Title')
+	const titles = wrapper.find('ul').children()
 	expect(titles).toHaveLength(films.length)
 })

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import Title from './title'
+import FilmTitle from 'film-title'
 
 const ulStyle = {
 	listStyleType: 'none',
@@ -15,11 +15,16 @@ export const FilmList = ({films}) => {
 		color: '#3266ba',
 		margin: '1em'
 	}
-	return films.length > 0
-		? <ul style={ulStyle}>{
-			films.map(film => (<li key={film.imdbID}><Title film={film} /></li>))
-		}</ul>
-		: <div style={msgStyle}>There are no films that match your query yet.</div>
+	if (films.length > 0) {
+		return (
+			<ul style={ulStyle}>{
+				films.map(film => <FilmTitle key={film.imdbID} film={film} />)
+			}
+			</ul>
+		)
+	} else {
+		return <div style={msgStyle}>There are no films that match your query yet.</div>
+	}
 }
 
 FilmList.propTypes = {
@@ -32,5 +37,5 @@ FilmList.defaultProps = {
 export default connect(
 	state => ({
 		films: state.films,
-	})
+	}),
 )(FilmList)

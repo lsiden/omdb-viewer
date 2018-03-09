@@ -13,7 +13,6 @@ export const Actions = {
 	UPDATE_FILMS: 'update-films',
 }
 
-// TODO get rid of returns
 export const viewList = () => ({
 	type: Actions.VIEW_LIST,
 	data: {
