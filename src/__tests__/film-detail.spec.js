@@ -6,7 +6,7 @@ import {FilmDetail} from 'film-detail'
 
 const films = require('./films.json').Search
 const defaultProps = () => ({
-	film: films[0]
+	filmSummary: films[0],
 })
 
 const createWrapper = (props={}) => shallow(

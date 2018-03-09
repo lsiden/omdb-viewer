@@ -34,10 +34,10 @@ export const OmdbSearch = ({view}) => (
 			</h1>
 			<QueryForm />
 		</header>
-		<Show when={view === Actions.VIEW_LIST}>
+		<Show when={view === Actions.VIEW_FILM_LIST}>
 			<FilmList />
 		</Show>
-		<Show when={view === Actions.VIEW_DETAIL}>
+		<Show when={view === Actions.VIEW_FILM_DETAIL}>
 			<FilmDetail />
 		</Show>
 	</div>

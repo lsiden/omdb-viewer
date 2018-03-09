@@ -18,7 +18,12 @@ export const FilmList = ({films}) => {
 	if (films.length > 0) {
 		return (
 			<ul style={ulStyle}>{
-				films.map(film => <FilmTitle key={film.imdbID} film={film} />)
+				films.map(filmSummary => (
+					<FilmTitle
+						key={filmSummary.imdbID}
+						filmSummary={filmSummary}
+					/>
+				))
 			}
 			</ul>
 		)

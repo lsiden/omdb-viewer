@@ -12,27 +12,27 @@ test('renders', () => {
 	ReactDOM.unmountComponentAtNode(div)
 })
 
-test('Actions.VIEW_LIST', () => {
+test('Actions.VIEW_FILM_LIST', () => {
 	const action = {
-		type: Actions.VIEW_LIST,
-		data: { view: Actions.VIEW_LIST }
+		type: Actions.VIEW_FILM_LIST,
+		data: { view: Actions.VIEW_FILM_LIST }
 	}
 	expect(reduce({}, action)).toEqual(expect.objectContaining({
-		view: Actions.VIEW_LIST,
+		view: Actions.VIEW_FILM_LIST,
 	}))
 })
 
-test('Actions.VIEW_DETAIL', () => {
+test('Actions.VIEW_FILM_DETAIL', () => {
 	const detail = films[0]
 	const action = {
-		type: Actions.VIEW_DETAIL,
+		type: Actions.VIEW_FILM_DETAIL,
 		data: {
-			view: Actions.VIEW_DETAIL,
+			view: Actions.VIEW_FILM_DETAIL,
 			detail
 		}
 	}
 	expect(reduce({}, action)).toEqual(expect.objectContaining({
-		view: Actions.VIEW_DETAIL,
+		view: Actions.VIEW_FILM_DETAIL,
 		detail
 	}))
 })

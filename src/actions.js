@@ -8,23 +8,31 @@ const debugString = `${APP_NAME}:actions:debug`
 const debug = debugFactory(debugString)
 
 export const Actions = {
-	VIEW_LIST: 'view-list',
-	VIEW_DETAIL: 'view-detail',
+	VIEW_FILM_LIST: 'view-film-list',
+	VIEW_FILM_DETAIL: 'view-film-detail',
 	UPDATE_FILMS: 'update-films',
+	UPDATE_FILM_DETAILS: 'update-film-details',
 }
 
 export const viewList = () => ({
-	type: Actions.VIEW_LIST,
+	type: Actions.VIEW_FILM_LIST,
 	data: {
-		view: Actions.VIEW_LIST
+		view: Actions.VIEW_FILM_LIST
 	},
 })
 
-export const viewDetail = (film) => ({
-	type: Actions.VIEW_DETAIL,
+export const viewFilmSummary = (filmSummary) => ({
+	type: Actions.VIEW_FILM_DETAIL,
 	data: {
-		view: Actions.VIEW_DETAIL,
-		film,
+		view: Actions.VIEW_FILM_DETAIL,
+		filmSummary,
+	}
+})
+
+export const updateFilmDetails = (filmDetails) => ({
+	type: Actions.UPDATE_FILM_DETAILS,
+	data: {
+		filmDetails,
 	}
 })
 
@@ -33,10 +41,20 @@ export const updateFilms = (films) => ({
 	data: { films }
 })
 
-export const queryFetch = (query) => dispatch => (
+export const queryFetch = (query) => (dispatch) => (
 	axios.get(`https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}`)
 		.then(res => {
 			dispatch(updateFilms(res.data.Search))
+		}).catch(e => {
+			console.error(e)
+			toastr.error(e, 'An error occured')
+		})
+)
+
+export const fetchFilmDetails = (id) => (dispatch) => (
+	axios.get(`https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&i=${id}`)
+		.then(res => {
+			dispatch(updateFilmDetails(res.data))
 		}).catch(e => {
 			console.error(e)
 			toastr.error(e, 'An error occured')

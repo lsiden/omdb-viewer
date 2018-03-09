@@ -2,10 +2,12 @@ import {
 	Actions,
 	viewList,
 	updateFilms,
-	viewDetail,
+	viewFilmSummary,
 	queryFetch,
+	fetchFilmDetails,
 } from 'actions'
 
+import filmDetails from './film-detail.json'
 import axios from 'axios'
 import debugFactory from 'debug'
 
@@ -18,9 +20,9 @@ jest.mock('axios')
 
 test('viewList() returns an action', () => {
 	expect(viewList()).toEqual({
-		type: Actions.VIEW_LIST,
+		type: Actions.VIEW_FILM_LIST,
 		data: {
-			view: Actions.VIEW_LIST
+			view: Actions.VIEW_FILM_LIST
 		}
 	})
 })
@@ -35,18 +37,18 @@ test('updateFilms(list) returns an action with list', () => {
 	})
 })
 
-test('viewDetail(film) returns an action with film', () => {
-	const film = {Title: 'A Title'}
-	expect(viewDetail(film)).toEqual({
-		type: Actions.VIEW_DETAIL,
+test('viewFilmSummary(filmSummary) returns an action with filmSummary', () => {
+	const filmSummary = {Title: 'A Title'}
+	expect(viewFilmSummary(filmSummary)).toEqual({
+		type: Actions.VIEW_FILM_DETAIL,
 		data: {
-			view: Actions.VIEW_DETAIL,
-			film,
+			view: Actions.VIEW_FILM_DETAIL,
+			filmSummary,
 		},
 	})
 })
 
-test('queryFetch()(dispatch) invokes dispatch() with Actions.VIEW_LIST', () => {
+test('queryFetch()(dispatch) invokes dispatch() with Actions.VIEW_FILM_LIST', () => {
 	const dispatch = jest.fn()
 	const response = {
 		data: {
@@ -62,6 +64,22 @@ test('queryFetch()(dispatch) invokes dispatch() with Actions.VIEW_LIST', () => {
 			type: Actions.UPDATE_FILMS,
 			data: {
 				films: response.data.Search
+			},
+		})
+	})
+})
+
+test('fetchFilmDetails()(dispatch) invokes dispatch() with Actions.UPDATE_FILM_DETAILs', () => {
+	const dispatch = jest.fn()
+	const response = {
+		data: filmDetails
+	}
+	axios.get.mockReturnValue(Promise.resolve(response))
+	fetchFilmDetails('id')(dispatch).then(() => {
+		expect(dispatch).toHaveBeenCalledWith({
+			type: Actions.UPDATE_FILM_DETAILS,
+			data: {
+				filmDetails: response.data
 			},
 		})
 	})

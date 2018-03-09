@@ -11,15 +11,16 @@ import {APP_NAME} from './constants'
 const debug = debugFactory(`${APP_NAME}:app:debug`)
 
 const initialState = {
-	view: Actions.VIEW_LIST,
+	view: Actions.VIEW_FILM_LIST,
 }
 
 export function reduce(state=initialState, action) {
 	const {type, data} = action
 	switch(type) {
-	case Actions.VIEW_LIST:
-	case Actions.VIEW_DETAIL:
+	case Actions.VIEW_FILM_LIST:
+	case Actions.VIEW_FILM_DETAIL:
 	case Actions.UPDATE_FILMS:
+	case Actions.UPDATE_FILM_DETAILS:
 		return {
 			...state,
 			...data,
