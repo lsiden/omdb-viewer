@@ -6,8 +6,18 @@ import cuid from 'cuid'
 import {queryFetch} from './actions'
 import debugFactory from 'debug'
 import {APP_NAME, QUERY_DELAY} from './constants'
+import SearchInput from './search-input'
 
 const debug = debugFactory(`${APP_NAME}:query-form:debug`)
+
+const formStyle = {
+	width: '70vw',
+	minWidth: '320px',
+	display: 'flex',
+	flexWrap: 'wrap',
+	alignItems: 'center',
+	justifyContent: 'flex-start',
+}
 
 export class QueryForm extends React.Component {
 	static propTypes = {
@@ -29,13 +39,12 @@ export class QueryForm extends React.Component {
 
 	render() {
 		const {query} = this.state
-		// TODO insert delete button into search input
 		return (
-			<form ref={ref => this.ref = ref}>
+			<form ref={ref => this.ref = ref} style={formStyle}>
 				<label htmlFor={this.slug}>Search</label>&nbsp;
-				<input
+				<SearchInput
 					id={this.slug}
-					type='text'
+					type='search'
 					placeholder=' title'
 					value={query}
 					onInput={this.onInput}
