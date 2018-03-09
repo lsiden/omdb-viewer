@@ -12,7 +12,7 @@ const ulStyle = {
 const ListFilms = ({films}) => {
 	const msgStyle = {
 		fontSize: '14pt',
-		color: 'gray',
+		color: '#3266ba',
 		margin: '1em'
 	}
 	return films.length > 0

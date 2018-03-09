@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import cuid from 'cuid'
 
 import {queryFetch} from './actions'
 import debugFactory from 'debug'
@@ -17,6 +18,7 @@ export class QueryForm extends React.Component {
 		super(props)
 		this.state = { query: '' }
 		this.onInput = this.onInput.bind(this)
+		this.slug = cuid.slug()
 	}
 
 	componentDidMount() {
@@ -30,8 +32,9 @@ export class QueryForm extends React.Component {
 		// TODO insert delete button into search input
 		return (
 			<form ref={ref => this.ref = ref}>
-				<label>Search</label>&nbsp;
+				<label htmlFor={this.slug}>Search</label>&nbsp;
 				<input
+					id={this.slug}
 					type='text'
 					placeholder=' title'
 					value={query}
