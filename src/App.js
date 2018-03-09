@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 
 import logo from './logo.svg'
 import ListFilms from './list-films'
+import { Actions } from 'actions'
+
 import './App.css'
 
 // FIXME - for demo only
@@ -20,5 +24,28 @@ class App extends Component {
         )
     }
 }
+
+const initialState = { view: Actions.OPEN_DETAIL }
+
+export function reduce(state=initialState, action) {
+	switch(action.type) {
+		case Actions.OPEN_LIST:
+			return {
+				...state,
+				films: action.data,
+				view: action.type
+			}
+		case Actions.OPEN_DETAIL:
+			return {
+				...state,
+				detail: action.data,
+				view: action.type
+			}
+		default:
+			return state
+	}
+}
+
+const store = createStore(reduce, applyMiddleware(thunk))
 
 export default App
