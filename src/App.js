@@ -4,7 +4,7 @@ import thunk from 'redux-thunk'
 
 import logo from './logo.svg'
 import ListFilms from './list-films'
-import { Actions } from 'actions'
+import { Actions } from './actions'
 
 import './App.css'
 
