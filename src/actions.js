@@ -34,14 +34,12 @@ export const updateFilms = (films) => ({
 	data: { films }
 })
 
-export const queryFetch = (query) => {
-	debug('queryFetch(%s)', query)
-	return dispatch => (
-		axios.get(`https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}`) .then(res => {
+export const queryFetch = (query) => dispatch => (
+	axios.get(`https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}`)
+		.then(res => {
 			dispatch(updateFilms(res.data.Search))
 		}).catch(e => {
 			console.error(e)
 			toastr.error(e, 'An error occured')
 		})
-	)
-}
+)
