@@ -18,6 +18,11 @@ export function reduce(state=initialState, action) {
 	const {type, data} = action
 	switch(type) {
 		case Actions.OPEN_LIST:
+			return {
+				...state,
+				films: data.films || state.films,
+				view: type
+			}
 		case Actions.OPEN_DETAIL:
 			return {
 				...state,
