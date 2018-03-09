@@ -9,7 +9,7 @@ const ulStyle = {
 	lineHeight: 1.5,
 }
 
-const ListFilms = ({films}) => {
+export const FilmList = ({films}) => {
 	const msgStyle = {
 		fontSize: '14pt',
 		color: '#3266ba',
@@ -22,10 +22,10 @@ const ListFilms = ({films}) => {
 		: <div style={msgStyle}>There are no films that match your query yet.</div>
 }
 
-ListFilms.propTypes = {
+FilmList.propTypes = {
 	films: PropTypes.arrayOf(PropTypes.object),
 }
-ListFilms.defaultProps = {
+FilmList.defaultProps = {
 	films: [],
 }
 
@@ -33,4 +33,4 @@ export default connect(
 	state => ({
 		films: state.films,
 	})
-)(ListFilms)
+)(FilmList)

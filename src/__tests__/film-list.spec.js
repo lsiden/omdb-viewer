@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import 'test-helpers/setup'
-import ListFilms from 'list-films'
+import {FilmList} from 'film-list'
 
 const films = require('./films.json').Search
 const defaultProps = () => ({
@@ -10,7 +10,7 @@ const defaultProps = () => ({
 })
 
 const createWrapper = (props={}) => shallow(
-	<ListFilms {...{...defaultProps(), ...props}} />
+	<FilmList {...{...defaultProps(), ...props}} />
 )
 
 it('renders list of titles', () => {

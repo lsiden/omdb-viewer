@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 import { Actions } from './actions'
 import QueryForm from './query-form'
-import ListFilms from './list-films'
+import FilmList from './film-list'
 import FilmDetail from './film-detail'
 import Show from './show'
 import {OMD_URL} from './constants'
@@ -35,7 +35,7 @@ export const OmdbSearch = ({view}) => (
 			<QueryForm />
 		</header>
 		<Show when={view === Actions.VIEW_LIST}>
-			<ListFilms />
+			<FilmList />
 		</Show>
 		<Show when={view === Actions.VIEW_DETAIL}>
 			<FilmDetail />
