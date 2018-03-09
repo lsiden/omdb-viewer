@@ -13,14 +13,14 @@ it('renders without crashing', () => {
 })
 
 it('reduces Actions.OPEN_LIST', () => {
-	const action = {type: Actions.OPEN_LIST, data: films}
+	const action = {type: Actions.OPEN_LIST, data: { films }}
 	const newState = reduce({}, action)
 	expect(newState.films.length).toBeTruthy()
 	expect(newState.view).toBe(Actions.OPEN_LIST)
 })
 
 it('reduces Actions.OPEN_DETAIL', () => {
-	const action = {type: Actions.OPEN_DETAIL, data: films[0]}
+	const action = {type: Actions.OPEN_DETAIL, data: {detail: films[0]}}
 	const newState = reduce({}, action)
 	expect(newState.detail.Title).toBeTruthy()
 	expect(newState.view).toBe(Actions.OPEN_DETAIL)

@@ -28,18 +28,14 @@ class App extends Component {
 const initialState = { view: Actions.OPEN_DETAIL }
 
 export function reduce(state=initialState, action) {
-	switch(action.type) {
+	const {type, data} = action
+	switch(type) {
 		case Actions.OPEN_LIST:
-			return {
-				...state,
-				films: action.data,
-				view: action.type
-			}
 		case Actions.OPEN_DETAIL:
 			return {
 				...state,
-				detail: action.data,
-				view: action.type
+				...data,
+				view: type
 			}
 		default:
 			return state
