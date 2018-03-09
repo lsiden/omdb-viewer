@@ -20,6 +20,7 @@ const formStyle = {
 	marginBottom: '8pt',
 }
 
+// TODO - Navigate back to list on new search
 export class QueryForm extends React.Component {
 	static propTypes = {
 		onChange: PropTypes.func.isRequired,

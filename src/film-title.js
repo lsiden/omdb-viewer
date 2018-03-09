@@ -17,7 +17,7 @@ FilmTitle.propTypes = {
 
 export default connect(
 	null,
-	(dispatch, ownProps) => ({
+	(dispatch) => ({
 		dispatchViewDetail: filmSummary => {
 			dispatch(viewFilmSummary(filmSummary))
 			dispatch(fetchFilmDetails(filmSummary.imdbID))

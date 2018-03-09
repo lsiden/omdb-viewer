@@ -11,7 +11,7 @@ import FilmDetail from './film-detail'
 import Show from './show'
 import {OMD_URL} from './constants'
 
-// import './omdb-search.css' // TODO replace with inline
+// TODO provide routing to enable bookmarking results and details
 const linkStyle = {
 	color: 'white',
 }
