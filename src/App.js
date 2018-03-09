@@ -4,10 +4,8 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
 import logo from './logo.svg'
-import ListFilms from './list-films'
+import FilmIndex from './film-index'
 import { Actions } from './actions'
-
-import './App.css'
 
 // FIXME - for demo only
 const films = require('./__tests__/films.json').Search
@@ -32,20 +30,10 @@ export function reduce(state=initialState, action) {
 
 const store = createStore(reduce, applyMiddleware(thunk))
 
-class App extends Component {
-	render() {
-		return (
-			<div className="App">
-				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<h1 className="App-title">Welcome to React</h1>
-				</header>
-				<Provider store={store}>
-					<ListFilms films={films} />
-				</Provider>
-			</div>
-		)
-	}
-}
+const App = () => (
+	<Provider store={store}>
+		<FilmIndex />
+	</Provider>
+)
 
 export default App
