@@ -14,14 +14,14 @@ it('does not render children when condition is falsy', () => {
 	const wrapper = createWrapper({
 		when: false,
 		children
-	 })
-	 expect(wrapper.children()).toHaveLength(0)
+	})
+	expect(wrapper.children()).toHaveLength(0)
 })
 
 it('renders children when condition is truthy', () => {
 	const wrapper = createWrapper({
 		when: true,
 		children
-	 })
-	 expect(wrapper.children()).not.toHaveLength(0)
+	})
+	expect(wrapper.children()).not.toHaveLength(0)
 })

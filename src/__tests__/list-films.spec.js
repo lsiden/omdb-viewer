@@ -13,10 +13,6 @@ const createWrapper = (props={}) => shallow(
 	<ListFilms {...{...defaultProps(), ...props}} />
 )
 
-it('renders', () => {
-	const wrapper = createWrapper()
-})
-
 it('renders list of titles', () => {
 	const wrapper = createWrapper()
 	const titles = wrapper.find('Title')

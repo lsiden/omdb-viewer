@@ -13,10 +13,6 @@ const createWrapper = (props={}) => shallow(
 	<FilmDetail {...{...defaultProps(), ...props}} />
 )
 
-it('renders', () => {
-	const wrapper = createWrapper()
-})
-
 it('renders a title', () => {
 	const wrapper = createWrapper()
 

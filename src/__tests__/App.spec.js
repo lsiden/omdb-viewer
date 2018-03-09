@@ -7,14 +7,13 @@ import { Actions, } from 'actions'
 const films = require('./films.json').Search
 
 test('renders', () => {
-    const div = document.createElement('div')
-    ReactDOM.render(<App />, div)
-    ReactDOM.unmountComponentAtNode(div)
+	const div = document.createElement('div')
+	ReactDOM.render(<App />, div)
+	ReactDOM.unmountComponentAtNode(div)
 })
 
 test('Actions.VIEW_LIST', () => {
 	const action = {type: Actions.VIEW_LIST, data: {}}
-	const newState = reduce({}, action)
 	expect(reduce({}, action)).toEqual(expect.objectContaining({
 		view: Actions.VIEW_LIST,
 	}))

@@ -9,8 +9,6 @@ import axios from 'axios'
 
 jest.mock('axios')
 
-const films = require('./films.json')
-
 test('viewList() returns an action', () => {
 	expect(viewList([]).type).toEqual(Actions.VIEW_LIST)
 })

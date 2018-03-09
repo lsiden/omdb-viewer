@@ -20,12 +20,12 @@ module.exports = {
 		"no-unused-vars": ["error", {
 			"varsIgnorePattern": "^debug$|^_"
 		}],
-		"indent": ["error", 4 ],
+		"indent": ["warn", "tab" ],
 		"linebreak-style": ["error", "unix"],
 		"quotes": ["warn", "single"],
 		"semi": ["warn", "never"],
 		"no-console": ["warn", {
-			"allow": ["assert"]
+			"allow": ["assert", "warn", "error"]
 		}]
 	},
 	"overrides": {

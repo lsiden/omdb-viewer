@@ -18,7 +18,7 @@
     "test": "NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint -c .eslintrc.js src/",
-    "lint:fix": "npm run eslint --fix"
+    "lint:fix": "npm run lint -- --fix"
   },
   "devDependencies": {
     "enzyme": "^3.3.0",
