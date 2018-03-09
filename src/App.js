@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import debugFactory from 'debug'
 
-import FilmIndex from './film-index'
+import OmdbSearch from './omdb-search'
 import { Actions } from './actions'
 import {APP_NAME} from './constants'
 
@@ -37,7 +37,7 @@ const store = createStore(
 
 const App = () => (
 	<Provider store={store}>
-		<FilmIndex />
+		<OmdbSearch />
 	</Provider>
 )
 

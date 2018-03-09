@@ -17,6 +17,7 @@ const formStyle = {
 	flexWrap: 'wrap',
 	alignItems: 'center',
 	justifyContent: 'flex-start',
+	marginBottom: '8pt',
 }
 
 export class QueryForm extends React.Component {

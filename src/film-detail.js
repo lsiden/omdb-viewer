@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 export const FilmDetail = ({film}) => {
 	const {
@@ -17,4 +18,8 @@ FilmDetail.propTypes = {
 	film: PropTypes.object.isRequired
 }
 
-export default FilmDetail
+export default connect(
+	state => ({
+		film: state.film,
+	})
+)(FilmDetail)

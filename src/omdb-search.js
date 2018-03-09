@@ -5,20 +5,31 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { Actions } from './actions'
-import Show from './show'
 import QueryForm from './query-form'
 import ListFilms from './list-films'
+import FilmDetail from './film-detail'
+import Show from './show'
 import {OMD_URL} from './constants'
 
-import './film-index.css' // TODO replace with inline
+// import './omdb-search.css' // TODO replace with inline
 const linkStyle = {
 	color: 'white',
 }
+const headerStyle = {
+	backgroundColor: '#222',
+	/* height: 150px; */
+	padding: '10px',
+	color: 'white',
+}
+const titleStyle = {
+	fontSize: '18pt',
+	marginBottom: '18pt',
+}
 
-export const FilmIndex = ({view}) => (
+export const OmdbSearch = ({view}) => (
 	<div className="App">
-		<header className="App-header">
-			<h1 className="App-title">
+		<header style={headerStyle}>
+			<h1 style={titleStyle}>
 				<a href={OMD_URL} style={linkStyle}>Search Open Movie Database</a>
 			</h1>
 			<QueryForm />
@@ -26,10 +37,13 @@ export const FilmIndex = ({view}) => (
 		<Show when={view === Actions.VIEW_LIST}>
 			<ListFilms />
 		</Show>
+		<Show when={view === Actions.VIEW_DETAIL}>
+			<FilmDetail />
+		</Show>
 	</div>
 )
 
-FilmIndex.propTypes = {
+OmdbSearch.propTypes = {
 	view: PropTypes.string.isRequired,
 }
 
@@ -37,4 +51,4 @@ export default connect(
 	state => ({
 		view: state.view
 	})
-)(FilmIndex)
+)(OmdbSearch)
