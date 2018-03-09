@@ -12,18 +12,14 @@ import './App.css'
 // FIXME - for demo only
 const films = require('./__tests__/films.json').Search
 
-const initialState = { view: Actions.OPEN_DETAIL }
+const initialState = { view: Actions.VIEW_DETAIL }
 
 export function reduce(state=initialState, action) {
 	const {type, data} = action
 	switch(type) {
-		case Actions.OPEN_LIST:
-			return {
-				...state,
-				films: data.films || state.films,
-				view: type
-			}
-		case Actions.OPEN_DETAIL:
+		case Actions.VIEW_LIST:
+		case Actions.VIEW_DETAIL:
+		case Actions.UPDATE_LIST:
 			return {
 				...state,
 				...data,

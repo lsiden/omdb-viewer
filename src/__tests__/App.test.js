@@ -12,28 +12,27 @@ test('renders', () => {
     ReactDOM.unmountComponentAtNode(div)
 })
 
-test('Actions.OPEN_LIST', () => {
-	const action = {type: Actions.OPEN_LIST, data: { films }}
+test('Actions.VIEW_LIST', () => {
+	const action = {type: Actions.VIEW_LIST, data: {}}
 	const newState = reduce({}, action)
-	expect(newState.films).toBe(films)
-	expect(newState.view).toBe(Actions.OPEN_LIST)
+	expect(reduce({}, action)).toEqual(expect.objectContaining({
+		view: Actions.VIEW_LIST,
+	}))
 })
 
-test('Actions.OPEN_LIST with empty data does not alter films', () => {
-	const films = [
-		'Rocky Horror Picture Show',
-		'Halloween'
-	]
-	const state = { films }
-	const action = {type: Actions.OPEN_LIST, data: {}}
-	const newState = reduce(state, action)
-	expect(newState.films).toBe(films)
-	expect(newState.view).toBe(Actions.OPEN_LIST)
+test('Actions.VIEW_DETAIL', () => {
+	const detail = films[0]
+	const action = {type: Actions.VIEW_DETAIL, data: { detail }}
+	expect(reduce({}, action)).toEqual(expect.objectContaining({
+		view: Actions.VIEW_DETAIL,
+		detail
+	}))
 })
 
-test('Actions.OPEN_DETAIL', () => {
-	const action = {type: Actions.OPEN_DETAIL, data: {detail: films[0]}}
-	const newState = reduce({}, action)
-	expect(newState.detail.Title).toBeTruthy()
-	expect(newState.view).toBe(Actions.OPEN_DETAIL)
+test('Actions.UPDATE_LIST', () => {
+	const action = {type: Actions.UPDATE_LIST, data: { films }}
+	expect(reduce({}, action)).toEqual(expect.objectContaining({
+		view: Actions.UPDATE_LIST,
+		films
+	}))
 })

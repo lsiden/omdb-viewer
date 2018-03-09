@@ -1,7 +1,8 @@
 import {
 	Actions,
-	openList,
-	openDetail,
+	viewList,
+	updateList,
+	viewDetail,
 	queryFetch,
 } from 'actions'
 import axios from 'axios'
@@ -10,13 +11,21 @@ jest.mock('axios')
 
 const films = require('./films.json')
 
-test('openList() returns an action', () => {
-	expect(openList([]).type).toEqual(Actions.OPEN_LIST)
+test('viewList() returns an action', () => {
+	expect(viewList([]).type).toEqual(Actions.VIEW_LIST)
 })
 
-test('openList(list) returns an action with list', () => {
+test('updateList(list) returns an action with list', () => {
 	const list = ['foo', 'bar']
-	expect(openList(list).data.list).toEqual(list)
+	expect(updateList(list).data.list).toEqual(list)
+})
+
+test('viewDetail(film) returns an action with film', () => {
+	const film = {Title: 'A Title'}
+	expect(viewDetail(film)).toEqual({
+		type: Actions.VIEW_DETAIL,
+		data: {film},
+	})
 })
 
 test('queryFetch(searchTerm) calls axios.get with url containing search term and returns a promise', () => {
@@ -32,19 +41,10 @@ test('queryFetch(searchTerm) calls axios.get with url containing search term and
 
 	queryFetch(searchTerm)(dispatch).then(() => {
 		expect(dispatch).toHaveBeenCalledWith({
-			type: Actions.OPEN_LIST,
+			type: Actions.VIEW_LIST,
 			data: {
 				list: response.Search
 			},
 		})
 	})
-})
-
-test('openDetail() returns an action', () => {
-	expect(openDetail().type).toEqual(Actions.OPEN_DETAIL)
-})
-
-test('openDetail(film) returns an action with film', () => {
-	const film = { foo: 'bar' }
-	expect(openDetail(film).data.film).toEqual(film)
 })
