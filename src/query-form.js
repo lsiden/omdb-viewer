@@ -19,8 +19,15 @@ export class QueryForm extends React.Component {
 		this.onInput = this.onInput.bind(this)
 	}
 
+	componentDidMount() {
+		if (this.ref) {
+			this.ref.querySelector('input').focus()
+		}
+	}
+
 	render() {
 		const {query} = this.state
+		// TODO insert delete button into search input
 		return (
 			<form ref={ref => this.ref = ref}>
 				<label>Search</label>&nbsp;
@@ -46,9 +53,8 @@ export class QueryForm extends React.Component {
 
 	onInput(ev) {
 		const query = ev.target.value
-		debug('onInput(): query', query)
-		this.setState({ query })
 		const fn = () => this.props.onChange(query)
+		this.setState({ query })
 		this.debounce(fn.bind(this), QUERY_DELAY)
 	}
 }
