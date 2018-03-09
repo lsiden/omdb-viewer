@@ -8,5 +8,5 @@ export const openList = (url) => {
 }
 
 export const openDetail = (film) => {
-	return { type: Actions.OPEN_DETAIL, data: {}}
+	return { type: Actions.OPEN_DETAIL, data: {film}}
 }
