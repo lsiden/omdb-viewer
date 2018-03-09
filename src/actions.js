@@ -30,7 +30,7 @@ export const updateList = (list) => {
 
 export const queryFetch = (searchTerm) => {
 	return dispatch => {
-		return axios.get(`https://www.omdbapi.com/?apikey=fbfcb8c7&s=${searchTerm}`)
+		return axios.get(`https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${searchTerm}`)
 			.then(res => {
 				dispatch(updateList(res.Search))
 			})
