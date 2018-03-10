@@ -12,6 +12,7 @@ import {OMD_URL} from './constants'
 // TODO provide routing to enable bookmarking results and details
 const linkStyle = {
 	color: 'white',
+	fontSize: 'small',
 }
 const headerStyle = {
 	backgroundColor: '#222',
@@ -23,15 +24,19 @@ const titleStyle = {
 	fontSize: '18pt',
 	marginBottom: '18pt',
 }
+const renderBanner = () => (
+	<header style={headerStyle}>
+		<h1 style={titleStyle}>
+			{'Search Open Movie Database'}&nbsp;
+			<a href={OMD_URL} style={linkStyle}>(OMDB)</a>
+		</h1>
+		<QueryForm />
+	</header>
+)
 
 export const OmdbSearch = ({view}) => (
 	<div className="App">
-		<header style={headerStyle}>
-			<h1 style={titleStyle}>
-				<a href={OMD_URL} style={linkStyle}>Search Open Movie Database</a>
-			</h1>
-			<QueryForm />
-		</header>
+		{renderBanner()}
 		<Show when={view === Actions.VIEW_FILM_LIST}>
 			<FilmList />
 		</Show>

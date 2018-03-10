@@ -11,7 +11,6 @@ import SearchInput from './components/search-input'
 const debug = debugFactory(`${APP_NAME}:query-form:debug`)
 
 const formStyle = {
-	width: '70vw',
 	minWidth: '320px',
 	display: 'flex',
 	flexWrap: 'wrap',
@@ -43,7 +42,7 @@ export class QueryForm extends React.Component {
 		const {query} = this.state
 		return (
 			<form ref={ref => this.ref = ref} style={formStyle}>
-				<label htmlFor={this.slug}>Search</label>&nbsp;
+				<label htmlFor={this.slug}>Search</label>
 				<SearchInput
 					id={this.slug}
 					type='search'

@@ -5,15 +5,15 @@ export const SEARCH_ICON = '\u26b2'
 
 const wrapperStyle = {
 	position: 'relative',
-	display: 'flex',
-	width: '85%',
+	flex: '1 1',
+	marginLeft: '12pt',
 }
 
 const inputStyle = {
-	height: '32px',
+	height: '24pt',
+	width: '100%',
 	textIndent: '24pt',
 	fontSize: '12pt',
-	flex: '1 1 85%',
 }
 
 const iconStyle = {
