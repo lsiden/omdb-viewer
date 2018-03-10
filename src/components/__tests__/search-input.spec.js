@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import 'test-helpers/setup'
-import { SearchInput } from 'search-input'
+import { SearchInput } from 'components/search-input'
 
 let onInput
 

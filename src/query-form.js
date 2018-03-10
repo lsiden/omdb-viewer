@@ -6,7 +6,7 @@ import cuid from 'cuid'
 import {queryFetch} from './actions'
 import debugFactory from 'debug'
 import {APP_NAME, QUERY_DELAY} from './constants'
-import SearchInput from './search-input'
+import SearchInput from './components/search-input'
 
 const debug = debugFactory(`${APP_NAME}:query-form:debug`)
 
