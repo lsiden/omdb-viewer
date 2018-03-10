@@ -3,11 +3,19 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { viewFilmSummary, fetchFilmDetails } from './actions'
+import { ButtonLink } from 'components/button-link'
+import { TITLE_COLOR } from './constants'
+
+const buttonStyle = {
+	color: TITLE_COLOR
+}
 
 export const FilmTitle = ({filmSummary, dispatchViewDetail}) => (
-	<li onClick={() => dispatchViewDetail(filmSummary)}>
-		{`${filmSummary.Title}, ${filmSummary.Year}`}
-	</li>
+	<div>
+		<ButtonLink onClick={() => dispatchViewDetail(filmSummary)} addStyle={buttonStyle}>
+			{`${filmSummary.Title}, ${filmSummary.Year}`}
+		</ButtonLink>
+	</div>
 )
 
 FilmTitle.propTypes = {

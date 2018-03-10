@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { viewList } from './actions'
+import { ButtonLink } from 'components/button-link'
 import { ESC_KEY } from './constants'
 
 const wrapperStyle = {
@@ -50,13 +51,12 @@ export class FilmDetail extends React.Component {
 		return (
 			<div style={headerStyle}>
 				<h1 style={titleStyle}>{filmSummary.Title}</h1>
-				<a
-					href='#'
+				<ButtonLink
 					onClick={() => dispatchViewList()}
 					id="close-button"
 					title="Close"
-					style={closeButtonStyle}
-				>{'Close'}</a>
+					addStyle={closeButtonStyle}
+				>{'Close'}</ButtonLink>
 			</div>
 		)
 	}
@@ -90,9 +90,10 @@ export class FilmDetail extends React.Component {
 		const { filmSummary } = this.props
 		return (
 			<div style={wrapperStyle}>
-				<a name="top" />
-				{this.renderTitle()}
-				<img src={filmSummary.Poster} />
+				<a name="top">
+					{this.renderTitle()}
+				</a>
+				<img src={filmSummary.Poster} alt='poster'/>
 				{this.renderDetails()}
 				<div>
 					<a href="#top">Top</a>
