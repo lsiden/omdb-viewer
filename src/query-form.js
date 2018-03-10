@@ -47,7 +47,7 @@ export class QueryForm extends React.Component {
 				<SearchInput
 					id={this.slug}
 					type='search'
-					placeholder=' title'
+					placeholder='Title'
 					value={query}
 					onInput={this.onInput}
 				/>
