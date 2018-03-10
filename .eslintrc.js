@@ -31,8 +31,10 @@ module.exports = {
 		}]
 	},
 	"overrides": {
-		"files": ["**/*.spec.js"],
+		"files": ["**/*.spec.js", "**/webpack*"],
 		"globals": {
+			"module": true,
+			"process": true,
 			"describe": true,
 			"it": true,
 			"beforeEach": true,
