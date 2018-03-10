@@ -12,10 +12,6 @@ const debug = debugFactory(`${APP_NAME}:query-form:debug`)
 
 const formStyle = {
 	minWidth: '320px',
-	display: 'flex',
-	flexWrap: 'wrap',
-	alignItems: 'center',
-	justifyContent: 'flex-start',
 	marginBottom: '8pt',
 }
 
