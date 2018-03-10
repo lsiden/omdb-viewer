@@ -2,8 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import { viewList } from './actions'
+
 const wrapperStyle = {
 	marginLeft: '10pt',
+}
+const headerStyle = {
+	display: 'flex',
+	justifyContent: 'space-between',
 }
 const titleStyle = {
 	marginBottom: '5pt',
@@ -12,15 +18,29 @@ const detailsStyle = {
 	fontSize: '14pt',
 	color: '#888',
 }
+const closeButtonStyle = {
+	margin: '1em',
+}
 
 const googleSearch = (query) => `https://www.google.com/search?q=${query}`
 
 // TODO - Navigate back to list
-export const FilmDetail = ({filmSummary, filmDetails}) => {
+export const FilmDetail = ({filmSummary, filmDetails, dispatchViewList}) => {
 	return <div style={wrapperStyle}>
-		<h1 style={titleStyle}>
-			<a href={filmDetails.Website || googleSearch(filmSummary.Title)}>{filmSummary.Title}</a>
-		</h1>
+		<div style={headerStyle}>
+			<h1 style={titleStyle}>
+				<a href={filmDetails.Website || googleSearch(filmSummary.Title)}>{filmSummary.Title}</a>
+			</h1>
+			<a
+				href='#'
+				onClick={() => dispatchViewList()}
+				id="close-button"
+				title="Close"
+				style={closeButtonStyle}
+			>
+				Close
+			</a>
+		</div>
 		<ul style={detailsStyle}>
 			<li>{filmSummary.Year}</li>
 			<li>Directed by {filmDetails.Director}</li>
@@ -41,6 +61,7 @@ export const FilmDetail = ({filmSummary, filmDetails}) => {
 FilmDetail.propTypes = {
 	filmSummary: PropTypes.object.isRequired,
 	filmDetails: PropTypes.object,
+	dispatchViewList: PropTypes.func.isRequired,
 }
 
 FilmDetail.defaultProps = {
@@ -51,5 +72,8 @@ export default connect(
 	state => ({
 		filmSummary: state.filmSummary,
 		filmDetails: state.filmDetails,
+	}),
+	dispatch => ({
+		dispatchViewList: () => dispatch(viewList())
 	})
 )(FilmDetail)
