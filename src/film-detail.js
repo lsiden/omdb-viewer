@@ -22,16 +22,12 @@ const closeButtonStyle = {
 	margin: '1em',
 }
 
-const googleSearch = (query) => `https://www.google.com/search?q=${query}`
-
-// TODO - Navigate back to list
 export const FilmDetail = ({filmSummary, filmDetails, dispatchViewList}) => {
+	const imdbUrl = `https://www.imdb.com/title/${filmDetails.imdbID}`
 	return <div style={wrapperStyle}>
 		<a name="top" />
 		<div style={headerStyle}>
-			<h1 style={titleStyle}>
-				<a href={filmDetails.Website || googleSearch(filmSummary.Title)}>{filmSummary.Title}</a>
-			</h1>
+			<h1 style={titleStyle}>{filmSummary.Title}</h1>
 			<a
 				href='#'
 				onClick={() => dispatchViewList()}
@@ -42,6 +38,7 @@ export const FilmDetail = ({filmSummary, filmDetails, dispatchViewList}) => {
 				Close
 			</a>
 		</div>
+		<img src={filmSummary.Poster} />
 		<ul style={detailsStyle}>
 			<li>{filmSummary.Year}</li>
 			<li>Directed by {filmDetails.Director}</li>
@@ -54,8 +51,13 @@ export const FilmDetail = ({filmSummary, filmDetails, dispatchViewList}) => {
 			<li>Run Time: {filmDetails.Runtime}</li>
 			<li>IMDB Rating: {filmDetails.imdbRating}/10</li>
 			<li>Box Office: {filmDetails.BoxOffice}</li>
+			{
+				filmDetails.Website && (
+					<li><a href={filmDetails.Website}>Official website</a></li>
+				)
+			}
+			<li><a href={imdbUrl}>{'IMDB page'}</a></li>
 		</ul>
-		<img src={filmSummary.Poster} />
 		<br />
 		<a href="#top">Top</a>
 	</div>
