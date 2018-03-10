@@ -6,6 +6,8 @@ import { viewList } from './actions'
 import { ButtonLink } from 'components/button-link'
 import { ESC_KEY } from './constants'
 
+const CLOSE_ICON = '\u2715'
+
 const wrapperStyle = {
 	marginLeft: '10pt',
 }
@@ -21,7 +23,9 @@ const detailsStyle = {
 	color: '#888',
 }
 const closeButtonStyle = {
-	margin: '1em',
+	margin: '8pt',
+	fontSize: '20pt',
+	border: 'solid'
 }
 
 export class FilmDetail extends React.Component {
@@ -56,7 +60,7 @@ export class FilmDetail extends React.Component {
 					id="close-button"
 					title="Close"
 					addStyle={closeButtonStyle}
-				>{'Close'}</ButtonLink>
+				>{CLOSE_ICON}</ButtonLink>
 			</div>
 		)
 	}
