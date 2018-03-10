@@ -48,19 +48,18 @@ test('viewFilmSummary(filmSummary) returns an action with filmSummary', () => {
 test('queryFetch()(dispatch) invokes dispatch() with Actions.VIEW_FILM_LIST', () => {
 	const dispatch = jest.fn()
 	const response = {
-		data: {
-			Search: [
-				'Rocky Horror',
-				'Halloween',
-			]
-		}
+		Search: [
+			'Rocky Horror',
+			'Halloween',
+		]
 	}
+	response.json = () => Promise.resolve(response)
 	window.fetch = jest.fn().mockImplementation(() => Promise.resolve(response))
 	queryFetch('a query')(dispatch).then(() => {
 		expect(dispatch).toHaveBeenCalledWith({
 			type: Actions.UPDATE_FILMS,
 			data: {
-				films: response.data.Search
+				films: response.Search
 			},
 		})
 	})
@@ -68,9 +67,8 @@ test('queryFetch()(dispatch) invokes dispatch() with Actions.VIEW_FILM_LIST', ()
 
 test('fetchFilmDetails()(dispatch) invokes dispatch() with Actions.UPDATE_FILM_DETAILs', () => {
 	const dispatch = jest.fn()
-	const response = {
-		data: filmDetails
-	}
+	const response = { filmDetails }
+	response.json = () => Promise.resolve(response)
 	window.fetch = jest.fn().mockImplementation(() => Promise.resolve(response))
 	fetchFilmDetails('id')(dispatch).then(() => {
 		expect(dispatch).toHaveBeenCalledWith({

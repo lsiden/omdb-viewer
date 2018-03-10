@@ -21,6 +21,6 @@ const createWrapper = (props={}) => shallow(
 
 test('click on title invokes dispatchViewDetail()', () => {
 	const wrapper = createWrapper()
-	wrapper.simulate('click')
+	wrapper.find('ButtonLink').simulate('click')
 	expect(dispatchViewDetail).toHaveBeenCalled()
 })
