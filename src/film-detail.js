@@ -27,6 +27,7 @@ const googleSearch = (query) => `https://www.google.com/search?q=${query}`
 // TODO - Navigate back to list
 export const FilmDetail = ({filmSummary, filmDetails, dispatchViewList}) => {
 	return <div style={wrapperStyle}>
+		<a name="top" />
 		<div style={headerStyle}>
 			<h1 style={titleStyle}>
 				<a href={filmDetails.Website || googleSearch(filmSummary.Title)}>{filmSummary.Title}</a>
@@ -55,6 +56,8 @@ export const FilmDetail = ({filmSummary, filmDetails, dispatchViewList}) => {
 			<li>Box Office: {filmDetails.BoxOffice}</li>
 		</ul>
 		<img src={filmSummary.Poster} />
+		<br />
+		<a href="#top">Top</a>
 	</div>
 }
 
