@@ -2,6 +2,13 @@
   "name": "ra",
   "version": "0.1.0",
   "private": true,
+	"scripts": {
+    "start": "NODE_PATH=src node scripts/start.js",
+    "build": "NODE_PATH=src node scripts/build.js",
+    "test": "NODE_PATH=src node scripts/test.js --env=jsdom --verbose",
+    "lint": "eslint -c .eslintrc.js src/",
+    "lint:fix": "npm run lint -- --fix"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "cuid": "^2.1.0",
@@ -18,13 +25,6 @@
     "toastr": "^2.1.4",
     "url-loader": "0.6.2",
     "whatwg-fetch": "2.0.3"
-  },
-  "scripts": {
-    "start": "NODE_PATH=src node scripts/start.js",
-    "build": "NODE_PATH=src node scripts/build.js",
-    "test": "NODE_PATH=src node scripts/test.js --env=jsdom --verbose",
-    "lint": "eslint -c .eslintrc.js src/",
-    "lint:fix": "npm run lint -- --fix"
   },
   "devDependencies": {
 		"sw-precache-webpack-plugin": "0.11.4",
