@@ -1,5 +1,4 @@
 import toastr from 'toastr'
-import axios from 'axios'
 import debugFactory from 'debug'
 
 import {APP_NAME} from './constants'
@@ -42,20 +41,20 @@ export const updateFilms = (films) => ({
 })
 
 export const queryFetch = (query) => (dispatch) => (
-	axios.get(`https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}`)
-		.then(res => {
-			dispatch(updateFilms(res.data.Search))
-		}).catch(e => {
+	fetch(`https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}`)
+		.then(res => res.json())
+		.then(res => dispatch(updateFilms(res.Search)))
+		.catch(e => {
 			console.error(e)
 			toastr.error(e, 'An error occured')
 		})
 )
 
 export const fetchFilmDetails = (id) => (dispatch) => (
-	axios.get(`https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&i=${id}`)
-		.then(res => {
-			dispatch(updateFilmDetails(res.data))
-		}).catch(e => {
+	fetch(`https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&i=${id}`)
+		.then(res => res.json())
+		.then(res => dispatch(updateFilmDetails(res.data)))
+		.catch(e => {
 			console.error(e)
 			toastr.error(e, 'An error occured')
 		})

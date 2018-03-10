@@ -8,15 +8,12 @@ import {
 } from 'actions'
 
 import filmDetails from './film-detail.json'
-import axios from 'axios'
 import debugFactory from 'debug'
 
 import {APP_NAME} from 'constants'
 
 const debugString = `${APP_NAME}:actions:debug`
 const debug = debugFactory(debugString)
-
-jest.mock('axios')
 
 test('viewList() returns an action', () => {
 	expect(viewList()).toEqual({
@@ -58,7 +55,7 @@ test('queryFetch()(dispatch) invokes dispatch() with Actions.VIEW_FILM_LIST', ()
 			]
 		}
 	}
-	axios.get.mockReturnValue(Promise.resolve(response))
+	window.fetch = jest.fn().mockImplementation(() => Promise.resolve(response))
 	queryFetch('a query')(dispatch).then(() => {
 		expect(dispatch).toHaveBeenCalledWith({
 			type: Actions.UPDATE_FILMS,
@@ -74,7 +71,7 @@ test('fetchFilmDetails()(dispatch) invokes dispatch() with Actions.UPDATE_FILM_D
 	const response = {
 		data: filmDetails
 	}
-	axios.get.mockReturnValue(Promise.resolve(response))
+	window.fetch = jest.fn().mockImplementation(() => Promise.resolve(response))
 	fetchFilmDetails('id')(dispatch).then(() => {
 		expect(dispatch).toHaveBeenCalledWith({
 			type: Actions.UPDATE_FILM_DETAILS,
