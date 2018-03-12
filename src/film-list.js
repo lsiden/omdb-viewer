@@ -6,46 +6,46 @@ import FilmTitle from './film-title'
 import { TITLE_COLOR } from './constants'
 
 const ulStyle = {
-	listStyleType: 'none',
-	lineHeight: 1.5,
+  listStyleType: 'none',
+  lineHeight: 1.5,
 }
 const msgStyle = {
-	fontSize: '14pt',
-	color: TITLE_COLOR,
-	margin: '1em'
+  fontSize: '14pt',
+  color: TITLE_COLOR,
+  margin: '1em'
 }
 
 export const FilmList = ({films}) => {
-	if (films.length > 0) {
-		return (
-			<ul style={ulStyle}>{
-				films.map(filmSummary => (
-					<FilmTitle
-						key={filmSummary.imdbID}
-						filmSummary={filmSummary}
-					/>
-				))
-			}
-			</ul>
-		)
-	} else {
-		return (
-			<div style={msgStyle}>
-				{'There are no films that match your query yet.'}
-			</div>
-		)
-	}
+  if (films.length > 0) {
+    return (
+      <ul style={ulStyle}>{
+        films.map(filmSummary => (
+          <FilmTitle
+            key={filmSummary.imdbID}
+            filmSummary={filmSummary}
+          />
+        ))
+      }
+      </ul>
+    )
+  } else {
+    return (
+      <div style={msgStyle}>
+        {'There are no films that match your query yet.'}
+      </div>
+    )
+  }
 }
 
 FilmList.propTypes = {
-	films: PropTypes.arrayOf(PropTypes.object),
+  films: PropTypes.arrayOf(PropTypes.object),
 }
 FilmList.defaultProps = {
-	films: [],
+  films: [],
 }
 
 export default connect(
-	state => ({
-		films: state.films,
-	}),
+  state => ({
+    films: state.films,
+  }),
 )(FilmList)

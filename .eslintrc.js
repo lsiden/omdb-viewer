@@ -22,7 +22,7 @@ module.exports = {
 		"no-unused-vars": ["warn", {
 			"varsIgnorePattern": "^debug$|^_"
 		}],
-		"indent": ["warn", "tab" ],
+		"indent": ["warn", 2 ],
 		"linebreak-style": ["error", "unix"],
 		"quotes": ["warn", "single"],
 		"semi": ["warn", "never"],

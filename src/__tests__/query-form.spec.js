@@ -7,10 +7,10 @@ import { QueryForm } from 'query-form'
 const onChange = () => {}
 
 const createWrapper = (props={}) => {
-	return shallow(<QueryForm onChange={onChange} {...props} />)
+  return shallow(<QueryForm onChange={onChange} {...props} />)
 }
 
 it('renders a Form element', () => {
-	const wrapper = createWrapper()
-	expect(wrapper.find('form')).toHaveLength(1)
+  const wrapper = createWrapper()
+  expect(wrapper.find('form')).toHaveLength(1)
 })
