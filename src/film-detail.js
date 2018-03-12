@@ -3,10 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { viewList } from './actions'
-import { ButtonLink } from 'components/button-link'
+import { CloseButton } from 'components/close-button'
 import { ESC_KEY } from './constants'
-
-const CLOSE_ICON = '\u2715'
 
 const wrapperStyle = {
   marginLeft: '10pt',
@@ -21,11 +19,6 @@ const titleStyle = {
 const detailsStyle = {
   fontSize: '14pt',
   color: '#888',
-}
-const closeButtonStyle = {
-  margin: '8pt',
-  fontSize: '20pt',
-  border: 'solid'
 }
 
 export class FilmDetail extends React.Component {
@@ -55,12 +48,7 @@ export class FilmDetail extends React.Component {
     return (
       <div style={headerStyle}>
         <h1 style={titleStyle}>{filmSummary.Title}</h1>
-        <ButtonLink
-          onClick={() => dispatchViewList()}
-          id="close-button"
-          title="Close"
-          addStyle={closeButtonStyle}
-        >{CLOSE_ICON}</ButtonLink>
+        <CloseButton onClick={() => dispatchViewList()} />
       </div>
     )
   }

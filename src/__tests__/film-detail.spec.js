@@ -23,9 +23,3 @@ it('renders a title', () => {
   const wrapper = createWrapper()
   expect(wrapper.text()).toEqual(expect.stringContaining(films[0].Title))
 })
-
-test('click on close invokes dispatchViewList()', () => {
-  const wrapper = createWrapper()
-  wrapper.find('#close-button').simulate('click')
-  expect(dispatchViewList).toHaveBeenCalled()
-})
