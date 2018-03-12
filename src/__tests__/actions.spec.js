@@ -8,9 +8,6 @@ import {
 } from "actions"
 
 import filmDetails from "./film-detail.json"
-import debugFactory from "debug-factory"
-
-const debug = debugFactory("actions")
 
 test("viewList() returns an action", () => {
   expect(viewList()).toEqual({

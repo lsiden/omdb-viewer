@@ -1,7 +1,4 @@
 import toastr from "toastr"
-import debugFactory from "debug-factory"
-
-const debug = debugFactory("actions")
 
 export const Actions = {
   VIEW_FILM_LIST: "view-film-list",
