@@ -2,13 +2,12 @@ import React from "react"
 import { createStore, applyMiddleware, compose } from "redux"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
-import debugFactory from "debug"
+import debugFactory from "debug-factory"
 
 import OmdbSearch from "./omdb-search"
 import { Actions } from "./actions"
-import { APP_NAME } from "./constants"
 
-const debug = debugFactory(`${APP_NAME}:app:debug`)
+const debug = debugFactory("app")
 
 const initialState = {
   view: Actions.VIEW_FILM_LIST,

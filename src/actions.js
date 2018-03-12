@@ -1,10 +1,7 @@
 import toastr from "toastr"
-import debugFactory from "debug"
+import debugFactory from "debug-factory"
 
-import { APP_NAME } from "./constants"
-
-const debugString = `${APP_NAME}:actions:debug`
-const debug = debugFactory(debugString)
+const debug = debugFactory("actions")
 
 export const Actions = {
   VIEW_FILM_LIST: "view-film-list",

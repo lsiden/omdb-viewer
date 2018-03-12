@@ -4,11 +4,11 @@ import { connect } from "react-redux"
 import cuid from "cuid"
 
 import { queryFetch } from "./actions"
-import debugFactory from "debug"
-import { APP_NAME, QUERY_DELAY } from "./constants"
+import debugFactory from "debug-factory"
+import { QUERY_DELAY } from "./constants"
 import SearchInput from "./components/search-input"
 
-const debug = debugFactory(`${APP_NAME}:query-form:debug`)
+const debug = debugFactory("query-form")
 
 const formStyle = {
   minWidth: "320px",
