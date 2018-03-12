@@ -1,11 +1,10 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types"
 
-export const Show =
-	({when, children}) => when && children
+export const Show = ({ when, children }) => when && children
 
 Show.propTypes = {
   when: PropTypes.bool.isRequired,
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
 }
 
 export default Show

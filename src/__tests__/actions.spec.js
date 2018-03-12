@@ -5,37 +5,37 @@ import {
   viewFilmSummary,
   queryFetch,
   fetchFilmDetails,
-} from 'actions'
+} from "actions"
 
-import filmDetails from './film-detail.json'
-import debugFactory from 'debug'
+import filmDetails from "./film-detail.json"
+import debugFactory from "debug"
 
-import {APP_NAME} from 'constants'
+import { APP_NAME } from "constants"
 
 const debugString = `${APP_NAME}:actions:debug`
 const debug = debugFactory(debugString)
 
-test('viewList() returns an action', () => {
+test("viewList() returns an action", () => {
   expect(viewList()).toEqual({
     type: Actions.VIEW_FILM_LIST,
     data: {
-      view: Actions.VIEW_FILM_LIST
-    }
+      view: Actions.VIEW_FILM_LIST,
+    },
   })
 })
 
-test('updateFilms(list) returns an action with list', () => {
-  const films = ['foo', 'bar']
+test("updateFilms(list) returns an action with list", () => {
+  const films = ["foo", "bar"]
   expect(updateFilms(films)).toEqual({
     type: Actions.UPDATE_FILMS,
     data: {
-      films
-    }
+      films,
+    },
   })
 })
 
-test('viewFilmSummary(filmSummary) returns an action with filmSummary', () => {
-  const filmSummary = {Title: 'A Title'}
+test("viewFilmSummary(filmSummary) returns an action with filmSummary", () => {
+  const filmSummary = { Title: "A Title" }
   expect(viewFilmSummary(filmSummary)).toEqual({
     type: Actions.VIEW_FILM_DETAIL,
     data: {
@@ -45,36 +45,33 @@ test('viewFilmSummary(filmSummary) returns an action with filmSummary', () => {
   })
 })
 
-test('queryFetch()(dispatch) invokes dispatch() with Actions.VIEW_FILM_LIST', () => {
+test("queryFetch()(dispatch) invokes dispatch() with Actions.VIEW_FILM_LIST", () => {
   const dispatch = jest.fn()
   const response = {
-    Search: [
-      'Rocky Horror',
-      'Halloween',
-    ]
+    Search: ["Rocky Horror", "Halloween"],
   }
   response.json = () => Promise.resolve(response)
   window.fetch = jest.fn().mockImplementation(() => Promise.resolve(response))
-  queryFetch('a query')(dispatch).then(() => {
+  queryFetch("a query")(dispatch).then(() => {
     expect(dispatch).toHaveBeenCalledWith({
       type: Actions.UPDATE_FILMS,
       data: {
-        films: response.Search
+        films: response.Search,
       },
     })
   })
 })
 
-test('fetchFilmDetails()(dispatch) invokes dispatch() with Actions.UPDATE_FILM_DETAILs', () => {
+test("fetchFilmDetails()(dispatch) invokes dispatch() with Actions.UPDATE_FILM_DETAILs", () => {
   const dispatch = jest.fn()
   const response = { filmDetails }
   response.json = () => Promise.resolve(response)
   window.fetch = jest.fn().mockImplementation(() => Promise.resolve(response))
-  fetchFilmDetails('id')(dispatch).then(() => {
+  fetchFilmDetails("id")(dispatch).then(() => {
     expect(dispatch).toHaveBeenCalledWith({
       type: Actions.UPDATE_FILM_DETAILS,
       data: {
-        filmDetails: response
+        filmDetails: response,
       },
     })
   })

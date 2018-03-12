@@ -1,47 +1,47 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import cuid from 'cuid'
+import React from "react"
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
+import cuid from "cuid"
 
-import {queryFetch} from './actions'
-import debugFactory from 'debug'
-import {APP_NAME, QUERY_DELAY} from './constants'
-import SearchInput from './components/search-input'
+import { queryFetch } from "./actions"
+import debugFactory from "debug"
+import { APP_NAME, QUERY_DELAY } from "./constants"
+import SearchInput from "./components/search-input"
 
 const debug = debugFactory(`${APP_NAME}:query-form:debug`)
 
 const formStyle = {
-  minWidth: '320px',
-  marginBottom: '8pt',
+  minWidth: "320px",
+  marginBottom: "8pt",
 }
 
 export class QueryForm extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
-  };
+  }
 
   constructor(props) {
     super(props)
-    this.state = { query: '' }
+    this.state = { query: "" }
     this.onInput = this.onInput.bind(this)
     this.slug = cuid.slug()
   }
 
   componentDidMount() {
     if (this.ref) {
-      this.ref.querySelector('input').focus()
+      this.ref.querySelector("input").focus()
     }
   }
 
   render() {
-    const {query} = this.state
+    const { query } = this.state
     return (
-      <form ref={ref => this.ref = ref} style={formStyle}>
+      <form ref={ref => (this.ref = ref)} style={formStyle}>
         <label htmlFor={this.slug}>Search</label>
         <SearchInput
           id={this.slug}
-          type='search'
-          placeholder='Title'
+          type="search"
+          placeholder="Title"
           value={query}
           onInput={this.onInput}
         />
@@ -67,9 +67,6 @@ export class QueryForm extends React.Component {
   }
 }
 
-export default connect(
-  null,
-  dispatch => ({
-    onChange: query => dispatch(queryFetch(query))
-  })
-)(QueryForm)
+export default connect(null, dispatch => ({
+  onChange: query => dispatch(queryFetch(query)),
+}))(QueryForm)

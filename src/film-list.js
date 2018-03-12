@@ -1,37 +1,33 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React from "react"
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
 
-import FilmTitle from './film-title'
-import { TITLE_COLOR } from './constants'
+import FilmTitle from "./film-title"
+import { TITLE_COLOR } from "./constants"
 
 const ulStyle = {
-  listStyleType: 'none',
+  listStyleType: "none",
   lineHeight: 1.5,
 }
 const msgStyle = {
-  fontSize: '14pt',
+  fontSize: "14pt",
   color: TITLE_COLOR,
-  margin: '1em'
+  margin: "1em",
 }
 
-export const FilmList = ({films}) => {
+export const FilmList = ({ films }) => {
   if (films.length > 0) {
     return (
-      <ul style={ulStyle}>{
-        films.map(filmSummary => (
-          <FilmTitle
-            key={filmSummary.imdbID}
-            filmSummary={filmSummary}
-          />
-        ))
-      }
+      <ul style={ulStyle}>
+        {films.map(filmSummary => (
+          <FilmTitle key={filmSummary.imdbID} filmSummary={filmSummary} />
+        ))}
       </ul>
     )
   } else {
     return (
       <div style={msgStyle}>
-        {'There are no films that match your query yet.'}
+        {"There are no films that match your query yet."}
       </div>
     )
   }
@@ -44,8 +40,6 @@ FilmList.defaultProps = {
   films: [],
 }
 
-export default connect(
-  state => ({
-    films: state.films,
-  }),
-)(FilmList)
+export default connect(state => ({
+  films: state.films,
+}))(FilmList)

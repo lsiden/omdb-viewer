@@ -1,24 +1,24 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React from "react"
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
 
-import { viewList } from './actions'
-import { CloseButton } from 'components/close-button'
-import { ESC_KEY } from './constants'
+import { viewList } from "./actions"
+import { CloseButton } from "components/close-button"
+import { ESC_KEY } from "./constants"
 
 const wrapperStyle = {
-  marginLeft: '10pt',
+  marginLeft: "10pt",
 }
 const headerStyle = {
-  display: 'flex',
-  justifyContent: 'space-between',
+  display: "flex",
+  justifyContent: "space-between",
 }
 const titleStyle = {
-  marginBottom: '5pt',
+  marginBottom: "5pt",
 }
 const detailsStyle = {
-  fontSize: '14pt',
-  color: '#888',
+  fontSize: "14pt",
+  color: "#888",
 }
 
 export class FilmDetail extends React.Component {
@@ -36,11 +36,11 @@ export class FilmDetail extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', this.keyDownListener)
+    document.addEventListener("keydown", this.keyDownListener)
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.keyDownListener)
+    document.removeEventListener("keydown", this.keyDownListener)
   }
 
   renderTitle() {
@@ -62,18 +62,18 @@ export class FilmDetail extends React.Component {
         <li>Written by {filmDetails.Writer}</li>
         <li>Cast: {filmDetails.Actors}</li>
         <li>Language: {filmDetails.Language}</li>
-        {
-          filmDetails.Awards && <li>Awards: {filmDetails.Awards}</li>
-        }
+        {filmDetails.Awards && <li>Awards: {filmDetails.Awards}</li>}
         <li>Run Time: {filmDetails.Runtime}</li>
         <li>IMDB Rating: {filmDetails.imdbRating}/10</li>
         <li>Box Office: {filmDetails.BoxOffice}</li>
-        {
-          filmDetails.Website && (
-            <li><a href={filmDetails.Website}>Official website</a></li>
-          )
-        }
-        <li><a href={this.imdbUrl}>{'IMDB page'}</a></li>
+        {filmDetails.Website && (
+          <li>
+            <a href={filmDetails.Website}>Official website</a>
+          </li>
+        )}
+        <li>
+          <a href={this.imdbUrl}>{"IMDB page"}</a>
+        </li>
       </ul>
     )
   }
@@ -82,10 +82,8 @@ export class FilmDetail extends React.Component {
     const { filmSummary } = this.props
     return (
       <div style={wrapperStyle}>
-        <a name="top">
-          {this.renderTitle()}
-        </a>
-        <img src={filmSummary.Poster} alt='poster'/>
+        <a name="top">{this.renderTitle()}</a>
+        <img src={filmSummary.Poster} alt="poster" />
         {this.renderDetails()}
         <div>
           <a href="#top">Top</a>
@@ -111,6 +109,6 @@ export default connect(
     filmDetails: state.filmDetails,
   }),
   dispatch => ({
-    dispatchViewList: () => dispatch(viewList())
+    dispatchViewList: () => dispatch(viewList()),
   })
 )(FilmDetail)

@@ -1,20 +1,19 @@
-import React from 'react'
-import { shallow } from 'enzyme'
+import React from "react"
+import { shallow } from "enzyme"
 
-import 'test-helpers/setup'
-import { FilmList } from 'film-list'
+import "test-helpers/setup"
+import { FilmList } from "film-list"
 
-const films = require('./films.json').Search
+const films = require("./films.json").Search
 const defaultProps = () => ({
-  films
+  films,
 })
 
-const createWrapper = (props={}) => shallow(
-  <FilmList {...{...defaultProps(), ...props}} />
-)
+const createWrapper = (props = {}) =>
+  shallow(<FilmList {...{ ...defaultProps(), ...props }} />)
 
-it('renders list of titles', () => {
+it("renders list of titles", () => {
   const wrapper = createWrapper()
-  const titles = wrapper.find('ul').children()
+  const titles = wrapper.find("ul").children()
   expect(titles).toHaveLength(films.length)
 })

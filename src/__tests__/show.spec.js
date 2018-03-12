@@ -1,27 +1,25 @@
-import React from 'react'
-import { shallow } from 'enzyme'
+import React from "react"
+import { shallow } from "enzyme"
 
-import 'test-helpers/setup'
-import Show from 'show'
+import "test-helpers/setup"
+import Show from "show"
 
-const createWrapper = (props={}) => shallow(
-  <Show {...props} />
-)
+const createWrapper = (props = {}) => shallow(<Show {...props} />)
 
-const children = <div>{'some content'}</div>
+const children = <div>{"some content"}</div>
 
-it('does not render children when condition is falsy', () => {
+it("does not render children when condition is falsy", () => {
   const wrapper = createWrapper({
     when: false,
-    children
+    children,
   })
   expect(wrapper.children()).toHaveLength(0)
 })
 
-it('renders children when condition is truthy', () => {
+it("renders children when condition is truthy", () => {
   const wrapper = createWrapper({
     when: true,
-    children
+    children,
   })
   expect(wrapper.children()).not.toHaveLength(0)
 })
