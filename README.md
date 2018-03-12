@@ -1,5 +1,6 @@
 Search and view titles from the [OMDB](https://omdb.org) database.
 
+## Background
 I created this simple film browser web app
 in order to have a React web project
 that I could then learn how to migrate to other platforms
