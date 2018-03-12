@@ -74,7 +74,7 @@ test('fetchFilmDetails()(dispatch) invokes dispatch() with Actions.UPDATE_FILM_D
 		expect(dispatch).toHaveBeenCalledWith({
 			type: Actions.UPDATE_FILM_DETAILS,
 			data: {
-				filmDetails: response.data
+				filmDetails: response
 			},
 		})
 	})
