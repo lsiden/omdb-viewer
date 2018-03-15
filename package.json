@@ -14,6 +14,8 @@
   "scripts": {
     "electron": "electron .",
     "electron:dev": "nf start",
+    "electron:package":
+      "electron-packager . omdb-viewer --out=dist/linux --platform=linux --arch=x64",
     "start": "NODE_PATH=src react-scripts start",
     "build": "NODE_PATH=src react-scripts build",
     "test": "NODE_PATH=src react-scripts test --env=jsdom --verbose",
@@ -39,6 +41,7 @@
   "devDependencies": {
     "ajv": "^6.2.1",
     "electron": "^1.8.3",
+    "electron-packager": "^11.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.18.2",
@@ -54,9 +57,7 @@
     "trailingComma": "es5"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app"
-    ],
+    "extends": ["react-app"],
     "rules": {
       "no-unused-vars": [
         "warn",
