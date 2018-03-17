@@ -10,7 +10,8 @@ const wrapperStyle = {
 
 const inputStyle = {
   height: "24pt",
-  width: "95%",
+  maxWidth: "640px",
+  width: "100%",
   textIndent: "24pt",
   fontSize: "12pt",
   marginTop: "4pt",

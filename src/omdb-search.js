@@ -6,7 +6,7 @@ import { Actions } from "./actions"
 import QueryForm from "./query-form"
 import FilmList from "./film-list"
 import FilmDetail from "./film-detail"
-import Show from "./show"
+import Show from "components/show"
 import { OMD_URL } from "./constants"
 
 // TODO provide routing to enable bookmarking results and details
