@@ -9,14 +9,12 @@ import FilmDetail from "./film-detail"
 import Show from "components/show"
 import { OMD_URL } from "./constants"
 
-// TODO provide routing to enable bookmarking results and details
 const linkStyle = {
   color: "white",
   fontSize: "small",
 }
 const headerStyle = {
-  backgroundColor: "#222",
-  /* height: 150px; */
+  background: "linear-gradient(to right, #000040, #3b00ff)",
   padding: "10px",
   color: "white",
 }
