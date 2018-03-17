@@ -3,7 +3,7 @@ import { createStore, applyMiddleware, compose } from "redux"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 
-import OmdbSearch from "./omdb-search"
+import OmdbSearch from "./omdb-viewer"
 import { Actions } from "./actions"
 import requireRemote from "util/require-remote"
 
