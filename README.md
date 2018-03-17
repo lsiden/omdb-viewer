@@ -1,5 +1,7 @@
 Search and view titles from the [OMDB](https://omdb.org) database.
 
+See [demo](http://westsideconsultingllc.com/omdb-viewer).
+
 ## Background
 
 I created this simple film browser web app
