@@ -1,6 +1,7 @@
 {
   "name": "ra",
   "version": "1.0.0",
+  "private": true,
   "license": "GFDL-1.3",
   "xhomepage": "https://lsiden.github.io/omdb-viewer",
   "homepage": "./",
