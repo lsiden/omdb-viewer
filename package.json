@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "license": "GFDL-1.3",
-  "xhomepage": "https://lsiden.github.io/omdb-viewer",
-  "homepage": "./",
-  "repository": "https://github.com/lsiden/omdb-viewer",
+  "repository": "https://github.com/lsiden/omdb-film-browser-web",
   "main": "main.js",
   "author": {
     "name": "Lawrence Siden",
