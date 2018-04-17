@@ -5,11 +5,6 @@ import thunk from "redux-thunk"
 
 import OmdbSearch from "./omdb-viewer"
 import { Actions } from "./actions"
-import requireRemote from "util/require-remote"
-
-// For demo purposes.
-const electron = requireRemote("electron")
-console.log("electron", electron)
 
 const initialState = {
   view: Actions.VIEW_FILM_LIST,
