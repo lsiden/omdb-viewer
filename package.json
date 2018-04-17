@@ -13,7 +13,8 @@
   "scripts": {
     "electron": "electron .",
     "electron:dev": "nf start",
-    "electron:package": "electron-packager . omdb-viewer --out=dist/linux --platform=linux --arch=x64",
+    "electron:package":
+      "electron-packager . omdb-viewer --out=dist/linux --platform=linux --arch=x64",
     "start": "NODE_PATH=src react-scripts start",
     "build": "NODE_PATH=src react-scripts build",
     "test": "NODE_PATH=src react-scripts test --env=jsdom --verbose",
@@ -43,7 +44,7 @@
     "electron-packager": "^11.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^4.1.1",
+    "eslint": "^3.0.0",
     "eslint-config-react-app": "^2.1.0",
     "eslint-plugin-flowtype": "^2.34.1",
     "eslint-plugin-import": "^2.6.0",
