@@ -44,7 +44,7 @@ export const queryFetch = query => dispatch =>
     })
 
 export const fetchFilmDetails = id => dispatch =>
-  fetch(`https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&i=${id}`)
+  fetch(`https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&i=${id}&plot=full`)
     .then(res => res.json())
     .then(res => dispatch(updateFilmDetails(res)))
     .catch(e => {
