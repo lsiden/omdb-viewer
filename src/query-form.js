@@ -13,10 +13,6 @@ const formStyle = {
 }
 
 export class QueryForm extends React.Component {
-  static propTypes = {
-    onChange: PropTypes.func.isRequired,
-  }
-
   constructor(props) {
     super(props)
     this.state = { query: "" }
@@ -62,6 +58,10 @@ export class QueryForm extends React.Component {
     this.setState({ query })
     this.debounce(fn.bind(this), QUERY_DELAY)
   }
+}
+
+QueryForm.propTypes = {
+  onChange: PropTypes.func.isRequired,
 }
 
 export default connect(null, dispatch => ({

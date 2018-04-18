@@ -1,5 +1,7 @@
 // Remote Actions
 
+/* eslint-disable no-console */
+
 import toastr from "toastr"
 
 import { updateFilms, appendFilms, updateFilmDetails } from "./"
