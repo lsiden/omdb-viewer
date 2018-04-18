@@ -22,6 +22,7 @@ ShallowWrapper {
     "props": Object {
       "children": <Unknown />,
       "style": Object {
+        "marginBottom": 20,
         "marginLeft": 45,
       },
     },
@@ -45,6 +46,7 @@ ShallowWrapper {
       "props": Object {
         "children": <Unknown />,
         "style": Object {
+          "marginBottom": 20,
           "marginLeft": 45,
         },
       },
@@ -94,6 +96,9 @@ ShallowWrapper {
       "children": "More",
       "className": "more-button",
       "onClick": [Function],
+      "style": Object {
+        "marginBottom": 20,
+      },
     },
     "ref": null,
     "rendered": "More",
@@ -108,6 +113,9 @@ ShallowWrapper {
         "children": "More",
         "className": "more-button",
         "onClick": [Function],
+        "style": Object {
+          "marginBottom": 20,
+        },
       },
       "ref": null,
       "rendered": "More",

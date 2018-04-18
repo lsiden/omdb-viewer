@@ -23,7 +23,7 @@ export function reduce(state = initialState, action) {
       return {
         ...state,
         ...data,
-        films: [...state.films, ...data.films],
+        films: [...(state.films || []), ...(data.films || [])],
       }
     default:
       return state

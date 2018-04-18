@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import FilmTitle from "film-title"
 import { TITLE_COLOR } from "constants"
 import MoreButton from "components/more-button"
+import { scrollToTop, scrollToBottom } from "components/scroll"
 
 const ulStyle = {
   listStyleType: "none",
@@ -16,7 +17,12 @@ const msgStyle = {
   margin: "1em",
 }
 
-export const FilmList = ({ films }) => {
+const bottomStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+}
+
+const renderFilmList = ({ films }) => {
   if (films.length > 0) {
     return (
       <React.Fragment>
@@ -25,7 +31,10 @@ export const FilmList = ({ films }) => {
             <FilmTitle key={filmSummary.imdbID} filmSummary={filmSummary} />
           ))}
         </ul>
-        <MoreButton />
+        <div style={bottomStyle}>
+          <MoreButton />
+          <a onClick={scrollToTop}>top</a>
+        </div>
       </React.Fragment>
     )
   } else {
@@ -34,6 +43,16 @@ export const FilmList = ({ films }) => {
         {"There are no films that match your query yet."}
       </div>
     )
+  }
+}
+
+export class FilmList extends React.Component {
+  componentDidUpdate() {
+    scrollToBottom()
+  }
+
+  render() {
+    return renderFilmList(this.props)
   }
 }
 

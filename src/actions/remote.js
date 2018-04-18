@@ -25,6 +25,7 @@ function toJson(res) {
 }
 
 // Returns Promise that resolves to fetch result
+// TODO filter duplicate ids
 const fetchWithTimeout = uri => {
   const onFetchTimeout = msg => {
     console.warn("timeout, aborting.")

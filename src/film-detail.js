@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import { viewList } from "actions"
 import { CloseButton } from "components/close-button"
 import { ESC_KEY } from "constants"
+import { scrollToTop } from "components/scroll"
 
 const wrapperStyle = {
   marginLeft: "10pt",
@@ -82,11 +83,11 @@ export class FilmDetail extends React.Component {
     const { filmSummary } = this.props
     return (
       <div style={wrapperStyle}>
-        <a name="top">{this.renderTitle()}</a>
+        {this.renderTitle()}
         <img src={filmSummary.Poster} alt="poster" />
         {this.renderDetails()}
         <div>
-          <a href="#top">Top</a>
+          <a onClick={scrollToTop}>Top</a>
         </div>
       </div>
     )

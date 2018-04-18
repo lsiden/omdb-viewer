@@ -7,14 +7,24 @@ import { pageFetch } from "actions/remote"
 
 const spinnerStyle = {
   marginLeft: 45,
+  marginBottom: 20,
 }
+
+const buttonStyle = {
+  marginBottom: 20,
+}
+
 export const PureMoreButton = ({ isFetching, dispatchPageFetch }) =>
   isFetching ? (
     <div style={spinnerStyle}>
       <Spinner />
     </div>
   ) : (
-    <button className="more-button" onClick={dispatchPageFetch}>
+    <button
+      className="more-button"
+      onClick={dispatchPageFetch}
+      style={buttonStyle}
+    >
       More
     </button>
   )
