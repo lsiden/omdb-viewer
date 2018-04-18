@@ -20,13 +20,22 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": "More",
-      "className": "more-button",
-      "onClick": [Function],
+      "children": <Unknown />,
+      "style": Object {
+        "marginLeft": 45,
+      },
     },
     "ref": null,
-    "rendered": "More",
-    "type": "button",
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {},
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -34,13 +43,22 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": "More",
-        "className": "more-button",
-        "onClick": [Function],
+        "children": <Unknown />,
+        "style": Object {
+          "marginLeft": 45,
+        },
       },
       "ref": null,
-      "rendered": "More",
-      "type": "button",
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

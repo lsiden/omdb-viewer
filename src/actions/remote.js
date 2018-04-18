@@ -12,9 +12,17 @@ import {
 } from "./"
 import store from "actions/store"
 
+function toJson(res) {
+  try {
+    return res.json()
+  } catch (e) {
+    return Promise.reject(e)
+  }
+}
+
 export const queryFetch = query => dispatch =>
   fetch(`https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}`)
-    .then(res => res.json())
+    .then(res => toJson(res))
     .then(res => dispatch(updateFilms(query, res.Search)))
     .catch(e => {
       console.error(e)
@@ -28,7 +36,7 @@ export const pageFetch = () => dispatch => {
   return fetch(
     `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}&page=${nextPageNum}`
   )
-    .then(res => res.json())
+    .then(res => toJson(res))
     .then(res => {
       dispatch(updateIsFetching(false))
       dispatch(appendFilms(nextPageNum, res.Search))
@@ -42,7 +50,7 @@ export const pageFetch = () => dispatch => {
 
 export const fetchFilmDetails = id => dispatch =>
   fetch(`https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&i=${id}&plot=full`)
-    .then(res => res.json())
+    .then(res => toJson(res))
     .then(res => dispatch(updateFilmDetails(res)))
     .catch(e => {
       console.error(e)
