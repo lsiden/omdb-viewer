@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
 
-import { Actions } from "./actions"
+import Actions from "./action-types"
 import QueryForm from "./query-form"
 import FilmList from "./film-list"
 import FilmDetail from "./film-detail"
