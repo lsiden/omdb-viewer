@@ -18,6 +18,12 @@ export function reduce(state = initialState, action) {
         ...state,
         ...data,
       }
+    case Actions.APPEND_FILMS:
+      return {
+        ...state,
+        ...data,
+        films: [...state.films, ...data.films],
+      }
     default:
       return state
   }

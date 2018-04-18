@@ -1,8 +1,9 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-import App, { reduce } from "App"
-import { Actions } from "actions"
+import App from "App"
+import { reduce } from "store"
+import Actions from "action-types"
 
 const films = require("./films.json").Search
 

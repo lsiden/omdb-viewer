@@ -7,6 +7,7 @@ import { FilmList } from "film-list"
 const films = require("./films.json").Search
 const defaultProps = () => ({
   films,
+  dispatchUpdateFilms: () => {},
 })
 
 const createWrapper = (props = {}) =>

@@ -18,11 +18,14 @@ const msgStyle = {
 export const FilmList = ({ films }) => {
   if (films.length > 0) {
     return (
-      <ul style={ulStyle}>
-        {films.map(filmSummary => (
-          <FilmTitle key={filmSummary.imdbID} filmSummary={filmSummary} />
-        ))}
-      </ul>
+      <React.Fragment>
+        <ul style={ulStyle}>
+          {films.map(filmSummary => (
+            <FilmTitle key={filmSummary.imdbID} filmSummary={filmSummary} />
+          ))}
+        </ul>
+        <button className="more-button">More</button>
+      </React.Fragment>
     )
   } else {
     return (
@@ -40,6 +43,9 @@ FilmList.defaultProps = {
   films: [],
 }
 
-export default connect(state => ({
-  films: state.films,
-}))(FilmList)
+export default connect(
+  state => ({
+    films: state.films,
+  }),
+  dispatch => ({})
+)(FilmList)
