@@ -17,9 +17,17 @@ const msgStyle = {
   margin: "1em",
 }
 
-const bottomStyle = {
+const bottomRowStyle = {
+  marginLeft: 40,
   display: "flex",
-  justifyContent: "space-between",
+  justifyContent: "flex-start",
+  alignItems: "baseline",
+}
+
+const topButtonStyle = {
+  marginLeft: 40,
+  fontSize: 16,
+  color: "darkgrey",
 }
 
 const renderFilmList = ({ films }) => {
@@ -31,9 +39,16 @@ const renderFilmList = ({ films }) => {
             <FilmTitle key={filmSummary.imdbID} filmSummary={filmSummary} />
           ))}
         </ul>
-        <div style={bottomStyle}>
+        <div style={bottomRowStyle}>
           <MoreButton />
-          <a onClick={scrollToTop}>top</a>
+          <button
+            className="btn btn-link"
+            onClick={scrollToTop}
+            style={topButtonStyle}
+            title="Scroll to top of page"
+          >
+            top
+          </button>
         </div>
       </React.Fragment>
     )

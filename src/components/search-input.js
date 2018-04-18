@@ -15,6 +15,7 @@ const inputStyle = {
   textIndent: "24pt",
   fontSize: "12pt",
   marginTop: "4pt",
+  color: "black",
 }
 
 const iconStyle = {
@@ -27,8 +28,8 @@ const iconStyle = {
 }
 
 export const SearchInput = props => {
-  const { addStyle, ...passProps } = props
-  const style = { ...wrapperStyle, ...addStyle }
+  const { ...passProps } = props
+  const style = { ...wrapperStyle }
   return (
     <div style={style}>
       <span
@@ -46,12 +47,10 @@ SearchInput.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
   onInput: PropTypes.func.isRequired,
-  addStyle: PropTypes.object,
 }
 
 SearchInput.defaultProps = {
   placeholder: "",
-  addStyle: {},
 }
 
 export default SearchInput

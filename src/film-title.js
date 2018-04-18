@@ -4,7 +4,6 @@ import { connect } from "react-redux"
 
 import { viewFilmSummary } from "actions"
 import { fetchFilmDetails } from "actions/remote"
-import { ButtonLink } from "components/button-link"
 import { TITLE_COLOR } from "constants"
 
 const buttonStyle = {
@@ -13,12 +12,13 @@ const buttonStyle = {
 
 export const FilmTitle = ({ filmSummary, dispatchViewDetail }) => (
   <div>
-    <ButtonLink
+    <button
+      className="btn btn-link"
       onClick={() => dispatchViewDetail(filmSummary)}
-      addStyle={buttonStyle}
+      style={buttonStyle}
     >
       {`${filmSummary.Title}, ${filmSummary.Year}`}
-    </ButtonLink>
+    </button>
   </div>
 )
 

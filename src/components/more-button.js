@@ -12,6 +12,8 @@ const spinnerStyle = {
 
 const buttonStyle = {
   marginBottom: 20,
+  fontSize: 20,
+  color: "darkgrey",
 }
 
 export const PureMoreButton = ({ isFetching, dispatchPageFetch }) =>
@@ -21,9 +23,10 @@ export const PureMoreButton = ({ isFetching, dispatchPageFetch }) =>
     </div>
   ) : (
     <button
-      className="more-button"
+      className="btn btn-link"
       onClick={dispatchPageFetch}
       style={buttonStyle}
+      title="More"
     >
       More
     </button>

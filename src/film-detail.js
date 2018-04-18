@@ -21,7 +21,9 @@ const detailsStyle = {
   fontSize: "14pt",
   color: "#888",
 }
-
+const topButtonStyle = {
+  marginBottom: 20,
+}
 export class FilmDetail extends React.Component {
   constructor(props) {
     const { imdbID } = props.filmDetails
@@ -86,9 +88,13 @@ export class FilmDetail extends React.Component {
         {this.renderTitle()}
         <img src={filmSummary.Poster} alt="poster" />
         {this.renderDetails()}
-        <div>
-          <a onClick={scrollToTop}>Top</a>
-        </div>
+        <button
+          style={topButtonStyle}
+          className="btn btn-link"
+          onClick={scrollToTop}
+        >
+          Top
+        </button>
       </div>
     )
   }

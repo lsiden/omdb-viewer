@@ -1,25 +1,22 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import ButtonLink from "components/button-link"
-
 const CLOSE_ICON = "\u2715"
 
 const closeButtonStyle = {
   margin: "8pt",
   fontSize: "20pt",
-  // border: 'solid'
 }
 
 export const CloseButton = ({ onClick }) => (
-  <ButtonLink
+  <button
+    className="btn btn-link"
+    style={closeButtonStyle}
     onClick={onClick}
-    id="close-button"
     title="Close"
-    addStyle={closeButtonStyle}
   >
     {CLOSE_ICON}
-  </ButtonLink>
+  </button>
 )
 
 CloseButton.propTypes = {
