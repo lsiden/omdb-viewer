@@ -2,12 +2,12 @@ import React from "react"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
 
-import Actions from "./action-types"
-import QueryForm from "./query-form"
-import FilmList from "./film-list"
-import FilmDetail from "./film-detail"
+import Actions from "actions/types"
+import QueryForm from "query-form"
+import FilmList from "film-list"
+import FilmDetail from "film-detail"
 import Show from "components/show"
-import { OMDB_URL } from "./constants"
+import { OMDB_URL } from "constants"
 
 const linkStyle = {
   color: "white",

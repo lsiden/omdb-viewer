@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import ButtonLink from "./button-link"
+import ButtonLink from "components/button-link"
 
 const CLOSE_ICON = "\u2715"
 

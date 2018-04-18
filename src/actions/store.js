@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux"
 import thunk from "redux-thunk"
 
-import Actions from "./action-types"
+import Actions from "actions/types"
 
 const initialState = {
   view: Actions.VIEW_FILM_LIST,

@@ -3,9 +3,9 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import cuid from "cuid"
 
-import { queryFetch } from "./actions"
-import { QUERY_DELAY } from "./constants"
-import SearchInput from "./components/search-input"
+import { queryFetch } from "actions"
+import { QUERY_DELAY } from "constants"
+import SearchInput from "components/search-input"
 
 const formStyle = {
   minWidth: "320px",

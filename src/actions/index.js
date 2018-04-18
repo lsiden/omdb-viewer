@@ -1,6 +1,6 @@
 import toastr from "toastr"
 
-import Actions from "./action-types"
+import Actions from "./types"
 import store from "./store"
 
 export const viewList = () => ({

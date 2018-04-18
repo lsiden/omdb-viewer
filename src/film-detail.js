@@ -2,9 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import { viewList } from "./actions"
+import { viewList } from "actions"
 import { CloseButton } from "components/close-button"
-import { ESC_KEY } from "./constants"
+import { ESC_KEY } from "constants"
 
 const wrapperStyle = {
   marginLeft: "10pt",

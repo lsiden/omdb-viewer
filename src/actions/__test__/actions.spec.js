@@ -1,13 +1,13 @@
 import {
-  Actions,
   viewList,
   updateFilms,
   viewFilmSummary,
   queryFetch,
   fetchFilmDetails,
 } from "actions"
+import Actions from "actions/types"
 
-import filmDetails from "./film-detail.json"
+import filmDetails from "__tests__/film-detail.json"
 
 test("viewList() returns an action", () => {
   expect(viewList()).toEqual({

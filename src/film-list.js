@@ -2,8 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import FilmTitle from "./film-title"
-import { TITLE_COLOR } from "./constants"
+import FilmTitle from "film-title"
+import { TITLE_COLOR } from "constants"
 
 const ulStyle = {
   listStyleType: "none",

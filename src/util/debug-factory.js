@@ -1,4 +1,4 @@
-import { APP_NAME } from "./constants"
+import { APP_NAME } from "constants"
 import debug from "debug"
 
 export default function(key) {
