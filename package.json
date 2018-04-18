@@ -25,6 +25,7 @@
     "prettier": "prettier --write src/*.js src/**/*.js"
   },
   "dependencies": {
+    "abort-controller": "^1.0.2",
     "axios": "^0.18.0",
     "cuid": "^2.1.0",
     "debug": "^3.1.0",

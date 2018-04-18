@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
+import "test-helpers/setup"
 import App from "App"
 import { reduce } from "actions/store"
 import Actions from "actions/types"
