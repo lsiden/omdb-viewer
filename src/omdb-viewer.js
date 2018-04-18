@@ -22,6 +22,8 @@ const titleStyle = {
   fontSize: "18pt",
   marginBottom: "18pt",
 }
+
+// TODO use as component
 const renderBanner = () => (
   <header style={headerStyle}>
     <h1 style={titleStyle}>
@@ -34,6 +36,7 @@ const renderBanner = () => (
   </header>
 )
 
+// TODO build custom routing component
 export const OmdbSearch = ({ view }) => (
   <div className="App">
     {renderBanner()}
