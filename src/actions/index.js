@@ -31,3 +31,8 @@ export const appendFilms = (pageNum, films) => ({
   type: Actions.APPEND_FILMS,
   data: { films, pageNum },
 })
+
+export const updateIsFetching = isFetching => ({
+  type: Actions.UPDATE_IS_FETCHING,
+  data: { isFetching },
+})

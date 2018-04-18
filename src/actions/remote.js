@@ -4,7 +4,12 @@
 
 import toastr from "toastr"
 
-import { updateFilms, appendFilms, updateFilmDetails } from "./"
+import {
+  updateFilms,
+  appendFilms,
+  updateFilmDetails,
+  updateIsFetching,
+} from "./"
 import store from "actions/store"
 
 export const queryFetch = query => dispatch =>
@@ -18,12 +23,18 @@ export const queryFetch = query => dispatch =>
 
 export const pageFetch = () => dispatch => {
   const { query, pageNum = 1 } = store.getState()
+  const nextPageNum = pageNum + 1
+  dispatch(updateIsFetching(true))
   return fetch(
-    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}&page=${pageNum}`
+    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}&page=${nextPageNum}`
   )
     .then(res => res.json())
-    .then(res => dispatch(appendFilms(pageNum + 1, res.Search)))
+    .then(res => {
+      dispatch(updateIsFetching(false))
+      dispatch(appendFilms(nextPageNum, res.Search))
+    })
     .catch(e => {
+      dispatch(updateIsFetching(false))
       console.error(e)
       toastr.error(e, "An error occured")
     })

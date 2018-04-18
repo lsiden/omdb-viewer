@@ -14,6 +14,7 @@ export function reduce(state = initialState, action) {
     case Actions.VIEW_FILM_DETAIL:
     case Actions.UPDATE_FILMS:
     case Actions.UPDATE_FILM_DETAILS:
+    case Actions.UPDATE_IS_FETCHING:
       return {
         ...state,
         ...data,

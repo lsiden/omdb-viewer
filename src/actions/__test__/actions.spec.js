@@ -1,4 +1,9 @@
-import { viewList, updateFilms, viewFilmSummary } from "actions"
+import {
+  viewList,
+  updateFilms,
+  viewFilmSummary,
+  updateIsFetching,
+} from "actions"
 import Actions from "actions/types"
 
 test("viewList() returns an action", () => {
@@ -10,7 +15,7 @@ test("viewList() returns an action", () => {
   })
 })
 
-test("updateFilms(list) returns an action with list", () => {
+test("updateFilms(list)", () => {
   const films = ["foo", "bar"]
   const query = "foobar"
   expect(updateFilms(query, films)).toMatchObject({
@@ -23,13 +28,31 @@ test("updateFilms(list) returns an action with list", () => {
   })
 })
 
-test("viewFilmSummary(filmSummary) returns an action with filmSummary", () => {
+test("viewFilmSummary(filmSummary)", () => {
   const filmSummary = { Title: "A Title" }
   expect(viewFilmSummary(filmSummary)).toMatchObject({
     type: Actions.VIEW_FILM_DETAIL,
     data: {
       view: Actions.VIEW_FILM_DETAIL,
       filmSummary,
+    },
+  })
+})
+
+test("updateIsFetching(true)", () => {
+  expect(updateIsFetching(true)).toMatchObject({
+    type: Actions.UPDATE_IS_FETCHING,
+    data: {
+      isFetching: true,
+    },
+  })
+})
+
+test("updateIsFetching(false)", () => {
+  expect(updateIsFetching(false)).toMatchObject({
+    type: Actions.UPDATE_IS_FETCHING,
+    data: {
+      isFetching: false,
     },
   })
 })

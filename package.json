@@ -34,6 +34,7 @@
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "respin": "^1.0.1",
     "toastr": "^2.1.4"
   },
   "devDependencies": {
