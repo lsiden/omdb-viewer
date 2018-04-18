@@ -22,7 +22,12 @@ export const updateFilmDetails = filmDetails => ({
   },
 })
 
-export const updateFilms = films => ({
+export const updateFilms = (query, films) => ({
   type: Actions.UPDATE_FILMS,
-  data: { films },
+  data: { films, query, pageNum: 1 },
+})
+
+export const appendFilms = (pageNum, films) => ({
+  type: Actions.APPEND_FILMS,
+  data: { films, pageNum },
 })

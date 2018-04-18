@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 
 import FilmTitle from "film-title"
 import { TITLE_COLOR } from "constants"
+import { pageFetch } from "actions/remote"
 
 const ulStyle = {
   listStyleType: "none",
@@ -15,7 +16,7 @@ const msgStyle = {
   margin: "1em",
 }
 
-export const FilmList = ({ films }) => {
+export const FilmList = ({ films, dispatchPageFetch }) => {
   if (films.length > 0) {
     return (
       <React.Fragment>
@@ -24,7 +25,9 @@ export const FilmList = ({ films }) => {
             <FilmTitle key={filmSummary.imdbID} filmSummary={filmSummary} />
           ))}
         </ul>
-        <button className="more-button">More</button>
+        <button className="more-button" onClick={dispatchPageFetch}>
+          More
+        </button>
       </React.Fragment>
     )
   } else {
@@ -38,6 +41,7 @@ export const FilmList = ({ films }) => {
 
 FilmList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object),
+  dispatchPageFetch: PropTypes.func.isRequired,
 }
 FilmList.defaultProps = {
   films: [],
@@ -47,5 +51,7 @@ export default connect(
   state => ({
     films: state.films,
   }),
-  dispatch => ({})
+  dispatch => ({
+    dispatchPageFetch: () => dispatch(pageFetch()),
+  })
 )(FilmList)

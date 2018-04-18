@@ -2,7 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import { viewFilmSummary, fetchFilmDetails } from "actions"
+import { viewFilmSummary } from "actions"
+import { fetchFilmDetails } from "actions/remote"
 import { ButtonLink } from "components/button-link"
 import { TITLE_COLOR } from "constants"
 
