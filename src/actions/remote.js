@@ -26,25 +26,30 @@ function toJson(res) {
 
 // Returns Promise that resolves to fetch result
 // TODO filter duplicate ids
-const fetchWithTimeout = uri => {
-  const onFetchTimeout = msg => {
-    console.warn("timeout, aborting.")
-    abortController.abort()
-    // TODO style this
-    toastr.warning(msg)
-  }
-
-  const timeout = setTimeout(
-    () =>
-      onFetchTimeout(
+const fetchWithTimeout = (uri, dispatch) => {
+  let timeout
+  const timeoutPromise = new Promise((resolve, reject) => {
+    timeout = setTimeout(() => {
+      abortController.abort()
+      reject("Timed out")
+      // TODO style this
+      toastr.warning(
         "Unable to fetch data. Try a different title or try again later."
-      ),
-    FETCH_TIMEOUT
-  )
-  return fetch(uri).then(res => {
-    clearTimeout(timeout)
-    return toJson(res)
+      )
+      console.warn("timeout, aborting.")
+    }, FETCH_TIMEOUT)
   })
+  const fetchPromise = fetch(uri, {
+    signal: abortController.signal,
+  })
+  dispatch(updateIsFetching(true))
+  return Promise.race([timeoutPromise, fetchPromise])
+    .then(res => toJson(res))
+    .catch(onCatch)
+    .finally(() => {
+      clearTimeout(timeout)
+      dispatch(updateIsFetching(false))
+    })
 }
 
 const onCatch = e => {
@@ -53,39 +58,30 @@ const onCatch = e => {
 }
 
 export const queryFetch = query => dispatch => {
-  dispatch(updateIsFetching(true))
   return fetchWithTimeout(
-    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}`
-  )
-    .then(res => {
-      dispatch(updateFilms(query, res.Search))
-    })
-    .catch(onCatch)
-    .finally(() => dispatch(updateIsFetching(false)))
+    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}`,
+    dispatch
+  ).then(res => {
+    dispatch(updateFilms(query, res.Search))
+  })
 }
 
 export const pageFetch = () => dispatch => {
   const { query, pageNum = 1 } = store.getState()
   const nextPageNum = pageNum + 1
-  dispatch(updateIsFetching(true))
   return fetchWithTimeout(
-    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}&page=${nextPageNum}`
-  )
-    .then(res => {
-      dispatch(appendFilms(nextPageNum, res.Search))
-    })
-    .catch(onCatch)
-    .finally(() => dispatch(updateIsFetching(false)))
+    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}&page=${nextPageNum}`,
+    dispatch
+  ).then(res => {
+    dispatch(appendFilms(nextPageNum, res.Search))
+  })
 }
 
 export const fetchFilmDetails = id => dispatch => {
-  dispatch(updateIsFetching(true))
   return fetchWithTimeout(
-    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&i=${id}&plot=full`
-  )
-    .then(res => {
-      dispatch(updateFilmDetails(res))
-    })
-    .catch(onCatch)
-    .finally(() => dispatch(updateIsFetching(false)))
+    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&i=${id}&plot=full`,
+    dispatch
+  ).then(res => {
+    dispatch(updateFilmDetails(res))
+  })
 }
