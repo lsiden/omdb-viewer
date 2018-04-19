@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose } from "redux"
 import thunk from "redux-thunk"
 
 import Actions from "actions/types"
+import { updateNewFilms, appendFilms } from "actions/films"
 
 const initialState = {
   view: Actions.VIEW_FILM_LIST,
@@ -12,19 +13,16 @@ export function reduce(state = initialState, action) {
   switch (type) {
     case Actions.VIEW_FILM_LIST:
     case Actions.VIEW_FILM_DETAIL:
-    case Actions.UPDATE_FILMS:
     case Actions.UPDATE_FILM_DETAILS:
     case Actions.UPDATE_IS_FETCHING:
       return {
         ...state,
         ...data,
       }
+    case Actions.UPDATE_FILMS:
+      return updateNewFilms(state, data)
     case Actions.APPEND_FILMS:
-      return {
-        ...state,
-        ...data,
-        films: [...(state.films || []), ...(data.films || [])],
-      }
+      return appendFilms(state, data)
     default:
       return state
   }

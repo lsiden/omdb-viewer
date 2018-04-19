@@ -24,19 +24,22 @@ function toJson(res) {
   }
 }
 
-// Returns Promise that resolves to fetch result
-// TODO filter duplicate ids
-const fetchWithTimeout = (uri, dispatch) => {
+const onCatch = e => {
+  console.error(e)
+  toastr.error(e, "An error occured")
+}
+
+// Returns Promise that resolves to fetch result if successful
+const fetchWithTimeout = (dispatch, uri) => {
   let timeout
   const timeoutPromise = new Promise((resolve, reject) => {
     timeout = setTimeout(() => {
       abortController.abort()
-      reject("Timed out")
-      // TODO style this
-      toastr.warning(
-        "Unable to fetch data. Try a different title or try again later."
+      reject(
+        new Error(
+          "Unable to fetch data. Try a different title or try again later."
+        )
       )
-      console.warn("timeout, aborting.")
     }, FETCH_TIMEOUT)
   })
   const fetchPromise = fetch(uri, {
@@ -45,43 +48,35 @@ const fetchWithTimeout = (uri, dispatch) => {
   dispatch(updateIsFetching(true))
   return Promise.race([timeoutPromise, fetchPromise])
     .then(res => toJson(res))
-    .catch(onCatch)
     .finally(() => {
       clearTimeout(timeout)
       dispatch(updateIsFetching(false))
     })
+    .catch(onCatch)
 }
 
-const onCatch = e => {
-  console.error(e)
-  toastr.error(e, "An error occured")
-}
-
+// Returns a Promise
 export const queryFetch = query => dispatch => {
   return fetchWithTimeout(
-    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}`,
-    dispatch
-  ).then(res => {
-    dispatch(updateFilms(query, res.Search))
-  })
+    dispatch,
+    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}`
+  ).then(res => dispatch(updateFilms(query, (res || {}).Search || [])))
 }
 
+// Returns a Promise
 export const pageFetch = () => dispatch => {
   const { query, pageNum = 1 } = store.getState()
   const nextPageNum = pageNum + 1
   return fetchWithTimeout(
-    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}&page=${nextPageNum}`,
-    dispatch
-  ).then(res => {
-    dispatch(appendFilms(nextPageNum, res.Search))
-  })
+    dispatch,
+    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}&page=${nextPageNum}`
+  ).then(res => dispatch(appendFilms(nextPageNum, (res || {}).Search || [])))
 }
 
+// Returns a Promise
 export const fetchFilmDetails = id => dispatch => {
   return fetchWithTimeout(
-    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&i=${id}&plot=full`,
-    dispatch
-  ).then(res => {
-    dispatch(updateFilmDetails(res))
-  })
+    dispatch,
+    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&i=${id}&plot=full`
+  ).then(res => dispatch(updateFilmDetails(res)))
 }
