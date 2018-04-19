@@ -1,5 +1,3 @@
-// TODO delete me
-
 var precacheConfig = [
     ["/omdb-viewer/index.html", "da77591f763fbc7ae98934f4d92fb040"],
     [
