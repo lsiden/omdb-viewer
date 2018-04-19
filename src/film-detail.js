@@ -6,6 +6,7 @@ import { viewList } from "actions"
 import { CloseButton } from "components/close-button"
 import { ESC_KEY } from "constants"
 import { scrollToTop } from "components/scroll"
+import ButtonLink from "components/button-link"
 
 const wrapperStyle = {
   marginLeft: "10pt",
@@ -88,13 +89,13 @@ export class FilmDetail extends React.Component {
         {this.renderTitle()}
         <img src={filmSummary.Poster} alt="poster" />
         {this.renderDetails()}
-        <button
+        <ButtonLink
           style={topButtonStyle}
-          className="btn btn-link"
           onClick={scrollToTop}
+          title="Scroll to top of page"
         >
           Top
-        </button>
+        </ButtonLink>
       </div>
     )
   }

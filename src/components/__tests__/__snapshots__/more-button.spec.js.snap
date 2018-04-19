@@ -91,35 +91,39 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
       "children": "More",
-      "className": "more-button",
       "onClick": [Function],
       "style": Object {
+        "color": "darkgrey",
+        "fontSize": 20,
         "marginBottom": 20,
       },
+      "title": "More",
     },
     "ref": null,
     "rendered": "More",
-    "type": "button",
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
         "children": "More",
-        "className": "more-button",
         "onClick": [Function],
         "style": Object {
+          "color": "darkgrey",
+          "fontSize": 20,
           "marginBottom": 20,
         },
+        "title": "More",
       },
       "ref": null,
       "rendered": "More",
-      "type": "button",
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {

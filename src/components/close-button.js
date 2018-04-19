@@ -1,6 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+import ButtonLink from "components/button-link"
+
 const CLOSE_ICON = "\u2715"
 
 const closeButtonStyle = {
@@ -9,14 +11,9 @@ const closeButtonStyle = {
 }
 
 export const CloseButton = ({ onClick }) => (
-  <button
-    className="btn btn-link"
-    style={closeButtonStyle}
-    onClick={onClick}
-    title="Close"
-  >
+  <ButtonLink style={closeButtonStyle} onClick={onClick} title="Close">
     {CLOSE_ICON}
-  </button>
+  </ButtonLink>
 )
 
 CloseButton.propTypes = {

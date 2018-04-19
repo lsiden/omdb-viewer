@@ -6,6 +6,7 @@ import FilmTitle from "film-title"
 import { TITLE_COLOR } from "constants"
 import MoreButton from "components/more-button"
 import { scrollToTop, scrollToBottom } from "components/scroll"
+import ButtonLink from "components/button-link"
 
 const ulStyle = {
   listStyleType: "none",
@@ -41,14 +42,13 @@ const renderFilmList = ({ films }) => {
         </ul>
         <div style={bottomRowStyle}>
           <MoreButton />
-          <button
-            className="btn btn-link"
+          <ButtonLink
             onClick={scrollToTop}
             style={topButtonStyle}
             title="Scroll to top of page"
           >
             top
-          </button>
+          </ButtonLink>
         </div>
       </React.Fragment>
     )
