@@ -11,9 +11,6 @@
     "url": "https://github.com/lsiden"
   },
   "scripts": {
-    "electron": "electron .",
-    "electron:dev": "nf start",
-    "electron:package": "electron-packager . omdb-viewer --out=dist/linux --platform=linux --arch=x64",
     "start": "NODE_PATH=src react-scripts start",
     "build": "NODE_PATH=src react-scripts build",
     "test": "NODE_PATH=src react-scripts test --env=jsdom --verbose",
