@@ -23,8 +23,7 @@ const titleStyle = {
   marginBottom: "18pt",
 }
 
-// TODO use as component
-const renderBanner = () => (
+const Banner = () => (
   <header style={headerStyle}>
     <h1 style={titleStyle}>
       {"Search Open Movie Database"}&nbsp;
@@ -37,9 +36,9 @@ const renderBanner = () => (
 )
 
 // TODO build custom routing component
-export const OmdbSearch = ({ view }) => (
+export const OmdbMain = ({ view }) => (
   <div className="App">
-    {renderBanner()}
+    <Banner />
     <Show when={view === Actions.VIEW_FILM_LIST}>
       <FilmList />
     </Show>
@@ -49,10 +48,10 @@ export const OmdbSearch = ({ view }) => (
   </div>
 )
 
-OmdbSearch.propTypes = {
+OmdbMain.propTypes = {
   view: PropTypes.string.isRequired,
 }
 
 export default connect(state => ({
   view: state.view,
-}))(OmdbSearch)
+}))(OmdbMain)
