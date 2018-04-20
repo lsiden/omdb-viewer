@@ -12,6 +12,7 @@ import Banner from "components/banner"
 const ulStyle = {
   listStyleType: "none",
   lineHeight: 1.5,
+  marginTop: 20,
 }
 const msgStyle = {
   fontSize: "14pt",
