@@ -1,4 +1,3 @@
-import "test-helpers/setup"
 import { queryFetch, pageFetch, fetchFilmDetails } from "actions/remote"
 import Actions from "actions/types"
 

@@ -1,7 +1,6 @@
 import React from "react"
 import { shallow } from "enzyme"
 
-import "test-helpers/setup"
 import { PureMoreButton as MoreButton } from "components/more-button"
 
 const defaultProps = () => ({

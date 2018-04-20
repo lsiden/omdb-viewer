@@ -1,7 +1,6 @@
 import React from "react"
 import { shallow } from "enzyme"
 
-import "test-helpers/setup"
 import ButtonLink from "components/button-link"
 
 let onClick

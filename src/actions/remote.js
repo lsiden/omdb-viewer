@@ -48,11 +48,11 @@ const fetchWithTimeout = (dispatch, uri) => {
   dispatch(updateIsFetching(true))
   return Promise.race([timeoutPromise, fetchPromise])
     .then(res => toJson(res))
+    .catch(onCatch)
     .finally(() => {
       clearTimeout(timeout)
       dispatch(updateIsFetching(false))
     })
-    .catch(onCatch)
 }
 
 // Returns a Promise

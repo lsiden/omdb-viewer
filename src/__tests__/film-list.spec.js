@@ -1,7 +1,6 @@
 import React from "react"
 import { shallow } from "enzyme"
 
-import "test-helpers/setup"
 import { FilmList } from "film-list"
 
 const films = require("./films.json").Search
