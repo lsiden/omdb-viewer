@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import Spinner from "respin"
 
 import { CloseButton } from "components/close-button"
-import { ESC_KEY } from "constants"
+import { ESC_KEY } from "./constants"
 import { scrollToTop } from "components/scroll"
 import ButtonLink from "components/button-link"
 import { fetchFilmDetails } from "actions/remote"
@@ -48,7 +48,7 @@ export class FilmDetail extends React.Component {
 
   keyDownListener(ev) {
     if (ev.keyCode === ESC_KEY) {
-      // this.props.dispatchViewList()
+      window.location.href = "/"
     }
   }
 
@@ -102,6 +102,18 @@ export class FilmDetail extends React.Component {
     )
   }
 
+  renderScrollToTopButton() {
+    return (
+      <ButtonLink
+        style={topButtonStyle}
+        onClick={scrollToTop}
+        title="Scroll to top of page"
+      >
+        Top
+      </ButtonLink>
+    )
+  }
+
   render() {
     const { filmDetails, isFetching } = this.props
     return isFetching ? (
@@ -113,13 +125,7 @@ export class FilmDetail extends React.Component {
         {this.renderTitle()}
         <img src={filmDetails.Poster} alt="poster" />
         {this.renderDetails()}
-        <ButtonLink
-          style={topButtonStyle}
-          onClick={scrollToTop}
-          title="Scroll to top of page"
-        >
-          Top
-        </ButtonLink>
+        {this.renderScrollToTopButton()}
       </div>
     ) : null
   }
