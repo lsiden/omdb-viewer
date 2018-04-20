@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
+import Spinner from "respin"
 
 import { CloseButton } from "components/close-button"
 import { ESC_KEY } from "constants"
@@ -24,6 +25,13 @@ const detailsStyle = {
 }
 const topButtonStyle = {
   marginBottom: 20,
+}
+const spinnerWrapperStyle = {
+  height: "100vh",
+  minHeight: "100vh",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 }
 
 const itemExists = item => item && item !== "N/A"
@@ -95,8 +103,12 @@ export class FilmDetail extends React.Component {
   }
 
   render() {
-    const { filmDetails } = this.props
-    return filmDetails ? (
+    const { filmDetails, isFetching } = this.props
+    return isFetching ? (
+      <div style={spinnerWrapperStyle}>
+        <Spinner size={64} />
+      </div>
+    ) : filmDetails ? (
       <div style={wrapperStyle}>
         {this.renderTitle()}
         <img src={filmDetails.Poster} alt="poster" />
@@ -116,12 +128,14 @@ export class FilmDetail extends React.Component {
 FilmDetail.propTypes = {
   imdbID: PropTypes.string.isRequired,
   filmDetails: PropTypes.object,
+  isFetching: PropTypes.bool.isRequired,
   dispatchFetchFilmDetails: PropTypes.func.isRequired,
 }
 
 const ConnectedFilmDetail = connect(
   state => ({
     filmDetails: state.filmDetails,
+    isFetching: !!state.isFetching,
   }),
   dispatch => ({
     dispatchFetchFilmDetails: imdbID => dispatch(fetchFilmDetails(imdbID)),
