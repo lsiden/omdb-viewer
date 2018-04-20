@@ -65,8 +65,13 @@ const fetchWithTimeout = (dispatch, uri) => {
 export const queryFetch = query => dispatch => {
   return fetchWithTimeout(
     dispatch,
-    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}`
-  ).then(res => dispatch(updateFilms(query, (res || {}).Search || [])))
+    `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&s=${query}`
+  ).then((res = {}) => {
+    if (res.Response === "False") {
+      return Promise.reject(res.Error || "res.Response === 'False'")
+    }
+    dispatch(updateFilms(query, res.Search || []))
+  })
 }
 
 // Returns a Promise
@@ -75,7 +80,7 @@ export const pageFetch = () => dispatch => {
   const nextPageNum = pageNum + 1
   return fetchWithTimeout(
     dispatch,
-    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&s=${query}&page=${nextPageNum}`
+    `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&s=${query}&page=${nextPageNum}`
   ).then(res => dispatch(appendFilms(nextPageNum, (res || {}).Search || [])))
 }
 
@@ -83,6 +88,6 @@ export const pageFetch = () => dispatch => {
 export const fetchFilmDetails = id => dispatch => {
   return fetchWithTimeout(
     dispatch,
-    `https://www.omdbapi.com/?apikey=fbfcb8c7&type=movie&i=${id}&plot=full`
+    `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&i=${id}&plot=full`
   ).then(res => dispatch(updateFilmDetails(res)))
 }

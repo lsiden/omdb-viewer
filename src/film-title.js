@@ -1,36 +1,26 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 
-import { viewFilmSummary } from "actions"
-import { fetchFilmDetails } from "actions/remote"
 import { TITLE_COLOR } from "constants"
-import ButtonLink from "components/button-link"
 
-const buttonStyle = {
+const linkStyle = {
   color: TITLE_COLOR,
 }
 
-export const FilmTitle = ({ filmSummary, dispatchViewDetail }) => (
+const FilmTitle = ({ filmSummary }) => (
   <div>
-    <ButtonLink
-      onClick={() => dispatchViewDetail(filmSummary)}
-      style={buttonStyle}
+    <Link
+      to={`/film/${filmSummary.imdbID}`}
+      style={linkStyle}
       title="View film details"
     >
       {`${filmSummary.Title}, ${filmSummary.Year}`}
-    </ButtonLink>
+    </Link>
   </div>
 )
 
 FilmTitle.propTypes = {
   filmSummary: PropTypes.object.isRequired,
-  dispatchViewDetail: PropTypes.func.isRequired,
 }
-
-export default connect(null, dispatch => ({
-  dispatchViewDetail: filmSummary => {
-    dispatch(viewFilmSummary(filmSummary))
-    dispatch(fetchFilmDetails(filmSummary.imdbID))
-  },
-}))(FilmTitle)
+export default FilmTitle

@@ -1,30 +1,18 @@
 import React from "react"
-import { connect } from "react-redux"
-import PropTypes from "prop-types"
+import { BrowserRouter, Route } from "react-router-dom"
 
-import Actions from "actions/types"
 import FilmList from "film-list"
 import FilmDetail from "film-detail"
-import Show from "components/show"
-import Banner from "components/banner"
 
-// TODO build custom routing component
-export const OmdbMain = ({ view }) => (
+const OmdbMain = () => (
   <div className="App">
-    <Banner />
-    <Show when={view === Actions.VIEW_FILM_LIST}>
-      <FilmList />
-    </Show>
-    <Show when={view === Actions.VIEW_FILM_DETAIL}>
-      <FilmDetail />
-    </Show>
+    <BrowserRouter>
+      <React.Fragment>
+        <Route exact path="/" component={FilmList} />
+        <Route exact path="/film/:imdbID" component={FilmDetail} />
+      </React.Fragment>
+    </BrowserRouter>
   </div>
 )
 
-OmdbMain.propTypes = {
-  view: PropTypes.string.isRequired,
-}
-
-export default connect(state => ({
-  view: state.view,
-}))(OmdbMain)
+export default OmdbMain

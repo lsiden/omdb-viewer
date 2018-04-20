@@ -16,7 +16,5 @@ const createWrapper = (props = {}) =>
   shallow(<CloseButton {...{ ...defaultProps(), ...props }} />)
 
 test("click on close invokes onClick()", () => {
-  const wrapper = createWrapper()
-  wrapper.simulate("click")
-  expect(onClick).toHaveBeenCalled()
+  expect(createWrapper()).toMatchSnapshot()
 })

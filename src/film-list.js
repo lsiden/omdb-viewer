@@ -7,6 +7,7 @@ import { TITLE_COLOR } from "constants"
 import MoreButton from "components/more-button"
 import { scrollToTop, scrollToBottom } from "components/scroll"
 import ButtonLink from "components/button-link"
+import Banner from "components/banner"
 
 const ulStyle = {
   listStyleType: "none",
@@ -31,9 +32,16 @@ const topButtonStyle = {
   color: "darkgrey",
 }
 
-const renderFilmList = ({ films }) => {
-  if (films.length > 0) {
-    return (
+const renderFilmList = ({ films = [] }) => (
+  <React.Fragment>
+    <Banner />
+    {films.length === 0 ? (
+      <React.Fragment>
+        <div style={msgStyle}>
+          {"There are no films that match your query yet."}
+        </div>
+      </React.Fragment>
+    ) : (
       <React.Fragment>
         <ul style={ulStyle}>
           {films.map(filmSummary => (
@@ -51,14 +59,12 @@ const renderFilmList = ({ films }) => {
           </ButtonLink>
         </div>
       </React.Fragment>
-    )
-  } else {
-    return (
-      <div style={msgStyle}>
-        {"There are no films that match your query yet."}
-      </div>
-    )
-  }
+    )}
+  </React.Fragment>
+)
+
+renderFilmList.propTypes = {
+  films: PropTypes.arrayOf(PropTypes.object),
 }
 
 export class FilmList extends React.Component {
@@ -69,13 +75,6 @@ export class FilmList extends React.Component {
   render() {
     return renderFilmList(this.props)
   }
-}
-
-FilmList.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object),
-}
-FilmList.defaultProps = {
-  films: [],
 }
 
 export default connect(state => ({

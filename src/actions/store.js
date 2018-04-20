@@ -11,8 +11,6 @@ const initialState = {
 export function reduce(state = initialState, action) {
   const { type, data } = action
   switch (type) {
-    case Actions.VIEW_FILM_LIST:
-    case Actions.VIEW_FILM_DETAIL:
     case Actions.UPDATE_FILM_DETAILS:
     case Actions.UPDATE_IS_FETCHING:
       return {
