@@ -19,12 +19,15 @@ const titleStyle = {
   marginBottom: "5pt",
 }
 const detailsStyle = {
+  marginTop: 20,
   fontSize: "14pt",
-  color: "#888",
 }
 const topButtonStyle = {
   marginBottom: 20,
 }
+
+const imdbUrl = imdbID => `https://www.imdb.com/title/${imdbID}`
+
 export class FilmDetail extends React.Component {
   constructor(props) {
     const { imdbID } = props.filmDetails
@@ -76,7 +79,7 @@ export class FilmDetail extends React.Component {
           </li>
         )}
         <li>
-          <a href={this.imdbUrl}>{"IMDB page"}</a>
+          <a href={imdbUrl(filmDetails.imdbID)}>{"IMDB page"}</a>
         </li>
       </ul>
     )
