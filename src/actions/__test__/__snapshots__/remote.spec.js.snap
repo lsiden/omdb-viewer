@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fetchFilmDetails()(dispatch) 1`] = `
+Array [
+  Array [
+    Object {
+      "data": Object {
+        "isFetching": true,
+      },
+      "type": "update-is-fetching",
+    },
+  ],
+  Array [
+    Object {
+      "data": Object {
+        "isFetching": false,
+      },
+      "type": "update-is-fetching",
+    },
+  ],
+  Array [
+    Object {
+      "data": Object {
+        "filmDetails": Object {
+          "filmDetails": Object {
+            "director": "Joe Director",
+            "title": "a title",
+          },
+        },
+      },
+      "type": "update-film-details",
+    },
+  ],
+]
+`;
+
+exports[`pageFetch()(dispatch) 1`] = `
+Array [
+  Array [
+    Object {
+      "data": Object {
+        "isFetching": true,
+      },
+      "type": "update-is-fetching",
+    },
+  ],
+  Array [
+    Object {
+      "data": Object {
+        "isFetching": false,
+      },
+      "type": "update-is-fetching",
+    },
+  ],
+  Array [
+    Object {
+      "data": Object {
+        "films": Array [
+          "Rocky Horror 2",
+          "Halloween 2",
+        ],
+        "pageNum": 2,
+      },
+      "type": "append-films",
+    },
+  ],
+]
+`;
+
+exports[`queryFetch()(dispatch) invokes dispatch({type: Actions.UPDATE_FILMS}) 1`] = `
+Array [
+  Array [
+    Object {
+      "data": Object {
+        "isFetching": true,
+      },
+      "type": "update-is-fetching",
+    },
+  ],
+  Array [
+    Object {
+      "data": Object {
+        "isFetching": false,
+      },
+      "type": "update-is-fetching",
+    },
+  ],
+  Array [
+    Object {
+      "data": Object {
+        "films": Array [
+          Object {
+            "imdbID": 1,
+            "title": "Rocky Horror",
+          },
+          Object {
+            "imdbID": 2,
+            "title": "Halloween",
+          },
+        ],
+        "pageNum": 1,
+        "query": "a query",
+      },
+      "type": "update-films",
+    },
+  ],
+]
+`;

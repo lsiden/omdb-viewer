@@ -4,6 +4,7 @@
 
 import toastr from "toastr"
 import AbortController from "abort-controller"
+import promiseFinally from "promise.prototype.finally"
 
 import {
   updateFilms,
@@ -15,6 +16,11 @@ import store from "actions/store"
 
 const FETCH_TIMEOUT = 5000
 const abortController = new AbortController()
+
+// promise.prototoype.finally is not yet available in node.js.
+// This prevents tests from breaking.
+// It is a no-op when .finally() is already defined.
+promiseFinally.shim()
 
 function toJson(res) {
   try {
