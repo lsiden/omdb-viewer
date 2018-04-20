@@ -13,6 +13,7 @@ const defaultProps = () => {
   return {
     imdbID,
     filmDetails,
+    isFetching: false,
     dispatchFetchFilmDetails,
   }
 }
@@ -20,6 +21,10 @@ const defaultProps = () => {
 const createWrapper = (props = {}) =>
   shallow(<FilmDetail {...{ ...defaultProps(), ...props }} />)
 
-it("renders a title", () => {
+it("renders", () => {
   expect(createWrapper()).toMatchSnapshot()
+})
+
+it("renders a spinner if isFetching", () => {
+  expect(createWrapper({ isFetching: true })).toMatchSnapshot()
 })
