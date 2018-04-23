@@ -1,6 +1,7 @@
 // This is taken from https://github.com/mysticatea/abort-controller.
 // The authors released ES6 modules in their dist/ directory (named as *.mjs)
 // This breaks our build.
+// See https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-build-fails-to-minify
 
 import AbortSignal, { abortSignal, createAbortSignal } from "./abort-signal"
 
