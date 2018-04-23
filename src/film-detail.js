@@ -9,7 +9,7 @@ import { scrollToTop } from "components/scroll"
 import ButtonLink from "components/button-link"
 import { fetchFilmDetails } from "actions/remote"
 import { headerStyle as bannerHeaderStyle } from "style"
-import { BANNER_TITLE } from "./constants"
+import { BANNER_TITLE, FETCH_TIMEOUT } from "./constants"
 
 const titleStyle = {
   marginBottom: "5pt",
@@ -73,6 +73,11 @@ export class FilmDetail extends React.Component {
 
   componentDidMount() {
     document.addEventListener("keydown", this.keyDownListener)
+    setTimeout(() => {
+      if (!this.props.filmDetails) {
+        window.location.href = "/"
+      }
+    }, FETCH_TIMEOUT)
   }
 
   componentWillUnmount() {
