@@ -1,8 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import "./index.css"
-import App from "App"
+import OmdbMain from "omdb-main"
 import registerServiceWorker from "registerServiceWorker"
 
-ReactDOM.render(<App />, document.getElementById("root"))
+ReactDOM.render(<OmdbMain />, document.getElementById("root"))
 registerServiceWorker()
