@@ -7,7 +7,21 @@ import { TITLE_COLOR } from "constants"
 import MoreButton from "components/more-button"
 import { scrollToTop, scrollToBottom } from "components/scroll"
 import ButtonLink from "components/button-link"
-import Banner from "components/banner"
+import QueryForm from "query-form"
+import { headerStyle, titleStyle } from "style"
+import { BANNER_TITLE } from "./constants"
+
+const Banner = () => (
+  <header style={headerStyle}>
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <h1 style={titleStyle}>{BANNER_TITLE}</h1>
+      <a href="/about" style={{ color: "white" }}>
+        about
+      </a>
+    </div>
+    <QueryForm />
+  </header>
+)
 
 const ulStyle = {
   listStyleType: "none",

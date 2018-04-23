@@ -8,14 +8,9 @@ import { ESC_KEY } from "./constants"
 import { scrollToTop } from "components/scroll"
 import ButtonLink from "components/button-link"
 import { fetchFilmDetails } from "actions/remote"
+import { headerStyle as bannerHeaderStyle } from "style"
+import { BANNER_TITLE } from "./constants"
 
-const wrapperStyle = {
-  marginLeft: "10pt",
-}
-const headerStyle = {
-  display: "flex",
-  justifyContent: "space-between",
-}
 const titleStyle = {
   marginBottom: "5pt",
 }
@@ -31,12 +26,31 @@ const spinnerWrapperStyle = {
   minHeight: "100vh",
   display: "flex",
   justifyContent: "center",
-  alignItems: "center",
 }
 
 const itemExists = item => item && item !== "N/A"
 
 const imdbUrl = imdbID => `https://www.imdb.com/title/${imdbID}`
+
+const titleBannerStyle = {
+  ...bannerHeaderStyle,
+  display: "flex",
+  justifyContent: "space-between",
+}
+
+const TitleBanner = ({ title }) => (
+  <header style={titleBannerStyle}>
+    <div style={{ lineHeight: 1 }}>
+      <h1 style={{ fontSize: 24 }}>{BANNER_TITLE}</h1>
+      <br />
+      <h1 style={{ ...titleStyle, marginTop: 0 }}>{title}</h1>
+    </div>
+    <CloseButton buttonStyle={{ color: "white" }} />
+  </header>
+)
+TitleBanner.propTypes = {
+  title: PropTypes.string.isRequired,
+}
 
 export class FilmDetail extends React.Component {
   constructor(props) {
@@ -67,12 +81,7 @@ export class FilmDetail extends React.Component {
 
   renderTitle() {
     const { filmDetails } = this.props
-    return (
-      <div style={headerStyle}>
-        <h1 style={titleStyle}>{filmDetails.Title}</h1>
-        <CloseButton />
-      </div>
-    )
+    return <TitleBanner title={filmDetails.Title} />
   }
 
   renderDetails() {
@@ -121,12 +130,18 @@ export class FilmDetail extends React.Component {
         <Spinner size={64} />
       </div>
     ) : filmDetails ? (
-      <div style={wrapperStyle}>
+      <React.Fragment>
         {this.renderTitle()}
-        <img src={filmDetails.Poster} alt="poster" />
-        {this.renderDetails()}
-        {this.renderScrollToTopButton()}
-      </div>
+        <div style={{ marginLeft: 20 }}>
+          <img
+            src={filmDetails.Poster}
+            alt="poster"
+            style={{ marginTop: 10 }}
+          />
+          {this.renderDetails()}
+          {this.renderScrollToTopButton()}
+        </div>
+      </React.Fragment>
     ) : null
   }
 }

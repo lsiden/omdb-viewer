@@ -5,6 +5,7 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Unknown
+    buttonStyle={Object {}}
     onClick={[Function]}
 />,
   Symbol(enzyme.__renderer__): Object {
@@ -22,8 +23,8 @@ ShallowWrapper {
       "children": <ButtonLink
         style={
                 Object {
-                        "fontSize": "20pt",
-                        "margin": "8pt",
+                        "fontSize": 20,
+                        "margin": 20,
                       }
         }
         title="Close"
@@ -41,8 +42,8 @@ ShallowWrapper {
       "props": Object {
         "children": "✕",
         "style": Object {
-          "fontSize": "20pt",
-          "margin": "8pt",
+          "fontSize": 20,
+          "margin": 20,
         },
         "title": "Close",
       },
@@ -61,8 +62,8 @@ ShallowWrapper {
         "children": <ButtonLink
           style={
                     Object {
-                              "fontSize": "20pt",
-                              "margin": "8pt",
+                              "fontSize": 20,
+                              "margin": 20,
                             }
           }
           title="Close"
@@ -80,8 +81,8 @@ ShallowWrapper {
         "props": Object {
           "children": "✕",
           "style": Object {
-            "fontSize": "20pt",
-            "margin": "8pt",
+            "fontSize": 20,
+            "margin": 20,
           },
           "title": "Close",
         },

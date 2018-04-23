@@ -28,6 +28,11 @@ ShallowWrapper {
                 exact={true}
                 path="/film/:imdbID"
         />
+        <Route
+                component={[Function]}
+                exact={true}
+                path="/about"
+        />
 </Unknown>,
     },
     "ref": null,
@@ -46,6 +51,11 @@ ShallowWrapper {
             component={[Function]}
             exact={true}
             path="/film/:imdbID"
+/>,
+          <Route
+            component={[Function]}
+            exact={true}
+            path="/about"
 />,
         ],
       },
@@ -77,6 +87,19 @@ ShallowWrapper {
           "rendered": null,
           "type": [Function],
         },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "exact": true,
+            "path": "/about",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
       ],
       "type": Symbol(react.fragment),
     },
@@ -99,6 +122,11 @@ ShallowWrapper {
                     exact={true}
                     path="/film/:imdbID"
           />
+          <Route
+                    component={[Function]}
+                    exact={true}
+                    path="/about"
+          />
 </Unknown>,
       },
       "ref": null,
@@ -117,6 +145,11 @@ ShallowWrapper {
               component={[Function]}
               exact={true}
               path="/film/:imdbID"
+/>,
+            <Route
+              component={[Function]}
+              exact={true}
+              path="/about"
 />,
           ],
         },
@@ -143,6 +176,19 @@ ShallowWrapper {
               "component": [Function],
               "exact": true,
               "path": "/film/:imdbID",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "exact": true,
+              "path": "/about",
             },
             "ref": null,
             "rendered": null,

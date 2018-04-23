@@ -1,10 +1,10 @@
 import React from "react"
 import { shallow } from "enzyme"
 
-import { OmdbMainUnconnected as OmdbMain } from "omdb-main"
+import About from "about"
 
 const createWrapper = () => {
-  return shallow(<OmdbMain />)
+  return shallow(<About />)
 }
 
 test("OmdbMain", () => {
