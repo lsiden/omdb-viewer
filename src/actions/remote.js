@@ -3,7 +3,6 @@
 /* eslint-disable no-console */
 
 import toastr from "toastr"
-import AbortController from "abort-controller"
 import promiseFinally from "promise.prototype.finally"
 
 import {
@@ -13,8 +12,9 @@ import {
   updateIsFetching,
 } from "./"
 import store from "actions/store"
+import AbortController from "components/abort-controller"
+import { FETCH_TIMEOUT } from "../constants"
 
-const FETCH_TIMEOUT = 5000
 const abortController = new AbortController()
 
 // promise.prototoype.finally is not yet available in node.js.
