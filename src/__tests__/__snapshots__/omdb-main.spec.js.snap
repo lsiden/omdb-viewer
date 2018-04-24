@@ -17,6 +17,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "basename": "",
       "children": <Unknown>
         <Route
                 component={[Function]}
@@ -111,6 +112,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "basename": "",
         "children": <Unknown>
           <Route
                     component={[Function]}

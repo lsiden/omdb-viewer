@@ -10,6 +10,7 @@
     "email": "lsiden@gmail.com",
     "url": "https://github.com/lsiden"
   },
+  "homepage": "http://westsideconsultingllc.com/omdb-film-browser-web/",
   "scripts": {
     "start": "NODE_PATH=src react-scripts start",
     "build": "NODE_PATH=src react-scripts build",

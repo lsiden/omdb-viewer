@@ -7,8 +7,10 @@ import FilmDetail from "film-detail"
 import About from "about"
 import store from "actions/store"
 
+// See https://itnext.io/so-you-want-to-host-your-single-age-react-app-on-github-pages-a826ab01e48
+// for basename property.
 export const OmdbMainUnconnected = () => (
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <React.Fragment>
       <Route exact path="/" component={FilmList} />
       <Route exact path="/film/:imdbID" component={FilmDetail} />
