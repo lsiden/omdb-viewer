@@ -18,7 +18,3 @@ and upgraded to run on electron using the instructions in
 (this article)[https://medium.freecodecamp.org/building-an-electron-application-with-create-react-app-97945861647c].
 
 See [README-create-react-app](README-create-react-app.md) for more info.
-
-### TODO
-
-* A pager. Currently, the query returns only the first 10 films it finds in the database.
