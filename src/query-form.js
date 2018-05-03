@@ -19,7 +19,8 @@ export class QueryForm extends React.Component {
     this.state = { query: "" }
     this.slug = cuid.slug()
     this.timeoutId = null
-    this.onInput = this.onInput.bind(this)
+    this.handleInput = this.handleInput.bind(this)
+    this.handleCancel = this.handleCancel.bind(this)
     this.handleInputTimeout = this.handleInputTimeout.bind(this)
   }
 
@@ -39,13 +40,19 @@ export class QueryForm extends React.Component {
           type="search"
           placeholder="Title"
           value={query}
-          onInput={this.onInput}
+          onInput={this.handleInput}
+          onCancelClick={this.handleCancel}
         />
       </form>
     )
   }
 
-  onInput(ev) {
+  handleCancel() {
+    this.setState({ query: "" })
+    this.props.clearResults()
+  }
+
+  handleInput(ev) {
     const query = ev.target.value
     this.setState({ query })
 
@@ -53,11 +60,11 @@ export class QueryForm extends React.Component {
       clearTimeout(this.timeoutId)
     }
 
-    if (!query) {
+    if (query) {
+      this.timeoutId = setTimeout(this.handleInputTimeout, QUERY_DELAY)
+    } else {
       this.props.clearResults()
-      return
     }
-    this.timeoutId = setTimeout(this.handleInputTimeout, QUERY_DELAY)
   }
 
   handleInputTimeout() {

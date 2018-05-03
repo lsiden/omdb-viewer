@@ -6,10 +6,7 @@ import { SearchInput } from "components/search-input"
 let onInput
 
 const defaultProps = () => ({
-  id: "element-id",
-  placeholder: "x",
-  value: "foobar",
-  onInput: onInput,
+  onCancelClick: () => {},
 })
 
 const createWrapper = (props = {}) => {
