@@ -31,7 +31,7 @@ ShallowWrapper {
         replace={false}
         style={
                 Object {
-                        "color": undefined,
+                        "color": "#210d87",
                       }
         }
         title="View film details"
@@ -49,7 +49,7 @@ ShallowWrapper {
         "children": "The Hobbit: The Battle of the Five Armies, 2014",
         "replace": false,
         "style": Object {
-          "color": undefined,
+          "color": "#210d87",
         },
         "title": "View film details",
         "to": "/film/tt2310332",
@@ -70,7 +70,7 @@ ShallowWrapper {
           replace={false}
           style={
                     Object {
-                              "color": undefined,
+                              "color": "#210d87",
                             }
           }
           title="View film details"
@@ -88,7 +88,7 @@ ShallowWrapper {
           "children": "The Hobbit: The Battle of the Five Armies, 2014",
           "replace": false,
           "style": Object {
-            "color": undefined,
+            "color": "#210d87",
           },
           "title": "View film details",
           "to": "/film/tt2310332",

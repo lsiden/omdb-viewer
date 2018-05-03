@@ -4,9 +4,15 @@ import { shallow } from "enzyme"
 import { QueryForm } from "query-form"
 
 const onChange = () => {}
+const dispatchQueryFetch = () => {}
+
+const defaultProps = () => ({
+  dispatchQueryFetch,
+  onChange,
+})
 
 const createWrapper = (props = {}) => {
-  return shallow(<QueryForm onChange={onChange} {...props} />)
+  return shallow(<QueryForm {...{ ...defaultProps(), ...props }} />)
 }
 
 it("renders a Form element", () => {

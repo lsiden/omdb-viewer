@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import cuid from "cuid"
 
 import { queryFetch } from "actions/remote"
-import { QUERY_DELAY } from "constants"
+import { QUERY_DELAY } from "./constants"
 import SearchInput from "components/search-input"
 
 const formStyle = {
@@ -16,8 +16,10 @@ export class QueryForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = { query: "" }
-    this.onInput = this.onInput.bind(this)
     this.slug = cuid.slug()
+    this.timeoutId = null
+    this.onInput = this.onInput.bind(this)
+    this.handleInputTimeout = this.handleInputTimeout.bind(this)
   }
 
   componentDidMount() {
@@ -42,28 +44,25 @@ export class QueryForm extends React.Component {
     )
   }
 
-  debounce(fn, delay) {
+  onInput(ev) {
+    this.setState({ query: ev.target.value })
+
     if (this.timeoutId) {
       clearTimeout(this.timeoutId)
     }
-    this.timeoutId = setTimeout(() => {
-      this.timeoutId = null
-      fn()
-    }, delay)
+    this.timeoutId = setTimeout(this.handleInputTimeout, QUERY_DELAY)
   }
 
-  onInput(ev) {
-    const query = ev.target.value
-    const fn = () => this.props.onChange(query)
-    this.setState({ query })
-    this.debounce(fn.bind(this), QUERY_DELAY)
+  handleInputTimeout() {
+    this.timeoutId = null
+    this.props.dispatchQueryFetch(this.state.query)
   }
 }
 
 QueryForm.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  dispatchQueryFetch: PropTypes.func.isRequired,
 }
 
 export default connect(null, dispatch => ({
-  onChange: query => dispatch(queryFetch(query)),
+  dispatchQueryFetch: query => dispatch(queryFetch(query)),
 }))(QueryForm)
