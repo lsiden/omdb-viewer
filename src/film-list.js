@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
 import FilmTitle from "film-title"
-import { TITLE_COLOR } from "constants"
+import { TITLE_COLOR } from "./constants"
 import MoreButton from "components/more-button"
 import { scrollToTop, scrollToBottom } from "components/scroll"
 import ButtonLink from "components/button-link"
