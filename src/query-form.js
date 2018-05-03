@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import cuid from "cuid"
 
+import { updateFilms } from "actions"
 import { queryFetch } from "actions/remote"
 import { QUERY_DELAY } from "./constants"
 import SearchInput from "components/search-input"
@@ -45,10 +46,16 @@ export class QueryForm extends React.Component {
   }
 
   onInput(ev) {
-    this.setState({ query: ev.target.value })
+    const query = ev.target.value
+    this.setState({ query })
 
     if (this.timeoutId) {
       clearTimeout(this.timeoutId)
+    }
+
+    if (!query) {
+      this.props.clearResults()
+      return
     }
     this.timeoutId = setTimeout(this.handleInputTimeout, QUERY_DELAY)
   }
@@ -61,8 +68,10 @@ export class QueryForm extends React.Component {
 
 QueryForm.propTypes = {
   dispatchQueryFetch: PropTypes.func.isRequired,
+  clearResults: PropTypes.func.isRequired,
 }
 
 export default connect(null, dispatch => ({
   dispatchQueryFetch: query => dispatch(queryFetch(query)),
+  clearResults: () => dispatch(updateFilms()),
 }))(QueryForm)

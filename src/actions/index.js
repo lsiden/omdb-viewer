@@ -7,7 +7,7 @@ export const updateFilmDetails = filmDetails => ({
   },
 })
 
-export const updateFilms = (query, films) => ({
+export const updateFilms = (query = "", films = []) => ({
   type: Actions.UPDATE_FILMS,
   data: { films, query, pageNum: 1 },
 })
