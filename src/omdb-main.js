@@ -16,8 +16,8 @@ export const OmdbMainUnconnected = () => (
   <BrowserRouter basename={process.env.PUBLIC_URL}>
     <React.Fragment>
       <Route exact path="/" component={FilmList} />
-      <Route exact path="/film/:imdbID" component={FilmDetail} />
-      <Route exact path="/about" component={About} />
+      <Route path="/film/:imdbID" component={FilmDetail} />
+      <Route path="/about" component={About} />
     </React.Fragment>
   </BrowserRouter>
 )

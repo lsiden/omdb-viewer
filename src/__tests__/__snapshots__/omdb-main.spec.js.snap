@@ -26,12 +26,10 @@ ShallowWrapper {
         />
         <Route
                 component={[Function]}
-                exact={true}
                 path="/film/:imdbID"
         />
         <Route
                 component={[Function]}
-                exact={true}
                 path="/about"
         />
 </Unknown>,
@@ -50,12 +48,10 @@ ShallowWrapper {
 />,
           <Route
             component={[Function]}
-            exact={true}
             path="/film/:imdbID"
 />,
           <Route
             component={[Function]}
-            exact={true}
             path="/about"
 />,
         ],
@@ -81,7 +77,6 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "component": [Function],
-            "exact": true,
             "path": "/film/:imdbID",
           },
           "ref": null,
@@ -94,7 +89,6 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "component": [Function],
-            "exact": true,
             "path": "/about",
           },
           "ref": null,
@@ -121,12 +115,10 @@ ShallowWrapper {
           />
           <Route
                     component={[Function]}
-                    exact={true}
                     path="/film/:imdbID"
           />
           <Route
                     component={[Function]}
-                    exact={true}
                     path="/about"
           />
 </Unknown>,
@@ -145,12 +137,10 @@ ShallowWrapper {
 />,
             <Route
               component={[Function]}
-              exact={true}
               path="/film/:imdbID"
 />,
             <Route
               component={[Function]}
-              exact={true}
               path="/about"
 />,
           ],
@@ -176,7 +166,6 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "component": [Function],
-              "exact": true,
               "path": "/film/:imdbID",
             },
             "ref": null,
@@ -189,7 +178,6 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "component": [Function],
-              "exact": true,
               "path": "/about",
             },
             "ref": null,
