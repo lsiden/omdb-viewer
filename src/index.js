@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import OmdbMain from "omdb-main"
 
 import registerServiceWorker from "registerServiceWorker"
+import "toastr/build/toastr.css"
 
 ReactDOM.render(<OmdbMain />, document.getElementById("root"))
 

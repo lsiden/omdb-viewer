@@ -32,7 +32,9 @@ function toJson(res) {
 
 const onCatch = e => {
   console.error(e)
-  toastr.error(e, "An error occured")
+  toastr.error(e, "An error occured", {
+    preventDuplicates: true,
+  })
 }
 
 // Returns Promise that resolves to fetch result if successful
