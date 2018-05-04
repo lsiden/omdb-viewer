@@ -13,6 +13,7 @@ export function reduce(state = initialState, action) {
   switch (type) {
     case Actions.UPDATE_FILM_DETAILS:
     case Actions.UPDATE_IS_FETCHING:
+    case Actions.SET_QUERY:
       return {
         ...state,
         ...data,

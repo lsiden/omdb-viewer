@@ -10,6 +10,7 @@ import ButtonLink from "components/button-link"
 import QueryForm from "query-form"
 import { headerStyle, titleStyle } from "style"
 import { BANNER_TITLE } from "./constants"
+import { setQuery } from "actions"
 
 const Banner = () => (
   <header style={headerStyle}>
@@ -92,6 +93,21 @@ export class FilmList extends React.Component {
   }
 }
 
-export default connect(state => ({
+const ConnectedFilmList = connect(state => ({
   films: state.films,
 }))(FilmList)
+
+const RoutedFilmList = ({ match, dispatchSetQuery }) => {
+  const { query } = match.params
+  dispatchSetQuery(query)
+  return <ConnectedFilmList query={query} />
+}
+
+RoutedFilmList.propTypes = {
+  match: PropTypes.object.isRequired,
+  dispatchSetQuery: PropTypes.func.isRequired,
+}
+
+export default connect(null, dispatch => ({
+  dispatchSetQuery: query => dispatch(setQuery(query)),
+}))(RoutedFilmList)
