@@ -1,6 +1,6 @@
 Search and view titles from the [OMDB](https://omdb.org) database.
 
-See [demo](http://westsideconsultingllc.com/omdb-viewer).
+See [demo](http://westsideconsultingllc.com/omdb-film-browser-web).
 
 ## Background
 
