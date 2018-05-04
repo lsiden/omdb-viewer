@@ -4,17 +4,10 @@ See [demo](http://westsideconsultingllc.com/omdb-film-browser-web).
 
 ## Background
 
-I created this simple film browser web app
-in order to have a React web project
-that I could then learn how to migrate to other platforms
-such as [Electron](https://electronjs.org)
-and [React Native](https://facebook.github.io/react-native/).
+I created this simple film browser web app that I could then migrate to other platforms. It's sister project built with [React Native](https://facebook.github.io/react-native/) is [omdb-film-browser-rn](https://github.com/lsiden/omdb-film-browser-rn)
 
 ## Development
 
-This project was bootstrapped with
-[Create React App](https://github.com/facebookincubator/create-react-app)
-and upgraded to run on electron using the instructions in
-(this article)[https://medium.freecodecamp.org/building-an-electron-application-with-create-react-app-97945861647c].
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 See [README-create-react-app](README-create-react-app.md) for more info.
