@@ -100,7 +100,7 @@ const ConnectedFilmList = connect(state => ({
 const RoutedFilmList = ({ match, dispatchSetQuery }) => {
   const { query } = match.params
   dispatchSetQuery(query)
-  return <ConnectedFilmList query={query} />
+  return <ConnectedFilmList />
 }
 
 RoutedFilmList.propTypes = {

@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
-import cuid from "cuid"
 
 import { updateFilms } from "actions"
 import { queryFetch } from "actions/remote"
@@ -16,8 +15,8 @@ const formStyle = {
 export class QueryForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { query: "" }
-    this.slug = cuid.slug()
+    const { query = "" } = props
+    this.state = { query }
     this.timeoutId = null
     this.handleInput = this.handleInput.bind(this)
     this.handleCancel = this.handleCancel.bind(this)
@@ -25,6 +24,12 @@ export class QueryForm extends React.Component {
   }
 
   componentDidMount() {
+    const { query, dispatchQueryFetch } = this.props
+
+    if (query) {
+      dispatchQueryFetch(query)
+    }
+
     if (this.ref) {
       this.ref.querySelector("input").focus()
     }
@@ -36,19 +41,23 @@ export class QueryForm extends React.Component {
       <form ref={ref => (this.ref = ref)} style={formStyle}>
         <label htmlFor={this.slug}>Search</label>
         <SearchInput
-          id={this.slug}
-          type="search"
           placeholder="Title"
           value={query}
-          onInput={this.handleInput}
+          onChange={this.handleInput}
           onCancelClick={this.handleCancel}
         />
       </form>
     )
   }
 
+  replaceUriHistory(query = "") {
+    const uri = query ? `/search/${query}` : "/"
+    window.history.replaceState({}, "", uri)
+  }
+
   handleCancel() {
     this.setState({ query: "" })
+    this.replaceUriHistory()
     this.props.clearResults()
   }
 
@@ -62,8 +71,10 @@ export class QueryForm extends React.Component {
 
     if (query) {
       this.timeoutId = setTimeout(this.handleInputTimeout, QUERY_DELAY)
+      this.replaceUriHistory(query)
     } else {
       this.props.clearResults()
+      this.replaceUriHistory()
     }
   }
 
@@ -76,9 +87,15 @@ export class QueryForm extends React.Component {
 QueryForm.propTypes = {
   dispatchQueryFetch: PropTypes.func.isRequired,
   clearResults: PropTypes.func.isRequired,
+  query: PropTypes.string,
 }
 
-export default connect(null, dispatch => ({
-  dispatchQueryFetch: query => dispatch(queryFetch(query)),
-  clearResults: () => dispatch(updateFilms()),
-}))(QueryForm)
+export default connect(
+  state => ({
+    query: state.query || "",
+  }),
+  dispatch => ({
+    dispatchQueryFetch: query => dispatch(queryFetch(query)),
+    clearResults: () => dispatch(updateFilms()),
+  })
+)(QueryForm)
