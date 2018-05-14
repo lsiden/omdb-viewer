@@ -26,6 +26,7 @@ Array [
             "director": "Joe Director",
             "title": "a title",
           },
+          "json": [Function],
         },
       },
       "type": "update-film-details",

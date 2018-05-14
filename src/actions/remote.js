@@ -2,6 +2,8 @@
 
 /* eslint-disable no-console */
 
+import "abortcontroller-polyfill/dist/polyfill-patch-fetch"
+
 import toastr from "toastr"
 import promiseFinally from "promise.prototype.finally"
 
@@ -12,10 +14,9 @@ import {
   updateIsFetching,
 } from "./"
 import store from "actions/store"
-import AbortController from "components/abort-controller"
 import { FETCH_TIMEOUT } from "../constants"
 
-const abortController = new AbortController()
+const abortController = new window.AbortController()
 
 // promise.prototoype.finally is not yet available in node.js.
 // This prevents tests from breaking.
