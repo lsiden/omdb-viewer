@@ -54,7 +54,7 @@ const renderFilmList = ({ films = [] }) => (
     {films.length === 0 ? (
       <React.Fragment>
         <div style={msgStyle}>
-          {"There are no films that match your query yet."}
+          {"There are no films that match your query."}
         </div>
       </React.Fragment>
     ) : (

@@ -2,8 +2,6 @@
 
 /* eslint-disable no-console */
 
-import "abortcontroller-polyfill/dist/polyfill-patch-fetch"
-
 import toastr from "toastr"
 import promiseFinally from "promise.prototype.finally"
 
@@ -15,8 +13,6 @@ import {
 } from "./"
 import store from "actions/store"
 import { FETCH_TIMEOUT } from "../constants"
-
-const abortController = new window.AbortController()
 
 // promise.prototoype.finally is not yet available in node.js.
 // This prevents tests from breaking.
@@ -43,7 +39,6 @@ const fetchWithTimeout = (dispatch, uri) => {
   let timeout
   const timeoutPromise = new Promise((resolve, reject) => {
     timeout = setTimeout(() => {
-      abortController.abort()
       reject(
         new Error(
           "Unable to fetch data. Try a different title or try again later."
@@ -51,12 +46,9 @@ const fetchWithTimeout = (dispatch, uri) => {
       )
     }, FETCH_TIMEOUT)
   })
-  const fetchPromise = fetch(uri, {
-    signal: abortController.signal,
-  })
   dispatch(updateIsFetching(true))
-  return Promise.race([timeoutPromise, fetchPromise])
-    .then(res => toJson(res))
+  return Promise.race([timeoutPromise, fetch(uri)])
+    .then(toJson)
     .catch(onCatch)
     .finally(() => {
       clearTimeout(timeout)
@@ -64,17 +56,26 @@ const fetchWithTimeout = (dispatch, uri) => {
     })
 }
 
-// Returns a Promise
+let cancelPrevQueryFetch = () => {}
+class FetchCancelledError extends Error {}
+
 export const queryFetch = query => dispatch => {
-  return fetchWithTimeout(
-    dispatch,
-    `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&s=${query}`
-  ).then((res = {}) => {
-    if (res.Response === "False") {
-      return Promise.reject(res.Error || "res.Response === 'False'")
-    }
-    dispatch(updateFilms(query, res.Search || []))
-  })
+  cancelPrevQueryFetch()
+
+  return new Promise((resolve, reject) => {
+    cancelPrevQueryFetch = () =>
+      reject(new FetchCancelledError(`query "${query}" cancelled`))
+
+    return fetchWithTimeout(
+      dispatch,
+      `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&s=${query}`
+    ).then((res = {}) => {
+      if (res.Response === "False") {
+        return dispatch(updateFilms(query, []))
+      }
+      return dispatch(updateFilms(query, res.Search || []))
+    })
+  }).catch(console.error)
 }
 
 // Returns a Promise
