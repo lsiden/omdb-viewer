@@ -48,7 +48,7 @@ const topButtonStyle = {
   color: "darkgrey",
 }
 
-const renderFilmList = ({ films = [] }) => (
+const renderFilmList = ({ films = [], totalResults = 0 }) => (
   <React.Fragment>
     <Banner />
     {films.length === 0 ? (
@@ -65,7 +65,7 @@ const renderFilmList = ({ films = [] }) => (
           ))}
         </ul>
         <div style={bottomRowStyle}>
-          <MoreButton />
+          {films.length < totalResults && <MoreButton />}
           <ButtonLink
             onClick={scrollToTop}
             style={topButtonStyle}
@@ -81,6 +81,7 @@ const renderFilmList = ({ films = [] }) => (
 
 renderFilmList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object),
+  totalResults: PropTypes.number,
 }
 
 export class FilmList extends React.Component {
@@ -95,6 +96,7 @@ export class FilmList extends React.Component {
 
 const ConnectedFilmList = connect(state => ({
   films: state.films,
+  totalResults: state.totalResults,
 }))(FilmList)
 
 const RoutedFilmList = ({ match, dispatchSetQuery }) => {

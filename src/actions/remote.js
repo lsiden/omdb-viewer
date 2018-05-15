@@ -57,25 +57,34 @@ const fetchWithTimeout = (dispatch, uri) => {
 }
 
 let cancelPrevQueryFetch = () => {}
-class FetchCancelledError extends Error {}
+class FetchCancelledError extends Error {
+  constructor() {
+    super()
+    this.ignore = true
+  }
+}
 
 export const queryFetch = query => dispatch => {
   cancelPrevQueryFetch()
 
   return new Promise((resolve, reject) => {
     cancelPrevQueryFetch = () =>
-      reject(new FetchCancelledError(`query "${query}" cancelled`))
+      reject(new FetchCancelledError(`query "${query}" was cancelled`))
 
     return fetchWithTimeout(
       dispatch,
       `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&s=${query}`
     ).then((res = {}) => {
-      if (res.Response === "False") {
-        return dispatch(updateFilms(query, []))
+      if (res && res.Search && res.Search.length) {
+        return dispatch(updateFilms(query, res.Search, res.totalResults))
       }
-      return dispatch(updateFilms(query, res.Search || []))
+      return dispatch(updateFilms(query, [], 0))
     })
-  }).catch(console.error)
+  }).catch(e => {
+    if (!e.ignore) {
+      console.error(e)
+    }
+  })
 }
 
 // Returns a Promise
@@ -85,7 +94,11 @@ export const pageFetch = () => dispatch => {
   return fetchWithTimeout(
     dispatch,
     `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&s=${query}&page=${nextPageNum}`
-  ).then(res => dispatch(appendFilms(nextPageNum, (res || {}).Search || [])))
+  ).then(res => {
+    if (res && res.Search && res.Search.length) {
+      dispatch(appendFilms(nextPageNum, res.Search))
+    }
+  })
 }
 
 // Returns a Promise
