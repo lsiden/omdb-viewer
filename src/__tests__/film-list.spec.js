@@ -1,19 +1,23 @@
 import React from "react"
-import { shallow } from "enzyme"
+import TestRenderer from 'react-test-renderer';
+import { StaticRouter } from 'react-router'
+import { Provider } from 'react-redux'
+import FilmTitle from "film-title"
 
 import { FilmList } from "film-list"
+import store from 'actions/store'
 
-const films = require("./films.json").Search
-const defaultProps = () => ({
-  films,
+const defaultProps = {
   dispatchUpdateFilms: () => {},
-})
-
-const createWrapper = (props = {}) =>
-  shallow(<FilmList {...{ ...defaultProps(), ...props }} />)
+}
+const films = require("./films.json").Search
 
 it("renders list of titles", () => {
-  const wrapper = createWrapper()
-  const titles = wrapper.find("ul").children()
-  expect(titles).toHaveLength(films.length)
+  const testInstance = TestRenderer.create(<StaticRouter context={{}}>
+		<Provider store={store}>
+			<FilmList { ...{films, ...defaultProps} } />
+		</Provider>
+	</StaticRouter>)
+  const filmTitles = testInstance.root.findAllByType(FilmTitle)
+  expect(filmTitles).toHaveLength(films.length)
 })

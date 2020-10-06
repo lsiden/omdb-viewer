@@ -37,7 +37,7 @@ const onCatch = e => {
 // Returns Promise that resolves to fetch result if successful
 const fetchWithTimeout = (dispatch, uri) => {
   let timeout
-  const timeoutPromise = new Promise((resolve, reject) => {
+  const timeoutPromise = new Promise((_, reject) => {
     timeout = setTimeout(() => {
       reject(
         new Error(
@@ -56,7 +56,6 @@ const fetchWithTimeout = (dispatch, uri) => {
     })
 }
 
-let cancelPrevQueryFetch = () => {}
 class FetchCancelledError extends Error {
   constructor() {
     super()
@@ -64,11 +63,13 @@ class FetchCancelledError extends Error {
   }
 }
 
+let cancelPrevQueryFetch = () => {}
+
 export const queryFetch = query => dispatch => {
   cancelPrevQueryFetch()
 
-  return new Promise((resolve, reject) => {
-    cancelPrevQueryFetch = () =>
+  return new Promise((resolve, _) => {
+    cancelPrevQueryFetch = (_, reject) =>
       reject(new FetchCancelledError(`query "${query}" was cancelled`))
 
     return fetchWithTimeout(
@@ -76,14 +77,16 @@ export const queryFetch = query => dispatch => {
       `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&s=${query}`
     ).then((res = {}) => {
       if (res && res.Search && res.Search.length) {
-        return dispatch(updateFilms(query, res.Search, res.totalResults))
+        return resolve(dispatch(updateFilms(query, res.Search, res.totalResults)))
       }
-      return dispatch(updateFilms(query, [], 0))
+      return resolve(dispatch(updateFilms(query, [], 0)))
     })
   }).catch(e => {
     if (!e.ignore) {
       console.error(e)
     }
+  }).finally(() => {
+    cancelPrevQueryFetch = () => {}
   })
 }
 

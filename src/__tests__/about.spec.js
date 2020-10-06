@@ -1,12 +1,11 @@
 import React from "react"
-import { shallow } from "enzyme"
 
 import About from "about"
 
-const createWrapper = () => {
-  return shallow(<About />)
-}
+import renderer from 'react-test-renderer';
+import { StaticRouter } from 'react-router'
+
 
 test("OmdbMain", () => {
-  expect(createWrapper()).toMatchSnapshot()
+  expect(renderer.create(<StaticRouter context={{}}><About/></StaticRouter>)).toMatchSnapshot()
 })
