@@ -31,7 +31,7 @@
     "react-markdown": "^3.3.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^5.2",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "3.4.3",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "respin": "^1.0.1",
@@ -40,8 +40,6 @@
   "devDependencies": {
     "ajv": "^6.2.1",
     "debug": "^3.1.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
     "fetch-mock": "^9.10.7",
     "foreman": "^3.0.1",
     "gh-pages": "^1.1.0",
