@@ -92,6 +92,10 @@ export class FilmList extends React.Component {
   render() {
     return renderFilmList(this.props)
   }
+
+  componentDiCatch(err, errInfo) {
+    console.error(err, errInfo)
+  }
 }
 
 const ConnectedFilmList = connect(state => ({

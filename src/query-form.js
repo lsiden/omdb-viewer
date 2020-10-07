@@ -35,6 +35,10 @@ export class QueryForm extends React.Component {
     }
   }
 
+  componentDidCatch(err, errInfo) {
+    console.error(err, errInfo)
+  }
+
   render() {
     const { query } = this.state
     return (

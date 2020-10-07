@@ -1,5 +1,5 @@
 import React from "react"
-import renderer from 'react-test-renderer';
+import TestRenderer from 'react-test-renderer';
 import { StaticRouter } from 'react-router'
 
 import { FilmDetail } from "film-detail"
@@ -21,14 +21,14 @@ const createDefaultProps = () => {
 const defaultProps = createDefaultProps()
 
 it("renders", () => {
-  expect(renderer.create(<StaticRouter context={{}}>
+  expect(TestRenderer.create(<StaticRouter context={{}}>
     <FilmDetail {...defaultProps} />
   </StaticRouter>)).toMatchSnapshot()
 
 })
 
 it("renders a spinner if isFetching", () => {
-  expect(renderer.create(<StaticRouter context={{}}>
+  expect(TestRenderer.create(<StaticRouter context={{}}>
     <FilmDetail isFetching='true' {...defaultProps} />
   </StaticRouter>)).toMatchSnapshot()
 })

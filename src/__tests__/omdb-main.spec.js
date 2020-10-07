@@ -1,10 +1,12 @@
 import React from "react"
-import { shallow } from "enzyme"
+import TestRenderer from 'react-test-renderer';
+import { Provider } from 'react-redux'
 
 import { OmdbMainUnconnected as OmdbMain } from "omdb-main"
+import store from 'actions/store'
 
 const createWrapper = () => {
-  return shallow(<OmdbMain />)
+  return TestRenderer.create(<Provider store={store}><OmdbMain /></Provider>)
 }
 
 test("OmdbMain", () => {

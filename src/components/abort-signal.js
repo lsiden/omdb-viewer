@@ -59,9 +59,7 @@ Object.defineProperties(AbortSignal.prototype, {
 })
 
 if (typeof Symbol === "function" && typeof Symbol.toStringTag === "symbol") {
-  //eslint-disable-line node/no-unsupported-features
   Object.defineProperty(AbortSignal.prototype, Symbol.toStringTag, {
-    //eslint-disable-line node/no-unsupported-features
     configurable: true,
     value: "AbortSignal",
   })

@@ -18,6 +18,5 @@ it("renders list of titles", () => {
 			<FilmList { ...{films, ...defaultProps} } />
 		</Provider>
 	</StaticRouter>)
-  const filmTitles = testInstance.root.findAllByType(FilmTitle)
-  expect(filmTitles).toHaveLength(films.length)
+  expect(testInstance.root.findAllByType(FilmTitle)).toHaveLength(films.length)
 })

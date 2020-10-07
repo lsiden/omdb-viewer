@@ -1,7 +1,9 @@
 import React from "react"
-import { shallow } from "enzyme"
+import TestRenderer from 'react-test-renderer';
+import { Provider } from 'react-redux'
 
 import { QueryForm } from "query-form"
+import store from 'actions/store'
 
 const onChange = () => {}
 const dispatchQueryFetch = () => {}
@@ -14,10 +16,10 @@ const defaultProps = () => ({
 })
 
 const createWrapper = (props = {}) => {
-  return shallow(<QueryForm {...{ ...defaultProps(), ...props }} />)
+  return TestRenderer.create(<QueryForm {...{ ...defaultProps(), ...props }} />)
 }
 
 it("renders a Form element", () => {
   const wrapper = createWrapper()
-  expect(wrapper.find("form")).toHaveLength(1)
+  expect(wrapper.root.findByType("form")).toMatchSnapshot()
 })
