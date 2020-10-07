@@ -34,10 +34,10 @@ PureMoreButton.propTypes = {
 }
 
 export default connect(
-  state => ({
+  (state) => ({
     isFetching: !!state.isFetching,
   }),
-  dispatch => ({
+  (dispatch) => ({
     dispatchPageFetch: () => dispatch(pageFetch()),
   })
 )(PureMoreButton)

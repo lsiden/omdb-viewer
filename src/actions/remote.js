@@ -27,7 +27,7 @@ function toJson(res) {
   }
 }
 
-const onCatch = e => {
+const onCatch = (e) => {
   console.error(e)
   toastr.error(e, "An error occured", {
     preventDuplicates: true,
@@ -65,7 +65,7 @@ class FetchCancelledError extends Error {
 
 let cancelPrevQueryFetch = () => {}
 
-export const queryFetch = query => dispatch => {
+export const queryFetch = (query) => (dispatch) => {
   cancelPrevQueryFetch()
 
   return new Promise((resolve) => {
@@ -77,27 +77,31 @@ export const queryFetch = query => dispatch => {
       `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&s=${query}`
     ).then((res = {}) => {
       if (res && res.Search && res.Search.length) {
-        return resolve(dispatch(updateFilms(query, res.Search, res.totalResults)))
+        return resolve(
+          dispatch(updateFilms(query, res.Search, res.totalResults))
+        )
       }
       return resolve(dispatch(updateFilms(query, [], 0)))
     })
-  }).catch(e => {
-    if (!e.ignore) {
-      console.error(e)
-    }
-  }).finally(() => {
-    cancelPrevQueryFetch = () => {}
   })
+    .catch((e) => {
+      if (!e.ignore) {
+        console.error(e)
+      }
+    })
+    .finally(() => {
+      cancelPrevQueryFetch = () => {}
+    })
 }
 
 // Returns a Promise
-export const pageFetch = () => dispatch => {
+export const pageFetch = () => (dispatch) => {
   const { query, pageNum = 1 } = store.getState()
   const nextPageNum = pageNum + 1
   return fetchWithTimeout(
     dispatch,
     `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&s=${query}&page=${nextPageNum}`
-  ).then(res => {
+  ).then((res) => {
     if (res && res.Search && res.Search.length) {
       dispatch(appendFilms(nextPageNum, res.Search))
     }
@@ -105,9 +109,9 @@ export const pageFetch = () => dispatch => {
 }
 
 // Returns a Promise
-export const fetchFilmDetails = id => dispatch => {
+export const fetchFilmDetails = (id) => (dispatch) => {
   return fetchWithTimeout(
     dispatch,
     `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&i=${id}&plot=full`
-  ).then(res => dispatch(updateFilmDetails(res)))
+  ).then((res) => dispatch(updateFilmDetails(res)))
 }

@@ -42,7 +42,7 @@ export class QueryForm extends React.Component {
   render() {
     const { query } = this.state
     return (
-      <form ref={ref => (this.ref = ref)} style={formStyle}>
+      <form ref={(ref) => (this.ref = ref)} style={formStyle}>
         <label htmlFor={this.slug}>Search</label>
         <SearchInput
           placeholder="Title"
@@ -95,11 +95,11 @@ QueryForm.propTypes = {
 }
 
 export default connect(
-  state => ({
+  (state) => ({
     query: state.query || "",
   }),
-  dispatch => ({
-    dispatchQueryFetch: query => dispatch(queryFetch(query)),
+  (dispatch) => ({
+    dispatchQueryFetch: (query) => dispatch(queryFetch(query)),
     clearResults: () => dispatch(updateFilms()),
   })
 )(QueryForm)

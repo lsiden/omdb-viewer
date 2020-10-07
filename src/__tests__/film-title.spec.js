@@ -1,6 +1,6 @@
 import React from "react"
-import TestRenderer from 'react-test-renderer';
-import { StaticRouter } from 'react-router'
+import TestRenderer from "react-test-renderer"
+import { StaticRouter } from "react-router"
 
 import FilmTitle from "film-title"
 
@@ -11,7 +11,11 @@ const defaultProps = {
 }
 
 test("click on title invokes dispatchViewDetail()", () => {
-  expect(TestRenderer.create(<StaticRouter context={{}}>
-    <FilmTitle { ...defaultProps } />
-  </StaticRouter>)).toMatchSnapshot()
+  expect(
+    TestRenderer.create(
+      <StaticRouter context={{}}>
+        <FilmTitle {...defaultProps} />
+      </StaticRouter>
+    )
+  ).toMatchSnapshot()
 })

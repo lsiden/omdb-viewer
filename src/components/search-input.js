@@ -21,7 +21,7 @@ const inputStyle = {
   color: "black",
 }
 
-export const SearchInput = props => {
+export const SearchInput = (props) => {
   const { onCancelClick, ...inputProps } = props
   return (
     <div style={wrapperStyle}>

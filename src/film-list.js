@@ -60,7 +60,7 @@ const renderFilmList = ({ films = [], totalResults = 0 }) => (
     ) : (
       <React.Fragment>
         <ul style={ulStyle}>
-          {films.map(filmSummary => (
+          {films.map((filmSummary) => (
             <FilmTitle key={filmSummary.imdbID} filmSummary={filmSummary} />
           ))}
         </ul>
@@ -98,7 +98,7 @@ export class FilmList extends React.Component {
   }
 }
 
-const ConnectedFilmList = connect(state => ({
+const ConnectedFilmList = connect((state) => ({
   films: state.films,
   totalResults: state.totalResults,
 }))(FilmList)
@@ -114,6 +114,6 @@ RoutedFilmList.propTypes = {
   dispatchSetQuery: PropTypes.func.isRequired,
 }
 
-export default connect(null, dispatch => ({
-  dispatchSetQuery: query => dispatch(setQuery(query)),
+export default connect(null, (dispatch) => ({
+  dispatchSetQuery: (query) => dispatch(setQuery(query)),
 }))(RoutedFilmList)

@@ -1,6 +1,6 @@
 import Actions from "./types"
 
-export const updateFilmDetails = filmDetails => ({
+export const updateFilmDetails = (filmDetails) => ({
   type: Actions.UPDATE_FILM_DETAILS,
   data: {
     filmDetails,
@@ -8,22 +8,23 @@ export const updateFilmDetails = filmDetails => ({
 })
 
 export const updateFilms = (query = "", films = [], totalResults = 0) => {
-  return ({
-  type: Actions.UPDATE_FILMS,
-  data: { films, query, totalResults, pageNum: 1 },
-})}
+  return {
+    type: Actions.UPDATE_FILMS,
+    data: { films, query, totalResults, pageNum: 1 },
+  }
+}
 
 export const appendFilms = (pageNum, films) => ({
   type: Actions.APPEND_FILMS,
   data: { films, pageNum },
 })
 
-export const updateIsFetching = isFetching => ({
+export const updateIsFetching = (isFetching) => ({
   type: Actions.UPDATE_IS_FETCHING,
   data: { isFetching },
 })
 
-export const setQuery = query => ({
+export const setQuery = (query) => ({
   type: Actions.SET_QUERY,
   data: { query },
 })

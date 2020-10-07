@@ -28,9 +28,9 @@ const spinnerWrapperStyle = {
   justifyContent: "center",
 }
 
-const itemExists = item => item && item !== "N/A"
+const itemExists = (item) => item && item !== "N/A"
 
-const imdbUrl = imdbID => `https://www.imdb.com/title/${imdbID}`
+const imdbUrl = (imdbID) => `https://www.imdb.com/title/${imdbID}`
 
 const titleBannerStyle = {
   ...bannerHeaderStyle,
@@ -71,8 +71,7 @@ export class FilmDetail extends React.Component {
     setTimeout(() => {
       if (!this.props.filmDetails) {
         window.location.href = "/"
-      }
-      else {
+      } else {
         const { dispatchFetchFilmDetails, imdbID } = this.props
         dispatchFetchFilmDetails(imdbID)
       }
@@ -158,12 +157,12 @@ FilmDetail.propTypes = {
 }
 
 const ConnectedFilmDetail = connect(
-  state => ({
+  (state) => ({
     filmDetails: state.filmDetails,
     isFetching: !!state.isFetching,
   }),
-  dispatch => ({
-    dispatchFetchFilmDetails: imdbID => dispatch(fetchFilmDetails(imdbID)),
+  (dispatch) => ({
+    dispatchFetchFilmDetails: (imdbID) => dispatch(fetchFilmDetails(imdbID)),
   })
 )(FilmDetail)
 
