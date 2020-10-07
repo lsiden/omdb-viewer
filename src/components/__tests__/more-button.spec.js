@@ -1,5 +1,6 @@
 import React from "react"
-import { shallow } from "enzyme"
+import TestRenderer from 'react-test-renderer';
+import { StaticRouter } from 'react-router'
 
 import { PureMoreButton as MoreButton } from "components/more-button"
 
@@ -9,7 +10,9 @@ const defaultProps = () => ({
 })
 
 const createWrapper = (props = {}) => {
-  return shallow(<MoreButton {...{ ...defaultProps(), ...props }} />)
+  return TestRenderer.create(<StaticRouter context={{}}>
+    <MoreButton {...{ ...defaultProps(), ...props }} />
+    </StaticRouter>)
 }
 
 it("matches snapshot when not fetching", () => {

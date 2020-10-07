@@ -66,16 +66,15 @@ export class FilmDetail extends React.Component {
     }
   }
 
-  componentWillMount() {
-    const { dispatchFetchFilmDetails, imdbID } = this.props
-    dispatchFetchFilmDetails(imdbID)
-  }
-
   componentDidMount() {
     document.addEventListener("keydown", this.keyDownListener)
     setTimeout(() => {
       if (!this.props.filmDetails) {
         window.location.href = "/"
+      }
+      else {
+        const { dispatchFetchFilmDetails, imdbID } = this.props
+        dispatchFetchFilmDetails(imdbID)
       }
     }, FETCH_TIMEOUT)
   }

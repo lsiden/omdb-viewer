@@ -1,5 +1,6 @@
 import React from "react"
-import { shallow } from "enzyme"
+import TestRenderer from 'react-test-renderer';
+import { StaticRouter } from 'react-router'
 
 import { CloseButton } from "components/close-button"
 
@@ -12,8 +13,10 @@ const defaultProps = () => {
   }
 }
 
-const createWrapper = (props = {}) =>
-  shallow(<CloseButton {...{ ...defaultProps(), ...props }} />)
+const createWrapper = () =>
+  TestRenderer.create(<StaticRouter>
+    <CloseButton { ...defaultProps() } />
+  </StaticRouter>)
 
 test("click on close invokes onClick()", () => {
   expect(createWrapper()).toMatchSnapshot()

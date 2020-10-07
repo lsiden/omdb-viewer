@@ -12,6 +12,6 @@ const defaultProps = {
 
 test("click on title invokes dispatchViewDetail()", () => {
   expect(TestRenderer.create(<StaticRouter context={{}}>
-  	<FilmTitle { ...defaultProps } />
+    <FilmTitle { ...defaultProps } />
   </StaticRouter>)).toMatchSnapshot()
 })

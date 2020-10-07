@@ -68,7 +68,7 @@ let cancelPrevQueryFetch = () => {}
 export const queryFetch = query => dispatch => {
   cancelPrevQueryFetch()
 
-  return new Promise((resolve, _) => {
+  return new Promise((resolve) => {
     cancelPrevQueryFetch = (_, reject) =>
       reject(new FetchCancelledError(`query "${query}" was cancelled`))
 

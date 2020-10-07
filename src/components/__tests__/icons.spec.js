@@ -1,12 +1,12 @@
 import React from "react"
-import { shallow } from "enzyme"
+import TestRenderer from 'react-test-renderer';
 
 import { CancelIcon, SearchIcon } from "components/icons"
 
 test("SearchIcon matches snapshot", () => {
-  expect(shallow(<SearchIcon />)).toMatchSnapshot()
+  expect(TestRenderer.create(<SearchIcon />)).toMatchSnapshot()
 })
 
 test("CancelIcon matches snapshot", () => {
-  expect(shallow(<CancelIcon />)).toMatchSnapshot()
+  expect(TestRenderer.create(<CancelIcon />)).toMatchSnapshot()
 })

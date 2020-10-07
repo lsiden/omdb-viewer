@@ -24,7 +24,6 @@ it("renders", () => {
   expect(TestRenderer.create(<StaticRouter context={{}}>
     <FilmDetail {...defaultProps} />
   </StaticRouter>)).toMatchSnapshot()
-
 })
 
 it("renders a spinner if isFetching", () => {
