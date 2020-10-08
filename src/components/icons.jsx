@@ -18,7 +18,7 @@ export const SearchIcon = () => (
   <span
     style={searchIconStyle}
     charSet="utf-8"
-    dangerouslySetInnerHTML={{ __html: SEARCH_ICON }} /* eslint-disable-line react/no-danger */
+    dangerouslySetInnerHTML={{ __html: SEARCH_ICON }}
   />
 )
 
@@ -31,14 +31,14 @@ const cancelIconStyle = {
 }
 
 export const CancelIcon = ({ onClick }) => (
-  <span /* eslint-disable-line jsx-a11y/control-has-associated-label */
+  <span
     role="button"
     tabIndex={0}
-    title="Cancel"
+    aria-label="Cancel"
     className="hover-pointer"
     style={cancelIconStyle}
     charSet="utf-8"
-    dangerouslySetInnerHTML={{ __html: CANCEL_ICON }} /* eslint-disable-line react/no-danger */
+    dangerouslySetInnerHTML={{ __html: CANCEL_ICON }}
     onClick={onClick}
     onKeyPress={onClick}
   />

@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const NavButton = ({ style, onClick, children }) => (
-  /* eslint-disable-next-line jsx-a11y/control-has-associated-label */
   <button
     type="button"
     onClick={onClick}
@@ -15,6 +14,7 @@ const NavButton = ({ style, onClick, children }) => (
 
 NavButton.propTypes = {
   style: PropTypes.object,
+  onClick: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
 }
 

@@ -40,6 +40,10 @@ rules:
   react/destructuring-assignment:
     - off
   react/forbid-prop-types:
+    - off # allow PropTypes.object
+  class-methods-use-this:
+    - off
+  react/no-danger:
     - off
 
 overrides:

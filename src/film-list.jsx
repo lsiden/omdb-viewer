@@ -93,7 +93,6 @@ class FilmList extends React.Component {
     scrollToBottom()
   }
 
-  /* eslint-disable-next-line class-methods-use-this */
   componentDidCatch(err, errInfo) {
     console.error(err, errInfo)
   }

@@ -39,17 +39,15 @@ class QueryForm extends React.Component {
     console.error(err, errInfo)
   }
 
-  /* eslint-disable-next-line class-methods-use-this */
   replaceUriHistory(query = '') {
     const uri = query ? `/search/${query}` : '/'
     window.history.replaceState({}, '', uri)
   }
 
   handleCancel() {
-    const { clearResults } = this.props
     this.setState({ query: '' })
     this.replaceUriHistory()
-    clearResults()
+    this.props.clearResults()
   }
 
   handleInput(ev) {

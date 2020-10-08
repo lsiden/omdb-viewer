@@ -1,7 +1,5 @@
 // Remote Actions
 
-/* eslint-disable no-console */
-
 import toastr from 'toastr'
 import promiseFinally from 'promise.prototype.finally'
 
