@@ -1,0 +1,49 @@
+extends:
+  - airbnb
+  - airbnb/hooks
+
+plugins:
+  - jest
+
+env:
+  shared-node-browser: true
+  browser: true
+  jest/globals: true
+
+settings:
+  import/resolver:
+    node:
+      paths: src
+
+globals:
+  navigator: readonly
+  window: readonly
+  it: readonly
+
+rules:
+  semi: 'off'
+  no-unused-vars:
+    - warn
+    - varsIgnorePattern: "^debug$"
+  no-console:
+    - warn
+    - allow:
+      - warn
+      - error
+  jsx-a11y/label-has-associated-control:
+    - error
+    - labelComponents: []
+      labelAttributes: []
+      controlComponents: ["SearchInput"]
+      assert: either
+      depth: 25
+  react/destructuring-assignment:
+    - off
+  react/forbid-prop-types:
+    - off
+
+overrides:
+  - files: "*.spec.jsx"
+    rules:
+      react/jsx-props-no-spreading:
+        - off

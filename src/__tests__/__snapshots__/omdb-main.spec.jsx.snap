@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OmdbMain 1`] = `
+<div>
+  <div>
+    <header
+      style={
+        Object {
+          "background": "linear-gradient(to right, #000040, #3b00ff)",
+          "color": "white",
+          "padding": "10px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <h1
+          style={
+            Object {
+              "fontSize": 22,
+              "marginTop": 10,
+            }
+          }
+        >
+          Open Movie Database Browser
+        </h1>
+        <a
+          href="/about"
+          style={
+            Object {
+              "color": "white",
+            }
+          }
+        >
+          about
+        </a>
+      </div>
+      <form
+        style={
+          Object {
+            "marginBottom": "8pt",
+            "minWidth": "320px",
+          }
+        }
+      >
+        <label>
+          Search
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flex": "1 1",
+                "maxWidth": 600,
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <span
+              charSet="utf-8"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "⚲",
+                }
+              }
+              style={
+                Object {
+                  "color": "#888",
+                  "fontSize": "20pt",
+                  "left": "6pt",
+                  "position": "absolute",
+                  "top": "3pt",
+                  "transform": "rotate(-45deg)",
+                }
+              }
+            />
+            <input
+              placeholder="Title"
+              style={
+                Object {
+                  "color": "black",
+                  "fontSize": "12pt",
+                  "height": "24pt",
+                  "marginTop": "4pt",
+                  "maxWidth": "640px",
+                  "textIndent": "24pt",
+                  "width": "100%",
+                }
+              }
+              type="search"
+            />
+            <span
+              charSet="utf-8"
+              className="hover-pointer"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "❌",
+                }
+              }
+              onClick={[Function]}
+              onKeyPress={[Function]}
+              role="button"
+              style={
+                Object {
+                  "color": "#888",
+                  "fontSize": "18pt",
+                  "position": "absolute",
+                  "right": 5,
+                  "top": 5,
+                }
+              }
+              tabIndex={0}
+              title="Cancel"
+            />
+          </div>
+        </label>
+      </form>
+    </header>
+    <div>
+      <div
+        style={
+          Object {
+            "color": "#210d87",
+            "fontSize": "14pt",
+            "margin": "1em",
+          }
+        }
+      >
+        There are no films that match your query.
+      </div>
+    </div>
+  </div>
+</div>
+`;

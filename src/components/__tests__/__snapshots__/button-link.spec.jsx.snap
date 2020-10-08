@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`click invokes onClick() 1`] = `
+<button
+  className="btn btn-link"
+  onlclick={[MockFunction]}
+  style={Object {}}
+  type="button"
+>
+  Press Me
+</button>
+`;

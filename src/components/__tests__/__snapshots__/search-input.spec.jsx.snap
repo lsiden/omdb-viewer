@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchInput 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "flex": "1 1",
+      "maxWidth": 600,
+      "position": "relative",
+      "width": "100%",
+    }
+  }
+>
+  <span
+    charSet="utf-8"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "⚲",
+      }
+    }
+    style={
+      Object {
+        "color": "#888",
+        "fontSize": "20pt",
+        "left": "6pt",
+        "position": "absolute",
+        "top": "3pt",
+        "transform": "rotate(-45deg)",
+      }
+    }
+  />
+  <input
+    placeholder=""
+    style={
+      Object {
+        "color": "black",
+        "fontSize": "12pt",
+        "height": "24pt",
+        "marginTop": "4pt",
+        "maxWidth": "640px",
+        "textIndent": "24pt",
+        "width": "100%",
+      }
+    }
+    type="search"
+  />
+  <span
+    charSet="utf-8"
+    className="hover-pointer"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "❌",
+      }
+    }
+    onClick={[Function]}
+    onKeyPress={[Function]}
+    role="button"
+    style={
+      Object {
+        "color": "#888",
+        "fontSize": "18pt",
+        "position": "absolute",
+        "right": 5,
+        "top": 5,
+      }
+    }
+    tabIndex={0}
+    title="Cancel"
+  />
+</div>
+`;
