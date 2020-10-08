@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Spinner from 'respin'
 
 import CloseButton from 'components/close-button'
-import ButtonLink from 'components/button-link'
+import NavButton from 'components/nav-button'
 import { scrollToTop } from 'components/scroll'
 import { fetchFilmDetails } from 'actions/remote'
 import { headerStyle as bannerHeaderStyle } from 'style'
@@ -138,13 +138,13 @@ export class FilmDetail extends React.Component {
 
   static renderScrollToTopButton() {
     return (
-      <ButtonLink
+      <NavButton
         style={topButtonStyle}
         onClick={scrollToTop}
         title="Scroll to top of page"
       >
         Top
-      </ButtonLink>
+      </NavButton>
     )
   }
 

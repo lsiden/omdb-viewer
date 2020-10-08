@@ -41,25 +41,20 @@ exports[`renders 1`] = `
         The Hobbit: The Battle of the Five Armies
       </h1>
     </div>
-    <a
-      href="/"
+    <button
+      className="btn btn-link"
       onClick={[Function]}
-    >
-      <button
-        className="btn btn-link"
-        onlclick={[Function]}
-        style={
-          Object {
-            "color": "white",
-            "fontSize": 20,
-            "margin": 20,
-          }
+      style={
+        Object {
+          "color": "white",
+          "fontSize": 20,
+          "margin": 20,
         }
-        type="button"
-      >
-        ✕
-      </button>
-    </a>
+      }
+      type="button"
+    >
+      ✕
+    </button>
   </header>
   <div
     style={
@@ -120,7 +115,7 @@ exports[`renders 1`] = `
     </ul>
     <button
       className="btn btn-link"
-      onlclick={[Function]}
+      onClick={[Function]}
       style={
         Object {
           "marginBottom": 20,
@@ -175,25 +170,20 @@ exports[`renders a spinner if isFetching 1`] = `
         The Hobbit: The Battle of the Five Armies
       </h1>
     </div>
-    <a
-      href="/"
+    <button
+      className="btn btn-link"
       onClick={[Function]}
-    >
-      <button
-        className="btn btn-link"
-        onlclick={[Function]}
-        style={
-          Object {
-            "color": "white",
-            "fontSize": 20,
-            "margin": 20,
-          }
+      style={
+        Object {
+          "color": "white",
+          "fontSize": 20,
+          "margin": 20,
         }
-        type="button"
-      >
-        ✕
-      </button>
-    </a>
+      }
+      type="button"
+    >
+      ✕
+    </button>
   </header>
   <div
     style={
@@ -254,7 +244,7 @@ exports[`renders a spinner if isFetching 1`] = `
     </ul>
     <button
       className="btn btn-link"
-      onlclick={[Function]}
+      onClick={[Function]}
       style={
         Object {
           "marginBottom": 20,

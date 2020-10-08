@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Spinner from 'respin'
 
 import { pageFetch } from 'actions/remote'
-import ButtonLink from 'components/button-link'
+import NavButton from 'components/nav-button'
 
 const spinnerStyle = {
   marginLeft: 45,
@@ -22,9 +22,9 @@ export const PureMoreButton = ({ isFetching, dispatchPageFetch }) => (isFetching
     <Spinner />
   </div>
 ) : (
-  <ButtonLink onClick={dispatchPageFetch} style={buttonStyle} title="More">
+  <NavButton onClick={dispatchPageFetch} style={buttonStyle} title="More">
     More
-  </ButtonLink>
+  </NavButton>
 ))
 
 PureMoreButton.propTypes = {

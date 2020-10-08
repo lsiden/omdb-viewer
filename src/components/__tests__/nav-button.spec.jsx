@@ -1,14 +1,14 @@
 import React from 'react'
 import TestRenderer from 'react-test-renderer';
 
-import ButtonLink from 'components/button-link'
+import NavButton from 'components/nav-button'
 
 const defaultProps = {
   onClick: jest.fn(),
 }
 
 const createWrapper = () => TestRenderer.create(
-  <ButtonLink {...defaultProps}>Press Me</ButtonLink>,
+  <NavButton {...defaultProps}>Press Me</NavButton>,
 )
 
 test('click invokes onClick()', () => {

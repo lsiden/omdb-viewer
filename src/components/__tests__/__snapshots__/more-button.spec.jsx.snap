@@ -140,7 +140,7 @@ exports[`matches snapshot when fetching 1`] = `
 exports[`matches snapshot when not fetching 1`] = `
 <button
   className="btn btn-link"
-  onlclick={[Function]}
+  onClick={[Function]}
   style={
     Object {
       "color": "darkgrey",

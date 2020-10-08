@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
-import ButtonLink from 'components/button-link'
+import NavButton from 'components/nav-button'
 
 const CLOSE_ICON = '\u2715'
 
@@ -11,19 +11,19 @@ const closeButtonStyle = {
   fontSize: 20,
 }
 
-const CloseButton = ({ buttonStyle, onClick }) => {
-  const style = {
-    ...closeButtonStyle,
-    ...buttonStyle,
-  }
+const CloseButton = ({ buttonStyle }) => {
+  const hist = useHistory()
   return (
-    <Link to="/">
-      <ButtonLink onClick={onClick} style={style} title="Close">
-        {CLOSE_ICON}
-      </ButtonLink>
-    </Link>
+    <NavButton
+      onClick={() =>  hist.goBack()}
+      style={ {...closeButtonStyle, ...buttonStyle, }}
+      title="Close"
+    >
+      {CLOSE_ICON}
+    </NavButton>
   )
 }
+
 CloseButton.propTypes = {
   buttonStyle: PropTypes.object,
 }

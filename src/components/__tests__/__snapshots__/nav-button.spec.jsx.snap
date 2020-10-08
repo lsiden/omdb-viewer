@@ -3,7 +3,7 @@
 exports[`click invokes onClick() 1`] = `
 <button
   className="btn btn-link"
-  onlclick={[MockFunction]}
+  onClick={[MockFunction]}
   style={Object {}}
   type="button"
 >

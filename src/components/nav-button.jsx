@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ButtonLink = ({ style, onClick, children }) => (
+const NavButton = ({ style, onClick, children }) => (
   /* eslint-disable-next-line jsx-a11y/control-has-associated-label */
   <button
     type="button"
+    onClick={onClick}
     className="btn btn-link"
     style={style}
   >
@@ -12,13 +13,13 @@ const ButtonLink = ({ style, onClick, children }) => (
   </button>
 )
 
-ButtonLink.propTypes = {
+NavButton.propTypes = {
   style: PropTypes.object,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
 }
 
-ButtonLink.defaultProps = {
+NavButton.defaultProps = {
   style: {},
 }
 
-export default ButtonLink
+export default NavButton

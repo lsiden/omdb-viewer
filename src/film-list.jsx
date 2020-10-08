@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import FilmTitle from 'film-title'
 import MoreButton from 'components/more-button'
 import { scrollToTop, scrollToBottom } from 'components/scroll'
-import ButtonLink from 'components/button-link'
+import NavButton from 'components/nav-button'
 import QueryForm from 'query-form'
 import { headerStyle, titleStyle } from 'style'
 import { setQuery } from 'actions'
@@ -65,13 +65,13 @@ const renderFilmList = ({ films = [], totalResults = 0 }) => (
         </ul>
         <div style={bottomRowStyle}>
           {films.length < totalResults && <MoreButton />}
-          <ButtonLink
+          <NavButton
             onClick={scrollToTop}
             style={topButtonStyle}
             title="Scroll to top of page"
           >
             top
-          </ButtonLink>
+          </NavButton>
         </div>
       </div>
     )}

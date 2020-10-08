@@ -22,25 +22,20 @@ exports[`OmdbMain 1`] = `
     >
       About Open Movie Database Browser
     </h1>
-    <a
-      href="/"
+    <button
+      className="btn btn-link"
       onClick={[Function]}
-    >
-      <button
-        className="btn btn-link"
-        onlclick={[Function]}
-        style={
-          Object {
-            "color": "white",
-            "fontSize": 20,
-            "margin": 20,
-          }
+      style={
+        Object {
+          "color": "white",
+          "fontSize": 20,
+          "margin": 20,
         }
-        type="button"
-      >
-        ✕
-      </button>
-    </a>
+      }
+      type="button"
+    >
+      ✕
+    </button>
   </header>
   <div
     style={

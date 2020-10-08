@@ -10,6 +10,6 @@ const createWrapper = () => TestRenderer.create(
   </StaticRouter>,
 )
 
-test('click on close invokes onClick()', () => {
+test('CloseButton', () => {
   expect(createWrapper()).toMatchSnapshot()
 })
