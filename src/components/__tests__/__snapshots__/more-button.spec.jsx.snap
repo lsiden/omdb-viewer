@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `
+exports[`MoreButton matches snapshot 1`] = `
 <button
   className="btn btn-link"
   onClick={[MockFunction]}

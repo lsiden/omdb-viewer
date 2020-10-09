@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a spinner when details not present 1`] = `
+exports[`FilmDetails renders a spinner when details not present 1`] = `
 <div
   style={
     Object {
@@ -139,7 +139,7 @@ exports[`renders a spinner when details not present 1`] = `
 </div>
 `;
 
-exports[`renders details when present 1`] = `
+exports[`FilmDetails renders details when present 1`] = `
 <div>
   <header
     style={
@@ -167,7 +167,7 @@ exports[`renders details when present 1`] = `
         }
       />
       <br />
-      <h1
+      <h2
         style={
           Object {
             "marginBottom": "5pt",
@@ -176,7 +176,7 @@ exports[`renders details when present 1`] = `
         }
       >
         The Battle of Algiers
-      </h1>
+      </h2>
     </div>
     <button
       className="btn btn-link"

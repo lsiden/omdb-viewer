@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OmdbMain 1`] = `
+exports[`OmdbMain matches snapshot 1`] = `
 <div>
   <header
     style={

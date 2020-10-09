@@ -9,36 +9,40 @@ import store from 'actions/store'
 
 const films = require('./films.json').Search
 
-it('renders list of titles', () => {
-  const dispatchSetQuery = jest.fn()
-  const testInstance = create(
-    <Provider store={store}>
-      <StaticRouter context={{}}>
-        <_FilmList
-          query="a query"
-          films={films}
-          totalResults={films.length}
-          dispatchSetQuery={dispatchSetQuery}
-        />
-      </StaticRouter>
-    </Provider>
-  )
-  expect(testInstance).toMatchSnapshot()
-  expect(testInstance.root.findAllByType(FilmTitle)).toHaveLength(films.length)
-})
+describe('FilmList', () => {
+  it('renders list of titles', () => {
+    const dispatchSetQuery = jest.fn()
+    const wrapper = create(
+      <Provider store={store}>
+        <StaticRouter context={{}}>
+          <_FilmList
+            query="a query"
+            films={films}
+            totalResults={films.length}
+            dispatchSetQuery={dispatchSetQuery}
+          />
+        </StaticRouter>
+      </Provider>
+    )
+    expect(wrapper).toMatchSnapshot()
+    expect(wrapper.root.findAllByType(FilmTitle)).toHaveLength(films.length)
+    expect(wrapper.root.findAllByType('animate').length).toEqual(0)
+  })
 
-it('if no films then calls dispatchSetQuery', () => {
-  const dispatchSetQuery = jest.fn()
-  create(
-    <Provider store={store}>
-      <StaticRouter context={{}}>
-        <_FilmList
-          query="a query"
-          totalResults={0}
-          dispatchSetQuery={dispatchSetQuery}
-        />
-      </StaticRouter>
-    </Provider>
-  )
-  expect(dispatchSetQuery.mock.calls.length).toEqual(1)
+  it('if no films then calls dispatchSetQuery and displays spinner', () => {
+    const dispatchSetQuery = jest.fn()
+    const wrapper = create(
+      <Provider store={store}>
+        <StaticRouter context={{}}>
+          <_FilmList
+            query="a query"
+            totalResults={0}
+            dispatchSetQuery={dispatchSetQuery}
+          />
+        </StaticRouter>
+      </Provider>
+    )
+    expect(dispatchSetQuery.mock.calls.length).toEqual(1)
+    expect(wrapper.root.findAllByType('animate').length).toBeGreaterThan(0)
+  })
 })

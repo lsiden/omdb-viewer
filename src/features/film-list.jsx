@@ -48,6 +48,11 @@ const topButtonStyle = {
   color: 'darkgrey',
 }
 
+const spinnerStyle = {
+  marginLeft: 45,
+  marginBottom: 20,
+}
+
 export class _FilmList extends React.Component {
   componentDidUpdate() {
     scrollToBottom()
@@ -83,10 +88,6 @@ export class _FilmList extends React.Component {
     const { films, totalResults } = this.props
 
     if (!films) {
-      const spinnerStyle = {
-        marginLeft: 45,
-        marginBottom: 20,
-      }
       return <Spinner style={spinnerStyle} />
     }
 

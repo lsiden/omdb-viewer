@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders 1`] = `
+exports[`FilmTitle matches snapshot 1`] = `
 <div>
   <a
     href="/film/tt2310332"

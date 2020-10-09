@@ -1,5 +1,5 @@
 import React from 'react'
-import TestRenderer from 'react-test-renderer';
+import { create } from 'react-test-renderer';
 
 import SearchInput from 'components/search-input'
 
@@ -12,10 +12,12 @@ const defaultProps = () => ({
 
 // TODO test that onChancelClick and onChange get called
 
-const createWrapper = () => TestRenderer.create(
-  <SearchInput {...defaultProps()} />
-)
+describe('SearchInput', () => {
+	const createWrapper = () => create(
+	  <SearchInput {...defaultProps()} />
+	)
 
-test('SearchInput', () => {
-  expect(createWrapper()).toMatchSnapshot()
+	test('SearchInput', () => {
+	  expect(createWrapper()).toMatchSnapshot()
+	})
 })

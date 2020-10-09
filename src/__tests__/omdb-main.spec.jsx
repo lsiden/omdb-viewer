@@ -11,6 +11,8 @@ const createWrapper = () => TestRenderer.create(
   </StaticRouter>,
 )
 
-test('OmdbMain', () => {
-  expect(createWrapper()).toMatchSnapshot()
+describe('OmdbMain', () => {
+	test('matches snapshot', () => {
+	  expect(createWrapper()).toMatchSnapshot()
+	})
 })

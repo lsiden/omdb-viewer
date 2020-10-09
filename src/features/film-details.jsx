@@ -29,28 +29,13 @@ const spinnerWrapperStyle = {
 
 const itemExists = (item) => item && item !== 'N/A'
 const imdbUrl = (imdbID) => `https://www.imdb.com/title/${imdbID}`
-
 const titleBannerStyle = {
   ...bannerHeaderStyle,
   display: 'flex',
   justifyContent: 'space-between',
 }
 
-const TitleBanner = ({ title }) => (
-  <header style={titleBannerStyle}>
-    <div style={{ lineHeight: 1 }}>
-      <h1 style={{ fontSize: 24 }}>{BANNER_TITLE}</h1>
-      <br />
-      <h1 style={{ ...titleStyle, marginTop: 0 }}>{title}</h1>
-    </div>
-    <CloseButton buttonStyle={{ color: 'white' }} />
-  </header>
-)
-TitleBanner.propTypes = {
-  title: PropTypes.string.isRequired,
-}
-
-export class FilmDetails_ extends React.Component {
+export class _FilmDetails extends React.Component {
   static keyDownListener(ev) {
     if (ev.keyCode === ESC_KEY) {
       window.location.href = '/'
@@ -64,7 +49,7 @@ export class FilmDetails_ extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', FilmDetails_.keyDownListener)
+    document.addEventListener('keydown', _FilmDetails.keyDownListener)
     setTimeout(() => {
       if (!this.props.filmDetails) {
         const { dispatchFetchFilmDetails, imdbID } = this.props
@@ -74,20 +59,25 @@ export class FilmDetails_ extends React.Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', FilmDetails_.keyDownListener)
+    document.removeEventListener('keydown', _FilmDetails.keyDownListener)
   }
 
   renderTitle() {
-    const { filmDetails } = this.props
-    return <TitleBanner title={filmDetails.Title} />
+    return (
+      <header style={titleBannerStyle}>
+        <div style={{ lineHeight: 1 }}>
+          <h1 style={{ fontSize: 24 }}>{BANNER_TITLE}</h1>
+          <br />
+          <h2 style={{ ...titleStyle, marginTop: 0 }}>{this.props.filmDetails.Title}</h2>
+        </div>
+        <CloseButton buttonStyle={{ color: 'white' }} />
+      </header>
+      )
   }
 
   renderDetails() {
     const { filmDetails } = this.props
-    const FilmDetail = ({ name, label }) => (
-      <li>{label || name}: {filmDetails[name]}</li>
-    )
-
+    const FilmDetail = ({ name, label }) => (<li>{label || name}: {filmDetails[name]}</li>)
     return (
       <ul style={detailsStyle}>
         <FilmDetail name="Year" />
@@ -142,19 +132,19 @@ export class FilmDetails_ extends React.Component {
             style={{ marginTop: 10 }}
           />
           {this.renderDetails()}
-          {FilmDetails_.renderScrollToTopButton()}
+          {_FilmDetails.renderScrollToTopButton()}
         </div>
       </div>
     )
   }
 }
 
-FilmDetails_.propTypes = {
+_FilmDetails.propTypes = {
   imdbID: PropTypes.string.isRequired,
   filmDetails: PropTypes.object,
   dispatchFetchFilmDetails: PropTypes.func.isRequired,
 }
-FilmDetails_.defaultProps = {
+_FilmDetails.defaultProps = {
   filmDetails: null,
 }
 
@@ -165,4 +155,4 @@ export default connect(
   (dispatch) => ({
     dispatchFetchFilmDetails: (imdbID) => dispatch(fetchFilmDetails(imdbID)),
   }),
-)(FilmDetails_)
+)(_FilmDetails)

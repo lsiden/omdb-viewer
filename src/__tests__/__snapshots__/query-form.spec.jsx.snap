@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a Form element 1`] = `
+exports[`QueryForm renders a Form element 1`] = `
 <form
   style={
     Object {

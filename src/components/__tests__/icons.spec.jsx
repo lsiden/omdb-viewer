@@ -1,12 +1,16 @@
 import React from 'react'
-import TestRenderer from 'react-test-renderer';
+import { create } from 'react-test-renderer';
 
 import { CancelIcon, SearchIcon } from 'components/icons'
 
-test('SearchIcon matches snapshot', () => {
-  expect(TestRenderer.create(<SearchIcon />)).toMatchSnapshot()
+describe('SearchIcon', () => {
+	test('matches snapshot', () => {
+	  expect(create(<SearchIcon />)).toMatchSnapshot()
+	})
 })
 
-test('CancelIcon matches snapshot', () => {
-  expect(TestRenderer.create(<CancelIcon />)).toMatchSnapshot()
+describe('CancelIcon', () => {
+	test('matches snapshot', () => {
+	  expect(create(<CancelIcon />)).toMatchSnapshot()
+	})
 })

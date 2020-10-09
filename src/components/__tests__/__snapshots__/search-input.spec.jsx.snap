@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchInput 1`] = `
+exports[`SearchInput SearchInput 1`] = `
 <div
   style={
     Object {
