@@ -20,7 +20,7 @@ exports[`OmdbMain 1`] = `
         }
       }
     >
-      About Open Movie Database Browser
+      About undefined
     </h1>
     <button
       className="btn btn-link"

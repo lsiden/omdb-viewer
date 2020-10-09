@@ -27,9 +27,7 @@ exports[`OmdbMain 1`] = `
               "marginTop": 10,
             }
           }
-        >
-          Open Movie Database Browser
-        </h1>
+        />
         <a
           href="/about"
           style={
@@ -128,7 +126,7 @@ exports[`OmdbMain 1`] = `
       <div
         style={
           Object {
-            "color": "#210d87",
+            "color": undefined,
             "fontSize": "14pt",
             "margin": "1em",
           }

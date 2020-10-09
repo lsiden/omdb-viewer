@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-import FilmList from 'film-list'
-import FilmDetails from 'film-details'
-import About from 'about'
+import FilmList from 'features/film-list'
+import FilmDetails from 'features/film-details'
+import About from 'features/about'
 import store from 'actions/store'
 
 // FIXME - this may no longer be needed after Github enabled HTTPS to github pages

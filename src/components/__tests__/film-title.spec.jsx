@@ -2,9 +2,9 @@ import React from 'react'
 import TestRenderer from 'react-test-renderer'
 import { StaticRouter } from 'react-router'
 
-import FilmTitle from 'film-title'
+import FilmTitle from 'components/film-title'
 
-const films = require('./films.json').Search
+const films = require('features/__tests__/films.json').Search
 
 const defaultProps = {
   filmSummary: films[0],

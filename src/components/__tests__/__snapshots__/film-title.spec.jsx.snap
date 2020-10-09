@@ -7,7 +7,7 @@ exports[`click on title invokes dispatchViewDetail() 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "color": "#210d87",
+        "color": undefined,
       }
     }
     title="View film details"

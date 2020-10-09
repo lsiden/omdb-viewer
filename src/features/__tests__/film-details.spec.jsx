@@ -2,7 +2,7 @@ import React from 'react'
 import TestRenderer from 'react-test-renderer'
 import { Provider } from 'react-redux'
 
-import { FilmDetails_ } from 'film-details'
+import { FilmDetails_ } from 'features/film-details'
 import store from 'actions/store'
 
 const filmDetails = require('./film-details.json')

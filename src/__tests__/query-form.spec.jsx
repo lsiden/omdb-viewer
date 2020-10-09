@@ -2,7 +2,7 @@ import React from 'react'
 import TestRenderer from 'react-test-renderer'
 import { Provider } from 'react-redux'
 
-import QueryForm from 'query-form'
+import QueryForm from 'components/query-form'
 import store from 'actions/store'
 
 const defaultProps = {

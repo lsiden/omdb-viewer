@@ -1,6 +1,6 @@
 import React from 'react'
 
-import About from 'about'
+import About from 'features/about'
 
 import TestRenderer from 'react-test-renderer'
 import { StaticRouter } from 'react-router'

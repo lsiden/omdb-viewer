@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import FilmTitle from 'film-title'
+import FilmTitle from 'components/film-title'
 import MoreButton from 'components/more-button'
 import { scrollToTop, scrollToBottom } from 'components/scroll'
 import NavButton from 'components/nav-button'
-import QueryForm from 'query-form'
+import QueryForm from 'components/query-form'
 import { headerStyle, titleStyle } from 'style'
 import { setQuery } from 'actions'
-import { BANNER_TITLE, TITLE_COLOR } from './constants'
+import { BANNER_TITLE, TITLE_COLOR } from 'constants'
 
 const Banner = () => (
   <header style={headerStyle}>

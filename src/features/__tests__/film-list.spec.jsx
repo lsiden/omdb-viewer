@@ -3,8 +3,8 @@ import TestRenderer from 'react-test-renderer'
 import { StaticRouter } from 'react-router'
 import { Provider } from 'react-redux'
 
-import FilmList from 'film-list'
-import FilmTitle from 'film-title'
+import FilmList from 'features/film-list'
+import FilmTitle from 'components/film-title'
 import store from 'actions/store'
 import { updateFilms } from 'actions'
 
