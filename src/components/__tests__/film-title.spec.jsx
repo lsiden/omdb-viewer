@@ -6,15 +6,11 @@ import FilmTitle from 'components/film-title'
 
 const films = require('features/__tests__/films.json').Search
 
-const defaultProps = {
-  filmSummary: films[0],
-}
-
-test('click on title invokes dispatchViewDetail()', () => {
+test('renders', () => {
   expect(
     TestRenderer.create(
       <StaticRouter context={{}}>
-        <FilmTitle {...defaultProps} />
+        <FilmTitle filmSummary={films[0]} />
       </StaticRouter>,
     ),
   ).toMatchSnapshot()

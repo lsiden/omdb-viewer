@@ -1,16 +1,22 @@
 import React from 'react'
-import TestRenderer from 'react-test-renderer';
+import { create, act } from 'react-test-renderer';
 
 import NavButton from 'components/nav-button'
 
-const defaultProps = {
-  onClick: jest.fn(),
+const createWrapper = () => {
+  const mockFn = jest.fn()
+  return create(
+    <NavButton onClick={mockFn}>Press Me</NavButton>,
+  )
 }
 
-const createWrapper = () => TestRenderer.create(
-  <NavButton {...defaultProps}>Press Me</NavButton>,
-)
-
-test('click invokes onClick()', () => {
+test('matches snapshot', () => {
   expect(createWrapper()).toMatchSnapshot()
+})
+
+test('onClick', () => {
+  const { root } = createWrapper()
+  const btn = root.findByType('button')
+  act(btn.props.onClick)
+  expect(btn.props.onClick.mock.calls.length).toEqual(1)
 })

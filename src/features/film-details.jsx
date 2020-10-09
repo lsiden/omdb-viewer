@@ -131,23 +131,21 @@ export class FilmDetails_ extends React.Component {
           <Spinner size={64} />
         </div>
       )
-    } else {
-      return (
-        <div>
-          {this.renderTitle()}
-          <div style={{ marginLeft: 20 }}>
-            <img
-              src={filmDetails.Poster}
-              alt="poster"
-              style={{ marginTop: 10 }}
-            />
-            {this.renderDetails()}
-            {FilmDetails_.renderScrollToTopButton()}
-          </div>
-        </div>
-      )
     }
-    return null
+    return (
+      <div>
+        {this.renderTitle()}
+        <div style={{ marginLeft: 20 }}>
+          <img
+            src={filmDetails.Poster}
+            alt="poster"
+            style={{ marginTop: 10 }}
+          />
+          {this.renderDetails()}
+          {FilmDetails_.renderScrollToTopButton()}
+        </div>
+      </div>
+    )
   }
 }
 

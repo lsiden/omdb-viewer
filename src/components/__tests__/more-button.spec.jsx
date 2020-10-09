@@ -1,24 +1,17 @@
 import React from 'react'
-import TestRenderer from 'react-test-renderer';
-import { StaticRouter } from 'react-router'
+import { create, act } from 'react-test-renderer';
 
-import { PureMoreButton as MoreButton } from 'components/more-button'
+import { _MoreButton } from 'components/more-button'
 
-const defaultProps = () => ({
-  isFetching: false,
-  dispatchPageFetch: () => {},
+it('matches snapshot', () => {
+  const wrapper = create(<_MoreButton dispatchPageFetch={jest.fn()} />)
+  expect(wrapper).toMatchSnapshot()
 })
 
-const createWrapper = (props = {}) => TestRenderer.create(
-  <StaticRouter context={{}}>
-    <MoreButton {...{ ...defaultProps(), ...props }} />
-  </StaticRouter>,
-)
-
-it('matches snapshot when not fetching', () => {
-  expect(createWrapper({ isFetching: false })).toMatchSnapshot()
-})
-
-it('matches snapshot when fetching', () => {
-  expect(createWrapper({ isFetching: true })).toMatchSnapshot()
+it('calls dispatchPageFetch', () => {
+  const dispatchPageFetch = jest.fn()
+  const { root } = create(<_MoreButton dispatchPageFetch={dispatchPageFetch} />)
+  const btn = root.findByType('button')
+  act(btn.props.onClick)
+  expect(dispatchPageFetch.mock.calls.length).toEqual(1)
 })

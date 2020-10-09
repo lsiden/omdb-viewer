@@ -48,7 +48,7 @@ const topButtonStyle = {
   color: 'darkgrey',
 }
 
-export class FilmList_ extends React.Component {
+export class _FilmList extends React.Component {
   componentDidUpdate() {
     scrollToBottom()
   }
@@ -57,23 +57,7 @@ export class FilmList_ extends React.Component {
     console.error(err, errInfo)
   }
 
-  render_inner() {
-    const {films, totalResults} = this.props
-
-    if (!films) {
-      return <Spinner />
-    }
-
-    if (films.length === 0) {
-      return (
-        <div>
-          <div style={msgStyle}>
-            There are no films that match your query.
-          </div>
-        </div>
-      )
-    }
-
+  renderButtonRow(films, totalResults) {
     return (
       <div>
         <ul style={ulStyle}>
@@ -95,29 +79,52 @@ export class FilmList_ extends React.Component {
     )
   }
 
+  renderInner() {
+    const { films, totalResults } = this.props
+
+    if (!films) {
+      const spinnerStyle = {
+        marginLeft: 45,
+        marginBottom: 20,
+      }
+      return <Spinner style={spinnerStyle} />
+    }
+
+    if (films.length === 0) {
+      return (
+        <div style={msgStyle}>
+          There are no films that match your query.
+        </div>
+      )
+    }
+    return this.renderButtonRow(films, totalResults)
+  }
+
   render() {
-    const  { query, films, totalResults } = this.props
+    const { query, films, dispatchSetQuery } = this.props
+
     if (!films) {
       dispatchSetQuery(query)
     }
     return (
       <div>
         <Banner />
-        {this.render_inner()}
+        {this.renderInner()}
       </div>
     )
   }
 }
 
-FilmList_.propTypes = {
-  query: PropTypes.string.isRequired,
+_FilmList.propTypes = {
+  query: PropTypes.string,
   films: PropTypes.arrayOf(PropTypes.object),
   totalResults: PropTypes.number,
+  dispatchSetQuery: PropTypes.func.isRequired,
 }
 
-FilmList_.defaultProps = {
+_FilmList.defaultProps = {
   query: '',
-  films: [],
+  films: null,
   totalResults: 0,
 }
 
@@ -130,4 +137,4 @@ export default connect(
   (dispatch) => ({
     dispatchSetQuery: (query) => dispatch(setQuery(query)),
   }),
-)(FilmList_)
+)(_FilmList)

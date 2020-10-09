@@ -1,4 +1,4 @@
-import { updateFilms, updateIsFetching } from 'actions'
+import { updateFilms } from 'actions'
 import Actions from 'actions/types'
 
 test('updateFilms(list)', () => {

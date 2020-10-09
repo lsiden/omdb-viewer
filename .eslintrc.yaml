@@ -39,6 +39,8 @@ rules:
       depth: 25
   comma-dangle:
     - off
+  no-underscore-dangle:
+    - off
   class-methods-use-this:
     - off
   react/no-danger:
@@ -50,6 +52,8 @@ rules:
   react/forbid-prop-types:
     - off # allow PropTypes.object
   react/jsx-one-expression-per-line:
+    - off
+  react/jsx-pascal-case:
     - off
 
 overrides:

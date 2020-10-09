@@ -1,15 +1,10 @@
 import React from 'react'
-import TestRenderer from 'react-test-renderer';
-import { StaticRouter } from 'react-router'
+import { create } from 'react-test-renderer';
 
 import CloseButton from 'components/close-button'
 
-const createWrapper = () => TestRenderer.create(
-  <StaticRouter>
-    <CloseButton onClick={jest.fn()} />
-  </StaticRouter>,
-)
+const createWrapper = () => create(<CloseButton />)
 
-test('CloseButton', () => {
+test('CloseButton rendering', () => {
   expect(createWrapper()).toMatchSnapshot()
 })

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`click on title invokes dispatchViewDetail() 1`] = `
+exports[`renders 1`] = `
 <div>
   <a
     href="/film/tt2310332"
