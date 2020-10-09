@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import Spinner from 'respin'
 
 import FilmTitle from 'components/film-title'
 import MoreButton from 'components/more-button'
@@ -47,16 +48,33 @@ const topButtonStyle = {
   color: 'darkgrey',
 }
 
-const renderFilmList = ({ films = [], totalResults = 0 }) => (
-  <div>
-    <Banner />
-    {films.length === 0 ? (
-      <div>
-        <div style={msgStyle}>
-          There are no films that match your query.
+export class FilmList_ extends React.Component {
+  componentDidUpdate() {
+    scrollToBottom()
+  }
+
+  componentDidCatch(err, errInfo) {
+    console.error(err, errInfo)
+  }
+
+  render_inner() {
+    const {films, totalResults} = this.props
+
+    if (!films) {
+      return <Spinner />
+    }
+
+    if (films.length === 0) {
+      return (
+        <div>
+          <div style={msgStyle}>
+            There are no films that match your query.
+          </div>
         </div>
-      </div>
-    ) : (
+      )
+    }
+
+    return (
       <div>
         <ul style={ulStyle}>
           {films.map((filmSummary) => (
@@ -74,49 +92,42 @@ const renderFilmList = ({ films = [], totalResults = 0 }) => (
           </NavButton>
         </div>
       </div>
-    )}
-  </div>
-)
+    )
+  }
 
-renderFilmList.propTypes = {
+  render() {
+    const  { query, films, totalResults } = this.props
+    if (!films) {
+      dispatchSetQuery(query)
+    }
+    return (
+      <div>
+        <Banner />
+        {this.render_inner()}
+      </div>
+    )
+  }
+}
+
+FilmList_.propTypes = {
+  query: PropTypes.string.isRequired,
   films: PropTypes.arrayOf(PropTypes.object),
   totalResults: PropTypes.number,
 }
 
-renderFilmList.defaultProps = {
+FilmList_.defaultProps = {
+  query: '',
   films: [],
   totalResults: 0,
 }
 
-class FilmList extends React.Component {
-  componentDidUpdate() {
-    scrollToBottom()
-  }
-
-  componentDidCatch(err, errInfo) {
-    console.error(err, errInfo)
-  }
-
-  render() {
-    return renderFilmList(this.props)
-  }
-}
-
-const ConnectedFilmList = connect((state) => ({
-  films: state.films,
-  totalResults: state.totalResults,
-}))(FilmList)
-
-const RoutedFilmList = ({ match, dispatchSetQuery }) => {
-  dispatchSetQuery(match.params.query)
-  return <ConnectedFilmList />
-}
-
-RoutedFilmList.propTypes = {
-  match: PropTypes.object.isRequired,
-  dispatchSetQuery: PropTypes.func.isRequired,
-}
-
-export default connect(null, (dispatch) => ({
-  dispatchSetQuery: (query) => dispatch(setQuery(query)),
-}))(RoutedFilmList)
+export default connect(
+  (state, ownProps) => ({
+    query: ownProps.query,
+    films: state.films,
+    totalResults: state.totalResults,
+  }),
+  (dispatch) => ({
+    dispatchSetQuery: (query) => dispatch(setQuery(query)),
+  }),
+)(FilmList_)
