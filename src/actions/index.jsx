@@ -19,11 +19,6 @@ export const appendFilms = (pageNum, films) => ({
   data: { films, pageNum },
 })
 
-export const updateIsFetching = (isFetching) => ({
-  type: Actions.UPDATE_IS_FETCHING,
-  data: { isFetching },
-})
-
 export const setQuery = (query) => ({
   type: Actions.SET_QUERY,
   data: { query },

@@ -37,13 +37,19 @@ rules:
       controlComponents: ["SearchInput"]
       assert: either
       depth: 25
+  comma-dangle:
+    - off
+  class-methods-use-this:
+    - off
+  react/no-danger:
+    - off
+  object-curly-newline:
+    - off
   react/destructuring-assignment:
     - off
   react/forbid-prop-types:
     - off # allow PropTypes.object
-  class-methods-use-this:
-    - off
-  react/no-danger:
+  react/jsx-one-expression-per-line:
     - off
 
 overrides:

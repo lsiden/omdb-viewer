@@ -5,22 +5,6 @@ Array [
   Array [
     Object {
       "data": Object {
-        "isFetching": true,
-      },
-      "type": "update-is-fetching",
-    },
-  ],
-  Array [
-    Object {
-      "data": Object {
-        "isFetching": false,
-      },
-      "type": "update-is-fetching",
-    },
-  ],
-  Array [
-    Object {
-      "data": Object {
         "filmDetails": Object {
           "filmDetails": Object {
             "director": "Joe Director",
@@ -39,22 +23,6 @@ Array [
   Array [
     Object {
       "data": Object {
-        "isFetching": true,
-      },
-      "type": "update-is-fetching",
-    },
-  ],
-  Array [
-    Object {
-      "data": Object {
-        "isFetching": false,
-      },
-      "type": "update-is-fetching",
-    },
-  ],
-  Array [
-    Object {
-      "data": Object {
         "films": Array [
           "Rocky Horror 2",
           "Halloween 2",
@@ -69,22 +37,6 @@ Array [
 
 exports[`queryFetch()(dispatch) invokes dispatch({type: Actions.UPDATE_FILMS}) 1`] = `
 Array [
-  Array [
-    Object {
-      "data": Object {
-        "isFetching": true,
-      },
-      "type": "update-is-fetching",
-    },
-  ],
-  Array [
-    Object {
-      "data": Object {
-        "isFetching": false,
-      },
-      "type": "update-is-fetching",
-    },
-  ],
   Array [
     Object {
       "data": Object {

@@ -4,4 +4,4 @@ export const QUERY_DELAY = 300
 export const ESC_KEY = 27
 export const TITLE_COLOR = '#210d87'
 export const BANNER_TITLE = 'Open Movie Database Browser'
-export const FETCH_TIMEOUT = 8000
+export const FETCH_TIMEOUT = 60000 // TODO change this back

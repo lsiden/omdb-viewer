@@ -21,20 +21,29 @@ const inputStyle = {
   color: 'black',
 }
 
-const SearchInput = ({ onCancelClick, placeholder }) => (
+const SearchInput = ({ value, onCancelClick, onChange, placeholder }) => (
   <div style={wrapperStyle}>
     <SearchIcon />
-    <input type="search" style={inputStyle} placeholder={placeholder} />
+    <input
+      type="search"
+      value={value}
+      placeholder={placeholder}
+      onChange={onChange}
+      style={inputStyle}
+    />
     <CancelIcon onClick={onCancelClick} />
   </div>
 )
 
 SearchInput.propTypes = {
+  onChange: PropTypes.func.isRequired,
   onCancelClick: PropTypes.func.isRequired,
+  value: PropTypes.string,
   placeholder: PropTypes.string,
 }
 
 SearchInput.defaultProps = {
+  value: '',
   placeholder: '',
 }
 

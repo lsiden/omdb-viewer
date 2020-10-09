@@ -81,6 +81,7 @@ exports[`OmdbMain 1`] = `
               }
             />
             <input
+              onChange={[Function]}
               placeholder="Title"
               style={
                 Object {
@@ -94,8 +95,10 @@ exports[`OmdbMain 1`] = `
                 }
               }
               type="search"
+              value=""
             />
             <span
+              aria-label="Cancel"
               charSet="utf-8"
               className="hover-pointer"
               dangerouslySetInnerHTML={
@@ -116,7 +119,6 @@ exports[`OmdbMain 1`] = `
                 }
               }
               tabIndex={0}
-              title="Cancel"
             />
           </div>
         </label>

@@ -8,7 +8,6 @@ import {
   updateFilms,
   appendFilms,
   updateFilmDetails,
-  updateIsFetching,
 } from '.'
 import { FETCH_TIMEOUT } from '../constants'
 
@@ -44,13 +43,11 @@ const fetchWithTimeout = (dispatch, uri) => {
       )
     }, FETCH_TIMEOUT)
   })
-  dispatch(updateIsFetching(true))
   return Promise.race([timeoutPromise, fetch(uri)])
     .then(toJson)
     .catch(onCatch)
     .finally(() => {
       clearTimeout(timeout)
-      dispatch(updateIsFetching(false))
     })
 }
 

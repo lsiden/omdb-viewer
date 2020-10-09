@@ -31,7 +31,8 @@ exports[`SearchInput 1`] = `
     }
   />
   <input
-    placeholder=""
+    onChange={[Function]}
+    placeholder="placeholder"
     style={
       Object {
         "color": "black",
@@ -44,8 +45,10 @@ exports[`SearchInput 1`] = `
       }
     }
     type="search"
+    value="value"
   />
   <span
+    aria-label="Cancel"
     charSet="utf-8"
     className="hover-pointer"
     dangerouslySetInnerHTML={
@@ -66,7 +69,6 @@ exports[`SearchInput 1`] = `
       }
     }
     tabIndex={0}
-    title="Cancel"
   />
 </div>
 `;

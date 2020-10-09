@@ -13,21 +13,3 @@ test('updateFilms(list)', () => {
     },
   })
 })
-
-test('updateIsFetching(true)', () => {
-  expect(updateIsFetching(true)).toMatchObject({
-    type: Actions.UPDATE_IS_FETCHING,
-    data: {
-      isFetching: true,
-    },
-  })
-})
-
-test('updateIsFetching(false)', () => {
-  expect(updateIsFetching(false)).toMatchObject({
-    type: Actions.UPDATE_IS_FETCHING,
-    data: {
-      isFetching: false,
-    },
-  })
-})

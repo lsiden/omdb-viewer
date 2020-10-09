@@ -77,6 +77,7 @@ class QueryForm extends React.Component {
 
   render() {
     const { query } = this.state
+    // TODO do we still need 'ref'?
     return (
       <form ref={(ref) => { this.ref = ref }} style={formStyle}>
         <label>

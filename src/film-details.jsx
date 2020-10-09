@@ -50,7 +50,7 @@ TitleBanner.propTypes = {
   title: PropTypes.string.isRequired,
 }
 
-export class FilmDetail extends React.Component {
+export class FilmDetails_ extends React.Component {
   static keyDownListener(ev) {
     if (ev.keyCode === ESC_KEY) {
       window.location.href = '/'
@@ -64,11 +64,9 @@ export class FilmDetail extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', FilmDetail.keyDownListener)
+    document.addEventListener('keydown', FilmDetails_.keyDownListener)
     setTimeout(() => {
       if (!this.props.filmDetails) {
-        window.location.href = '/'
-      } else {
         const { dispatchFetchFilmDetails, imdbID } = this.props
         dispatchFetchFilmDetails(imdbID)
       }
@@ -76,7 +74,7 @@ export class FilmDetail extends React.Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', FilmDetail.keyDownListener)
+    document.removeEventListener('keydown', FilmDetails_.keyDownListener)
   }
 
   renderTitle() {
@@ -86,49 +84,25 @@ export class FilmDetail extends React.Component {
 
   renderDetails() {
     const { filmDetails } = this.props
+    const FilmDetail = ({ name, label }) => (
+      <li>{label || name}: {filmDetails[name]}</li>
+    )
+
     return (
       <ul style={detailsStyle}>
-        <li>{filmDetails.Year}</li>
-        <li>
-          Directed by
-          {filmDetails.Director}
-        </li>
-        <li>
-          Written by
-          {filmDetails.Writer}
-        </li>
-        <li>
-          Cast:
-          {filmDetails.Actors}
-        </li>
-        <li>
-          Language:
-          {filmDetails.Language}
-        </li>
-        {itemExists(filmDetails.Awards) && (
-          <li>
-            Awards:
-            {filmDetails.Awards}
-          </li>
-        )}
-        <li>
-          Run Time:
-          {filmDetails.Runtime}
-        </li>
-        <li>
-          IMDB Rating:
-          {filmDetails.imdbRating}
-          /10
-        </li>
-        <li>
-          Box Office:
-          {filmDetails.BoxOffice}
-        </li>
-        {itemExists(filmDetails.Website) && (
-          <li>
-            <a href={filmDetails.Website}>Official website</a>
-          </li>
-        )}
+        <FilmDetail name="Year" />
+        <FilmDetail name="Director" />
+        <FilmDetail name="Writer" />
+        <FilmDetail name="Actors" label="Cast" />
+        <FilmDetail name="Language" />
+        {itemExists(filmDetails.Awards) && <FilmDetail name="Awards" />}
+        <FilmDetail name="Runtime" label="Length" />
+        <FilmDetail name="imdbRating" label="IMDB Rating" />
+        <FilmDetail name="BoxOffice" />
+        {
+          itemExists(filmDetails.Website)
+          && <FilmDetail key="Website" label="Official Website" />
+        }
         <li>
           <a href={imdbUrl(filmDetails.imdbID)}>IMDB page</a>
         </li>
@@ -149,16 +123,15 @@ export class FilmDetail extends React.Component {
   }
 
   render() {
-    const { filmDetails, isFetching } = this.props
-    if (isFetching) {
+    const { filmDetails } = this.props
+
+    if (!filmDetails) {
       return (
         <div style={spinnerWrapperStyle}>
           <Spinner size={64} />
         </div>
       )
-    }
-
-    if (filmDetails) {
+    } else {
       return (
         <div>
           {this.renderTitle()}
@@ -169,7 +142,7 @@ export class FilmDetail extends React.Component {
               style={{ marginTop: 10 }}
             />
             {this.renderDetails()}
-            {FilmDetail.renderScrollToTopButton()}
+            {FilmDetails_.renderScrollToTopButton()}
           </div>
         </div>
       )
@@ -178,37 +151,20 @@ export class FilmDetail extends React.Component {
   }
 }
 
-FilmDetail.propTypes = {
+FilmDetails_.propTypes = {
   imdbID: PropTypes.string.isRequired,
-  filmDetails: PropTypes.object.isRequired,
-  isFetching: PropTypes.bool.isRequired,
+  filmDetails: PropTypes.object,
   dispatchFetchFilmDetails: PropTypes.func.isRequired,
 }
+FilmDetails_.defaultProps = {
+  filmDetails: null,
+}
 
-const ConnectedFilmDetail = connect(
+export default connect(
   (state) => ({
     filmDetails: state.filmDetails,
-    isFetching: !!state.isFetching,
   }),
   (dispatch) => ({
     dispatchFetchFilmDetails: (imdbID) => dispatch(fetchFilmDetails(imdbID)),
   }),
-)(FilmDetail)
-
-const RoutedFilmDetail = ({ match }) => {
-  const {
-    imdbID, dispatchFetchFilmDetails,
-  } = match.params
-  return (
-    <ConnectedFilmDetail
-      imdbID={imdbID}
-      dispatchFetchFilmDetails={dispatchFetchFilmDetails}
-    />
-  )
-}
-
-RoutedFilmDetail.propTypes = {
-  match: PropTypes.object.isRequired,
-}
-
-export default RoutedFilmDetail
+)(FilmDetails_)
