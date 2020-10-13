@@ -4,13 +4,12 @@
  * So we have to guard against duplicate items.
  */
 
-// TODO refactor this to not update uniqueIds
 const reduceUniqueFilms = (uniqueIds, res, film) => {
   const id = film.imdbID
 
   if (!uniqueIds[id]) {
     res.push(film)
-    uniqueIds[id] = id
+    uniqueIds[id] = id /* eslint-disable-line no-param-reassign */
   }
   return res
 }
