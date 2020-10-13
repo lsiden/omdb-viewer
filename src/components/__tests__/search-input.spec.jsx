@@ -10,8 +10,6 @@ const defaultProps = () => ({
   value: 'value',
 })
 
-// TODO test that onChancelClick and onChange get called
-
 describe('SearchInput', () => {
   const createWrapper = () => create(
     <SearchInput {...defaultProps()} />
