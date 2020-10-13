@@ -14,6 +14,7 @@ const closeButtonStyle = {
 // TODO - what happens if nothing else in history?
 const CloseButton = ({ buttonStyle }) => {
   const hist = useHistory()
+
   return (
     <NavButton
       onClick={() => hist.goBack()}
@@ -28,6 +29,7 @@ const CloseButton = ({ buttonStyle }) => {
 CloseButton.propTypes = {
   buttonStyle: PropTypes.object,
 }
+
 CloseButton.defaultProps = {
   buttonStyle: {},
 }
