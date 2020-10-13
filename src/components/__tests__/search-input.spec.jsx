@@ -13,11 +13,11 @@ const defaultProps = () => ({
 // TODO test that onChancelClick and onChange get called
 
 describe('SearchInput', () => {
-	const createWrapper = () => create(
-	  <SearchInput {...defaultProps()} />
-	)
+  const createWrapper = () => create(
+    <SearchInput {...defaultProps()} />
+  )
 
-	test('SearchInput', () => {
-	  expect(createWrapper()).toMatchSnapshot()
-	})
+  test('SearchInput', () => {
+    expect(createWrapper()).toMatchSnapshot()
+  })
 })

@@ -72,7 +72,7 @@ export class _FilmDetails extends React.Component {
         </div>
         <CloseButton buttonStyle={{ color: 'white' }} />
       </header>
-      )
+    )
   }
 
   renderDetails() {

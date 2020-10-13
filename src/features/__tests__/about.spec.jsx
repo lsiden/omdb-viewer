@@ -8,13 +8,13 @@ import { StaticRouter } from 'react-router'
 const onClick = () => {}
 
 describe('OmdbMain', () => {
-	test('matches snapshot', () => {
-	  expect(
-	    TestRenderer.create(
-	      <StaticRouter context={{}}>
-	        <About onClick={onClick} />
-	      </StaticRouter>,
-	    ),
-	  ).toMatchSnapshot()
-	})
+  test('matches snapshot', () => {
+    expect(
+      TestRenderer.create(
+        <StaticRouter context={{}}>
+          <About onClick={onClick} />
+        </StaticRouter>,
+      ),
+    ).toMatchSnapshot()
+  })
 })

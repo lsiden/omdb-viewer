@@ -11,14 +11,14 @@ const createWrapper = () => {
 }
 
 describe('NavButton', () => {
-	test('matches snapshot', () => {
-	  expect(createWrapper()).toMatchSnapshot()
-	})
+  test('matches snapshot', () => {
+    expect(createWrapper()).toMatchSnapshot()
+  })
 
-	test('onClick', () => {
-	  const { root } = createWrapper()
-	  const btn = root.findByType('button')
-	  act(btn.props.onClick)
-	  expect(btn.props.onClick.mock.calls.length).toEqual(1)
-	})
+  test('onClick', () => {
+    const { root } = createWrapper()
+    const btn = root.findByType('button')
+    act(btn.props.onClick)
+    expect(btn.props.onClick.mock.calls.length).toEqual(1)
+  })
 })

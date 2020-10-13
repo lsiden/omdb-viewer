@@ -18,7 +18,7 @@ const createWrapper = () => TestRenderer.create(
 )
 
 describe('QueryForm', () => {
-	it('renders a Form element', () => {
-	  expect(createWrapper()).toMatchSnapshot()
-	})
+  it('renders a Form element', () => {
+    expect(createWrapper()).toMatchSnapshot()
+  })
 })

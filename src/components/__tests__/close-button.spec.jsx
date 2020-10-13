@@ -6,7 +6,7 @@ import CloseButton from 'components/close-button'
 const createWrapper = () => create(<CloseButton />)
 
 describe('CloseButton', () => {
-	test('matches snapshot', () => {
-	  expect(createWrapper()).toMatchSnapshot()
-	})
+  test('matches snapshot', () => {
+    expect(createWrapper()).toMatchSnapshot()
+  })
 })

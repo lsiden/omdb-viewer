@@ -4,6 +4,7 @@ import { create } from 'react-test-renderer'
 import { _FilmDetails } from 'features/film-details'
 
 const filmDetails = require('./film-details.json')
+
 const { imdbID } = filmDetails
 
 describe('FilmDetails', () => {
@@ -16,7 +17,7 @@ describe('FilmDetails', () => {
     const wrapper = create(<_FilmDetails {...params} />)
     expect(wrapper).toMatchSnapshot()
 
-    const root = wrapper.root
+    const { root } = wrapper
     expect(root.findByType('ul')).toBeDefined()
     expect(root.findAllByType('li').length).toBeGreaterThan(0)
     expect(root.findByType('h2').children.includes('The Battle of Algiers')).toBeTruthy()
@@ -31,7 +32,7 @@ describe('FilmDetails', () => {
     const wrapper = create(<_FilmDetails {...params} />)
     expect(wrapper).toMatchSnapshot()
 
-    const root = wrapper.root
+    const { root } = wrapper
     expect(root.findAllByType('ul').length).toEqual(0)
     expect(root.findAllByType('animate').length).toBeGreaterThan(0)
   })

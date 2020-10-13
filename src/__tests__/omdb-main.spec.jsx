@@ -12,7 +12,7 @@ const createWrapper = () => TestRenderer.create(
 )
 
 describe('OmdbMain', () => {
-	test('matches snapshot', () => {
-	  expect(createWrapper()).toMatchSnapshot()
-	})
+  test('matches snapshot', () => {
+    expect(createWrapper()).toMatchSnapshot()
+  })
 })
