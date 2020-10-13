@@ -17,6 +17,7 @@ class QueryForm extends React.Component {
     super(props)
     const { query = '' } = props
     this.state = { query }
+    this.ref = React.createRef()
     this.timeoutId = null
     this.handleInput = this.handleInput.bind(this)
     this.handleCancel = this.handleCancel.bind(this)
@@ -30,8 +31,8 @@ class QueryForm extends React.Component {
       dispatchQueryFetch(query)
     }
 
-    if (this.ref) {
-      this.ref.querySelector('input').focus()
+    if (this.ref && this.ref.current) {
+      this.ref.current.focus()
     }
   }
 
@@ -77,9 +78,8 @@ class QueryForm extends React.Component {
 
   render() {
     const { query } = this.state
-    // TODO do we still need 'ref'?
     return (
-      <form ref={(ref) => { this.ref = ref }} style={formStyle}>
+      <form ref={this.ref} style={formStyle}>
         <label>
           Search
           <SearchInput
