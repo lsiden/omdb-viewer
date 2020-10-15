@@ -12,7 +12,9 @@ describe('FilmDetails', () => {
     const params = {
       imdbID,
       filmDetails,
+      isFetching: false,
       dispatchFetchFilmDetails: jest.fn(),
+      dispatchEraseFilmDetails: jest.fn(),
     }
     const wrapper = create(<_FilmDetails {...params} />)
     expect(wrapper).toMatchSnapshot()
@@ -24,10 +26,12 @@ describe('FilmDetails', () => {
     expect(root.findAllByType('animate').length).toEqual(0)
   })
 
-  it('renders a spinner when details not present', () => {
+  it('renders a spinner while fetching', () => {
     const params = {
       imdbID,
       dispatchFetchFilmDetails: jest.fn(),
+      dispatchEraseFilmDetails: jest.fn(),
+      isFetching: true,
     }
     const wrapper = create(<_FilmDetails {...params} />)
     expect(wrapper).toMatchSnapshot()

@@ -20,6 +20,7 @@ describe('FilmList', () => {
             films={films}
             totalResults={films.length}
             dispatchSetQuery={dispatchSetQuery}
+            isFetching={false}
           />
         </StaticRouter>
       </Provider>
@@ -29,7 +30,7 @@ describe('FilmList', () => {
     expect(wrapper.root.findAllByType('animate').length).toEqual(0)
   })
 
-  it('if no films then calls dispatchSetQuery and displays spinner', () => {
+  it('if isFetching then displays spinner', () => {
     const dispatchSetQuery = jest.fn()
     const wrapper = create(
       <Provider store={store}>
@@ -38,6 +39,7 @@ describe('FilmList', () => {
             query="a query"
             totalResults={0}
             dispatchSetQuery={dispatchSetQuery}
+            isFetching={true}
           />
         </StaticRouter>
       </Provider>

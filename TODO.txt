@@ -1,2 +1,5 @@
 replace react-router with react-router-dom
 
+replace window.location with useLocation()
+
+Split title bar and search bar

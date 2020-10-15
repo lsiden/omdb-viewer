@@ -105,7 +105,7 @@ _FilmList.propTypes = {
 
 _FilmList.defaultProps = {
   query: '',
-  films: null,
+  films: [],
   totalResults: 0,
 }
 
@@ -114,7 +114,7 @@ export default connect(
     query: ownProps.query,
     films: state.films,
     totalResults: parseInt(state.totalResults) || 0,
-    isFetching: state.isFetching,
+    isFetching: state.isFetching || false,
   }),
   (dispatch) => ({
     dispatchSetQuery: (query) => dispatch(setQuery(query)),
