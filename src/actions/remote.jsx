@@ -9,6 +9,7 @@ import {
   updateFilms,
   appendFilms,
   updateFilmDetails,
+  setFetching,
 } from '.'
 
 // promise.prototoype.finally is not yet available in node.js.
@@ -43,11 +44,13 @@ const fetchWithTimeout = (dispatch, uri) => {
       )
     }, FETCH_TIMEOUT)
   })
+  dispatch(setFetching(true))
   return Promise.race([timeoutPromise, fetch(uri)])
     .then(toJson)
     .catch(onCatch)
     .finally(() => {
       clearTimeout(timeout)
+      dispatch(setFetching(false))
     })
 }
 
@@ -64,7 +67,10 @@ export const queryFetch = (query) => (dispatch) => {
   cancelPrevQueryFetch()
 
   return new Promise((resolve) => {
-    cancelPrevQueryFetch = (_, reject) => reject(new FetchCancelledError(`query "${query}" was cancelled`))
+    cancelPrevQueryFetch = (_, reject) => {
+      reject(new FetchCancelledError(`query "${query}" was cancelled`))
+      dispatch(setFetching(false))
+    }
 
     return fetchWithTimeout(
       dispatch,

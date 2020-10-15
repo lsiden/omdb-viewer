@@ -49,8 +49,9 @@ const topButtonStyle = {
 }
 
 const spinnerStyle = {
-  marginLeft: 45,
-  marginBottom: 20,
+  margin: 50,
+  height: 50,
+  width: 50,
 }
 
 export class _FilmList extends React.Component {
@@ -62,7 +63,29 @@ export class _FilmList extends React.Component {
     console.error(err, errInfo)
   }
 
-  renderButtonRow(films, totalResults) {
+  renderInner() {
+    const { query, films, totalResults, isFetching } = this.props
+
+    if (isFetching) {
+      return <Spinner style={spinnerStyle} />
+    }
+
+    if (query.length === 0) {
+      return (
+        <div style={msgStyle}>
+          Search for a title.
+        </div>
+      )
+    }
+
+    if (query.length > 0 && films.length === 0) {
+      return (
+        <div style={msgStyle}>
+          There are no films that match your query.
+        </div>
+      )
+    }
+
     return (
       <div>
         <ul style={ulStyle}>
@@ -72,33 +95,14 @@ export class _FilmList extends React.Component {
         </ul>
         <div style={bottomRowStyle}>
           {films.length < totalResults && <MoreButton />}
-          <NavButton
-            onClick={scrollToTop}
-            style={topButtonStyle}
-            title="Scroll to top of page"
-          >
-            top
-          </NavButton>
+          { films && films.length && (<NavButton
+                      onClick={scrollToTop}
+                      style={topButtonStyle}
+                      title="Scroll to top of page"
+                    >top</NavButton>)}
         </div>
       </div>
     )
-  }
-
-  renderInner() {
-    const { films, totalResults } = this.props
-
-    if (!films) {
-      return <Spinner style={spinnerStyle} />
-    }
-
-    if (films.length === 0) {
-      return (
-        <div style={msgStyle}>
-          There are no films that match your query.
-        </div>
-      )
-    }
-    return this.renderButtonRow(films, totalResults)
   }
 
   render() {
@@ -121,6 +125,7 @@ _FilmList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object),
   totalResults: PropTypes.number,
   dispatchSetQuery: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired,
 }
 
 _FilmList.defaultProps = {
@@ -130,10 +135,11 @@ _FilmList.defaultProps = {
 }
 
 export default connect(
-  (state, ownProps) => ({
-    query: ownProps.query,
+  (state) => ({
+    query: state.query,
     films: state.films,
-    totalResults: state.totalResults,
+    totalResults: parseInt(state.totalResults) || 0,
+    isFetching: state.isFetching,
   }),
   (dispatch) => ({
     dispatchSetQuery: (query) => dispatch(setQuery(query)),

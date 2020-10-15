@@ -14,12 +14,17 @@ export const updateFilms = (query = '', films = [], totalResults = 0) => ({
   },
 })
 
-export const appendFilms = (pageNum, films) => ({
+export const appendFilms = (pageNum=1, films=[]) => ({
   type: Actions.APPEND_FILMS,
   data: { films, pageNum },
 })
 
-export const setQuery = (query) => ({
+export const setQuery = (query='') => ({
   type: Actions.SET_QUERY,
   data: { query },
+})
+
+export const setFetching = (isFetching=false) => ({
+  type: Actions.UPDATE_IS_FETCHING,
+  data: { isFetching }
 })

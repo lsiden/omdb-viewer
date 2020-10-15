@@ -15,7 +15,7 @@ const formStyle = {
 class QueryForm extends React.Component {
   constructor(props) {
     super(props)
-    const { query = '' } = props
+    const { query } = props
     this.state = { query }
     this.ref = React.createRef()
     this.timeoutId = null
@@ -32,6 +32,7 @@ class QueryForm extends React.Component {
     }
 
     if (this.ref && this.ref.current) {
+      // FIXME not reached
       this.ref.current.focus()
     }
   }
