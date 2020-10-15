@@ -7,6 +7,7 @@ import CloseButton from 'components/close-button'
 import NavButton from 'components/nav-button'
 import { scrollToTop } from 'components/scroll'
 import { fetchFilmDetails } from 'actions/remote'
+import { updateFilmDetails } from 'actions'
 import { headerStyle as bannerHeaderStyle } from 'style'
 import { ESC_KEY, BANNER_TITLE, FETCH_TIMEOUT } from 'omdb_constants'
 
@@ -46,33 +47,26 @@ export class _FilmDetails extends React.Component {
     }
   }
 
-  constructor(props) {
-    const { imdbID } = props
-    super(props)
-    this.imdbUrl = `https://www.imdb.com/title/${imdbID}`
-  }
-
   componentDidMount() {
+    const { dispatchFetchFilmDetails, imdbID } = this.props
+    dispatchFetchFilmDetails(imdbID)
     document.addEventListener('keydown', _FilmDetails.keyDownListener)
-    setTimeout(() => {
-      if (!this.props.filmDetails) {
-        const { dispatchFetchFilmDetails, imdbID } = this.props
-        dispatchFetchFilmDetails(imdbID)
-      }
-    }, FETCH_TIMEOUT)
   }
 
   componentWillUnmount() {
+    const { dispatchEraseFilmDetails } = this.props
+    dispatchEraseFilmDetails()
     document.removeEventListener('keydown', _FilmDetails.keyDownListener)
   }
 
   renderTitle() {
-    return (
+    const { filmDetails } = this.props
+    return filmDetails && (
       <header style={titleBannerStyle}>
         <div style={{ lineHeight: 1 }}>
           <h1 style={{ fontSize: 24 }}>{BANNER_TITLE}</h1>
           <br />
-          <h2 style={{ ...titleStyle, marginTop: 0 }}>{this.props.filmDetails.Title}</h2>
+          <h2 style={{ ...titleStyle, marginTop: 0 }}>{filmDetails.Title}</h2>
         </div>
         <CloseButton buttonStyle={{ color: 'white' }} />
       </header>
@@ -117,12 +111,12 @@ export class _FilmDetails extends React.Component {
   }
 
   render() {
-    const { filmDetails } = this.props
+    const { filmDetails, isFetching } = this.props
 
-    if (!filmDetails) {
+    if (isFetching) {
       return <Spinner style={spinnerStyle} size={64} />
     }
-    return (
+    return filmDetails && (
       <div>
         {this.renderTitle()}
         <div style={{ marginLeft: 20 }}>
@@ -143,6 +137,8 @@ _FilmDetails.propTypes = {
   imdbID: PropTypes.string.isRequired,
   filmDetails: PropTypes.object,
   dispatchFetchFilmDetails: PropTypes.func.isRequired,
+  dispatchEraseFilmDetails: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired,
 }
 _FilmDetails.defaultProps = {
   filmDetails: null,
@@ -151,8 +147,10 @@ _FilmDetails.defaultProps = {
 export default connect(
   (state) => ({
     filmDetails: state.filmDetails,
+    isFetching: state.isFetching,
   }),
   (dispatch) => ({
     dispatchFetchFilmDetails: (imdbID) => dispatch(fetchFilmDetails(imdbID)),
+    dispatchEraseFilmDetails: (imdbID) => dispatch(updateFilmDetails(null)),
   }),
 )(_FilmDetails)

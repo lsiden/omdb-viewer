@@ -38,8 +38,8 @@ const spinnerStyle = {
 
 export class _FilmList extends React.Component {
   constructor(props) {
-    super(props)
     const { query, dispatchSetQuery } = props
+    super(props)
     dispatchSetQuery(query)
   }
 
