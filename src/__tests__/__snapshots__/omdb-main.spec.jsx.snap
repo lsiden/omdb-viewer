@@ -27,7 +27,9 @@ exports[`OmdbMain matches snapshot 1`] = `
               "marginTop": 10,
             }
           }
-        />
+        >
+          Open Movie Database Browser
+        </h1>
         <a
           href="/about"
           style={

@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown'
 
 import CloseButton from 'components/close-button'
 import { headerStyle } from 'style'
-import { BANNER_TITLE } from 'constants'
+import { BANNER_TITLE } from 'omdb_constants'
 
 const OMDB_API_URL = 'https://www.omdbapi.com/'
 const SOURCE_CODE_URL = 'https://github.com/lsiden/omdb-film-browser-web'

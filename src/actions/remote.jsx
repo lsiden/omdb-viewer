@@ -4,12 +4,12 @@ import toastr from 'toastr'
 import promiseFinally from 'promise.prototype.finally'
 
 import store from 'actions/store'
+import { FETCH_TIMEOUT } from 'omdb_constants'
 import {
   updateFilms,
   appendFilms,
   updateFilmDetails,
 } from '.'
-import { FETCH_TIMEOUT } from '../constants'
 
 // promise.prototoype.finally is not yet available in node.js.
 // This prevents tests from breaking.

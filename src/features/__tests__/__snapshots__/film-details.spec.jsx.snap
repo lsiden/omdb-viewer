@@ -165,7 +165,9 @@ exports[`FilmDetails renders details when present 1`] = `
             "fontSize": 24,
           }
         }
-      />
+      >
+        Open Movie Database Browser
+      </h1>
       <br />
       <h2
         style={

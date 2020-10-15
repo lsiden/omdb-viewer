@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { updateFilms } from 'actions'
 import { queryFetch } from 'actions/remote'
 import SearchInput from 'components/search-input'
-import { QUERY_DELAY } from 'constants'
+import { QUERY_DELAY } from 'omdb_constants'
 
 const formStyle = {
   minWidth: '320px',

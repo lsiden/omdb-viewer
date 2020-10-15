@@ -7,7 +7,7 @@ exports[`FilmTitle matches snapshot 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "color": undefined,
+        "color": "#210d87",
       }
     }
     title="View film details"

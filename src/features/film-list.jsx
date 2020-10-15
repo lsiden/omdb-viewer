@@ -10,7 +10,7 @@ import NavButton from 'components/nav-button'
 import QueryForm from 'components/query-form'
 import { headerStyle, titleStyle } from 'style'
 import { setQuery } from 'actions'
-import { BANNER_TITLE, TITLE_COLOR } from 'constants'
+import { BANNER_TITLE, TITLE_COLOR } from 'omdb_constants'
 
 const Banner = () => (
   <header style={headerStyle}>

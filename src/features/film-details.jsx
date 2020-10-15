@@ -8,7 +8,7 @@ import NavButton from 'components/nav-button'
 import { scrollToTop } from 'components/scroll'
 import { fetchFilmDetails } from 'actions/remote'
 import { headerStyle as bannerHeaderStyle } from 'style'
-import { ESC_KEY, BANNER_TITLE, FETCH_TIMEOUT } from 'constants'
+import { ESC_KEY, BANNER_TITLE, FETCH_TIMEOUT } from 'omdb_constants'
 
 const titleStyle = {
   marginBottom: '5pt',

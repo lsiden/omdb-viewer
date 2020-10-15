@@ -20,7 +20,7 @@ exports[`OmdbMain matches snapshot 1`] = `
         }
       }
     >
-      About undefined
+      About Open Movie Database Browser
     </h1>
     <button
       className="btn btn-link"

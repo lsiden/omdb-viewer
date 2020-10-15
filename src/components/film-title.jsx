@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-import { TITLE_COLOR } from 'constants'
+import { TITLE_COLOR } from 'omdb_constants'
 
 const linkStyle = {
   color: TITLE_COLOR,
