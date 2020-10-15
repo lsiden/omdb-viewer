@@ -7,22 +7,9 @@ import FilmTitle from 'components/film-title'
 import MoreButton from 'components/more-button'
 import { scrollToTop, scrollToBottom } from 'components/scroll'
 import NavButton from 'components/nav-button'
-import QueryForm from 'components/query-form'
-import { headerStyle, titleStyle } from 'style'
 import { setQuery } from 'actions'
-import { BANNER_TITLE, TITLE_COLOR } from 'omdb_constants'
-
-const Banner = () => (
-  <header style={headerStyle}>
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <h1 style={titleStyle}>{BANNER_TITLE}</h1>
-      <a href="/about" style={{ color: 'white' }}>
-        about
-      </a>
-    </div>
-    <QueryForm />
-  </header>
-)
+import { TITLE_COLOR } from 'omdb_constants'
+import Banner from 'components/banner'
 
 const ulStyle = {
   listStyleType: 'none',
@@ -34,27 +21,28 @@ const msgStyle = {
   color: TITLE_COLOR,
   margin: '1em',
 }
-
 const bottomRowStyle = {
   marginLeft: 40,
   display: 'flex',
   justifyContent: 'flex-start',
   alignItems: 'baseline',
 }
-
 const topButtonStyle = {
   marginLeft: 40,
   fontSize: 16,
   color: 'darkgrey',
 }
-
 const spinnerStyle = {
   margin: 50,
-  height: 50,
-  width: 50,
 }
 
 export class _FilmList extends React.Component {
+  constructor(props) {
+    super(props)
+    const { query, dispatchSetQuery } = props
+    dispatchSetQuery(query)
+  }
+
   componentDidUpdate() {
     scrollToBottom()
   }
@@ -71,19 +59,11 @@ export class _FilmList extends React.Component {
     }
 
     if (query.length === 0) {
-      return (
-        <div style={msgStyle}>
-          Search for a title.
-        </div>
-      )
+      return <div style={msgStyle}> Search for a title. </div>
     }
 
     if (query.length > 0 && films.length === 0) {
-      return (
-        <div style={msgStyle}>
-          There are no films that match your query.
-        </div>
-      )
+      return <div style={msgStyle}> There are no films that match your query. </div>
     }
 
     return (
@@ -106,11 +86,6 @@ export class _FilmList extends React.Component {
   }
 
   render() {
-    const { query, films, dispatchSetQuery } = this.props
-
-    if (!films) {
-      dispatchSetQuery(query)
-    }
     return (
       <div>
         <Banner />
@@ -135,8 +110,8 @@ _FilmList.defaultProps = {
 }
 
 export default connect(
-  (state) => ({
-    query: state.query,
+  (state, ownProps) => ({
+    query: ownProps.query,
     films: state.films,
     totalResults: parseInt(state.totalResults) || 0,
     isFetching: state.isFetching,

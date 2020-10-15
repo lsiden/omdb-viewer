@@ -27,6 +27,10 @@ const spinnerWrapperStyle = {
   justifyContent: 'center',
 }
 
+const spinnerStyle = {
+  margin: 50,
+}
+
 const itemExists = (item) => item && item !== 'N/A'
 const imdbUrl = (imdbID) => `https://www.imdb.com/title/${imdbID}`
 const titleBannerStyle = {
@@ -116,11 +120,7 @@ export class _FilmDetails extends React.Component {
     const { filmDetails } = this.props
 
     if (!filmDetails) {
-      return (
-        <div style={spinnerWrapperStyle}>
-          <Spinner size={64} />
-        </div>
-      )
+      return <Spinner style={spinnerStyle} size={64} />
     }
     return (
       <div>
