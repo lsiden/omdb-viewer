@@ -9,7 +9,7 @@ import { scrollToTop } from 'components/scroll'
 import { fetchFilmDetails } from 'actions/remote'
 import { updateFilmDetails } from 'actions'
 import { headerStyle as bannerHeaderStyle } from 'style'
-import { ESC_KEY, BANNER_TITLE, FETCH_TIMEOUT } from 'omdb_constants'
+import { ESC_KEY, BANNER_TITLE } from 'omdb_constants'
 
 const titleStyle = {
   marginBottom: '5pt',
@@ -21,13 +21,6 @@ const detailsStyle = {
 const topButtonStyle = {
   marginBottom: 20,
 }
-const spinnerWrapperStyle = {
-  height: '100vh',
-  minHeight: '100vh',
-  display: 'flex',
-  justifyContent: 'center',
-}
-
 const spinnerStyle = {
   margin: 50,
 }
@@ -151,6 +144,6 @@ export default connect(
   }),
   (dispatch) => ({
     dispatchFetchFilmDetails: (imdbID) => dispatch(fetchFilmDetails(imdbID)),
-    dispatchEraseFilmDetails: (imdbID) => dispatch(updateFilmDetails(null)),
+    dispatchEraseFilmDetails: () => dispatch(updateFilmDetails(null)),
   }),
 )(_FilmDetails)

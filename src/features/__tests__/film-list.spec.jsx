@@ -39,7 +39,7 @@ describe('FilmList', () => {
             query="a query"
             totalResults={0}
             dispatchSetQuery={dispatchSetQuery}
-            isFetching={true}
+            isFetching
           />
         </StaticRouter>
       </Provider>

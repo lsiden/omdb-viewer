@@ -75,11 +75,14 @@ export class _FilmList extends React.Component {
         </ul>
         <div style={bottomRowStyle}>
           {films.length < totalResults && <MoreButton />}
-          { films && films.length && (<NavButton
-                      onClick={scrollToTop}
-                      style={topButtonStyle}
-                      title="Scroll to top of page"
-                    >top</NavButton>)}
+          { films && films.length && (
+          <NavButton
+            onClick={scrollToTop}
+            style={topButtonStyle}
+            title="Scroll to top of page"
+          >top
+          </NavButton>
+          )}
         </div>
       </div>
     )
@@ -113,7 +116,7 @@ export default connect(
   (state, ownProps) => ({
     query: ownProps.query,
     films: state.films,
-    totalResults: parseInt(state.totalResults) || 0,
+    totalResults: parseInt(state.totalResults, 10) || 0,
     isFetching: state.isFetching || false,
   }),
   (dispatch) => ({
