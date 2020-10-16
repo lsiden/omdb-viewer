@@ -6,9 +6,14 @@ import { setQuery, updateFilms } from 'actions'
 import { queryFetch } from 'actions/remote'
 import SearchInput from 'components/search-input'
 
-const formStyle = {
-  minWidth: '320px',
-  marginBottom: '8pt',
+const formRowStyle = {
+  display: 'flex',
+}
+const searchLabelStyle = {
+  marginRight: '1em'
+}
+const searchInputStyle = {
+  flex: '1 1'
 }
 
 class QueryForm extends React.Component {
@@ -58,16 +63,18 @@ class QueryForm extends React.Component {
   render() {
     const { query } = this.props
     return (
-      <form ref={this.ref} style={formStyle}>
-        <label>
-          Search
+      <form ref={this.ref}>
+        <div style={formRowStyle}>
+          <label htmlFor="query-form-search-input" style={searchLabelStyle}>Search</label>
           <SearchInput
-            placeholder="Title"
+            style={searchInputStyle}
+            id="query-form-search-input"
+            placeholder="Film Title ..."
             value={query}
             onChange={this.handleInput}
             onCancelClick={this.handleCancel}
           />
-        </label>
+        </div>
       </form>
     )
   }

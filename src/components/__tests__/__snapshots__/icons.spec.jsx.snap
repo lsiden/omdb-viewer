@@ -16,7 +16,7 @@ exports[`CancelIcon matches snapshot 1`] = `
   style={
     Object {
       "color": "#888",
-      "fontSize": "18pt",
+      "fontSize": "8pt",
       "position": "absolute",
       "right": 5,
       "top": 5,
@@ -40,7 +40,7 @@ exports[`SearchIcon matches snapshot 1`] = `
       "fontSize": "20pt",
       "left": "6pt",
       "position": "absolute",
-      "top": "3pt",
+      "top": "-4pt",
       "transform": "rotate(-45deg)",
     }
   }

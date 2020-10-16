@@ -4,9 +4,6 @@ exports[`SearchInput SearchInput 1`] = `
 <div
   style={
     Object {
-      "display": "flex",
-      "flex": "1 1",
-      "maxWidth": 600,
       "position": "relative",
       "width": "100%",
     }
@@ -25,7 +22,7 @@ exports[`SearchInput SearchInput 1`] = `
         "fontSize": "20pt",
         "left": "6pt",
         "position": "absolute",
-        "top": "3pt",
+        "top": "-4pt",
         "transform": "rotate(-45deg)",
       }
     }
@@ -38,8 +35,6 @@ exports[`SearchInput SearchInput 1`] = `
         "color": "black",
         "fontSize": "12pt",
         "height": "24pt",
-        "marginTop": "4pt",
-        "maxWidth": "640px",
         "textIndent": "24pt",
         "width": "100%",
       }
@@ -62,7 +57,7 @@ exports[`SearchInput SearchInput 1`] = `
     style={
       Object {
         "color": "#888",
-        "fontSize": "18pt",
+        "fontSize": "8pt",
         "position": "absolute",
         "right": 5,
         "top": 5,

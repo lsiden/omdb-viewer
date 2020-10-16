@@ -5,20 +5,15 @@ import { SearchIcon, CancelIcon } from 'components/icons'
 
 const wrapperStyle = {
   position: 'relative',
-  flex: '1 1',
-  maxWidth: 600,
   width: '100%',
-  display: 'flex',
 }
 
 const inputStyle = {
   height: '24pt',
-  maxWidth: '640px',
-  width: '100%',
   textIndent: '24pt',
   fontSize: '12pt',
-  marginTop: '4pt',
   color: 'black',
+  width: '100%',
 }
 
 const SearchInput = ({ value, onCancelClick, onChange, placeholder }) => (

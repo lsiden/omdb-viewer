@@ -41,22 +41,27 @@ exports[`OmdbMain matches snapshot 1`] = `
           about
         </a>
       </div>
-      <form
-        style={
-          Object {
-            "marginBottom": "8pt",
-            "minWidth": "320px",
+      <form>
+        <div
+          style={
+            Object {
+              "display": "flex",
+            }
           }
-        }
-      >
-        <label>
-          Search
+        >
+          <label
+            htmlFor="query-form-search-input"
+            style={
+              Object {
+                "marginRight": "1em",
+              }
+            }
+          >
+            Search
+          </label>
           <div
             style={
               Object {
-                "display": "flex",
-                "flex": "1 1",
-                "maxWidth": 600,
                 "position": "relative",
                 "width": "100%",
               }
@@ -75,21 +80,19 @@ exports[`OmdbMain matches snapshot 1`] = `
                   "fontSize": "20pt",
                   "left": "6pt",
                   "position": "absolute",
-                  "top": "3pt",
+                  "top": "-4pt",
                   "transform": "rotate(-45deg)",
                 }
               }
             />
             <input
               onChange={[Function]}
-              placeholder="Title"
+              placeholder="Film Title ..."
               style={
                 Object {
                   "color": "black",
                   "fontSize": "12pt",
                   "height": "24pt",
-                  "marginTop": "4pt",
-                  "maxWidth": "640px",
                   "textIndent": "24pt",
                   "width": "100%",
                 }
@@ -112,7 +115,7 @@ exports[`OmdbMain matches snapshot 1`] = `
               style={
                 Object {
                   "color": "#888",
-                  "fontSize": "18pt",
+                  "fontSize": "8pt",
                   "position": "absolute",
                   "right": 5,
                   "top": 5,
@@ -121,7 +124,7 @@ exports[`OmdbMain matches snapshot 1`] = `
               tabIndex={0}
             />
           </div>
-        </label>
+        </div>
       </form>
     </header>
     <svg

@@ -7,7 +7,7 @@ const ICON_COLOR = '#888'
 
 const searchIconStyle = {
   position: 'absolute',
-  top: '3pt',
+  top: '-4pt',
   left: '6pt',
   color: ICON_COLOR,
   fontSize: '20pt',
@@ -24,9 +24,9 @@ export const SearchIcon = () => (
 
 const cancelIconStyle = {
   position: 'absolute',
-  top: 5,
-  right: 5,
-  fontSize: '18pt',
+  top: 6,
+  right: 6,
+  fontSize: '8pt',
   color: ICON_COLOR,
 }
 
