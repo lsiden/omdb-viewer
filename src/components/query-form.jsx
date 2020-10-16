@@ -20,9 +20,12 @@ class QueryForm extends React.Component {
   }
 
   componentDidMount() {
-    if (this.ref && this.ref.current) {
-      // FIXME not reached
-      this.ref.current.focus()
+    if (this.ref.current) {
+      const searchInput = this.ref.current.querySelector('input[type=search]')
+
+      if (searchInput) {
+        searchInput.focus()
+      }
     }
   }
 
