@@ -7,7 +7,6 @@ import NavButton from 'components/nav-button'
 const CLOSE_ICON = '\u2715'
 
 const closeButtonStyle = {
-  margin: 20,
   fontSize: 20,
 }
 

@@ -8,7 +8,7 @@ import NavButton from 'components/nav-button'
 import { scrollToTop } from 'components/scroll'
 import { fetchFilmDetails } from 'actions/remote'
 import { updateFilmDetails } from 'actions'
-import { headerStyle as bannerHeaderStyle } from 'style'
+import { headerStyle } from 'style'
 import { ESC_KEY, BANNER_TITLE } from 'omdb_constants'
 
 const titleStyle = {
@@ -28,7 +28,7 @@ const spinnerStyle = {
 const itemExists = (item) => item && item !== 'N/A'
 const imdbUrl = (imdbID) => `https://www.imdb.com/title/${imdbID}`
 const titleBannerStyle = {
-  ...bannerHeaderStyle,
+  ...headerStyle,
   display: 'flex',
   justifyContent: 'space-between',
 }
@@ -56,11 +56,7 @@ export class _FilmDetails extends React.Component {
     const { filmDetails } = this.props
     return filmDetails && (
       <header style={titleBannerStyle}>
-        <div style={{ lineHeight: 1 }}>
-          <h1 style={{ fontSize: 24 }}>{BANNER_TITLE}</h1>
-          <br />
-          <h2 style={{ ...titleStyle, marginTop: 0 }}>{filmDetails.Title}</h2>
-        </div>
+        <h2 style={{ ...titleStyle, marginTop: 0 }}>{filmDetails.Title}</h2>
         <CloseButton buttonStyle={{ color: 'white' }} />
       </header>
     )

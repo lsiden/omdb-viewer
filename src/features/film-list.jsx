@@ -10,7 +10,7 @@ import NavButton from 'components/nav-button'
 import { setQuery } from 'actions'
 import { queryFetch } from 'actions/remote'
 import { TITLE_COLOR } from 'omdb_constants'
-import Banner from 'components/banner'
+import QueryForm from 'components/query-form'
 
 const ulStyle = {
   listStyleType: 'none',
@@ -92,7 +92,7 @@ export class _FilmList extends React.Component {
   render() {
     return (
       <div>
-        <Banner />
+        <QueryForm />
         {this.renderInner()}
       </div>
     )

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { setQuery, updateFilms } from 'actions'
 import { queryFetch } from 'actions/remote'
 import SearchInput from 'components/search-input'
+import { headerStyle, titleStyle } from 'style'
 
 const formRowStyle = {
   display: 'flex',
@@ -63,7 +64,7 @@ class QueryForm extends React.Component {
   render() {
     const { query } = this.props
     return (
-      <form ref={this.ref}>
+      <form ref={this.ref} style={headerStyle}>
         <div style={formRowStyle}>
           <label htmlFor="query-form-search-input" style={searchLabelStyle}>Search</label>
           <SearchInput

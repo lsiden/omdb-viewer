@@ -2,7 +2,6 @@ import React from 'react'
 
 import { headerStyle, titleStyle } from 'style'
 import { BANNER_TITLE } from 'omdb_constants'
-import QueryForm from 'components/query-form'
 
 export default () => (
   <header style={headerStyle}>
@@ -12,6 +11,5 @@ export default () => (
         about
       </a>
     </div>
-    <QueryForm />
   </header>
 )
