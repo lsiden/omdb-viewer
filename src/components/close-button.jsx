@@ -11,7 +11,6 @@ const closeButtonStyle = {
   fontSize: 20,
 }
 
-// TODO - what happens if nothing else in history?
 const CloseButton = ({ buttonStyle }) => {
   const hist = useHistory()
 

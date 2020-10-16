@@ -36,7 +36,7 @@ const titleBannerStyle = {
 export class _FilmDetails extends React.Component {
   static keyDownListener(ev) {
     if (ev.keyCode === ESC_KEY) {
-      window.location.href = '/'
+      window.history.back()
     }
   }
 
