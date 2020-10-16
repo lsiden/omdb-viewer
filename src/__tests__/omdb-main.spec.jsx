@@ -1,6 +1,6 @@
 import React from 'react'
 import TestRenderer from 'react-test-renderer'
-import { StaticRouter } from 'react-router'
+import { StaticRouter } from 'react-router-dom'
 
 // import { OmdbMainUnconnected as OmdbMain } from 'omdb-main'
 import OmdbMain from 'omdb-main'

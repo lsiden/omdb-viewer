@@ -1,6 +1,6 @@
 import React from 'react'
 import { create } from 'react-test-renderer'
-import { StaticRouter } from 'react-router'
+import { StaticRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import { _FilmList } from 'features/film-list'
