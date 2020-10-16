@@ -8,6 +8,7 @@ import MoreButton from 'components/more-button'
 import { scrollToTop, scrollToBottom } from 'components/scroll'
 import NavButton from 'components/nav-button'
 import { setQuery } from 'actions'
+import { queryFetch } from 'actions/remote'
 import { TITLE_COLOR } from 'omdb_constants'
 import Banner from 'components/banner'
 
@@ -120,6 +121,9 @@ export default connect(
     isFetching: state.isFetching || false,
   }),
   (dispatch) => ({
-    dispatchSetQuery: (query) => dispatch(setQuery(query)),
+    dispatchSetQuery: (query) => {
+      dispatch(setQuery(query))
+      dispatch(queryFetch(query))
+    },
   }),
 )(_FilmList)

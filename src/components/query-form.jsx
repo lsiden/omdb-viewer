@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { updateFilms } from 'actions'
+import { setQuery, updateFilms } from 'actions'
 import { queryFetch } from 'actions/remote'
 import SearchInput from 'components/search-input'
-import { QUERY_DELAY } from 'omdb_constants'
 
 const formStyle = {
   minWidth: '320px',
@@ -15,22 +14,12 @@ const formStyle = {
 class QueryForm extends React.Component {
   constructor(props) {
     super(props)
-    const { query } = props
-    this.state = { query }
     this.ref = React.createRef()
-    this.timeoutId = null
     this.handleInput = this.handleInput.bind(this)
     this.handleCancel = this.handleCancel.bind(this)
-    this.handleInputTimeout = this.handleInputTimeout.bind(this)
   }
 
   componentDidMount() {
-    const { query, dispatchQueryFetch } = this.props
-
-    if (query) {
-      dispatchQueryFetch(query)
-    }
-
     if (this.ref && this.ref.current) {
       // FIXME not reached
       this.ref.current.focus()
@@ -47,38 +36,24 @@ class QueryForm extends React.Component {
   }
 
   handleCancel() {
-    this.setState({ query: '' })
     this.replaceUriHistory()
     this.props.clearResults()
   }
 
   handleInput(ev) {
-    const { clearResults } = this.props
+    const { clearResults, dispatchSetQuery } = this.props
     const query = ev.target.value
-    this.setState({ query })
-
-    if (this.timeoutId) {
-      clearTimeout(this.timeoutId)
-    }
+    this.replaceUriHistory(query)
 
     if (query) {
-      this.timeoutId = setTimeout(this.handleInputTimeout, QUERY_DELAY)
-      this.replaceUriHistory(query)
+      dispatchSetQuery(query)
     } else {
       clearResults()
-      this.replaceUriHistory()
     }
-  }
-
-  handleInputTimeout() {
-    const { dispatchQueryFetch } = this.props
-    const { query } = this.state
-    this.timeoutId = null
-    dispatchQueryFetch(query)
   }
 
   render() {
-    const { query } = this.state
+    const { query } = this.props
     return (
       <form ref={this.ref} style={formStyle}>
         <label>
@@ -96,7 +71,7 @@ class QueryForm extends React.Component {
 }
 
 QueryForm.propTypes = {
-  dispatchQueryFetch: PropTypes.func.isRequired,
+  dispatchSetQuery: PropTypes.func.isRequired,
   clearResults: PropTypes.func.isRequired,
   query: PropTypes.string,
 }
@@ -109,7 +84,10 @@ export default connect(
     query: state.query || '',
   }),
   (dispatch) => ({
-    dispatchQueryFetch: (query) => dispatch(queryFetch(query)),
+    dispatchSetQuery: (query) => {
+      dispatch(setQuery(query))
+      dispatch(queryFetch(query))
+    },
     clearResults: () => dispatch(updateFilms()),
   }),
 )(QueryForm)

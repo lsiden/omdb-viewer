@@ -4,6 +4,8 @@
  * So we have to guard against duplicate items.
  */
 
+// FIXME - try to get rid of uniqueIds
+
 const reduceUniqueFilms = (uniqueIds, res, film) => {
   const id = film.imdbID
 
