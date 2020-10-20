@@ -3,49 +3,25 @@
  * This will cause React to throw a warning when it discovers a duplicate key.
  * So we have to guard against duplicate items.
  */
-
-// FIXME - try to get rid of uniqueIds
-
-const reduceUniqueFilms = (uniqueIds, res, film) => {
-  const id = film.imdbID
-
-  if (!uniqueIds[id]) {
-    res.push(film)
-    uniqueIds[id] = id /* eslint-disable-line no-param-reassign */
-  }
+const reduceUniqueFilms = (res, film) => {
+  res[film.imdbID] = film
   return res
 }
 
 export function updateNewFilms(state, data) {
-  const uniqueIds = {}
-  const newFilms = data.films || []
-  const films = newFilms.reduce(reduceUniqueFilms.bind(null, uniqueIds), [])
   return {
     ...state,
-    ...data,
-    uniqueIds,
-    films,
+    films: (data.films || []).reduce(reduceUniqueFilms, {}),
   }
 }
 
 export function appendFilms(state, data) {
-  const newFilms = data.films || []
-  const prevFilms = state.films || []
-  const uniqueIds = state.uniqueIds
-    || prevFilms.reduce((res, film) => {
-      const id = film.imdbID
-
-      if (!res[id]) {
-        res[id] = id
-      }
-      return res
-    }, {})
   return {
     ...state,
-    ...data,
-    uniqueIds,
-    films: newFilms.reduce(reduceUniqueFilms.bind(null, uniqueIds), [
-      ...prevFilms,
-    ]),
+    films: (data.films || []).reduce(reduceUniqueFilms, {...state.films || {}})
   }
+}
+
+export function getFilms(state) {
+  return Object.values(state.films || {})
 }

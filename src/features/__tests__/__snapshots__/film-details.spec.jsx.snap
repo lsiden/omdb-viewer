@@ -140,34 +140,16 @@ exports[`FilmDetails renders details when present 1`] = `
       }
     }
   >
-    <div
+    <h2
       style={
         Object {
-          "lineHeight": 1,
+          "marginBottom": "5pt",
+          "marginTop": 0,
         }
       }
     >
-      <h1
-        style={
-          Object {
-            "fontSize": 24,
-          }
-        }
-      >
-        Open Movie Database Browser
-      </h1>
-      <br />
-      <h2
-        style={
-          Object {
-            "marginBottom": "5pt",
-            "marginTop": 0,
-          }
-        }
-      >
-        The Battle of Algiers
-      </h2>
-    </div>
+      The Battle of Algiers
+    </h2>
     <button
       className="btn btn-link"
       onClick={[Function]}
@@ -175,7 +157,6 @@ exports[`FilmDetails renders details when present 1`] = `
         Object {
           "color": "white",
           "fontSize": 20,
-          "margin": 20,
         }
       }
       type="button"

@@ -9,7 +9,7 @@ import { scrollToTop } from 'components/scroll'
 import { fetchFilmDetails } from 'actions/remote'
 import { updateFilmDetails } from 'actions'
 import { headerStyle } from 'style'
-import { ESC_KEY, BANNER_TITLE } from 'omdb_constants'
+import { ESC_KEY } from 'omdb_constants'
 
 const titleStyle = {
   marginBottom: '5pt',

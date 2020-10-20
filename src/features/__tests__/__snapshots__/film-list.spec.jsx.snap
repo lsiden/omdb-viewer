@@ -2,7 +2,7 @@
 
 exports[`FilmList renders list of titles 1`] = `
 <div>
-  <header
+  <form
     style={
       Object {
         "background": "linear-gradient(to right, #000040, #3b00ff)",
@@ -15,117 +15,86 @@ exports[`FilmList renders list of titles 1`] = `
       style={
         Object {
           "display": "flex",
-          "justifyContent": "space-between",
         }
       }
     >
-      <h1
+      <label
+        htmlFor="query-form-search-input"
         style={
           Object {
-            "fontSize": 22,
-            "marginTop": 10,
+            "marginRight": "1em",
           }
         }
       >
-        Open Movie Database Browser
-      </h1>
-      <a
-        href="/about"
-        style={
-          Object {
-            "color": "white",
-          }
-        }
-      >
-        about
-      </a>
-    </div>
-    <form>
+        Search
+      </label>
       <div
         style={
           Object {
-            "display": "flex",
+            "position": "relative",
+            "width": "100%",
           }
         }
       >
-        <label
-          htmlFor="query-form-search-input"
-          style={
+        <span
+          charSet="utf-8"
+          dangerouslySetInnerHTML={
             Object {
-              "marginRight": "1em",
+              "__html": "⚲",
             }
           }
-        >
-          Search
-        </label>
-        <div
           style={
             Object {
-              "position": "relative",
+              "color": "#888",
+              "fontSize": "20pt",
+              "left": "6pt",
+              "position": "absolute",
+              "top": "-4pt",
+              "transform": "rotate(-45deg)",
+            }
+          }
+        />
+        <input
+          onChange={[Function]}
+          placeholder="Film Title ..."
+          style={
+            Object {
+              "color": "black",
+              "fontSize": "12pt",
+              "height": "24pt",
+              "textIndent": "24pt",
               "width": "100%",
             }
           }
-        >
-          <span
-            charSet="utf-8"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "⚲",
-              }
+          type="search"
+          value=""
+        />
+        <span
+          aria-label="Cancel"
+          charSet="utf-8"
+          className="hover-pointer"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "❌",
             }
-            style={
-              Object {
-                "color": "#888",
-                "fontSize": "20pt",
-                "left": "6pt",
-                "position": "absolute",
-                "top": "-4pt",
-                "transform": "rotate(-45deg)",
-              }
+          }
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          style={
+            Object {
+              "color": "#888",
+              "fontSize": "8pt",
+              "position": "absolute",
+              "right": 6,
+              "top": 6,
             }
-          />
-          <input
-            onChange={[Function]}
-            placeholder="Film Title ..."
-            style={
-              Object {
-                "color": "black",
-                "fontSize": "12pt",
-                "height": "24pt",
-                "textIndent": "24pt",
-                "width": "100%",
-              }
-            }
-            type="search"
-            value=""
-          />
-          <span
-            aria-label="Cancel"
-            charSet="utf-8"
-            className="hover-pointer"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "❌",
-              }
-            }
-            onClick={[Function]}
-            onKeyPress={[Function]}
-            role="button"
-            style={
-              Object {
-                "color": "#888",
-                "fontSize": "8pt",
-                "position": "absolute",
-                "right": 5,
-                "top": 5,
-              }
-            }
-            tabIndex={0}
-          />
-        </div>
+          }
+          tabIndex={0}
+        />
       </div>
-    </form>
-  </header>
+    </div>
+  </form>
   <div>
     <ul
       style={

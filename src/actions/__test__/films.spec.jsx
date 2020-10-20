@@ -1,30 +1,32 @@
-import { updateNewFilms, appendFilms } from 'actions/films'
+import { updateNewFilms, appendFilms, getFilms } from 'actions/films'
 
 const mkFilmItem = (imdbID) => ({
   imdbID,
 })
 
+const reduceFilms = (res, id) => {
+  res[id] = mkFilmItem(id)
+  return res
+}
+
 test('updateNewFilms() filters duplicates', () => {
-  const state = {
-    films: [1, 2, 3].map((id) => mkFilmItem(id)),
-    pageNum: 1,
-  }
+  const state = {}
   const data = {
     films: [3, 4, 5, 3].map((id) => mkFilmItem(id)),
   }
   const newState = updateNewFilms(state, data)
-  expect(newState.films.map((film) => film.imdbID).sort()).toEqual([3, 4, 5])
+  const expected = [3, 4, 5].map((id) => mkFilmItem(id))
+  expect(getFilms(newState)).toEqual(expected)
 })
 
-test('reduce({APPEND_FILMS, pageNum > 1}) appends films with unique imdbID to existing list', () => {
+test('appendFilms() filters duplicates', () => {
   const state = {
-    films: [1, 2, 3].map((id) => mkFilmItem(id)),
-    pageNum: 1,
+    films: [1, 2, 3].reduce(reduceFilms, {}),
   }
   const data = {
-    films: [3, 4, 5].map((id) => mkFilmItem(id)),
+    films: [3, 4, 5, 3].map((id) => mkFilmItem(id)),
   }
   const newState = appendFilms(state, data)
-  const expected = [1, 2, 3, 4, 5]
-  expect(newState.films.map((film) => film.imdbID).sort()).toEqual(expected)
+  const expected = [1, 2, 3, 4, 5].map((id) => mkFilmItem(id))
+  expect(getFilms(newState)).toEqual(expected)
 })

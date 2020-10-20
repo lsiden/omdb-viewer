@@ -7,10 +7,11 @@ import FilmTitle from 'components/film-title'
 import MoreButton from 'components/more-button'
 import { scrollToTop, scrollToBottom } from 'components/scroll'
 import NavButton from 'components/nav-button'
+import QueryForm from 'components/query-form'
 import { setQuery } from 'actions'
+import { getFilms } from 'actions/films'
 import { queryFetch } from 'actions/remote'
 import { TITLE_COLOR } from 'omdb_constants'
-import QueryForm from 'components/query-form'
 
 const ulStyle = {
   listStyleType: 'none',
@@ -116,7 +117,7 @@ _FilmList.defaultProps = {
 export default connect(
   (state, ownProps) => ({
     query: ownProps.query,
-    films: state.films,
+    films: getFilms(state),
     totalResults: parseInt(state.totalResults, 10) || 0,
     isFetching: state.isFetching || false,
   }),

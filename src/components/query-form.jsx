@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { setQuery, updateFilms } from 'actions'
 import { queryFetch } from 'actions/remote'
 import SearchInput from 'components/search-input'
-import { headerStyle, titleStyle } from 'style'
+import { headerStyle } from 'style'
 
 const formRowStyle = {
   display: 'flex',

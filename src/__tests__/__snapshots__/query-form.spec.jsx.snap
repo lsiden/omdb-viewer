@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`QueryForm renders a Form element 1`] = `
-<form>
+<form
+  style={
+    Object {
+      "background": "linear-gradient(to right, #000040, #3b00ff)",
+      "color": "white",
+      "padding": "10px",
+    }
+  }
+>
   <div
     style={
       Object {
@@ -77,8 +85,8 @@ exports[`QueryForm renders a Form element 1`] = `
             "color": "#888",
             "fontSize": "8pt",
             "position": "absolute",
-            "right": 5,
-            "top": 5,
+            "right": 6,
+            "top": 6,
           }
         }
         tabIndex={0}
