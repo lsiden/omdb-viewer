@@ -9,17 +9,13 @@ const AboutLink = () => (
   </a>
 )
 
-const inAboutPath = () => {
-  return /about\/?$/.test(window.location.href)
-}
+const inAboutPath = () => /about\/?$/.test(window.location.href)
 
-export default () => {
-  return (
-    <header style={headerStyle}>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <h1 style={titleStyle}>{BANNER_TITLE}</h1>
-        {!inAboutPath() && <AboutLink />}
-      </div>
-    </header>
-  )
-}
+export default () => (
+  <header style={headerStyle}>
+    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <h1 style={titleStyle}>{BANNER_TITLE}</h1>
+      {!inAboutPath() && <AboutLink />}
+    </div>
+  </header>
+)

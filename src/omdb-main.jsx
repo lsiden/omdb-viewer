@@ -9,9 +9,6 @@ import FilmDetails from 'features/film-details'
 import About from 'features/about'
 import store from 'actions/store'
 
-// FIXME - this may no longer be needed after Github enabled HTTPS to github pages
-// See https://blog.github.com/2018-05-01-github-pages-custom-domains-https/
-
 const RoutedFilmDetails = ({ match }) => (<FilmDetails imdbID={match.params.imdbID} />)
 const RoutedFilmList = ({ match }) => (<FilmList query={match.params.query} />)
 RoutedFilmDetails.propTypes = { match: PropTypes.object.isRequired }
