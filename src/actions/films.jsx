@@ -18,7 +18,7 @@ export function updateNewFilms(state, data) {
 export function appendFilms(state, data) {
   return {
     ...state,
-    films: (data.films || []).reduce(reduceUniqueFilms, {...state.films || {}})
+    films: (data.films || []).reduce(reduceUniqueFilms, { ...state.films || {} })
   }
 }
 
