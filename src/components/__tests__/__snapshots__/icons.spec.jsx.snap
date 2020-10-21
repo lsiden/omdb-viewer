@@ -18,8 +18,8 @@ exports[`CancelIcon matches snapshot 1`] = `
       "color": "#888",
       "fontSize": "8pt",
       "position": "absolute",
-      "right": 5,
-      "top": 5,
+      "right": 6,
+      "top": 6,
     }
   }
   tabIndex={0}

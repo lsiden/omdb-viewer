@@ -29,7 +29,6 @@ exports[`OmdbMain matches snapshot 1`] = `
         Object {
           "color": "white",
           "fontSize": 20,
-          "margin": 20,
         }
       }
       type="button"
