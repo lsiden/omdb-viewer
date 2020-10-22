@@ -1,10 +1,10 @@
 // Remote Actions
 
 import toastr from 'toastr'
-import promiseFinally from 'promise.prototype.finally'
+// import promiseFinally from 'promise.prototype.finally'
 
 import store from 'actions/store'
-import { FETCH_TIMEOUT } from 'omdb_constants'
+import { FETCH_TIMEOUT, OMDB_API_URL, OMDB_API_KEY } from 'omdb_constants'
 import {
   updateFilms,
   appendFilms,
@@ -15,7 +15,7 @@ import {
 // promise.prototoype.finally is not yet available in node.js.
 // This prevents tests from breaking.
 // It is a no-op when .finally() is already defined.
-promiseFinally.shim()
+// promiseFinally.shim()
 
 function toJson(res) {
   try {
@@ -32,7 +32,7 @@ const onCatch = (e) => {
   })
 }
 
-// Returns Promise that resolves to fetch result if successful
+// Returns Promise that resolves to fetched result if successful
 const fetchWithTimeout = (dispatch, uri) => {
   let timeout
   const timeoutPromise = new Promise((_, reject) => {
@@ -54,61 +54,30 @@ const fetchWithTimeout = (dispatch, uri) => {
     })
 }
 
-class FetchCancelledError extends Error {
-  constructor() {
-    super()
-    this.ignore = true
-  }
-}
+const queryFetchUri = (query) => `${OMDB_API_URL}?apikey=${OMDB_API_KEY}&type=movie&s=${query}`
+const pageFetchUri = (query, page) => queryFetchUri(query) + `&page=${page}`
+const filmFetchUri = (id) => `${OMDB_API_URL}?apikey=${OMDB_API_KEY}&type=movie&i=${id}&plot=full`
 
-let cancelPrevQueryFetch = () => {}
-
+// Returns a Promise
 export const queryFetch = (query) => (dispatch) => {
-  cancelPrevQueryFetch()
-
-  return new Promise((resolve, reject) => {
-    cancelPrevQueryFetch = () => {
-      reject(new FetchCancelledError(`query "${query}" was cancelled`))
-      dispatch(setFetching(false))
-    }
-
-    return fetchWithTimeout(
-      dispatch,
-      `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&s=${query}`,
-    ).then((res = {}) => {
-      if (res && res.Search && res.Search.length) {
-        return dispatch(updateFilms(query, res.Search, res.totalResults),
-        )
-      }
-      return dispatch(updateFilms(query, [], 0))
-    })
+  return fetchWithTimeout(dispatch, queryFetchUri(query))
+  .then((res={ Search: [], totalResults: 0 }) => {
+    return dispatch(updateFilms(query, res.Search, res.totalResults))
   })
-    .catch((e) => {
-      if (!e.ignore) {
-        console.error(e)
-      }
-    })
-    .finally(() => {
-      cancelPrevQueryFetch = () => {}
-    })
 }
 
 // Returns a Promise
 export const pageFetch = () => (dispatch) => {
-  const { query, pageNum = 1 } = store.getState()
+  const { query, pageNum=1 } = store.getState()
   const nextPageNum = pageNum + 1
-  return fetchWithTimeout(
-    dispatch,
-    `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&s=${query}&page=${nextPageNum}`,
-  ).then((res) => {
-    if (res && res.Search && res.Search.length) {
-      dispatch(appendFilms(nextPageNum, res.Search))
-    }
+  return fetchWithTimeout(dispatch, pageFetchUri(query, nextPageNum))
+  .then((res={ Search: [], totalResults: 0 }) => {
+    dispatch(appendFilms(nextPageNum, res.Search))
   })
 }
 
 // Returns a Promise
 export const fetchFilmDetails = (id) => (dispatch) => fetchWithTimeout(
   dispatch,
-  `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&i=${id}&plot=full`,
+  filmFetchUri(id),
 ).then((res) => dispatch(updateFilmDetails(res)))

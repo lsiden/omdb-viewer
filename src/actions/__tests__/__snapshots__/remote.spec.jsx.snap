@@ -56,8 +56,14 @@ Array [
     Object {
       "data": Object {
         "films": Array [
-          "Rocky Horror 2",
-          "Halloween 2",
+          Object {
+            "imdbID": 3,
+            "title": "Rocky Horror II",
+          },
+          Object {
+            "imdbID": 4,
+            "title": "Halloween II",
+          },
         ],
         "pageNum": 2,
       },
@@ -100,7 +106,7 @@ Array [
         ],
         "pageNum": 1,
         "query": "a query",
-        "totalResults": 0,
+        "totalResults": "4",
       },
       "type": "update-films",
     },

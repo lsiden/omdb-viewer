@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import _ from 'lodash'
 
 import { setQuery, updateFilms } from 'actions'
 import { queryFetch } from 'actions/remote'
@@ -21,8 +22,9 @@ class QueryForm extends React.Component {
   constructor(props) {
     super(props)
     this.ref = React.createRef()
-    this.handleInput = this.handleInput.bind(this)
-    this.handleCancel = this.handleCancel.bind(this)
+    this.onChange = this.onChange.bind(this)
+    this.onCancel = this.onCancel.bind(this)
+    this.debouncedOnChange = _.debounce(this.onChange, 300)
   }
 
   componentDidMount() {
@@ -44,12 +46,12 @@ class QueryForm extends React.Component {
     window.history.replaceState({}, '', uri)
   }
 
-  handleCancel() {
+  onCancel() {
     this.replaceUriHistory()
     this.props.clearResults()
   }
 
-  handleInput(ev) {
+  onChange(ev) {
     const { clearResults, dispatchSetQuery } = this.props
     const query = ev.target.value
     this.replaceUriHistory(query)
@@ -72,8 +74,8 @@ class QueryForm extends React.Component {
             id="query-form-search-input"
             placeholder="Film Title ..."
             value={query}
-            onChange={this.handleInput}
-            onCancelClick={this.handleCancel}
+            onChange={this.debouncedOnChange}
+            onCancelClick={this.onCancel}
           />
         </div>
       </form>
