@@ -42,7 +42,9 @@ export class _FilmList extends React.Component {
   constructor(props) {
     const { query, dispatchSetQuery } = props
     super(props)
-    dispatchSetQuery(query)
+    if (query) {
+      dispatchSetQuery(query)
+    }
   }
 
   componentDidUpdate() {
@@ -115,8 +117,8 @@ _FilmList.defaultProps = {
 }
 
 export default connect(
-  (state, ownProps) => ({
-    query: ownProps.query,
+  (state) => ({
+    query: state.query || '',
     films: getFilms(state),
     totalResults: state.totalResults || 0,
     isFetching: state.isFetching || false,

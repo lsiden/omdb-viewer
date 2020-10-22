@@ -77,11 +77,10 @@ export const queryFetch = (query) => (dispatch) => {
       `https://www.omdbapi.com?apikey=fbfcb8c7&type=movie&s=${query}`,
     ).then((res = {}) => {
       if (res && res.Search && res.Search.length) {
-        return resolve(
-          dispatch(updateFilms(query, res.Search, parseInt(res.totalResults))),
+        return dispatch(updateFilms(query, res.Search, res.totalResults),
         )
       }
-      return resolve(dispatch(updateFilms(query, [], 0)))
+      return dispatch(updateFilms(query, [], 0))
     })
   })
     .catch((e) => {

@@ -99,6 +99,9 @@ export default connect(
       dispatch(setQuery(query))
       dispatch(queryFetch(query))
     },
-    clearResults: () => dispatch(updateFilms()),
+    clearResults: () => {
+      dispatch(setQuery(''))
+      dispatch(updateFilms())
+    },
   }),
 )(QueryForm)
