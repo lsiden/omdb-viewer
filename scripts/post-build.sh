@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Inserts <base href="/$name"/> into HTML head.
 
@@ -8,6 +8,6 @@ if [[ $# -lt 1 ]]; then
 fi
 grep '<base ' build/index.html > /dev/null && exit 0
 name=$1
-tmp=$(mktemp -p /tmp index.html.XXX)
-sedcmd="s!<head>!&<base href="/$name/">!i"
+tmp=$(mktemp /tmp/index.html.XXX)
+sedcmd='s!<head>!&<base href="/$name/">!'
 sed "$sedcmd" build/index.html > $tmp && mv $tmp build/index.html
