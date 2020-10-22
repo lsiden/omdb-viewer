@@ -1,7 +1,6 @@
 // Remote Actions
 
 import toastr from 'toastr'
-import debounce from 'lodash/debounce'
 // import promiseFinally from 'promise.prototype.finally'
 
 import store from 'actions/store'
@@ -66,8 +65,6 @@ export const promiseQueryResults = (query) => (dispatch) => {
     return dispatch(updateFilms(query, res.Search, res.totalResults))
   })
 }
-
-export const debouncedPromiseQueryResults = debounce(promiseQueryResults, 300)
 
 // Returns a Promise
 // TODO - can this be combined with promoseQueryResults?
