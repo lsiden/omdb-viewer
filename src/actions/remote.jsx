@@ -78,7 +78,7 @@ export const queryFetch = (query) => (dispatch) => {
     ).then((res = {}) => {
       if (res && res.Search && res.Search.length) {
         return resolve(
-          dispatch(updateFilms(query, res.Search, res.totalResults)),
+          dispatch(updateFilms(query, res.Search, parseInt(res.totalResults))),
         )
       }
       return resolve(dispatch(updateFilms(query, [], 0)))

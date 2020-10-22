@@ -118,7 +118,7 @@ export default connect(
   (state, ownProps) => ({
     query: ownProps.query,
     films: getFilms(state),
-    totalResults: parseInt(state.totalResults, 10) || 0,
+    totalResults: state.totalResults || 0,
     isFetching: state.isFetching || false,
   }),
   (dispatch) => ({
