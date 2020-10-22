@@ -10,7 +10,7 @@ import NavButton from 'components/nav-button'
 import QueryForm from 'components/query-form'
 import { setQuery } from 'actions'
 import { getFilms } from 'actions/films'
-import { queryFetch } from 'actions/remote'
+import { promiseQueryResults } from 'actions/remote'
 import { TITLE_COLOR } from 'omdb_constants'
 
 const ulStyle = {
@@ -126,7 +126,7 @@ export default connect(
   (dispatch) => ({
     dispatchSetQuery: (query) => {
       dispatch(setQuery(query))
-      dispatch(queryFetch(query))
+      dispatch(promiseQueryResults(query))
     },
   }),
 )(_FilmList)

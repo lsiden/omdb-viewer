@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { pageFetch } from 'actions/remote'
+import { promiseQueryPageFetch } from 'actions/remote'
 import NavButton from 'components/nav-button'
 
 const buttonStyle = {
@@ -24,6 +24,6 @@ _MoreButton.propTypes = {
 export default connect(
   () => ({}),
   (dispatch) => ({
-    dispatchPageFetch: () => dispatch(pageFetch()),
+    dispatchPageFetch: () => dispatch(promiseQueryPageFetch()),
   }),
 )(_MoreButton)

@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import _ from 'lodash'
+import debounce from 'lodash/debounce'
 
 import { setQuery, updateFilms } from 'actions'
-import { queryFetch } from 'actions/remote'
+import { promiseQueryResults } from 'actions/remote'
 import SearchInput from 'components/search-input'
 import { headerStyle } from 'style'
 
@@ -24,7 +24,6 @@ class QueryForm extends React.Component {
     this.ref = React.createRef()
     this.onChange = this.onChange.bind(this)
     this.onCancel = this.onCancel.bind(this)
-    this.debouncedOnChange = _.debounce(this.onChange, 300)
   }
 
   componentDidMount() {
@@ -74,7 +73,7 @@ class QueryForm extends React.Component {
             id="query-form-search-input"
             placeholder="Film Title ..."
             value={query}
-            onChange={this.debouncedOnChange}
+            onChange={this.onChange}
             onCancelClick={this.onCancel}
           />
         </div>
@@ -96,14 +95,18 @@ export default connect(
   (state) => ({
     query: state.query || '',
   }),
-  (dispatch) => ({
-    dispatchSetQuery: (query) => {
-      dispatch(setQuery(query))
-      dispatch(queryFetch(query))
-    },
-    clearResults: () => {
-      dispatch(setQuery(''))
-      dispatch(updateFilms())
-    },
-  }),
+  (dispatch) => {
+    const debouncedDispatchPromiseQueryResults = debounce(
+      query => dispatch(promiseQueryResults(query)), 300)
+    return ({
+      dispatchSetQuery: (query) => {
+        dispatch(setQuery(query))
+        debouncedDispatchPromiseQueryResults(query)
+      },
+      clearResults: () => {
+        dispatch(setQuery(''))
+        dispatch(updateFilms())
+      },
+    })
+  },
 )(QueryForm)

@@ -1,6 +1,7 @@
 // Remote Actions
 
 import toastr from 'toastr'
+import debounce from 'lodash/debounce'
 // import promiseFinally from 'promise.prototype.finally'
 
 import store from 'actions/store'
@@ -16,6 +17,10 @@ import {
 // This prevents tests from breaking.
 // It is a no-op when .finally() is already defined.
 // promiseFinally.shim()
+
+const queryFetchUri = (query) => `${OMDB_API_URL}?apikey=${OMDB_API_KEY}&type=movie&s=${query}`
+const pageFetchUri = (query, page) => queryFetchUri(query) + `&page=${page}`
+const filmFetchUri = (id) => `${OMDB_API_URL}?apikey=${OMDB_API_KEY}&type=movie&i=${id}&plot=full`
 
 function toJson(res) {
   try {
@@ -33,7 +38,7 @@ const onCatch = (e) => {
 }
 
 // Returns Promise that resolves to fetched result if successful
-const fetchWithTimeout = (dispatch, uri) => {
+const promiseFetchOrTimeout = (dispatch, uri, millisec=FETCH_TIMEOUT) => {
   let timeout
   const timeoutPromise = new Promise((_, reject) => {
     timeout = setTimeout(() => {
@@ -42,10 +47,10 @@ const fetchWithTimeout = (dispatch, uri) => {
           'Unable to fetch data. Try a different title or try again later.',
         ),
       )
-    }, FETCH_TIMEOUT)
+    }, millisec)
   })
   dispatch(setFetching(true))
-  return Promise.race([timeoutPromise, fetch(uri)])
+  return Promise.race([fetch(uri), timeoutPromise])
     .then(toJson)
     .catch(onCatch)
     .finally(() => {
@@ -54,30 +59,29 @@ const fetchWithTimeout = (dispatch, uri) => {
     })
 }
 
-const queryFetchUri = (query) => `${OMDB_API_URL}?apikey=${OMDB_API_KEY}&type=movie&s=${query}`
-const pageFetchUri = (query, page) => queryFetchUri(query) + `&page=${page}`
-const filmFetchUri = (id) => `${OMDB_API_URL}?apikey=${OMDB_API_KEY}&type=movie&i=${id}&plot=full`
-
 // Returns a Promise
-export const queryFetch = (query) => (dispatch) => {
-  return fetchWithTimeout(dispatch, queryFetchUri(query))
+export const promiseQueryResults = (query) => (dispatch) => {
+  return promiseFetchOrTimeout(dispatch, queryFetchUri(query))
   .then((res={ Search: [], totalResults: 0 }) => {
     return dispatch(updateFilms(query, res.Search, res.totalResults))
   })
 }
 
+export const debouncedPromiseQueryResults = debounce(promiseQueryResults, 300)
+
 // Returns a Promise
-export const pageFetch = () => (dispatch) => {
+// TODO - can this be combined with promoseQueryResults?
+export const promiseQueryPageFetch = () => (dispatch) => {
   const { query, pageNum=1 } = store.getState()
   const nextPageNum = pageNum + 1
-  return fetchWithTimeout(dispatch, pageFetchUri(query, nextPageNum))
+  return promiseFetchOrTimeout(dispatch, pageFetchUri(query, nextPageNum))
   .then((res={ Search: [], totalResults: 0 }) => {
     dispatch(appendFilms(nextPageNum, res.Search))
   })
 }
 
 // Returns a Promise
-export const fetchFilmDetails = (id) => (dispatch) => fetchWithTimeout(
+export const promiseFilmDetails = (id) => (dispatch) => promiseFetchOrTimeout(
   dispatch,
   filmFetchUri(id),
 ).then((res) => dispatch(updateFilmDetails(res)))

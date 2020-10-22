@@ -6,7 +6,7 @@ import Spinner from 'respin'
 import CloseButton from 'components/close-button'
 import NavButton from 'components/nav-button'
 import { scrollToTop } from 'components/scroll'
-import { fetchFilmDetails } from 'actions/remote'
+import { promiseFilmDetails } from 'actions/remote'
 import { updateFilmDetails } from 'actions'
 import { headerStyle } from 'style'
 import { ESC_KEY } from 'omdb_constants'
@@ -139,7 +139,7 @@ export default connect(
     isFetching: state.isFetching,
   }),
   (dispatch) => ({
-    dispatchFetchFilmDetails: (imdbID) => dispatch(fetchFilmDetails(imdbID)),
+    dispatchFetchFilmDetails: (imdbID) => dispatch(promiseFilmDetails(imdbID)),
     dispatchEraseFilmDetails: () => dispatch(updateFilmDetails(null)),
   }),
 )(_FilmDetails)

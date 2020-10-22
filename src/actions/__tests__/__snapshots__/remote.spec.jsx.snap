@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`fetchFilmDetails()(dispatch) 1`] = `
+exports[`promiseFilmDetails()(dispatch) 1`] = `
 Array [
   Array [
     Object {
@@ -34,7 +34,7 @@ Array [
 ]
 `;
 
-exports[`pageFetch()(dispatch) 1`] = `
+exports[`promiseQueryPageFetch()(dispatch) 1`] = `
 Array [
   Array [
     Object {
@@ -73,7 +73,7 @@ Array [
 ]
 `;
 
-exports[`queryFetch()(dispatch) invokes dispatch({type: Actions.UPDATE_FILMS}) 1`] = `
+exports[`promiseQueryResults()(dispatch) invokes dispatch({type: Actions.UPDATE_FILMS}) 1`] = `
 Array [
   Array [
     Object {
