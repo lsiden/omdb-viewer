@@ -40,11 +40,6 @@ class QueryForm extends React.Component {
     console.error(err, errInfo)
   }
 
-  replaceUriHistory(query = '') {
-    const uri = query ? `/search/${query}` : '/'
-    window.history.replaceState({}, '', uri)
-  }
-
   onCancel() {
     this.replaceUriHistory()
     this.props.clearResults()
@@ -60,6 +55,11 @@ class QueryForm extends React.Component {
     } else {
       clearResults()
     }
+  }
+
+  replaceUriHistory(query = '') {
+    const uri = query ? `/search/${query}` : '/'
+    window.history.replaceState({}, '', uri)
   }
 
   render() {
@@ -97,7 +97,9 @@ export default connect(
   }),
   (dispatch) => {
     const debouncedDispatchPromiseQueryResults = debounce(
-      query => dispatch(promiseQueryResults(query)), 300)
+      (query) => dispatch(promiseQueryResults(query)),
+      300
+    )
     return ({
       dispatchSetQuery: (query) => {
         dispatch(setQuery(query))

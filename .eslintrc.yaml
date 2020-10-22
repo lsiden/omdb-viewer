@@ -21,7 +21,10 @@ globals:
   it: readonly
 
 rules:
-  semi: 'off'
+  prefer-template:
+    - off
+  semi:
+    - off
   no-unused-vars:
     - warn
     - varsIgnorePattern: "^debug$"
@@ -42,6 +45,8 @@ rules:
   no-underscore-dangle:
     - off
   class-methods-use-this:
+    - off
+  space-infix-ops:
     - off
   react/no-danger:
     - off

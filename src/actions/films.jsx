@@ -12,7 +12,7 @@ export function updateNewFilms(state, data) {
   return {
     ...state,
     films: (data.films || []).reduce(reduceUniqueFilms, {}),
-    totalResults: parseInt(data.totalResults || '0'),
+    totalResults: parseInt(data.totalResults || '0', 10),
   }
 }
 

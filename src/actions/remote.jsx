@@ -59,12 +59,11 @@ const promiseFetchOrTimeout = (dispatch, uri, millisec=FETCH_TIMEOUT) => {
 }
 
 // Returns a Promise
-export const promiseQueryResults = (query) => (dispatch) => {
-  return promiseFetchOrTimeout(dispatch, queryFetchUri(query))
-  .then((res={ Search: [], totalResults: 0 }) => {
-    return dispatch(updateFilms(query, res.Search, res.totalResults))
-  })
-}
+export const promiseQueryResults = (query) => (dispatch) => promiseFetchOrTimeout(
+  dispatch, queryFetchUri(query)
+).then((res={ Search: [], totalResults: 0 }) => dispatch(updateFilms(
+  query, res.Search, res.totalResults
+)))
 
 // Returns a Promise
 // TODO - can this be combined with promoseQueryResults?
@@ -72,9 +71,9 @@ export const promiseQueryPageFetch = () => (dispatch) => {
   const { query, pageNum=1 } = store.getState()
   const nextPageNum = pageNum + 1
   return promiseFetchOrTimeout(dispatch, pageFetchUri(query, nextPageNum))
-  .then((res={ Search: [], totalResults: 0 }) => {
-    dispatch(appendFilms(nextPageNum, res.Search))
-  })
+    .then((res={ Search: [], totalResults: 0 }) => {
+      dispatch(appendFilms(nextPageNum, res.Search))
+    })
 }
 
 // Returns a Promise
