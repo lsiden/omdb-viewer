@@ -117,8 +117,8 @@ _FilmList.defaultProps = {
 }
 
 export default connect(
-  (state) => ({
-    query: state.query || '',
+  (state, ownProps) => ({
+    query: state.query || ownProps.query,
     films: getFilms(state),
     totalResults: state.totalResults || 0,
     isFetching: state.isFetching || false,
