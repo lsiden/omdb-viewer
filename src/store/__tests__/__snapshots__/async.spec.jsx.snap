@@ -73,7 +73,7 @@ Array [
 ]
 `;
 
-exports[`promiseQueryResults()(dispatch) invokes dispatch({type: Actions.UPDATE_FILMS}) 1`] = `
+exports[`promiseQueryResults()(dispatch) invokes dispatch({type: Actions.REPLACE_FILMS}) 1`] = `
 Array [
   Array [
     Object {

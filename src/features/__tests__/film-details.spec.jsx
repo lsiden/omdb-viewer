@@ -1,10 +1,9 @@
 import React from 'react'
-import { create } from 'react-test-renderer'
+import { createWithContext } from 'helpers/test-helpers'
 
 import { _FilmDetails } from 'features/film-details'
 
 const filmDetails = require('./film-details.json')
-
 const { imdbID } = filmDetails
 
 describe('FilmDetails', () => {
@@ -16,7 +15,7 @@ describe('FilmDetails', () => {
       dispatchFetchFilmDetails: jest.fn(),
       dispatchEraseFilmDetails: jest.fn(),
     }
-    const wrapper = create(<_FilmDetails {...params} />)
+    const wrapper = createWithContext(<_FilmDetails {...params} />)
     expect(wrapper).toMatchSnapshot()
 
     const { root } = wrapper
@@ -29,11 +28,11 @@ describe('FilmDetails', () => {
   it('renders a spinner while fetching', () => {
     const params = {
       imdbID,
+      isFetching: true,
       dispatchFetchFilmDetails: jest.fn(),
       dispatchEraseFilmDetails: jest.fn(),
-      isFetching: true,
     }
-    const wrapper = create(<_FilmDetails {...params} />)
+    const wrapper = createWithContext(<_FilmDetails {...params} />)
     expect(wrapper).toMatchSnapshot()
 
     const { root } = wrapper

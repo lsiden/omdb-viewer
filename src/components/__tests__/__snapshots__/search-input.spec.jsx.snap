@@ -52,6 +52,7 @@ exports[`SearchInput SearchInput 1`] = `
       }
     }
     onClick={[Function]}
+    onKeyPress={[Function]}
     role="button"
     style={
       Object {

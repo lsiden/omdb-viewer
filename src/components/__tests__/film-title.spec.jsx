@@ -1,19 +1,13 @@
 import React from 'react'
-import { create } from 'react-test-renderer'
-import { StaticRouter } from 'react-router-dom'
+import { createWithContext } from 'helpers/test-helpers'
 
 import FilmTitle from 'components/film-title'
 
 const films = require('features/__tests__/films.json').Search
+const createWrapper = () => createWithContext(<FilmTitle filmSummary={films[0]} />)
 
 describe('FilmTitle', () => {
   test('matches snapshot', () => {
-    expect(
-      create(
-        <StaticRouter context={{}}>
-          <FilmTitle filmSummary={films[0]} />
-        </StaticRouter>,
-      ),
-    ).toMatchSnapshot()
+    expect(createWrapper()).toMatchSnapshot()
   })
 })

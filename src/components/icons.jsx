@@ -30,8 +30,8 @@ const cancelIconStyle = {
   color: ICON_COLOR,
 }
 
-export const CancelIcon = ({ onClick }) => {
-  return (<span
+export const CancelIcon = ({ onClick }) => (
+  <span
     role="button"
     tabIndex={0}
     aria-label="Cancel"
@@ -40,8 +40,9 @@ export const CancelIcon = ({ onClick }) => {
     charSet="utf-8"
     dangerouslySetInnerHTML={{ __html: CANCEL_ICON }}
     onClick={onClick}
-  />)
-}
+    onKeyPress={onClick}
+  />
+)
 
 CancelIcon.propTypes = {
   onClick: PropTypes.func,

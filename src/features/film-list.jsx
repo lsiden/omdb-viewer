@@ -8,9 +8,8 @@ import MoreButton from 'components/more-button'
 import { scrollToTop, scrollToBottom } from 'components/scroll'
 import NavButton from 'components/nav-button'
 import QueryForm from 'components/query-form'
-import { setQuery } from 'actions'
-import { getFilms } from 'actions/films'
-import { promiseQueryResults } from 'actions/remote'
+import { setQuery, getFilms } from 'store'
+import { promiseQueryResults } from 'store/async'
 import { TITLE_COLOR } from 'omdb_constants'
 
 const ulStyle = {
@@ -42,6 +41,7 @@ export class _FilmList extends React.Component {
   constructor(props) {
     const { query, dispatchSetQuery } = props
     super(props)
+
     if (query) {
       dispatchSetQuery(query)
     }

@@ -1,50 +1,38 @@
 import React from 'react'
-import { create } from 'react-test-renderer'
-import { StaticRouter } from 'react-router-dom'
-import { Provider } from 'react-redux'
+import { createWithContext } from 'helpers/test-helpers'
 
 import { _FilmList } from 'features/film-list'
 import FilmTitle from 'components/film-title'
-import store from 'actions/store'
 
 const films = require('./films.json').Search
+const defaultProps = () => ({
+  query: 'the query',
+  films,
+  totalResults: films.length,
+  isFetching: false,
+  dispatchSetQuery: () => {},
+})
+
+const createWrapper = (props) => createWithContext(
+  <_FilmList {...{ ...defaultProps(), ...props }} />
+)
 
 describe('FilmList', () => {
   it('renders list of titles', () => {
     const dispatchSetQuery = jest.fn()
-    const wrapper = create(
-      <Provider store={store}>
-        <StaticRouter context={{}}>
-          <_FilmList
-            query="a query"
-            films={films}
-            totalResults={films.length}
-            dispatchSetQuery={dispatchSetQuery}
-            isFetching={false}
-          />
-        </StaticRouter>
-      </Provider>
-    )
+    const wrapper = createWrapper({ dispatchSetQuery })
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.root.findAllByType(FilmTitle)).toHaveLength(films.length)
     expect(wrapper.root.findAllByType('animate').length).toEqual(0)
+    expect(dispatchSetQuery.mock.calls.length).toEqual(1)
   })
 
   it('if isFetching then displays spinner', () => {
-    const dispatchSetQuery = jest.fn()
-    const wrapper = create(
-      <Provider store={store}>
-        <StaticRouter context={{}}>
-          <_FilmList
-            query="a query"
-            totalResults={0}
-            dispatchSetQuery={dispatchSetQuery}
-            isFetching
-          />
-        </StaticRouter>
-      </Provider>
-    )
-    expect(dispatchSetQuery.mock.calls.length).toEqual(1)
+    const wrapper = createWrapper({ isFetching: true })
     expect(wrapper.root.findAllByType('animate').length).toBeGreaterThan(0)
+  })
+
+  it('if query non-null, then calls dispatchSetQuery()', () => {
+
   })
 })

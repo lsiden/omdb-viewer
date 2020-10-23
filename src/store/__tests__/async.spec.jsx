@@ -1,4 +1,8 @@
-import { promiseQueryResults, promiseQueryPageFetch, promiseFilmDetails } from 'actions/remote'
+import {
+  promiseQueryResults,
+  promiseQueryPageFetch,
+  promiseFilmDetails
+} from 'store/async'
 import fetchMock from 'fetch-mock-jest'
 
 // Promise.prototype.catch = fn => new Promise((resolve, reject) => reject(fn))
@@ -7,7 +11,7 @@ fetchMock.config.overwriteRoutes = true
 
 afterEach(() => fetchMock.reset())
 
-test('promiseQueryResults()(dispatch) invokes dispatch({type: Actions.UPDATE_FILMS})', () => {
+test('promiseQueryResults()(dispatch) invokes dispatch({type: Actions.REPLACE_FILMS})', () => {
   const dispatch = jest.fn()
   const expectResponse = {
     Search: [

@@ -7,7 +7,7 @@ import Banner from 'components/banner'
 import FilmList from 'features/film-list'
 import FilmDetails from 'features/film-details'
 import About from 'features/about'
-import store from 'actions/store'
+import store from 'store'
 
 const RoutedFilmDetails = ({ match }) => (<FilmDetails imdbID={match.params.imdbID} />)
 const RoutedFilmList = ({ match }) => (<FilmList query={match.params.query} />)

@@ -4,15 +4,13 @@ import { useHistory } from 'react-router-dom'
 
 import NavButton from 'components/nav-button'
 
-const CLOSE_ICON = '\u2715'
-
 const closeButtonStyle = {
   fontSize: 20,
 }
+const CLOSE_ICON = '\u2715'
 
 const CloseButton = ({ buttonStyle }) => {
   const hist = useHistory()
-
   return (
     <NavButton
       onClick={hist.goBack}

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { promiseQueryPageFetch } from 'actions/remote'
+import { promiseQueryPageFetch } from 'store/async'
 import NavButton from 'components/nav-button'
 
 const buttonStyle = {

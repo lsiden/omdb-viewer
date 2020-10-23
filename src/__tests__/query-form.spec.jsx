@@ -3,7 +3,7 @@ import TestRenderer from 'react-test-renderer'
 import { Provider } from 'react-redux'
 
 import QueryForm from 'components/query-form'
-import store from 'actions/store'
+import store from 'store'
 
 const defaultProps = {
   onChange: () => {},

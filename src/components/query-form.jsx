@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import debounce from 'lodash/debounce'
 
-import { setQuery, updateFilms } from 'actions'
-import { promiseQueryResults } from 'actions/remote'
+import { setQuery, replaceFilms } from 'store'
+import { promiseQueryResults } from 'store/async'
 import SearchInput from 'components/search-input'
 import { headerStyle } from 'style'
 
@@ -107,7 +107,7 @@ export default connect(
       },
       clearResults: () => {
         dispatch(setQuery(''))
-        dispatch(updateFilms())
+        dispatch(replaceFilms())
       },
     })
   },

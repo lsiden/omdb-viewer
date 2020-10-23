@@ -119,6 +119,7 @@ exports[`OmdbMain matches snapshot 1`] = `
               }
             }
             onClick={[Function]}
+            onKeyPress={[Function]}
             role="button"
             style={
               Object {

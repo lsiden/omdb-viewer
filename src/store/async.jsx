@@ -3,11 +3,11 @@
 import toastr from 'toastr'
 // import promiseFinally from 'promise.prototype.finally'
 
-import store from 'actions/store'
+import store from 'store'
 import { FETCH_TIMEOUT, OMDB_API_URL, OMDB_API_KEY } from 'omdb_constants'
 import {
-  updateFilms,
-  reduceMoreFilms,
+  replaceFilms,
+  appendFilms,
   updateFilmDetails,
   setFetching,
 } from '.'
@@ -61,7 +61,7 @@ const promiseFetchOrTimeout = (dispatch, uri, millisec=FETCH_TIMEOUT) => {
 // Returns a Promise
 export const promiseQueryResults = (query) => (dispatch) => promiseFetchOrTimeout(
   dispatch, queryFetchUri(query)
-).then((res={ Search: [], totalResults: 0 }) => dispatch(updateFilms(
+).then((res={ Search: [], totalResults: 0 }) => dispatch(replaceFilms(
   query, res.Search, res.totalResults
 )))
 
@@ -72,7 +72,7 @@ export const promiseQueryPageFetch = () => (dispatch) => {
   const nextPageNum = pageNum + 1
   return promiseFetchOrTimeout(dispatch, pageFetchUri(query, nextPageNum))
     .then((res={ Search: [], totalResults: 0 }) => {
-      dispatch(reduceMoreFilms(nextPageNum, res.Search))
+      dispatch(appendFilms(nextPageNum, res.Search))
     })
 }
 

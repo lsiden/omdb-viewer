@@ -40,6 +40,8 @@ rules:
       controlComponents: ["SearchInput"]
       assert: either
       depth: 25
+  import/newline-after-import:
+    - off
   comma-dangle:
     - off
   no-underscore-dangle:

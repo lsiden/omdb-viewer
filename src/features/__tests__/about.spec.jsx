@@ -1,20 +1,13 @@
 import React from 'react'
 
 import About from 'features/about'
-import { StaticRouter } from 'react-router-dom'
-
-import { create } from 'react-test-renderer'
+import { createWithContext } from 'helpers/test-helpers'
 
 const onClick = () => {}
+const createWrapper = () => createWithContext(<About onClick={onClick} />)
 
 describe('OmdbMain', () => {
   test('matches snapshot', () => {
-    expect(
-      create(
-        <StaticRouter context={{}}>
-          <About onClick={onClick} />
-        </StaticRouter>,
-      ),
-    ).toMatchSnapshot()
+    expect(createWrapper()).toMatchSnapshot()
   })
 })
