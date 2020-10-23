@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const SEARCH_ICON = '\u26b2'
-const CANCEL_ICON = '\u274c'
+const CANCEL_ICON = '\u2a09'
 const ICON_COLOR = '#888'
 
 const searchIconStyle = {
@@ -14,6 +14,13 @@ const searchIconStyle = {
   transform: 'rotate(-45deg)',
 }
 
+const cancelIconStyle = {
+  position: 'absolute',
+  bottom: 4,
+  right: 8,
+  color: ICON_COLOR,
+}
+
 export const SearchIcon = () => (
   <span
     style={searchIconStyle}
@@ -21,14 +28,6 @@ export const SearchIcon = () => (
     dangerouslySetInnerHTML={{ __html: SEARCH_ICON }}
   />
 )
-
-const cancelIconStyle = {
-  position: 'absolute',
-  top: 6,
-  right: 6,
-  fontSize: '8pt',
-  color: ICON_COLOR,
-}
 
 export const CancelIcon = ({ onClick }) => (
   <span
