@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import Banner from 'components/banner'
@@ -20,12 +20,12 @@ export default () => (
   <div>
     <Banner />
     <Provider store={store}>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Router basename={process.env.PUBLIC_URL}>
         <Route exact path="/" component={RoutedFilmList} />
         <Route path="/search/:query" component={RoutedFilmList} />
         <Route path="/film/:imdbID" component={RoutedFilmDetails} />
         <Route path="/about" component={About} />
-      </BrowserRouter>
+      </Router>
     </Provider>
   </div>
 )

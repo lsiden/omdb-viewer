@@ -15,7 +15,7 @@ const CloseButton = ({ buttonStyle }) => {
 
   return (
     <NavButton
-      onClick={() => hist.goBack()}
+      onClick={hist.goBack}
       style={{ ...closeButtonStyle, ...buttonStyle }}
       title="Close"
     >
