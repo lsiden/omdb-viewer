@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OmdbMain matches snapshot 1`] = `
-<div>
+<div
+  style={
+    Object {
+      "outline": "none",
+    }
+  }
+>
   <header
     style={
       Object {

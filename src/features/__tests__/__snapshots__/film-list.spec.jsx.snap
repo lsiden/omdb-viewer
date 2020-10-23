@@ -79,7 +79,6 @@ exports[`FilmList renders list of titles 1`] = `
             }
           }
           onClick={[Function]}
-          onKeyPress={[Function]}
           role="button"
           style={
             Object {

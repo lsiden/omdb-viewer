@@ -42,111 +42,108 @@ exports[`OmdbMain matches snapshot 1`] = `
     </div>
   </header>
   <div>
-    <div>
-      <form
-        style={
-          Object {
-            "background": "linear-gradient(to right, #000040, #3b00ff)",
-            "color": "white",
-            "padding": "10px",
-          }
+    <form
+      style={
+        Object {
+          "background": "linear-gradient(to right, #000040, #3b00ff)",
+          "color": "white",
+          "padding": "10px",
         }
-      >
-        <div
-          style={
-            Object {
-              "display": "flex",
-            }
-          }
-        >
-          <label
-            htmlFor="query-form-search-input"
-            style={
-              Object {
-                "marginRight": "1em",
-              }
-            }
-          >
-            Search
-          </label>
-          <div
-            style={
-              Object {
-                "position": "relative",
-                "width": "100%",
-              }
-            }
-          >
-            <span
-              charSet="utf-8"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "⚲",
-                }
-              }
-              style={
-                Object {
-                  "color": "#888",
-                  "fontSize": "20pt",
-                  "left": "6pt",
-                  "position": "absolute",
-                  "top": "-4pt",
-                  "transform": "rotate(-45deg)",
-                }
-              }
-            />
-            <input
-              onChange={[Function]}
-              placeholder="Film Title ..."
-              style={
-                Object {
-                  "color": "black",
-                  "fontSize": "12pt",
-                  "height": "24pt",
-                  "textIndent": "24pt",
-                  "width": "100%",
-                }
-              }
-              type="search"
-              value=""
-            />
-            <span
-              aria-label="Cancel"
-              charSet="utf-8"
-              className="hover-pointer"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "❌",
-                }
-              }
-              onClick={[Function]}
-              onKeyPress={[Function]}
-              role="button"
-              style={
-                Object {
-                  "color": "#888",
-                  "fontSize": "8pt",
-                  "position": "absolute",
-                  "right": 6,
-                  "top": 6,
-                }
-              }
-              tabIndex={0}
-            />
-          </div>
-        </div>
-      </form>
+      }
+    >
       <div
         style={
           Object {
-            "color": "#210d87",
-            "fontSize": "14pt",
-            "margin": "1em",
+            "display": "flex",
           }
         }
       >
-         Search for a title. 
+        <label
+          htmlFor="query-form-search-input"
+          style={
+            Object {
+              "marginRight": "1em",
+            }
+          }
+        >
+          Search
+        </label>
+        <div
+          style={
+            Object {
+              "position": "relative",
+              "width": "100%",
+            }
+          }
+        >
+          <span
+            charSet="utf-8"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "⚲",
+              }
+            }
+            style={
+              Object {
+                "color": "#888",
+                "fontSize": "20pt",
+                "left": "6pt",
+                "position": "absolute",
+                "top": "-4pt",
+                "transform": "rotate(-45deg)",
+              }
+            }
+          />
+          <input
+            onChange={[Function]}
+            placeholder="Film Title ..."
+            style={
+              Object {
+                "color": "black",
+                "fontSize": "12pt",
+                "height": "24pt",
+                "textIndent": "24pt",
+                "width": "100%",
+              }
+            }
+            type="search"
+            value=""
+          />
+          <span
+            aria-label="Cancel"
+            charSet="utf-8"
+            className="hover-pointer"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "❌",
+              }
+            }
+            onClick={[Function]}
+            role="button"
+            style={
+              Object {
+                "color": "#888",
+                "fontSize": "8pt",
+                "position": "absolute",
+                "right": 6,
+                "top": 6,
+              }
+            }
+            tabIndex={0}
+          />
+        </div>
       </div>
+    </form>
+    <div
+      style={
+        Object {
+          "color": "#210d87",
+          "fontSize": "14pt",
+          "margin": "1em",
+        }
+      }
+    >
+       Search for a title. 
     </div>
   </div>
 </div>

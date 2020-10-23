@@ -34,7 +34,7 @@ const titleBannerStyle = {
 }
 
 export class _FilmDetails extends React.Component {
-  static keyDownListener(ev) {
+  static onKeyDown(ev) {
     if (ev.keyCode === ESC_KEY) {
       window.history.back()
     }
@@ -43,13 +43,13 @@ export class _FilmDetails extends React.Component {
   componentDidMount() {
     const { dispatchFetchFilmDetails, imdbID } = this.props
     dispatchFetchFilmDetails(imdbID)
-    document.addEventListener('keydown', _FilmDetails.keyDownListener)
+    document.addEventListener('keydown', _FilmDetails.onKeyDown)
   }
 
   componentWillUnmount() {
     const { dispatchEraseFilmDetails } = this.props
     dispatchEraseFilmDetails()
-    document.removeEventListener('keydown', _FilmDetails.keyDownListener)
+    document.removeEventListener('keydown', _FilmDetails.onKeyDown)
   }
 
   renderTitle() {

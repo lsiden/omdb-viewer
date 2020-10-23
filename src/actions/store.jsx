@@ -5,7 +5,6 @@ import Actions from 'actions/types'
 import { updateNewFilms, appendFilms } from 'actions/films'
 
 const initialState = {
-  view: Actions.VIEW_FILM_LIST,
   isFetching: false,
   films: [],
   totalResults: 0,

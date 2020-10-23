@@ -78,7 +78,6 @@ exports[`QueryForm renders a Form element 1`] = `
           }
         }
         onClick={[Function]}
-        onKeyPress={[Function]}
         role="button"
         style={
           Object {

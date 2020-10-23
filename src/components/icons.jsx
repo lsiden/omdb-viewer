@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { ESC_KEY } from 'omdb_constants'
-
 const SEARCH_ICON = '\u26b2'
 const CANCEL_ICON = '\u274c'
 const ICON_COLOR = '#888'
@@ -33,11 +31,6 @@ const cancelIconStyle = {
 }
 
 export const CancelIcon = ({ onClick }) => {
-  const onKeyPress = (ev) => {
-    if (ev.keyCode === ESC_KEY) {
-      onClick()
-    }
-  }
   return (<span
     role="button"
     tabIndex={0}
@@ -47,7 +40,6 @@ export const CancelIcon = ({ onClick }) => {
     charSet="utf-8"
     dangerouslySetInnerHTML={{ __html: CANCEL_ICON }}
     onClick={onClick}
-    onKeyPress={onKeyPress}
   />)
 }
 

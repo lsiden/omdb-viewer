@@ -21,12 +21,10 @@ export default () => (
     <Banner />
     <Provider store={store}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <div>
-          <Route exact path="/" component={RoutedFilmList} />
-          <Route path="/search/:query" component={RoutedFilmList} />
-          <Route path="/film/:imdbID" component={RoutedFilmDetails} />
-          <Route path="/about" component={About} />
-        </div>
+        <Route exact path="/" component={RoutedFilmList} />
+        <Route path="/search/:query" component={RoutedFilmList} />
+        <Route path="/film/:imdbID" component={RoutedFilmDetails} />
+        <Route path="/about" component={About} />
       </BrowserRouter>
     </Provider>
   </div>
