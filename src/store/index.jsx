@@ -13,9 +13,7 @@ export const setQuery = (query='') => ({
 
 export const replaceFilms = (query='', films=[], totalResults=0) => ({
   type: ActionType.REPLACE_FILMS,
-  data: {
-    films, query, totalResults, pageNum: 1,
-  },
+  data: { films, query, totalResults, pageNum: 1 },
 })
 
 export const appendFilms = (pageNum=1, films=[]) => ({
@@ -25,9 +23,7 @@ export const appendFilms = (pageNum=1, films=[]) => ({
 
 export const updateFilmDetails = (filmDetails) => ({
   type: ActionType.UPDATE_FILM_DETAILS,
-  data: {
-    filmDetails,
-  },
+  data: { filmDetails },
 })
 
 export const setFetching = (isFetching=false) => ({

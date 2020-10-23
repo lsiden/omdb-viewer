@@ -12,11 +12,6 @@ import {
   setFetching,
 } from '.'
 
-// promise.prototoype.finally is not yet available in node.js.
-// This prevents tests from breaking.
-// It is a no-op when .finally() is already defined.
-// promiseFinally.shim()
-
 const queryFetchUri = (query) => `${OMDB_API_URL}?apikey=${OMDB_API_KEY}&type=movie&s=${query}`
 const pageFetchUri = (query, page) => queryFetchUri(query) + `&page=${page}`
 const filmFetchUri = (id) => `${OMDB_API_URL}?apikey=${OMDB_API_KEY}&type=movie&i=${id}&plot=full`
@@ -58,17 +53,14 @@ const promiseFetchOrTimeout = (dispatch, uri, millisec=FETCH_TIMEOUT) => {
     })
 }
 
-// Returns a Promise
 export const promiseQueryResults = (query) => (dispatch) => promiseFetchOrTimeout(
   dispatch, queryFetchUri(query)
 ).then((res={ Search: [], totalResults: 0 }) => dispatch(replaceFilms(
   query, res.Search, res.totalResults
 )))
 
-// Returns a Promise
-// TODO - can this be combined with promoseQueryResults?
 export const promiseQueryPageFetch = () => (dispatch) => {
-  const { query, pageNum=1 } = store.getState()
+  const { query='', pageNum=1 } = store.getState()
   const nextPageNum = pageNum + 1
   return promiseFetchOrTimeout(dispatch, pageFetchUri(query, nextPageNum))
     .then((res={ Search: [], totalResults: 0 }) => {
@@ -76,7 +68,6 @@ export const promiseQueryPageFetch = () => (dispatch) => {
     })
 }
 
-// Returns a Promise
 export const promiseFilmDetails = (id) => (dispatch) => promiseFetchOrTimeout(
   dispatch,
   filmFetchUri(id),

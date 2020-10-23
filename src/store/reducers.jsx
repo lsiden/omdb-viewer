@@ -21,11 +21,13 @@ const reduceNewFilms = (state, data) => ({
   ...state,
   films: (data.films || []).reduce(reduceUniqueFilms, {}),
   totalResults: parseInt(data.totalResults || '0', 10),
+  pageNum: 1,
 })
 
 const reduceMoreFilms = (state, data) => ({
   ...state,
-  films: (data.films || []).reduce(reduceUniqueFilms, { ...state.films || {} })
+  films: (data.films || []).reduce(reduceUniqueFilms, { ...state.films || {} }),
+  pageNum: data.pageNum,
 })
 
 export default function (state=initialState, action) {

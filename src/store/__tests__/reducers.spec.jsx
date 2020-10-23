@@ -25,4 +25,5 @@ test('appendFilms() filters duplicates', () => {
   const newState = reduce(state, appendFilms(2, films))
   const expected = [1, 2, 3, 4, 5].map((id) => mkFilmItem(id))
   expect(getFilms(newState)).toEqual(expected)
+  expect(newState.pageNum).toBe(2)
 })
