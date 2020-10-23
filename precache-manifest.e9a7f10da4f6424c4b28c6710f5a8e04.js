@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3449fb8daff975d5ee2de45ccc7a7f7e",
+    "revision": "7188bd3d9a868129f078c296787996cb",
     "url": "/omdb-film-browser-web/index.html"
   },
   {
-    "revision": "2854c187339fb3b9f41d",
+    "revision": "b121e13758a947956f54",
     "url": "/omdb-film-browser-web/static/css/2.8ec0c4ed.chunk.css"
   },
   {
-    "revision": "2854c187339fb3b9f41d",
-    "url": "/omdb-film-browser-web/static/js/2.bd8ac93c.chunk.js"
+    "revision": "b121e13758a947956f54",
+    "url": "/omdb-film-browser-web/static/js/2.6f6eac7f.chunk.js"
   },
   {
     "revision": "5bba1771fd5b4a2319d369ca22fd2d31",
-    "url": "/omdb-film-browser-web/static/js/2.bd8ac93c.chunk.js.LICENSE.txt"
+    "url": "/omdb-film-browser-web/static/js/2.6f6eac7f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "78669d62e4bbddf321d5",
-    "url": "/omdb-film-browser-web/static/js/main.ce0f5ebc.chunk.js"
+    "revision": "8be06002c7eaa8329ab0",
+    "url": "/omdb-film-browser-web/static/js/main.0e907ee0.chunk.js"
   },
   {
     "revision": "e0a8c98cccc432fa39cd",
