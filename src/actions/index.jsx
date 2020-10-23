@@ -14,7 +14,7 @@ export const updateFilms = (query='', films=[], totalResults=0) => ({
   },
 })
 
-export const appendFilms = (pageNum=1, films=[]) => ({
+export const reduceMoreFilms = (pageNum=1, films=[]) => ({
   type: Actions.APPEND_FILMS,
   data: { films, pageNum },
 })

@@ -7,7 +7,7 @@ import store from 'actions/store'
 import { FETCH_TIMEOUT, OMDB_API_URL, OMDB_API_KEY } from 'omdb_constants'
 import {
   updateFilms,
-  appendFilms,
+  reduceMoreFilms,
   updateFilmDetails,
   setFetching,
 } from '.'
@@ -72,7 +72,7 @@ export const promiseQueryPageFetch = () => (dispatch) => {
   const nextPageNum = pageNum + 1
   return promiseFetchOrTimeout(dispatch, pageFetchUri(query, nextPageNum))
     .then((res={ Search: [], totalResults: 0 }) => {
-      dispatch(appendFilms(nextPageNum, res.Search))
+      dispatch(reduceMoreFilms(nextPageNum, res.Search))
     })
 }
 

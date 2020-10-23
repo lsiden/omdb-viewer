@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 
 import Actions from 'actions/types'
-import { updateNewFilms, appendFilms } from 'actions/films'
+import { reduceNewFilms, reduceMoreFilms } from 'actions/films'
 
 const initialState = {
   isFetching: false,
@@ -22,9 +22,9 @@ export function reduce(state = initialState, action) {
         ...data,
       }
     case Actions.UPDATE_FILMS:
-      return updateNewFilms(state, data)
+      return reduceNewFilms(state, data)
     case Actions.APPEND_FILMS:
-      return appendFilms(state, data)
+      return reduceMoreFilms(state, data)
     default:
       return state
   }
