@@ -22,10 +22,6 @@ export class _QueryForm extends React.Component {
     this.ref = React.createRef()
     this.onChange = this.onChange.bind(this)
     this.onCancel = this.onCancel.bind(this)
-
-    // if (props.query) {
-    //   props.dispatchSetQuery(props.query)
-    // }
   }
 
   componentDidMount() {
