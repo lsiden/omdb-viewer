@@ -3,8 +3,3 @@ export const headerStyle = {
   padding: '10px',
   color: 'white',
 }
-
-export const titleStyle = {
-  fontSize: 22,
-  marginTop: 10,
-}

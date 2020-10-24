@@ -5,6 +5,14 @@ Array [
   Array [
     Object {
       "data": Object {
+        "filmDetails": null,
+      },
+      "type": "update-film-details",
+    },
+  ],
+  Array [
+    Object {
+      "data": Object {
         "isFetching": true,
       },
       "type": "update-is-fetching",

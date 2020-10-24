@@ -11,6 +11,7 @@ exports[`MoreButton matches snapshot 1`] = `
       "marginBottom": 20,
     }
   }
+  title="More"
   type="button"
 >
   More

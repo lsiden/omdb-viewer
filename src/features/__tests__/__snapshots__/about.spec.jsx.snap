@@ -13,6 +13,49 @@ exports[`OmdbMain matches snapshot 1`] = `
       Object {
         "background": "linear-gradient(to right, #000040, #3b00ff)",
         "color": "white",
+        "padding": "10px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <h1>
+        <img
+          height={20}
+          src="movie-icon.svg"
+          style={
+            Object {
+              "margin": 12,
+            }
+          }
+        />
+         
+        Open Movie Database Browser
+      </h1>
+      <a
+        href="/about"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        About
+      </a>
+    </div>
+  </header>
+  <header
+    style={
+      Object {
+        "background": "linear-gradient(to right, #000040, #3b00ff)",
+        "color": "white",
         "display": "flex",
         "justifyContent": "space-between",
         "padding": "10px",
@@ -37,6 +80,7 @@ exports[`OmdbMain matches snapshot 1`] = `
           "fontSize": 20,
         }
       }
+      title="Close"
       type="button"
     >
       ✕

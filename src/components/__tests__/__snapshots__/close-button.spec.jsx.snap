@@ -9,6 +9,7 @@ exports[`CloseButton matches snapshot 1`] = `
       "fontSize": 20,
     }
   }
+  title="Close"
   type="button"
 >
   ✕

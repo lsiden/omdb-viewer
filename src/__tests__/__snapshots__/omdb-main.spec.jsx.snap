@@ -2,46 +2,50 @@
 
 exports[`OmdbMain matches snapshot 1`] = `
 <div>
-  <header
-    style={
-      Object {
-        "background": "linear-gradient(to right, #000040, #3b00ff)",
-        "color": "white",
-        "padding": "10px",
-      }
-    }
-  >
-    <div
+  <div>
+    <header
       style={
         Object {
-          "display": "flex",
-          "justifyContent": "space-between",
+          "background": "linear-gradient(to right, #000040, #3b00ff)",
+          "color": "white",
+          "padding": "10px",
         }
       }
     >
-      <h1
+      <div
         style={
           Object {
-            "fontSize": 22,
-            "marginTop": 10,
+            "display": "flex",
+            "justifyContent": "space-between",
           }
         }
       >
-        Open Movie Database Browser
-      </h1>
-      <a
-        href="/about"
-        style={
-          Object {
-            "color": "white",
+        <h1>
+          <img
+            height={20}
+            src="movie-icon.svg"
+            style={
+              Object {
+                "margin": 12,
+              }
+            }
+          />
+           
+          Open Movie Database Browser
+        </h1>
+        <a
+          href="/about"
+          onClick={[Function]}
+          style={
+            Object {
+              "color": "white",
+            }
           }
-        }
-      >
-        about
-      </a>
-    </div>
-  </header>
-  <div>
+        >
+          About
+        </a>
+      </div>
+    </header>
     <form
       style={
         Object {
@@ -125,6 +129,7 @@ exports[`OmdbMain matches snapshot 1`] = `
               Object {
                 "bottom": 4,
                 "color": "#888",
+                "fontSize": 16,
                 "position": "absolute",
                 "right": 8,
               }

@@ -2,6 +2,49 @@
 
 exports[`FilmList renders list of titles 1`] = `
 <div>
+  <header
+    style={
+      Object {
+        "background": "linear-gradient(to right, #000040, #3b00ff)",
+        "color": "white",
+        "padding": "10px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <h1>
+        <img
+          height={20}
+          src="movie-icon.svg"
+          style={
+            Object {
+              "margin": 12,
+            }
+          }
+        />
+         
+        Open Movie Database Browser
+      </h1>
+      <a
+        href="/about"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        About
+      </a>
+    </div>
+  </header>
   <form
     style={
       Object {
@@ -85,6 +128,7 @@ exports[`FilmList renders list of titles 1`] = `
             Object {
               "bottom": 4,
               "color": "#888",
+              "fontSize": 16,
               "position": "absolute",
               "right": 8,
             }
@@ -265,6 +309,7 @@ exports[`FilmList renders list of titles 1`] = `
             "marginLeft": 40,
           }
         }
+        title="Scroll to top of page"
         type="button"
       >
         Scroll to Top of List

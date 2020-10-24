@@ -84,6 +84,7 @@ exports[`QueryForm renders a Form element 1`] = `
           Object {
             "bottom": 4,
             "color": "#888",
+            "fontSize": 16,
             "position": "absolute",
             "right": 8,
           }
