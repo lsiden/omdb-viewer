@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ccf7d62bc1ef9eea823ae4af77edc64c",
+    "revision": "ab4f9bcf8f672116e8670e7b1d9a1b96",
     "url": "/omdb-film-browser-web/index.html"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/omdb-film-browser-web/static/js/2.a816189f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0ef7fcb5f4a791559e23",
-    "url": "/omdb-film-browser-web/static/js/main.b9d7db93.chunk.js"
+    "revision": "2071cc8d9f7a3292128a",
+    "url": "/omdb-film-browser-web/static/js/main.1ae43469.chunk.js"
   },
   {
     "revision": "e0a8c98cccc432fa39cd",
