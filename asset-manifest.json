@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/omdb-film-browser-web/static/js/main.96e427ea.chunk.js",
-    "main.js.map": "/omdb-film-browser-web/static/js/main.96e427ea.chunk.js.map",
+    "main.js": "/omdb-film-browser-web/static/js/main.fb4678de.chunk.js",
+    "main.js.map": "/omdb-film-browser-web/static/js/main.fb4678de.chunk.js.map",
     "runtime-main.js": "/omdb-film-browser-web/static/js/runtime-main.0ecbfc25.js",
     "runtime-main.js.map": "/omdb-film-browser-web/static/js/runtime-main.0ecbfc25.js.map",
     "static/css/2.8ec0c4ed.chunk.css": "/omdb-film-browser-web/static/css/2.8ec0c4ed.chunk.css",
     "static/js/2.f6235c58.chunk.js": "/omdb-film-browser-web/static/js/2.f6235c58.chunk.js",
     "static/js/2.f6235c58.chunk.js.map": "/omdb-film-browser-web/static/js/2.f6235c58.chunk.js.map",
     "index.html": "/omdb-film-browser-web/index.html",
-    "precache-manifest.625677c08b4d40ef6509e1fb93b6cc8c.js": "/omdb-film-browser-web/precache-manifest.625677c08b4d40ef6509e1fb93b6cc8c.js",
+    "precache-manifest.99d98da8cd09588a18e624d41e17b9c0.js": "/omdb-film-browser-web/precache-manifest.99d98da8cd09588a18e624d41e17b9c0.js",
     "service-worker.js": "/omdb-film-browser-web/service-worker.js",
     "static/css/2.8ec0c4ed.chunk.css.map": "/omdb-film-browser-web/static/css/2.8ec0c4ed.chunk.css.map",
     "static/js/2.f6235c58.chunk.js.LICENSE.txt": "/omdb-film-browser-web/static/js/2.f6235c58.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.0ecbfc25.js",
     "static/css/2.8ec0c4ed.chunk.css",
     "static/js/2.f6235c58.chunk.js",
-    "static/js/main.96e427ea.chunk.js"
+    "static/js/main.fb4678de.chunk.js"
   ]
 }
