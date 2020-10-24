@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import { connect } from 'react-redux'
 
 import CloseButton from 'components/close-button'
 import { headerStyle } from 'style'
