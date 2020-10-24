@@ -72,7 +72,10 @@ export const promiseQueryPageFetch = () => (dispatch) => {
     })
 }
 
-export const promiseFilmDetails = (id) => (dispatch) => promiseFetchOrTimeout(
-  dispatch,
-  filmFetchUri(id),
-).then((res) => dispatch(updateFilmDetails(res)))
+export const promiseFilmDetails = (id) => (dispatch) => {
+  dispatch(updateFilmDetails(null))
+  return promiseFetchOrTimeout(
+    dispatch,
+    filmFetchUri(id),
+  ).then((res) => dispatch(updateFilmDetails(res)))
+}

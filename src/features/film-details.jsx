@@ -40,15 +40,17 @@ export class _FilmDetails extends React.Component {
     }
   }
 
-  componentDidMount() {
+  constructor(props) {
+    super(props)
     const { dispatchFetchFilmDetails, imdbID } = this.props
     dispatchFetchFilmDetails(imdbID)
+  }
+
+  componentDidMount() {
     document.addEventListener('keydown', _FilmDetails.onKeyDown)
   }
 
   componentWillUnmount() {
-    const { dispatchEraseFilmDetails } = this.props
-    dispatchEraseFilmDetails()
     document.removeEventListener('keydown', _FilmDetails.onKeyDown)
   }
 
@@ -126,7 +128,6 @@ _FilmDetails.propTypes = {
   imdbID: PropTypes.string.isRequired,
   filmDetails: PropTypes.object,
   dispatchFetchFilmDetails: PropTypes.func.isRequired,
-  dispatchEraseFilmDetails: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
 }
 _FilmDetails.defaultProps = {
@@ -140,6 +141,5 @@ export default connect(
   }),
   (dispatch) => ({
     dispatchFetchFilmDetails: (imdbID) => dispatch(promiseFilmDetails(imdbID)),
-    dispatchEraseFilmDetails: () => dispatch(updateFilmDetails(null)),
   }),
 )(_FilmDetails)
