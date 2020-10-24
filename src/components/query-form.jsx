@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { setQuery } from 'store'
+import { setQuery } from 'store/async'
 import SearchInput from 'components/search-input'
 import { headerStyle } from 'style'
 

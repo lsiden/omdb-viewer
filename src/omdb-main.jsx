@@ -6,7 +6,8 @@ import { Provider } from 'react-redux'
 import FilmList from 'features/film-list'
 import FilmDetails from 'features/film-details'
 import About from 'features/about'
-import store, { setQuery } from 'store'
+import store from 'store'
+import { setQuery } from 'store/async'
 import { queryFromUriPath } from 'helpers'
 
 const RoutedFilmDetails = ({ match }) => (<FilmDetails imdbID={match.params.imdbID} />)

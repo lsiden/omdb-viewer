@@ -1,13 +1,14 @@
 // Remote Actions
 
 import toastr from 'toastr'
-// import promiseFinally from 'promise.prototype.finally'
+import debounce from 'lodash/debounce'
 
 import store from 'store'
 import { FETCH_TIMEOUT,
   OMDB_API_URL_AUTHORITY,
   OMDB_API_KEY
 } from 'omdb_constants'
+import ActionType from './const'
 import {
   replaceFilms,
   appendFilms,
@@ -78,4 +79,22 @@ export const promiseFilmDetails = (id) => (dispatch) => {
     dispatch,
     filmFetchUri(id),
   ).then((res) => dispatch(updateFilmDetails(res)))
+}
+
+const _setQuery = (query='') => ({
+  type: ActionType.SET_QUERY,
+  data: { query },
+})
+
+export const setQuery = (query='') => (dispatch) => {
+  const debouncedDispatchPromiseQueryResults = debounce(
+    () => dispatch(promiseQueryResults(query)),
+    300
+  )
+  dispatch(_setQuery(query))
+
+  if (!query) {
+    return dispatch(replaceFilms([]))
+  }
+  return debouncedDispatchPromiseQueryResults(query)
 }

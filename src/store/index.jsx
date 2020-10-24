@@ -1,34 +1,14 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import debounce from 'lodash/debounce'
 
-import { promiseQueryResults } from 'store/async'
 import ActionType from './const'
 import reduce from './reducers'
 
 // Action factories
 
-const _setQuery = (query='') => ({
-  type: ActionType.SET_QUERY,
-  data: { query },
-})
-
 export const replaceFilms = (query='', films=[], totalResults=0) => ({
   type: ActionType.REPLACE_FILMS,
   data: { films, query, totalResults, pageNum: 1 },
 })
-
-export const setQuery = (query='') => (dispatch) => {
-  const debouncedDispatchPromiseQueryResults = debounce(
-    () => dispatch(promiseQueryResults(query)),
-    300
-  )
-  dispatch(_setQuery(query))
-
-  if (!query) {
-    return dispatch(replaceFilms([]))
-  }
-  return debouncedDispatchPromiseQueryResults(query)
-}
 
 export const appendFilms = (pageNum=1, films=[]) => ({
   type: ActionType.APPEND_FILMS,
