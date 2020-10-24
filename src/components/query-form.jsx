@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import debounce from 'lodash/debounce'
 
-import { setQuery, replaceFilms } from 'store'
-import { promiseQueryResults } from 'store/async'
+import { setQuery } from 'store'
 import SearchInput from 'components/search-input'
 import { headerStyle } from 'style'
 
@@ -25,9 +23,9 @@ export class _QueryForm extends React.Component {
     this.onChange = this.onChange.bind(this)
     this.onCancel = this.onCancel.bind(this)
 
-    if (props.query) {
-      props.dispatchSetQuery(props.query)
-    }
+    // if (props.query) {
+    //   props.dispatchSetQuery(props.query)
+    // }
   }
 
   componentDidMount() {
@@ -46,19 +44,14 @@ export class _QueryForm extends React.Component {
 
   onCancel() {
     this.replaceUriHistory()
-    this.props.clearResults()
+    this.props.dispatchSetQuery('')
   }
 
   onChange(ev) {
-    const { clearResults, dispatchSetQuery } = this.props
+    const { dispatchSetQuery } = this.props
     const query = ev.target.value
     this.replaceUriHistory(query)
-
-    if (query) {
-      dispatchSetQuery(query)
-    } else {
-      clearResults()
-    }
+    dispatchSetQuery(query)
   }
 
   replaceUriHistory(query = '') {
@@ -88,7 +81,6 @@ export class _QueryForm extends React.Component {
 
 _QueryForm.propTypes = {
   dispatchSetQuery: PropTypes.func.isRequired,
-  clearResults: PropTypes.func.isRequired,
   query: PropTypes.string,
 }
 _QueryForm.defaultProps = {
@@ -99,20 +91,7 @@ export default connect(
   (state) => ({
     query: state.query || '',
   }),
-  (dispatch) => {
-    const debouncedDispatchPromiseQueryResults = debounce(
-      (query) => dispatch(promiseQueryResults(query)),
-      300
-    )
-    return ({
-      dispatchSetQuery: (query) => {
-        dispatch(setQuery(query))
-        debouncedDispatchPromiseQueryResults(query)
-      },
-      clearResults: () => {
-        dispatch(setQuery(''))
-        dispatch(replaceFilms())
-      },
-    })
-  },
+  (dispatch) => ({
+    dispatchSetQuery: (query='') => dispatch(setQuery(query)),
+  }),
 )(_QueryForm)

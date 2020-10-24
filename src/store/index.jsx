@@ -1,11 +1,13 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
+import debounce from 'lodash/debounce'
 
 import ActionType from './const'
 import reduce from './reducers'
+import { promiseQueryResults } from 'store/async'
 
 // Action factories
 
-export const setQuery = (query='') => ({
+const _setQuery = (query='') => ({
   type: ActionType.SET_QUERY,
   data: { query },
 })
@@ -14,6 +16,19 @@ export const replaceFilms = (query='', films=[], totalResults=0) => ({
   type: ActionType.REPLACE_FILMS,
   data: { films, query, totalResults, pageNum: 1 },
 })
+
+export const setQuery = (query='') => dispatch => {
+  const debouncedDispatchPromiseQueryResults = debounce(
+    (query) => dispatch(promiseQueryResults(query)),
+    300
+  )
+  dispatch(_setQuery(query))
+
+  if (!query) {
+    return dispatch(replaceFilms([]))
+  }
+  return debouncedDispatchPromiseQueryResults(query)
+}
 
 export const appendFilms = (pageNum=1, films=[]) => ({
   type: ActionType.APPEND_FILMS,
@@ -41,12 +56,11 @@ export function getFilms(state) {
 // Redux Store
 
 const initialState = () => {
-  const match = /^\/search\/([^/?]*)/.exec(decodeURI(window.location.pathname))
   return {
     isFetching: false,
     films: [],
     totalResults: 0,
-    query: match ? match[1] : '',
+    query: '',
   }
 }
 

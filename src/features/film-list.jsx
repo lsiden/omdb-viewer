@@ -8,8 +8,7 @@ import MoreButton from 'components/more-button'
 import { scrollToTop, scrollToBottom } from 'components/scroll'
 import NavButton from 'components/nav-button'
 import QueryForm from 'components/query-form'
-import { setQuery, getFilms } from 'store'
-import { promiseQueryResults } from 'store/async'
+import { getFilms } from 'store'
 import { TITLE_COLOR } from 'omdb_constants'
 
 const ulStyle = {
@@ -112,11 +111,5 @@ export default connect(
     films: getFilms(state),
     totalResults: state.totalResults || 0,
     isFetching: state.isFetching || false,
-  }),
-  (dispatch) => ({
-    dispatchSetQuery: (query) => {
-      dispatch(setQuery(query))
-      dispatch(promiseQueryResults(query))
-    },
   }),
 )(_FilmList)
