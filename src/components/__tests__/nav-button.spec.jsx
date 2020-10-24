@@ -6,7 +6,7 @@ import NavButton from 'components/nav-button'
 const createWrapper = () => {
   const mockFn = jest.fn()
   return create(
-    <NavButton onClick={mockFn}>Press Me</NavButton>,
+    <NavButton onClick={mockFn} title="The Title">Press Me</NavButton>,
   )
 }
 

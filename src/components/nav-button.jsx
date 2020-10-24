@@ -16,7 +16,7 @@ const NavButton = ({ style, title, onClick, children }) => (
 NavButton.propTypes = {
   style: PropTypes.object,
   onClick: PropTypes.func.isRequired,
-  title: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
 }
 

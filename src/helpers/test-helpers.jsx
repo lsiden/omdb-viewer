@@ -7,8 +7,6 @@ import { create } from 'react-test-renderer'
 
 import store from 'store'
 
-/* eslint-disable import/prefer-default-export */
-
 export const createWithContext = (ui) => create(
   <Provider store={store}>
     <StaticRouter context={{}}>

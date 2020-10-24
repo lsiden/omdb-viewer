@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { _QueryForm } from 'components/query-form'
-import store from 'store'
 import { createWithContext } from 'helpers/test-helpers'
 
 const defaultProps = {
@@ -11,7 +10,7 @@ const defaultProps = {
 }
 
 const createWrapper = (props) => createWithContext(
-  <_QueryForm {...{...defaultProps, ...props}} />
+  <_QueryForm {...{ ...defaultProps, ...props }} />
 )
 
 describe('QueryForm', () => {
@@ -22,7 +21,5 @@ describe('QueryForm', () => {
       dispatchSetQuery,
     }
     expect(createWrapper(props)).toMatchSnapshot()
-    expect(dispatchSetQuery.mock.calls.length).toEqual(1)
-
   })
 })

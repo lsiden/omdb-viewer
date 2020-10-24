@@ -21,6 +21,7 @@ exports[`FilmList renders list of titles 1`] = `
     >
       <h1>
         <img
+          alt="OMDB Browser logo"
           height={20}
           src="movie-icon.svg"
           style={
@@ -29,7 +30,6 @@ exports[`FilmList renders list of titles 1`] = `
             }
           }
         />
-         
         Open Movie Database Browser
       </h1>
       <a

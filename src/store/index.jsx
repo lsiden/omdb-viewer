@@ -1,9 +1,9 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import debounce from 'lodash/debounce'
 
+import { promiseQueryResults } from 'store/async'
 import ActionType from './const'
 import reduce from './reducers'
-import { promiseQueryResults } from 'store/async'
 
 // Action factories
 
@@ -17,9 +17,9 @@ export const replaceFilms = (query='', films=[], totalResults=0) => ({
   data: { films, query, totalResults, pageNum: 1 },
 })
 
-export const setQuery = (query='') => dispatch => {
+export const setQuery = (query='') => (dispatch) => {
   const debouncedDispatchPromiseQueryResults = debounce(
-    (query) => dispatch(promiseQueryResults(query)),
+    () => dispatch(promiseQueryResults(query)),
     300
   )
   dispatch(_setQuery(query))
@@ -55,17 +55,15 @@ export function getFilms(state) {
 /// /////////////
 // Redux Store
 
-const initialState = () => {
-  return {
-    isFetching: false,
-    films: [],
-    totalResults: 0,
-    query: '',
-  }
+const preloadedState = {
+  isFetching: false,
+  films: [],
+  totalResults: 0,
+  query: '',
 }
 
 export default configureStore({
   reducer: reduce,
-  preloadedState: initialState(),
+  preloadedState,
   middleware: [...getDefaultMiddleware()],
 })

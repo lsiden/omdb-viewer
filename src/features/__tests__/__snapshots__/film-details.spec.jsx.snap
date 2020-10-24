@@ -21,6 +21,7 @@ exports[`FilmDetails renders a spinner while fetching 1`] = `
     >
       <h1>
         <img
+          alt="OMDB Browser logo"
           height={20}
           src="movie-icon.svg"
           style={
@@ -29,7 +30,6 @@ exports[`FilmDetails renders a spinner while fetching 1`] = `
             }
           }
         />
-         
         Open Movie Database Browser
       </h1>
       <a
@@ -193,6 +193,7 @@ exports[`FilmDetails renders details when present 1`] = `
     >
       <h1>
         <img
+          alt="OMDB Browser logo"
           height={20}
           src="movie-icon.svg"
           style={
@@ -201,7 +202,6 @@ exports[`FilmDetails renders details when present 1`] = `
             }
           }
         />
-         
         Open Movie Database Browser
       </h1>
       <a

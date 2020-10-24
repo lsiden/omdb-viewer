@@ -110,7 +110,7 @@ export class _FilmDetails extends React.Component {
           <OmdbBanner />
           <Spinner style={spinnerStyle} size={64} />
         </div>
-        )
+      )
     }
     return filmDetails && (
       <div>

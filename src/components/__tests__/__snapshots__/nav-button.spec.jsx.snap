@@ -5,6 +5,7 @@ exports[`NavButton matches snapshot 1`] = `
   className="btn btn-link"
   onClick={[MockFunction]}
   style={Object {}}
+  title="The Title"
   type="button"
 >
   Press Me
