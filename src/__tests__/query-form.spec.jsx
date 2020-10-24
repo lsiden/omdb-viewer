@@ -1,24 +1,28 @@
 import React from 'react'
-import TestRenderer from 'react-test-renderer'
-import { Provider } from 'react-redux'
 
-import QueryForm from 'components/query-form'
+import { _QueryForm } from 'components/query-form'
 import store from 'store'
+import { createWithContext } from 'helpers/test-helpers'
 
 const defaultProps = {
-  onChange: () => {},
-  dispatchQueryFetch: () => {},
+  query: '',
+  dispatchSetQuery: () => {},
   clearResults: () => {},
 }
 
-const createWrapper = () => TestRenderer.create(
-  <Provider store={store}>
-    <QueryForm {...defaultProps} />
-  </Provider>,
+const createWrapper = (props) => createWithContext(
+  <_QueryForm {...{...defaultProps, ...props}} />
 )
 
 describe('QueryForm', () => {
   it('renders a Form element', () => {
-    expect(createWrapper()).toMatchSnapshot()
+    const dispatchSetQuery = jest.fn()
+    const props = {
+      query: 'The Fantastic',
+      dispatchSetQuery,
+    }
+    expect(createWrapper(props)).toMatchSnapshot()
+    expect(dispatchSetQuery.mock.calls.length).toEqual(1)
+
   })
 })

@@ -75,7 +75,7 @@ exports[`FilmList renders list of titles 1`] = `
           className="hover-pointer"
           dangerouslySetInnerHTML={
             Object {
-              "__html": "❌",
+              "__html": "⨉",
             }
           }
           onClick={[Function]}
@@ -83,11 +83,10 @@ exports[`FilmList renders list of titles 1`] = `
           role="button"
           style={
             Object {
+              "bottom": 4,
               "color": "#888",
-              "fontSize": "8pt",
               "position": "absolute",
-              "right": 6,
-              "top": 6,
+              "right": 8,
             }
           }
           tabIndex={0}
@@ -268,7 +267,7 @@ exports[`FilmList renders list of titles 1`] = `
         }
         type="button"
       >
-        top
+        Scroll to Top of List
       </button>
     </div>
   </div>

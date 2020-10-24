@@ -23,6 +23,7 @@
     "prettier": "prettier --write src/*.js src/**/*.js"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
     "axios": "^0.18.0",
     "cuid": "^2.1.0",
     "event-target-shim": "^5.0.1",

@@ -4,7 +4,10 @@ import toastr from 'toastr'
 // import promiseFinally from 'promise.prototype.finally'
 
 import store from 'store'
-import { FETCH_TIMEOUT, OMDB_API_URL, OMDB_API_KEY } from 'omdb_constants'
+import { FETCH_TIMEOUT,
+  OMDB_API_URL_AUTHORITY,
+  OMDB_API_KEY
+} from 'omdb_constants'
 import {
   replaceFilms,
   appendFilms,
@@ -12,9 +15,10 @@ import {
   setFetching,
 } from '.'
 
-const queryFetchUri = (query) => `${OMDB_API_URL}?apikey=${OMDB_API_KEY}&type=movie&s=${query}`
+const OBDB_API = `${OMDB_API_URL_AUTHORITY}?apikey=${OMDB_API_KEY}&type=movie`
+const queryFetchUri = (query) => `${OBDB_API}&s=${query}`
 const pageFetchUri = (query, page) => queryFetchUri(query) + `&page=${page}`
-const filmFetchUri = (id) => `${OMDB_API_URL}?apikey=${OMDB_API_KEY}&type=movie&i=${id}&plot=full`
+const filmFetchUri = (id) => `${OBDB_API}&i=${id}&plot=full`
 
 function toJson(res) {
   try {

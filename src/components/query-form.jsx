@@ -18,12 +18,16 @@ const searchInputStyle = {
   flex: '1 1'
 }
 
-class QueryForm extends React.Component {
+export class _QueryForm extends React.Component {
   constructor(props) {
     super(props)
     this.ref = React.createRef()
     this.onChange = this.onChange.bind(this)
     this.onCancel = this.onCancel.bind(this)
+
+    if (props.query) {
+      props.dispatchSetQuery(props.query)
+    }
   }
 
   componentDidMount() {
@@ -82,12 +86,12 @@ class QueryForm extends React.Component {
   }
 }
 
-QueryForm.propTypes = {
+_QueryForm.propTypes = {
   dispatchSetQuery: PropTypes.func.isRequired,
   clearResults: PropTypes.func.isRequired,
   query: PropTypes.string,
 }
-QueryForm.defaultProps = {
+_QueryForm.defaultProps = {
   query: '',
 }
 
@@ -111,4 +115,4 @@ export default connect(
       },
     })
   },
-)(QueryForm)
+)(_QueryForm)

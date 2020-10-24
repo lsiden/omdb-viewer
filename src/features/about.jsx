@@ -5,7 +5,7 @@ import CloseButton from 'components/close-button'
 import { headerStyle } from 'style'
 import { BANNER_TITLE, ESC_KEY } from 'omdb_constants'
 
-const OMDB_API_URL = 'https://www.omdbapi.com/'
+const OMDB_API_URL_AUTHORITY = 'https://www.omdbapi.com/'
 const SOURCE_CODE_URL = 'https://github.com/lsiden/omdb-film-browser-web'
 const WESTSIDE_CONSULTING_URL = 'http://westsideconsultingllc.com'
 
@@ -18,7 +18,7 @@ Lawrence Siden
 [westsideconsultingllc@gmail.com](mailto:westsideconsultingllc@gmail.com)
 
 ## Credits
-[Open Movie Database API](${OMDB_API_URL})
+[Open Movie Database API](${OMDB_API_URL_AUTHORITY})
 
 ## Source Code
 ${SOURCE_CODE_URL}

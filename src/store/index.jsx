@@ -1,5 +1,4 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import thunk from 'redux-thunk'
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 
 import ActionType from './const'
 import reduce from './reducers'
@@ -39,11 +38,20 @@ export function getFilms(state) {
 }
 
 /// /////////////
-// createStore()
+// Redux Store
 
-const composeEnhancers = (
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true, traceLimit: 25 })
-) || compose
+const initialState = () => {
+  const match = /^\/search\/([^/?]*)/.exec(decodeURI(window.location.pathname))
+  return {
+    isFetching: false,
+    films: [],
+    totalResults: 0,
+    query: match ? match[1] : '',
+  }
+}
 
-export default createStore(reduce, composeEnhancers(applyMiddleware(thunk)))
+export default configureStore({
+  reducer: reduce,
+  preloadedState: initialState(),
+  middleware: [...getDefaultMiddleware()],
+})

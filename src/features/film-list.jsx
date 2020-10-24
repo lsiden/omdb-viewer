@@ -38,15 +38,6 @@ const spinnerStyle = {
 }
 
 export class _FilmList extends React.Component {
-  constructor(props) {
-    const { query, dispatchSetQuery } = props
-    super(props)
-
-    if (query) {
-      dispatchSetQuery(query)
-    }
-  }
-
   componentDidUpdate() {
     scrollToBottom()
   }
@@ -78,13 +69,13 @@ export class _FilmList extends React.Component {
           ))}
         </ul>
         <div style={bottomRowStyle}>
-          {films.length < totalResults && <MoreButton />}
-          { films && films.length && (
+          { films.length < totalResults && <MoreButton /> }
+          { films.length && (
           <NavButton
             onClick={scrollToTop}
             style={topButtonStyle}
             title="Scroll to top of page"
-          >top
+          >Scroll to Top of List
           </NavButton>
           )}
         </div>
@@ -106,7 +97,6 @@ _FilmList.propTypes = {
   query: PropTypes.string,
   films: PropTypes.arrayOf(PropTypes.object),
   totalResults: PropTypes.number,
-  dispatchSetQuery: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
 }
 

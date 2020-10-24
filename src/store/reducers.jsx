@@ -1,12 +1,5 @@
 import ActionTypes from 'store/const'
 
-const initialState = {
-  isFetching: false,
-  films: [],
-  totalResults: 0,
-  query: '',
-}
-
 /*
  * I discovered that OMDB search can return some duplicate films.
  * This will cause React to throw a warning when it discovers a duplicate key.
@@ -30,7 +23,7 @@ const reduceMoreFilms = (state, data) => ({
   pageNum: data.pageNum,
 })
 
-export default function (state=initialState, action) {
+export default function (state={}, action) {
   const { type, data } = action
   switch (type) {
     case ActionTypes.UPDATE_FILM_DETAILS:

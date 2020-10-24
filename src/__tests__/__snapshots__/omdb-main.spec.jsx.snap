@@ -115,7 +115,7 @@ exports[`OmdbMain matches snapshot 1`] = `
             className="hover-pointer"
             dangerouslySetInnerHTML={
               Object {
-                "__html": "❌",
+                "__html": "⨉",
               }
             }
             onClick={[Function]}
@@ -123,11 +123,10 @@ exports[`OmdbMain matches snapshot 1`] = `
             role="button"
             style={
               Object {
+                "bottom": 4,
                 "color": "#888",
-                "fontSize": "8pt",
                 "position": "absolute",
-                "right": 6,
-                "top": 6,
+                "right": 8,
               }
             }
             tabIndex={0}
