@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const NavButton = ({ style, onClick, children }) => (
+const NavButton = ({ style, title, onClick, children }) => (
   <button
     type="button"
     onClick={onClick}
+    title={title}
     className="btn btn-link"
     style={style}
   >
@@ -15,6 +16,7 @@ const NavButton = ({ style, onClick, children }) => (
 NavButton.propTypes = {
   style: PropTypes.object,
   onClick: PropTypes.func.isRequired,
+  title: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
 }
 
