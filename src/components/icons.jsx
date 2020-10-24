@@ -16,6 +16,7 @@ const searchIconStyle = {
 
 const cancelIconStyle = {
   position: 'absolute',
+  fontSize: 16,
   bottom: 4,
   right: 8,
   color: ICON_COLOR,
