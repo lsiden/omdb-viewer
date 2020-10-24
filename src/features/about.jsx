@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
+import { connect } from 'react-redux'
 
 import CloseButton from 'components/close-button'
 import { headerStyle } from 'style'
 import { BANNER_TITLE, ESC_KEY } from 'omdb_constants'
+import Banner from 'components/banner'
 
 const OMDB_API_URL_AUTHORITY = 'https://www.omdbapi.com/'
 const SOURCE_CODE_URL = 'https://github.com/lsiden/omdb-film-browser-web'
@@ -48,6 +50,7 @@ class _About extends React.Component {
   render() {
     return (
       <div style={{ outline: 'none' }}>
+        <Banner />
         <header style={aboutBannerStyle}>
           <h1 style={{ fontSize: 28 }}>{`About ${BANNER_TITLE}`}</h1>
           <CloseButton buttonStyle={{ color: 'white' }} />

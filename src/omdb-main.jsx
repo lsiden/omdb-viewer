@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-import Banner from 'components/banner'
 import FilmList from 'features/film-list'
 import FilmDetails from 'features/film-details'
 import About from 'features/about'
@@ -29,7 +28,6 @@ export default () => {
   }
   return (
     <div>
-      <Banner />
       <Provider store={store}>
         <Router basename={process.env.PUBLIC_URL}>
           <Route exact path="/" component={RoutedFilmList} />

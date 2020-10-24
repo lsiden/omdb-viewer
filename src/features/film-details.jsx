@@ -10,6 +10,7 @@ import { promiseFilmDetails } from 'store/async'
 import { updateFilmDetails } from 'store'
 import { headerStyle } from 'style'
 import { ESC_KEY } from 'omdb_constants'
+import Banner from 'components/banner'
 
 const titleStyle = {
   marginBottom: '5pt',
@@ -105,10 +106,16 @@ export class _FilmDetails extends React.Component {
     const { filmDetails, isFetching } = this.props
 
     if (isFetching) {
-      return <Spinner style={spinnerStyle} size={64} />
+      return (
+        <div>
+          <Banner />
+          <Spinner style={spinnerStyle} size={64} />
+        </div>
+        )
     }
     return filmDetails && (
       <div>
+        <Banner />
         {this.renderTitle()}
         <div style={{ marginLeft: 20 }}>
           <img
