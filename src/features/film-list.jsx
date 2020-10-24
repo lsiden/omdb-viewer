@@ -49,10 +49,6 @@ export class _FilmList extends React.Component {
   renderInner() {
     const { query, films, totalResults, isFetching } = this.props
 
-    if (isFetching) {
-      return <Spinner style={spinnerStyle} />
-    }
-
     if (query.length === 0) {
       return <div style={msgStyle}> Search for a title. </div>
     }
@@ -68,6 +64,7 @@ export class _FilmList extends React.Component {
             <FilmTitle key={filmSummary.imdbID} filmSummary={filmSummary} />
           ))}
         </ul>
+        { isFetching && <Spinner style={spinnerStyle} /> }
         <div style={bottomRowStyle}>
           { films.length < totalResults && <MoreButton /> }
           { films.length && (
