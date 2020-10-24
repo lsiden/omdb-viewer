@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Spinner from 'respin'
-import Banner from 'components/banner'
+import OmdbBanner from 'components/omdb-banner'
 
 import FilmTitle from 'components/film-title'
 import MoreButton from 'components/more-button'
@@ -86,7 +86,7 @@ export class _FilmList extends React.Component {
   render() {
     return (
       <div>
-        <Banner />
+        <OmdbBanner />
         <QueryForm />
         {this.renderInner()}
       </div>

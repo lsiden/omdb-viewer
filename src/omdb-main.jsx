@@ -14,10 +14,6 @@ const RoutedFilmList = ({ match }) => (<FilmList query={match.params.query} />)
 RoutedFilmDetails.propTypes = { match: PropTypes.object.isRequired }
 RoutedFilmList.propTypes = { match: PropTypes.object.isRequired }
 
-// if (state.query && (!state.films || state.films.length === 0)) {
-//   store.dispatch()
-// }
-
 // See  https://itnext.io/so-you-want-to-host-your-single-age-react-app-on-github-pages-a826ab01e48
 // for basename property.
 export default () => {
