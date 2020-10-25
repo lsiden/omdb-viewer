@@ -51,8 +51,8 @@ export class _QueryForm extends React.Component {
   }
 
   replaceUriHistory(query = '') {
-    const uri = query ? `/search/${query}` : '/'
-    window.history.replaceState({}, '', uri)
+    const uri = `${process.env.PUBLIC_URL}/search/${query}`
+    window.history.replaceState(undefined, undefined, uri)
   }
 
   render() {
