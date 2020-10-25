@@ -12,9 +12,9 @@
   },
   "homepage": "http://westsideconsultingllc.com/omdb-film-browser-web/",
   "scripts": {
-    "start": "NODE_PATH=src react-scripts start --no-cache",
+    "start": "NODE_PATH=src react-scripts start",
     "build": "NODE_PATH=src react-scripts build",
-    "test": "NODE_PATH=src react-scripts test --env=jsdom --no-cache",
+    "test": "NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js --ext .jsx src",
     "lint:fix": "yarn run lint --fix",
