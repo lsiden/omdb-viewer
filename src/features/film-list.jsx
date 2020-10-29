@@ -1,6 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 import MoreButton from 'components/more-button'
 import { scrollToBottom } from 'components/scroll'
@@ -31,7 +29,7 @@ export class FilmListWrapper extends React.Component {
   render() {
     return (
       <div>
-        <SearchStats style={{marginLeft: 40}} />
+        <SearchStats style={{ marginLeft: 40 }} />
         <FilmList />
         <Spinner style={spinnerStyle} />
         <div style={bottomRowStyle}>

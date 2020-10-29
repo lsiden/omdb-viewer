@@ -1,8 +1,7 @@
 import React from 'react'
-import { createWithContext } from 'helpers/test-helpers'
+import { shallow } from 'enzyme'
 
 import { FilmListWrapper } from 'features/film-list'
-import FilmTitle from 'components/film-title'
 
 const films = require('./films.json').Search
 const defaultProps = () => ({
@@ -12,9 +11,9 @@ const defaultProps = () => ({
   isFetching: false,
 })
 
-const createWrapper = (props={}) => createWithContext(
-  <FilmListWrapper />
-).root
+const createWrapper = () => shallow(
+  <FilmListWrapper {...defaultProps()} />
+)
 
 describe('FilmList', () => {
   it('matches snapshot', () => {

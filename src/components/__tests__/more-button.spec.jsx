@@ -3,7 +3,7 @@ import { create, act } from 'react-test-renderer';
 
 import { _MoreButton } from 'components/more-button'
 
-const createWrapper = (films=[], totalResults=0, dispatchPageFetch=()=>{}) => create(
+const createWrapper = (films=[], totalResults=0, dispatchPageFetch=() => {}) => create(
   <_MoreButton
     dispatchPageFetch={dispatchPageFetch}
     films={films}

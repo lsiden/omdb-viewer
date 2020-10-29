@@ -2,13 +2,13 @@ import React from 'react'
 
 import { _FilmList } from 'components/film-list'
 
-import { createWithContext } from 'helpers/test-helpers'
+import { shallow } from 'enzyme'
 
 const films = require('features/__tests__/films.json').Search
 
-const createWrapper = () => createWithContext(
+const createWrapper = () => shallow(
   <_FilmList films={films} />
-).root
+)
 
 describe('FilmList component', () => {
   it('matches snapshot', () => {

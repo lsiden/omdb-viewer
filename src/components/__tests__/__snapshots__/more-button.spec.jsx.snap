@@ -25,7 +25,7 @@ ReactTestInstance {
       "_debugSource": Object {
         "columnNumber": 5,
         "fileName": "/Users/lawrencesiden/projects/omdb-film-browser-web/src/components/more-button.jsx",
-        "lineNumber": 16,
+        "lineNumber": 17,
       },
       "actualDuration": 0,
       "actualStartTime": -1,
@@ -299,7 +299,7 @@ ReactTestInstance {
                     "_debugSource": Object {
                       "columnNumber": 5,
                       "fileName": "/Users/lawrencesiden/projects/omdb-film-browser-web/src/components/more-button.jsx",
-                      "lineNumber": 16,
+                      "lineNumber": 17,
                     },
                     "actualDuration": 0,
                     "actualStartTime": -1,
@@ -440,7 +440,7 @@ ReactTestInstance {
                     "_debugSource": Object {
                       "columnNumber": 5,
                       "fileName": "/Users/lawrencesiden/projects/omdb-film-browser-web/src/components/more-button.jsx",
-                      "lineNumber": 16,
+                      "lineNumber": 17,
                     },
                     "actualDuration": 0,
                     "actualStartTime": -1,
@@ -628,7 +628,7 @@ ReactTestInstance {
                   "_debugSource": Object {
                     "columnNumber": 5,
                     "fileName": "/Users/lawrencesiden/projects/omdb-film-browser-web/src/components/more-button.jsx",
-                    "lineNumber": 16,
+                    "lineNumber": 17,
                   },
                   "actualDuration": 0,
                   "actualStartTime": -1,
@@ -769,7 +769,7 @@ ReactTestInstance {
                   "_debugSource": Object {
                     "columnNumber": 5,
                     "fileName": "/Users/lawrencesiden/projects/omdb-film-browser-web/src/components/more-button.jsx",
-                    "lineNumber": 16,
+                    "lineNumber": 17,
                   },
                   "actualDuration": 0,
                   "actualStartTime": -1,
