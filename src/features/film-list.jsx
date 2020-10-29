@@ -8,6 +8,7 @@ import { scrollToBottom } from 'components/scroll'
 import { getFilms } from 'store'
 import Spinner from 'components/spinner'
 import ScrollToTopButton from 'components/scroll-to-top-btn'
+import SearchStats from 'components/search-stats'
 
 const ulStyle = {
   listStyleType: 'none',
@@ -37,6 +38,7 @@ export class _FilmList extends React.Component {
     const { films } = this.props
     return (
       <div>
+        <SearchStats style={{marginLeft: 40}} />
         <ul style={ulStyle}>
           {films.map((filmSummary) => (
             <FilmTitle key={filmSummary.imdbID} filmSummary={filmSummary} />

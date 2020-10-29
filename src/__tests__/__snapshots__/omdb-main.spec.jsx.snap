@@ -140,6 +140,18 @@ exports[`OmdbMain matches snapshot 1`] = `
       </div>
     </form>
     <div>
+      <div
+        style={
+          Object {
+            "marginLeft": 40,
+          }
+        }
+      >
+        Fetched 
+        0
+         of 
+        0
+      </div>
       <ul
         style={
           Object {

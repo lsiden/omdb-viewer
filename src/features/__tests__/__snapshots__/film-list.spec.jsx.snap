@@ -2,6 +2,18 @@
 
 exports[`FilmList renders list of titles 1`] = `
 <div>
+  <div
+    style={
+      Object {
+        "marginLeft": 40,
+      }
+    }
+  >
+    Fetched 
+    0
+     of 
+    0
+  </div>
   <ul
     style={
       Object {
