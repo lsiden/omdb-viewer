@@ -158,9 +158,7 @@ exports[`OmdbMain matches snapshot 1`] = `
             "marginLeft": 40,
           }
         }
-      >
-        0
-      </div>
+      />
     </div>
   </div>
 </div>

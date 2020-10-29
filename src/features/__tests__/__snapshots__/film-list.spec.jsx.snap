@@ -161,22 +161,6 @@ exports[`FilmList renders list of titles 1`] = `
         "marginLeft": 40,
       }
     }
-  >
-    <button
-      className="btn btn-link"
-      onClick={[Function]}
-      style={
-        Object {
-          "color": "darkgrey",
-          "fontSize": 16,
-          "marginLeft": 40,
-        }
-      }
-      title="Scroll to top of list"
-      type="button"
-    >
-      Scroll to Top of List
-    </button>
-  </div>
+  />
 </div>
 `;

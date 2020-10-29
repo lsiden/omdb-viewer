@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 
 import FilmTitle from 'components/film-title'
 import MoreButton from 'components/more-button'
-import { scrollToTop, scrollToBottom } from 'components/scroll'
-import NavButton from 'components/nav-button'
+import { scrollToBottom } from 'components/scroll'
 import { getFilms } from 'store'
 import Spinner from 'respin'
+import ScrollToTopButton from 'components/scroll-to-top-btn'
 
 const ulStyle = {
   listStyleType: 'none',
@@ -19,11 +19,6 @@ const bottomRowStyle = {
   display: 'flex',
   justifyContent: 'flex-start',
   alignItems: 'baseline',
-}
-const topButtonStyle = {
-  marginLeft: 40,
-  fontSize: 16,
-  color: 'darkgrey',
 }
 const spinnerStyle = {
   margin: 50,
@@ -38,7 +33,8 @@ export class _FilmList extends React.Component {
     console.error(err, errInfo)
   }
 
-  // TODO - ScollToTop as separate component
+  // TODO - Spinner should get isFetching from state
+  // TODO - MoreButton
   render() {
     const { films, totalResults, isFetching } = this.props
     return (
@@ -51,14 +47,7 @@ export class _FilmList extends React.Component {
         { isFetching && <Spinner style={spinnerStyle} /> }
         <div style={bottomRowStyle}>
           { films.length < totalResults && <MoreButton /> }
-          { films.length && (
-          <NavButton
-            onClick={scrollToTop}
-            style={topButtonStyle}
-            title="Scroll to top of list"
-          >Scroll to Top of List
-          </NavButton>
-          )}
+          <ScrollToTopButton />
         </div>
       </div>
     )
