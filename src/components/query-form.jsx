@@ -39,7 +39,6 @@ export class _QueryForm extends React.Component {
   }
 
   onCancel() {
-    this.replaceUriHistory()
     this.props.dispatchSetQuery('')
   }
 

@@ -46,7 +46,7 @@ export class _FilmList extends React.Component {
         </ul>
         { isFetching && <Spinner style={spinnerStyle} /> }
         <div style={bottomRowStyle}>
-          { films.length < totalResults && <MoreButton /> }
+          <MoreButton />
           <ScrollToTopButton />
         </div>
       </div>
