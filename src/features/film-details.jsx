@@ -59,7 +59,7 @@ export class _FilmDetails extends React.Component {
     return filmDetails && (
       <header style={titleBannerStyle}>
         <h2 style={{ ...titleStyle, marginTop: 0 }}>{filmDetails.Title}</h2>
-        <CloseButton buttonStyle={{ color: 'white' }} />
+        <CloseButton next="/" buttonStyle={{ color: 'white' }} />
       </header>
     )
   }

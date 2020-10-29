@@ -1,26 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import Spinner from 'respin'
-import OmdbBanner from 'components/omdb-banner'
 
 import FilmTitle from 'components/film-title'
 import MoreButton from 'components/more-button'
 import { scrollToTop, scrollToBottom } from 'components/scroll'
 import NavButton from 'components/nav-button'
-import QueryForm from 'components/query-form'
 import { getFilms } from 'store'
-import { TITLE_COLOR } from 'omdb_constants'
+import Spinner from 'respin'
 
 const ulStyle = {
   listStyleType: 'none',
   lineHeight: 1.5,
   marginTop: 20,
-}
-const msgStyle = {
-  fontSize: '14pt',
-  color: TITLE_COLOR,
-  margin: '1em',
 }
 const bottomRowStyle = {
   marginLeft: 40,
@@ -46,17 +38,9 @@ export class _FilmList extends React.Component {
     console.error(err, errInfo)
   }
 
-  renderInner() {
-    const { query, films, totalResults, isFetching } = this.props
-
-    if (query.length === 0) {
-      return <div style={msgStyle}> Search for a title. </div>
-    }
-
-    if (query.length > 0 && films.length === 0) {
-      return <div style={msgStyle}> There are no films that match your query. </div>
-    }
-
+  // TODO - ScollToTop as separate component
+  render() {
+    const { films, totalResults, isFetching } = this.props
     return (
       <div>
         <ul style={ulStyle}>
@@ -71,7 +55,7 @@ export class _FilmList extends React.Component {
           <NavButton
             onClick={scrollToTop}
             style={topButtonStyle}
-            title="Scroll to top of page"
+            title="Scroll to top of list"
           >Scroll to Top of List
           </NavButton>
           )}
@@ -79,34 +63,16 @@ export class _FilmList extends React.Component {
       </div>
     )
   }
-
-  render() {
-    return (
-      <div>
-        <OmdbBanner />
-        <QueryForm />
-        {this.renderInner()}
-      </div>
-    )
-  }
 }
 
 _FilmList.propTypes = {
-  query: PropTypes.string,
-  films: PropTypes.arrayOf(PropTypes.object),
-  totalResults: PropTypes.number,
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  totalResults: PropTypes.number.isRequired,
   isFetching: PropTypes.bool.isRequired,
 }
 
-_FilmList.defaultProps = {
-  query: '',
-  films: [],
-  totalResults: 0,
-}
-
 export default connect(
-  (state, ownProps) => ({
-    query: state.query || ownProps.query,
+  (state) => ({
     films: getFilms(state),
     totalResults: state.totalResults || 0,
     isFetching: state.isFetching || false,

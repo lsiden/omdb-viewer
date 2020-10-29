@@ -52,7 +52,7 @@ class _About extends React.Component {
         <OmdbBanner />
         <header style={aboutBannerStyle}>
           <h1 style={{ fontSize: 28 }}>{`About ${BANNER_TITLE}`}</h1>
-          <CloseButton buttonStyle={{ color: 'white' }} />
+          <CloseButton next="/" buttonStyle={{ color: 'white' }} />
         </header>
         <div style={{ marginLeft: 20 }}>
           <ReactMarkdown source={source} />

@@ -71,8 +71,8 @@ exports[`OmdbMain matches snapshot 1`] = `
     >
       About Open Movie Database Browser
     </h1>
-    <button
-      className="btn btn-link"
+    <a
+      href="/"
       onClick={[Function]}
       style={
         Object {
@@ -81,10 +81,9 @@ exports[`OmdbMain matches snapshot 1`] = `
         }
       }
       title="Close"
-      type="button"
     >
       ✕
-    </button>
+    </a>
   </header>
   <div
     style={

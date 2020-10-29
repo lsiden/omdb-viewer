@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CloseButton matches snapshot 1`] = `
-<button
-  className="btn btn-link"
+<a
+  href="/"
   onClick={[Function]}
   style={
     Object {
@@ -10,8 +10,7 @@ exports[`CloseButton matches snapshot 1`] = `
     }
   }
   title="Close"
-  type="button"
 >
   ✕
-</button>
+</a>
 `;

@@ -2,319 +2,181 @@
 
 exports[`FilmList renders list of titles 1`] = `
 <div>
-  <header
+  <ul
     style={
       Object {
-        "background": "linear-gradient(to right, #000040, #3b00ff)",
-        "color": "white",
-        "padding": "10px",
+        "lineHeight": 1.5,
+        "listStyleType": "none",
+        "marginTop": 20,
       }
     }
   >
-    <div
-      style={
-        Object {
-          "display": "flex",
-          "justifyContent": "space-between",
-        }
-      }
-    >
-      <h1>
-        <img
-          alt="OMDB Browser logo"
-          height={20}
-          src="movie-icon.svg"
-          style={
-            Object {
-              "margin": 12,
-            }
-          }
-        />
-        Open Movie Database Browser
-      </h1>
+    <div>
       <a
-        href="/about"
+        href="/film/tt2310332"
         onClick={[Function]}
         style={
           Object {
-            "color": "white",
+            "color": "#210d87",
           }
         }
+        title="View film details"
       >
-        About
+        The Hobbit: The Battle of the Five Armies, 2014
       </a>
     </div>
-  </header>
-  <form
+    <div>
+      <a
+        href="/film/tt1217613"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "#210d87",
+          }
+        }
+        title="View film details"
+      >
+        Battle Los Angeles, 2011
+      </a>
+    </div>
+    <div>
+      <a
+        href="/film/tt0266308"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "#210d87",
+          }
+        }
+        title="View film details"
+      >
+        Battle Royale, 2000
+      </a>
+    </div>
+    <div>
+      <a
+        href="/film/tt1078912"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "#210d87",
+          }
+        }
+        title="View film details"
+      >
+        Night at the Museum: Battle of the Smithsonian, 2009
+      </a>
+    </div>
+    <div>
+      <a
+        href="/film/tt0058946"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "#210d87",
+          }
+        }
+        title="View film details"
+      >
+        The Battle of Algiers, 1966
+      </a>
+    </div>
+    <div>
+      <a
+        href="/film/tt4622512"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "#210d87",
+          }
+        }
+        title="View film details"
+      >
+        Battle of the Sexes, 2017
+      </a>
+    </div>
+    <div>
+      <a
+        href="/film/tt0069768"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "#210d87",
+          }
+        }
+        title="View film details"
+      >
+        Battle for the Planet of the Apes, 1973
+      </a>
+    </div>
+    <div>
+      <a
+        href="/film/tt2263944"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "#210d87",
+          }
+        }
+        title="View film details"
+      >
+        Dragon Ball Z: Battle of Gods, 2013
+      </a>
+    </div>
+    <div>
+      <a
+        href="/film/tt2536562"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "#210d87",
+          }
+        }
+        title="View film details"
+      >
+        Dragon Ball Z: Battle of Gods, 2013
+      </a>
+    </div>
+    <div>
+      <a
+        href="/film/tt0064072"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "#210d87",
+          }
+        }
+        title="View film details"
+      >
+        Battle of Britain, 1969
+      </a>
+    </div>
+  </ul>
+  <div
     style={
       Object {
-        "background": "linear-gradient(to right, #000040, #3b00ff)",
-        "color": "white",
-        "padding": "10px",
+        "alignItems": "baseline",
+        "display": "flex",
+        "justifyContent": "flex-start",
+        "marginLeft": 40,
       }
     }
   >
-    <div
+    <button
+      className="btn btn-link"
+      onClick={[Function]}
       style={
         Object {
-          "display": "flex",
-        }
-      }
-    >
-      <label
-        htmlFor="query-form-search-input"
-        style={
-          Object {
-            "marginRight": "1em",
-          }
-        }
-      >
-        Search
-      </label>
-      <div
-        style={
-          Object {
-            "position": "relative",
-            "width": "100%",
-          }
-        }
-      >
-        <span
-          charSet="utf-8"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "⚲",
-            }
-          }
-          style={
-            Object {
-              "color": "#888",
-              "fontSize": "20pt",
-              "left": "6pt",
-              "position": "absolute",
-              "top": "-4pt",
-              "transform": "rotate(-45deg)",
-            }
-          }
-        />
-        <input
-          onChange={[Function]}
-          placeholder="Film Title ..."
-          style={
-            Object {
-              "color": "black",
-              "fontSize": "12pt",
-              "height": "24pt",
-              "textIndent": "24pt",
-              "width": "100%",
-            }
-          }
-          type="search"
-          value=""
-        />
-        <span
-          aria-label="Cancel"
-          charSet="utf-8"
-          className="hover-pointer"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "⨉",
-            }
-          }
-          onClick={[Function]}
-          onKeyPress={[Function]}
-          role="button"
-          style={
-            Object {
-              "bottom": 4,
-              "color": "#888",
-              "fontSize": 16,
-              "position": "absolute",
-              "right": 8,
-            }
-          }
-          tabIndex={0}
-        />
-      </div>
-    </div>
-  </form>
-  <div>
-    <ul
-      style={
-        Object {
-          "lineHeight": 1.5,
-          "listStyleType": "none",
-          "marginTop": 20,
-        }
-      }
-    >
-      <div>
-        <a
-          href="/film/tt2310332"
-          onClick={[Function]}
-          style={
-            Object {
-              "color": "#210d87",
-            }
-          }
-          title="View film details"
-        >
-          The Hobbit: The Battle of the Five Armies, 2014
-        </a>
-      </div>
-      <div>
-        <a
-          href="/film/tt1217613"
-          onClick={[Function]}
-          style={
-            Object {
-              "color": "#210d87",
-            }
-          }
-          title="View film details"
-        >
-          Battle Los Angeles, 2011
-        </a>
-      </div>
-      <div>
-        <a
-          href="/film/tt0266308"
-          onClick={[Function]}
-          style={
-            Object {
-              "color": "#210d87",
-            }
-          }
-          title="View film details"
-        >
-          Battle Royale, 2000
-        </a>
-      </div>
-      <div>
-        <a
-          href="/film/tt1078912"
-          onClick={[Function]}
-          style={
-            Object {
-              "color": "#210d87",
-            }
-          }
-          title="View film details"
-        >
-          Night at the Museum: Battle of the Smithsonian, 2009
-        </a>
-      </div>
-      <div>
-        <a
-          href="/film/tt0058946"
-          onClick={[Function]}
-          style={
-            Object {
-              "color": "#210d87",
-            }
-          }
-          title="View film details"
-        >
-          The Battle of Algiers, 1966
-        </a>
-      </div>
-      <div>
-        <a
-          href="/film/tt4622512"
-          onClick={[Function]}
-          style={
-            Object {
-              "color": "#210d87",
-            }
-          }
-          title="View film details"
-        >
-          Battle of the Sexes, 2017
-        </a>
-      </div>
-      <div>
-        <a
-          href="/film/tt0069768"
-          onClick={[Function]}
-          style={
-            Object {
-              "color": "#210d87",
-            }
-          }
-          title="View film details"
-        >
-          Battle for the Planet of the Apes, 1973
-        </a>
-      </div>
-      <div>
-        <a
-          href="/film/tt2263944"
-          onClick={[Function]}
-          style={
-            Object {
-              "color": "#210d87",
-            }
-          }
-          title="View film details"
-        >
-          Dragon Ball Z: Battle of Gods, 2013
-        </a>
-      </div>
-      <div>
-        <a
-          href="/film/tt2536562"
-          onClick={[Function]}
-          style={
-            Object {
-              "color": "#210d87",
-            }
-          }
-          title="View film details"
-        >
-          Dragon Ball Z: Battle of Gods, 2013
-        </a>
-      </div>
-      <div>
-        <a
-          href="/film/tt0064072"
-          onClick={[Function]}
-          style={
-            Object {
-              "color": "#210d87",
-            }
-          }
-          title="View film details"
-        >
-          Battle of Britain, 1969
-        </a>
-      </div>
-    </ul>
-    <div
-      style={
-        Object {
-          "alignItems": "baseline",
-          "display": "flex",
-          "justifyContent": "flex-start",
+          "color": "darkgrey",
+          "fontSize": 16,
           "marginLeft": 40,
         }
       }
+      title="Scroll to top of list"
+      type="button"
     >
-      <button
-        className="btn btn-link"
-        onClick={[Function]}
-        style={
-          Object {
-            "color": "darkgrey",
-            "fontSize": 16,
-            "marginLeft": 40,
-          }
-        }
-        title="Scroll to top of page"
-        type="button"
-      >
-        Scroll to Top of List
-      </button>
-    </div>
+      Scroll to Top of List
+    </button>
   </div>
 </div>
 `;

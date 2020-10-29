@@ -139,16 +139,28 @@ exports[`OmdbMain matches snapshot 1`] = `
         </div>
       </div>
     </form>
-    <div
-      style={
-        Object {
-          "color": "#210d87",
-          "fontSize": "14pt",
-          "margin": "1em",
+    <div>
+      <ul
+        style={
+          Object {
+            "lineHeight": 1.5,
+            "listStyleType": "none",
+            "marginTop": 20,
+          }
         }
-      }
-    >
-       Search for a title. 
+      />
+      <div
+        style={
+          Object {
+            "alignItems": "baseline",
+            "display": "flex",
+            "justifyContent": "flex-start",
+            "marginLeft": 40,
+          }
+        }
+      >
+        0
+      </div>
     </div>
   </div>
 </div>

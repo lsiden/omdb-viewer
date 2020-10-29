@@ -238,8 +238,8 @@ exports[`FilmDetails renders details when present 1`] = `
     >
       The Battle of Algiers
     </h2>
-    <button
-      className="btn btn-link"
+    <a
+      href="/"
       onClick={[Function]}
       style={
         Object {
@@ -248,10 +248,9 @@ exports[`FilmDetails renders details when present 1`] = `
         }
       }
       title="Close"
-      type="button"
     >
       ✕
-    </button>
+    </a>
   </header>
   <div
     style={

@@ -46,13 +46,7 @@ export class _QueryForm extends React.Component {
   onChange(ev) {
     const { dispatchSetQuery } = this.props
     const query = ev.target.value
-    this.replaceUriHistory(query)
     dispatchSetQuery(query)
-  }
-
-  replaceUriHistory(query = '') {
-    const uri = `${process.env.PUBLIC_URL}/search/${query}`
-    window.history.replaceState(undefined, undefined, uri)
   }
 
   render() {
