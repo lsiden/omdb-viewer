@@ -6,7 +6,7 @@ import FilmTitle from 'components/film-title'
 import MoreButton from 'components/more-button'
 import { scrollToBottom } from 'components/scroll'
 import { getFilms } from 'store'
-import Spinner from 'respin'
+import Spinner from 'components/spinner'
 import ScrollToTopButton from 'components/scroll-to-top-btn'
 
 const ulStyle = {
@@ -33,10 +33,8 @@ export class _FilmList extends React.Component {
     console.error(err, errInfo)
   }
 
-  // TODO - Spinner should get isFetching from state
-  // TODO - MoreButton
   render() {
-    const { films, totalResults, isFetching } = this.props
+    const { films } = this.props
     return (
       <div>
         <ul style={ulStyle}>
@@ -44,7 +42,7 @@ export class _FilmList extends React.Component {
             <FilmTitle key={filmSummary.imdbID} filmSummary={filmSummary} />
           ))}
         </ul>
-        { isFetching && <Spinner style={spinnerStyle} /> }
+        <Spinner style={spinnerStyle} />
         <div style={bottomRowStyle}>
           <MoreButton />
           <ScrollToTopButton />
@@ -56,14 +54,12 @@ export class _FilmList extends React.Component {
 
 _FilmList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
-  totalResults: PropTypes.number.isRequired,
   isFetching: PropTypes.bool.isRequired,
 }
 
 export default connect(
   (state) => ({
     films: getFilms(state),
-    totalResults: state.totalResults || 0,
     isFetching: state.isFetching || false,
   }),
 )(_FilmList)

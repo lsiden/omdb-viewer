@@ -21,11 +21,9 @@ describe('FilmList', () => {
     const wrapper = createWrapper()
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.root.findAllByType(FilmTitle)).toHaveLength(films.length)
-    expect(wrapper.root.findAllByType('animate').length).toEqual(0)
   })
 
   it('if isFetching then displays spinner', () => {
     const wrapper = createWrapper({ isFetching: true })
-    expect(wrapper.root.findAllByType('animate').length).toBeGreaterThan(0)
   })
 })
