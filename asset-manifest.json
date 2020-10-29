@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.js": "/omdb-film-browser-web/static/js/main.fe2edccb.chunk.js",
-    "main.js.map": "/omdb-film-browser-web/static/js/main.fe2edccb.chunk.js.map",
+    "main.js": "/omdb-film-browser-web/static/js/main.48cc60e5.chunk.js",
+    "main.js.map": "/omdb-film-browser-web/static/js/main.48cc60e5.chunk.js.map",
     "runtime-main.js": "/omdb-film-browser-web/static/js/runtime-main.0ecbfc25.js",
     "runtime-main.js.map": "/omdb-film-browser-web/static/js/runtime-main.0ecbfc25.js.map",
     "static/css/2.8ec0c4ed.chunk.css": "/omdb-film-browser-web/static/css/2.8ec0c4ed.chunk.css",
-    "static/js/2.f6235c58.chunk.js": "/omdb-film-browser-web/static/js/2.f6235c58.chunk.js",
-    "static/js/2.f6235c58.chunk.js.map": "/omdb-film-browser-web/static/js/2.f6235c58.chunk.js.map",
+    "static/js/2.15d6bbb0.chunk.js": "/omdb-film-browser-web/static/js/2.15d6bbb0.chunk.js",
+    "static/js/2.15d6bbb0.chunk.js.map": "/omdb-film-browser-web/static/js/2.15d6bbb0.chunk.js.map",
     "index.html": "/omdb-film-browser-web/index.html",
-    "precache-manifest.20a17a7a44ee4b1a838df8ef7e921701.js": "/omdb-film-browser-web/precache-manifest.20a17a7a44ee4b1a838df8ef7e921701.js",
+    "precache-manifest.8b98bafb0100748e73d5acb071d6610a.js": "/omdb-film-browser-web/precache-manifest.8b98bafb0100748e73d5acb071d6610a.js",
     "service-worker.js": "/omdb-film-browser-web/service-worker.js",
     "static/css/2.8ec0c4ed.chunk.css.map": "/omdb-film-browser-web/static/css/2.8ec0c4ed.chunk.css.map",
-    "static/js/2.f6235c58.chunk.js.LICENSE.txt": "/omdb-film-browser-web/static/js/2.f6235c58.chunk.js.LICENSE.txt",
+    "static/js/2.15d6bbb0.chunk.js.LICENSE.txt": "/omdb-film-browser-web/static/js/2.15d6bbb0.chunk.js.LICENSE.txt",
     "static/media/movie-icon.svg": "/omdb-film-browser-web/static/media/movie-icon.3f0ff44e.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.0ecbfc25.js",
     "static/css/2.8ec0c4ed.chunk.css",
-    "static/js/2.f6235c58.chunk.js",
-    "static/js/main.fe2edccb.chunk.js"
+    "static/js/2.15d6bbb0.chunk.js",
+    "static/js/main.48cc60e5.chunk.js"
   ]
 }
